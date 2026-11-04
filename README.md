@@ -4,7 +4,7 @@ AI health-navigation agent for Croatian citizens — Datathon Portala otvorenih 
 
 > Opišite problem jednom. Ostalo rješavamo mi.
 
-**Demo URL:** TODO (Vercel) · **Status:** Phase 0 — skeleton app.
+**Demo URL:** TODO (Vercel) · **Status:** see the repo's GitHub Issues → Milestones.
 
 All patient data in this project is synthetic. Uputko never diagnoses; in an emergency call **112**.
 
