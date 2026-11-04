@@ -1,29 +1,111 @@
 {
+"{\"city\": \"Antunovac\", \"country\": \"Hrvatska\", \"street\": \"Ernestinovo, Školska 2\"}": null,
+"{\"city\": \"Beli Manastir\", \"country\": \"Hrvatska\", \"street\": \"Batina, trg Slobode 5\"}": null,
+"{\"city\": \"Beli Manastir\", \"country\": \"Hrvatska\", \"street\": \"Kneževo, Vijenac grada Vukovara 5\"}": null,
+"{\"city\": \"Belišće\", \"country\": \"Hrvatska\", \"street\": \"Baranjsko Petrovo Selo, Glavna ulica 2\"}": null,
+"{\"city\": \"Belišće\", \"country\": \"Hrvatska\", \"street\": \"Marijanci, ulica Kralja Dmitra Zvonimira 2\"}": null,
+"{\"city\": \"Belišće\", \"country\": \"Hrvatska\", \"street\": \"Črnkovci, Kardinala Alojzija Stepinca 53\"}": null,
+"{\"city\": \"Bistra\", \"country\": \"Hrvatska\", \"street\": \"Donja Bistra, Bistranska ulica 6\"}": null,
+"{\"city\": \"Bistra\", \"country\": \"Hrvatska\", \"street\": \"Gornja Bistra, Bistranska ulica 240\"}": null,
+"{\"city\": \"Bjelovar\", \"country\": \"Hrvatska\", \"street\": \"Ivanska, Petra Preradovića bb\"}": null,
 "{\"city\": \"Bjelovar\", \"country\": \"Hrvatska\", \"street\": \"Rovišće, trg Hrvatskih Branitelja 11\"}": null,
+"{\"city\": \"Bjelovar\", \"country\": \"Hrvatska\", \"street\": \"Ul. Josipa Jelačića 13c\"}": null,
 "{\"city\": \"Bjelovar\", \"country\": \"Hrvatska\", \"street\": \"Ul. Nikole Jurišića 11\"}": null,
 "{\"city\": \"Bjelovar\", \"country\": \"Hrvatska\", \"street\": \"Ul. Petra Zrinskog 1c\"}": null,
+"{\"city\": \"Bjelovar\", \"country\": \"Hrvatska\", \"street\": \"Ul. Tomaše G. Masaryka 9\"}": null,
 "{\"city\": \"Bjelovar\", \"country\": \"Hrvatska\", \"street\": \"Ulica Velike Sredice 11\"}": null,
+"{\"city\": \"Darda\", \"country\": \"Hrvatska\", \"street\": \"Čeminac, Ljudevita Gaja 2\"}": null,
+"{\"city\": \"Daruvar\", \"country\": \"Hrvatska\", \"street\": \"Končanica, Končanica bb\"}": null,
 "{\"city\": \"Delnice\", \"country\": \"Hrvatska\", \"street\": \"Fužine, Sveti Križ 13\"}": null,
 "{\"city\": \"Delnice\", \"country\": \"Hrvatska\", \"street\": \"Lokve, Šetalište Golubinjak 3\"}": null,
+"{\"city\": \"Delnice\", \"country\": \"Hrvatska\", \"street\": \"Skrad, Josipa Blaževića - Blaža 9\"}": null,
+"{\"city\": \"Donja Stubica\", \"country\": \"Hrvatska\", \"street\": \"Gornja Stubica, trg Svetog Jurja 21\"}": null,
+"{\"city\": \"Donji Kraljevec\", \"country\": \"Hrvatska\", \"street\": \"Donji Vidovec, Rade Končara 7\"}": null,
+"{\"city\": \"Donji Kraljevec\", \"country\": \"Hrvatska\", \"street\": \"Goričan, Školska 16a\"}": null,
+"{\"city\": \"Donji Kraljevec\", \"country\": \"Hrvatska\", \"street\": \"Kotoriba, ulica Kralja Tomislava 119/a\"}": null,
+"{\"city\": \"Donji Miholjac\", \"country\": \"Hrvatska\", \"street\": \"Viljevo, Braće Radića 106\"}": null,
+"{\"city\": \"Donji Muć\", \"country\": \"Hrvatska\", \"street\": \"Donji Muć 222\"}": null,
+"{\"city\": \"Dražice\", \"country\": \"Hrvatska\", \"street\": \"Podkilavačka 6\"}": null,
+"{\"city\": \"Drenovci\", \"country\": \"Hrvatska\", \"street\": \"Gunja, Vladimira Nazora 235\"}": null,
+"{\"city\": \"Drenovci\", \"country\": \"Hrvatska\", \"street\": \"Soljani, Vrbanjska 12\"}": null,
+"{\"city\": \"Drenovci\", \"country\": \"Hrvatska\", \"street\": \"Vrbanja, Kneza Lj.posavskog 7\"}": null,
+"{\"city\": \"Drniš\", \"country\": \"Hrvatska\", \"street\": \"Oklaj, Put Kroz Oklaj bb\"}": null,
+"{\"city\": \"Drniš\", \"country\": \"Hrvatska\", \"street\": \"Ružić, Kljaci bb\"}": null,
 "{\"city\": \"Dubrovnik\", \"country\": \"Hrvatska\", \"street\": \"Svetoga Križa 10b\"}": null,
+"{\"city\": \"Dugo Selo\", \"country\": \"Hrvatska\", \"street\": \"Brckovljani, Stjepana Radića 6\"}": null,
 "{\"city\": \"Dugo Selo\", \"country\": \"Hrvatska\", \"street\": \"Rugvica, Staroškolska ulica bb\"}": null,
+"{\"city\": \"Dugopolje\", \"country\": \"Hrvatska\", \"street\": \"Klis, Iza grada 2\"}": null,
 "{\"city\": \"Dugopolje\", \"country\": \"Hrvatska\", \"street\": \"Lećevica, trg Ante Bužančića Tice 3\"}": null,
+"{\"city\": \"Garešnica\", \"country\": \"Hrvatska\", \"street\": \"Garešnički Brestovac, Brestovačka ulica bb\"}": null,
+"{\"city\": \"Garešnica\", \"country\": \"Hrvatska\", \"street\": \"Hercegovac, ulica Hrvatskih Branitelja \\\\\"}": null,
 "{\"city\": \"Grubišno Polje\", \"country\": \"Hrvatska\", \"street\": \"Veliki Zdenci, trg Kralja Tomislava bb\"}": null,
+"{\"city\": \"Hum na Sutli\", \"country\": \"Hrvatska\", \"street\": \"Hum na Sutli 172\"}": [
+46.2157386,
+15.6904751
+],
+"{\"city\": \"Ilok\", \"country\": \"Hrvatska\", \"street\": \"Bapska, Josipa Jurja Strossmayera 2\"}": null,
+"{\"city\": \"Imotski\", \"country\": \"Hrvatska\", \"street\": \"Runović, Runović bb\"}": null,
+"{\"city\": \"Imotski\", \"country\": \"Hrvatska\", \"street\": \"Ul.bruna Bušića 57\"}": null,
+"{\"city\": \"Imotski\", \"country\": \"Hrvatska\", \"street\": \"Ul.dr. Josipa Mladinova 20\"}": null,
+"{\"city\": \"Ivanec\", \"country\": \"Hrvatska\", \"street\": \"Klenovnik, Klenovnik bb\"}": null,
 "{\"city\": \"Ivanec\", \"country\": \"Hrvatska\", \"street\": \"Radovan, Varaždinska ulica 11\"}": null,
+"{\"city\": \"Jakovlje\", \"country\": \"Hrvatska\", \"street\": \"Luka, trg Sv. Roka 1\"}": null,
+"{\"city\": \"Jastrebarsko\", \"country\": \"Hrvatska\", \"street\": \"Bukovac Svetojanski, Bukovac Svetojanski bb\"}": null,
+"{\"city\": \"Kaštel Kambelovac\", \"country\": \"Hrvatska\", \"street\": \"Kaštel Gomilica, cesta dr. Franje Tuđmana bb\"}": null,
+"{\"city\": \"Kaštel Kambelovac\", \"country\": \"Hrvatska\", \"street\": \"Kaštel Gomilica, ulica Petra Zrinskog 18\"}": null,
+"{\"city\": \"Kaštel Štafilić\", \"country\": \"Hrvatska\", \"street\": \"Kaštel Novi, cesta dr. Franje Tuđmana bb\"}": null,
+"{\"city\": \"Kaštel Štafilić\", \"country\": \"Hrvatska\", \"street\": \"Kaštel Stari, cesta dr. Franje Tuđmana bb\"}": null,
 "{\"city\": \"Komiža\", \"country\": \"Hrvatska\", \"street\": \"Ul.komiških Iseljenika bb\"}": null,
+"{\"city\": \"Krk\", \"country\": \"Hrvatska\", \"street\": \"Punat, Pod Topol 2\"}": null,
+"{\"city\": \"Kutina\", \"country\": \"Hrvatska\", \"street\": \"Banova Jaruga, ulica Stjepana Radića 43\"}": null,
+"{\"city\": \"Labin\", \"country\": \"Hrvatska\", \"street\": \"Raša, Tesle Nikole bb\"}": null,
 "{\"city\": \"Lasinja\", \"country\": \"Hrvatska\", \"street\": \"Lasinjska cesta 8\"}": null,
+"{\"city\": \"Ludbreg\", \"country\": \"Hrvatska\", \"street\": \"Sveti Đurđ, ulica Braće Radić 1\"}": null,
+"{\"city\": \"Malinska\", \"country\": \"Hrvatska\", \"street\": \"Šilo, Nova cesta bb\"}": null,
 "{\"city\": \"Marija Bistrica\", \"country\": \"Hrvatska\", \"street\": \"Zlatar-bistrica, Zagorska ulica 5\"}": null,
+"{\"city\": \"Markušica\", \"country\": \"Hrvatska\", \"street\": \"Tordinci, Antuna Gustava Matoša 2\"}": null,
+"{\"city\": \"Maruševec\", \"country\": \"Hrvatska\", \"street\": \"Marčan, Gornja ulica 76\"}": null,
+"{\"city\": \"Mokošica\", \"country\": \"Hrvatska\", \"street\": \"Nova Mokošica, Bartola Kašića 10\"}": null,
+"{\"city\": \"Našice\", \"country\": \"Hrvatska\", \"street\": \"Podgorač, trg Pavla Pejačevića 5\"}": null,
+"{\"city\": \"Našice\", \"country\": \"Hrvatska\", \"street\": \"Ul. Bana Jelačića 10\"}": null,
 "{\"city\": \"Našice\", \"country\": \"Hrvatska\", \"street\": \"Ul. Bana Jelačića 6\"}": null,
+"{\"city\": \"Našice\", \"country\": \"Hrvatska\", \"street\": \"Ul. Ivane Brlić Mažuranić 3\"}": null,
 "{\"city\": \"Nova Gradiška\", \"country\": \"Hrvatska\", \"street\": \"Rešetari, Vladimira Nazora 26a\"}": null,
+"{\"city\": \"Nova Gradiška\", \"country\": \"Hrvatska\", \"street\": \"Rešetari, Vladimira Nazora 30\"}": null,
+"{\"city\": \"Novi Marof\", \"country\": \"Hrvatska\", \"street\": \"Breznica, Breznica 50\"}": null,
+"{\"city\": \"Novi Marof\", \"country\": \"Hrvatska\", \"street\": \"Breznica, Breznica bb\"}": null,
+"{\"city\": \"Novi Marof\", \"country\": \"Hrvatska\", \"street\": \"Ljubešćica, Zagrebačka bb\"}": null,
+"{\"city\": \"Novi Vinodolski\", \"country\": \"Hrvatska\", \"street\": \"Bribir, Bribir 8\"}": null,
+"{\"city\": \"Novigrad\", \"country\": \"Hrvatska\", \"street\": \"Karigador, Ladin Gaj 132\"}": null,
+"{\"city\": \"Novska\", \"country\": \"Hrvatska\", \"street\": \"Jasenovac, trg Kralja Petra Svačića 28\"}": null,
+"{\"city\": \"Novska\", \"country\": \"Hrvatska\", \"street\": \"Lipovljani, ulica Ante Starčevića bb\"}": null,
 "{\"city\": \"Obrovac\", \"country\": \"Hrvatska\", \"street\": \"Jasenice, Maslenica ulica Petra Zoranića 61\"}": null,
+"{\"city\": \"Obrovac\", \"country\": \"Hrvatska\", \"street\": \"Ob. Hr. Čas. Senada Župan 10\"}": null,
+"{\"city\": \"Obrovac\", \"country\": \"Hrvatska\", \"street\": \"Ul. Stjepana Radića bb\"}": null,
 "{\"city\": \"Ogulin\", \"country\": \"Hrvatska\", \"street\": \"Tounj, Linije 3b\"}": null,
+"{\"city\": \"Omiš\", \"country\": \"Hrvatska\", \"street\": \"Put Mlije 2\"}": null,
+"{\"city\": \"Opatija\", \"country\": \"Hrvatska\", \"street\": \"Poljane, Poljane bb\"}": null,
 "{\"city\": \"Osijek\", \"country\": \"Hrvatska\", \"street\": \"Sarvaš, Osječka ulica 64\"}": null,
+"{\"city\": \"Otok\", \"country\": \"Hrvatska\", \"street\": \"Privlaka, Faličevci 6\"}": null,
 "{\"city\": \"Pag\", \"country\": \"Hrvatska\", \"street\": \"Povljana, Ul. Ante Starčevića 35\"}": null,
+"{\"city\": \"Pazin\", \"country\": \"Hrvatska\", \"street\": \"Tinjan, Tinjan 13\"}": null,
+"{\"city\": \"Podpićan\", \"country\": \"Hrvatska\", \"street\": \"Potpićan, Istarska 2\"}": null,
+"{\"city\": \"Popovača\", \"country\": \"Hrvatska\", \"street\": \"Trg Grofova Erdoedyja 17\"}": null,
 "{\"city\": \"Popovača\", \"country\": \"Hrvatska\", \"street\": \"Velika Ludina, Crkvena ulica 2\"}": null,
 "{\"city\": \"Poreč\", \"country\": \"Hrvatska\", \"street\": \"Maura Gioseffia 2\"}": null,
 "{\"city\": \"Poreč\", \"country\": \"Hrvatska\", \"street\": \"Pical 1\"}": null,
+"{\"city\": \"Posedarje\", \"country\": \"Hrvatska\", \"street\": \"Ulica Marinka Vedrić 9\"}": null,
 "{\"city\": \"Požega\", \"country\": \"Hrvatska\", \"street\": \"Jakšić, Osječka bb\"}": null,
+"{\"city\": \"Preko\", \"country\": \"Hrvatska\", \"street\": \"Ugljan, ulica Ugljan 16\"}": null,
+"{\"city\": \"Prigorje Brdovečko\", \"country\": \"Hrvatska\", \"street\": \"Brdovec, ulica Pavla Beluhana 1\"}": null,
+"{\"city\": \"Prigorje Brdovečko\", \"country\": \"Hrvatska\", \"street\": \"Marija Gorica, Gorička ulica 18a\"}": null,
+"{\"city\": \"Primošten\", \"country\": \"Hrvatska\", \"street\": \"Rogoznica, obala Kneza Domagoja bb\"}": null,
+"{\"city\": \"Primošten\", \"country\": \"Hrvatska\", \"street\": \"Rogoznica, ulica Ante Starčevića 16\"}": null,
+"{\"city\": \"Pula\", \"country\": \"Hrvatska\", \"street\": \"Fažana, ulica Braće Ilić - Via Fratelli Ilić 13\"}": null,
 "{\"city\": \"Pula\", \"country\": \"Hrvatska\", \"street\": \"Ližnjan, Ližnjan 147\"}": null,
+"{\"city\": \"Pula\", \"country\": \"Hrvatska\", \"street\": \"Negrijeva ulica 5\"}": null,
+"{\"city\": \"Pula\", \"country\": \"Hrvatska\", \"street\": \"Palladiova ulica 22\"}": null,
+"{\"city\": \"Rakov Potok\", \"country\": \"Hrvatska\", \"street\": \"Horvati, Horvaćanski trg 1\"}": null,
 "{\"city\": \"Rijeka\", \"country\": \"Hrvatska\", \"street\": \"Corrada Ilijassicha 22\"}": null,
 "{\"city\": \"Rijeka\", \"country\": \"Hrvatska\", \"street\": \"Kostrena, Glavani 89\"}": null,
 "{\"city\": \"Rijeka\", \"country\": \"Hrvatska\", \"street\": \"Kostrena, Glavani 89a\"}": null,
@@ -31,8 +113,11 @@
 "{\"city\": \"Rijeka\", \"country\": \"Hrvatska\", \"street\": \"Kostrena, Žuknica 1b\"}": null,
 "{\"city\": \"Rijeka\", \"country\": \"Hrvatska\", \"street\": \"Park Nikole Hosta 3\"}": null,
 "{\"city\": \"Rijeka\", \"country\": \"Hrvatska\", \"street\": \"Park Nikole Hosta 5\"}": null,
+"{\"city\": \"Rovinj\", \"country\": \"Hrvatska\", \"street\": \"Ulica Mattea Benussija - Via Matteo Benussi 6\"}": null,
 "{\"city\": \"Samobor\", \"country\": \"Hrvatska\", \"street\": \"Bregana, Samoborska ulica 12\"}": null,
 "{\"city\": \"Slavonski Brod\", \"country\": \"Hrvatska\", \"street\": \"Bukovlje, ulica Josipa Kozarca 20\"}": null,
+"{\"city\": \"Slavonski Brod\", \"country\": \"Hrvatska\", \"street\": \"Gornja Vrba, ulica Vrbskih Žrtava 10\"}": null,
+"{\"city\": \"Solin\", \"country\": \"Hrvatska\", \"street\": \"Žižić dr. Martina 6\"}": null,
 "{\"city\": \"Split\", \"country\": \"Hrvatska\", \"street\": \"Domovin.rata 27b\"}": null,
 "{\"city\": \"Split\", \"country\": \"Hrvatska\", \"street\": \"Hrv.mornarice 1b\"}": null,
 "{\"city\": \"Split\", \"country\": \"Hrvatska\", \"street\": \"Ljubićeva 12\"}": null,
@@ -43,34 +128,77 @@
 "{\"city\": \"Split\", \"country\": \"Hrvatska\", \"street\": \"Trg Hrv.brat.zaj. 5\"}": null,
 "{\"city\": \"Split\", \"country\": \"Hrvatska\", \"street\": \"Trg Hrv.brat.zaj. 7\"}": null,
 "{\"city\": \"Split\", \"country\": \"Hrvatska\", \"street\": \"Šet.bačvice 8\"}": null,
+"{\"city\": \"Stari Mikanovci\", \"country\": \"Hrvatska\", \"street\": \"Vrbica, Đurđanačka 2\"}": null,
+"{\"city\": \"Starigrad Paklenica\", \"country\": \"Hrvatska\", \"street\": \"Starigrad, Starigradskih Zidara bb\"}": null,
 "{\"city\": \"Stobreč\", \"country\": \"Hrvatska\", \"street\": \"Podstrana, Kaštelančićeva 1\"}": null,
+"{\"city\": \"Stobreč\", \"country\": \"Hrvatska\", \"street\": \"Žrnovnica, Krešimirova 6\"}": null,
 "{\"city\": \"Ston\", \"country\": \"Hrvatska\", \"street\": \"Put Br. Mihanović 7\"}": null,
+"{\"city\": \"Suhopolje\", \"country\": \"Hrvatska\", \"street\": \"Gradina, trg Kralja Zvonimira 3\"}": null,
+"{\"city\": \"Supetar\", \"country\": \"Hrvatska\", \"street\": \"Sutivan, Perića Kala 20\"}": null,
+"{\"city\": \"Sveta Nedjelja\", \"country\": \"Hrvatska\", \"street\": \"Rakitje, Školska ulica bb\"}": null,
+"{\"city\": \"Sveti Križ Začretje\", \"country\": \"Hrvatska\", \"street\": \"Trg Julija Lembergera 1\"}": null,
 "{\"city\": \"Sveti Martin Pod Okićem\", \"country\": \"Hrvatska\", \"street\": \"Galgovo, ulica Mirka Bogovića 1\"}": null,
+"{\"city\": \"Tkon\", \"country\": \"Hrvatska\", \"street\": \"Tkon 97b\"}": null,
 "{\"city\": \"Trnovec Bartolovečki\", \"country\": \"Hrvatska\", \"street\": \"Jalžabet, trg Braće Radića bb\"}": null,
+"{\"city\": \"Trnovec Bartolovečki\", \"country\": \"Hrvatska\", \"street\": \"Šemovec, Koprivnička ulica bb\"}": null,
+"{\"city\": \"Trogir\", \"country\": \"Hrvatska\", \"street\": \"Slatine, Duboke Garme 6a\"}": null,
+"{\"city\": \"Turčin\", \"country\": \"Hrvatska\", \"street\": \"Beletinec, ulica Stjepana Radića bb\"}": null,
+"{\"city\": \"Umag\", \"country\": \"Hrvatska\", \"street\": \"Ulica E.pascalia 3a\"}": null,
+"{\"city\": \"Valpovo\", \"country\": \"Hrvatska\", \"street\": \"Petrijevci, Republike 112\"}": null,
 "{\"city\": \"Varaždin\", \"country\": \"Hrvatska\", \"street\": \"Jalkovec, Varaždinska ulica 12\"}": null,
 "{\"city\": \"Varaždin\", \"country\": \"Hrvatska\", \"street\": \"Nedeljanec, Nova ulica 1\"}": null,
 "{\"city\": \"Varaždin\", \"country\": \"Hrvatska\", \"street\": \"Sračinec, Varaždinska ulica 100\"}": null,
 "{\"city\": \"Varaždin\", \"country\": \"Hrvatska\", \"street\": \"Sračinec, ulica Ljudevita Gaja 125\"}": null,
 "{\"city\": \"Varaždin\", \"country\": \"Hrvatska\", \"street\": \"Sračinec, ulica Matije Gupca 5a\"}": null,
 "{\"city\": \"Varaždin\", \"country\": \"Hrvatska\", \"street\": \"Vidovec, trg Sv. Vida 2\"}": null,
+"{\"city\": \"Velika Gorica\", \"country\": \"Hrvatska\", \"street\": \"Dubranec, Dubranec bb\"}": null,
 "{\"city\": \"Velika Gorica\", \"country\": \"Hrvatska\", \"street\": \"Orle, Orle 7\"}": null,
+"{\"city\": \"Veliki Grđevac\", \"country\": \"Hrvatska\", \"street\": \"Velika Pisanica, ulica Jurja Vlahovca 6\"}": null,
+"{\"city\": \"Vinkovci\", \"country\": \"Hrvatska\", \"street\": \"Cerić, Ivana Meštrovića 3\"}": null,
+"{\"city\": \"Vinkovci\", \"country\": \"Hrvatska\", \"street\": \"Ivankovo, Rojičani 62\"}": null,
 "{\"city\": \"Vinkovci\", \"country\": \"Hrvatska\", \"street\": \"Jarmina, Josipa Juraja Strossmayera bb\"}": null,
 "{\"city\": \"Vinkovci\", \"country\": \"Hrvatska\", \"street\": \"Retkovci, Braće Radić 2\"}": null,
+"{\"city\": \"Virovitica\", \"country\": \"Hrvatska\", \"street\": \"Bušetina, Matije Gupca 25\"}": null,
 "{\"city\": \"Vodice\", \"country\": \"Hrvatska\", \"street\": \"Tribunj, Put Male Gospe bb\"}": null,
 "{\"city\": \"Vrbovsko\", \"country\": \"Hrvatska\", \"street\": \"Moravice, Nikole Bunjevca bb\"}": null,
+"{\"city\": \"Vukovar\", \"country\": \"Hrvatska\", \"street\": \"Borovo, Glavna 3\"}": null,
 "{\"city\": \"Vukovar\", \"country\": \"Hrvatska\", \"street\": \"Negoslavci, Petrovačka 1\"}": null,
 "{\"city\": \"Zabok\", \"country\": \"Hrvatska\", \"street\": \"Ulica Ivana i Cvjete Huis 8\"}": null,
+"{\"city\": \"Zabok\", \"country\": \"Hrvatska\", \"street\": \"Veliko Trgovišće, trg Stjepana i Franje Tuđmana 3\"}": null,
+"{\"city\": \"Zadar\", \"country\": \"Hrvatska\", \"street\": \"Ivana Tanzlingera Zanottija 6\"}": null,
 "{\"city\": \"Zagreb\", \"country\": \"Hrvatska\", \"street\": \"Martićeva ulica 63a/ii\"}": null,
 "{\"city\": \"Zagreb\", \"country\": \"Hrvatska\", \"street\": \"Martićeva ulica 63a/iii\"}": null,
 "{\"city\": \"Zagreb\", \"country\": \"Hrvatska\", \"street\": \"Martićeva ulica 63a/iv\"}": null,
 "{\"city\": \"Zagreb\", \"country\": \"Hrvatska\", \"street\": \"Ulica Mahatme Gandhia 5\"}": null,
 "{\"city\": \"Zagreb-dubrava\", \"country\": \"Hrvatska\", \"street\": \"Zagreb, Aleja Lipa 2a\"}": null,
+"{\"city\": \"Zagreb-dubrava\", \"country\": \"Hrvatska\", \"street\": \"Zagreb, Grižanska ulica 4\"}": null,
+"{\"city\": \"Zagreb-dubrava\", \"country\": \"Hrvatska\", \"street\": \"Zagreb, Slavonska ulica 35\"}": null,
 "{\"city\": \"Zagreb-novi Zagreb\", \"country\": \"Hrvatska\", \"street\": \"Zagreb, Avenija Većeslava Holjevca 22\"}": null,
+"{\"city\": \"Zagreb-novi Zagreb\", \"country\": \"Hrvatska\", \"street\": \"Zagreb, Karamanov Prilaz 4\"}": null,
 "{\"city\": \"Zagreb-novi Zagreb\", \"country\": \"Hrvatska\", \"street\": \"Zagreb, Kauzlarićev Prilaz 7\"}": null,
+"{\"city\": \"Zagreb-susedgrad\", \"country\": \"Hrvatska\", \"street\": \"Zagreb, Gornje Padine 30\"}": null,
+"{\"city\": \"Zagreb-susedgrad\", \"country\": \"Hrvatska\", \"street\": \"Zagreb, Vrabečak 4\"}": null,
+"{\"city\": \"Zagreb-susedgrad\", \"country\": \"Hrvatska\", \"street\": \"Zagreb, Vrabečak 4/i\"}": null,
+"{\"city\": \"Zagreb-susedgrad\", \"country\": \"Hrvatska\", \"street\": \"Zagreb, trg Ivana Kukuljevića bb\"}": null,
+"{\"city\": \"Zagreb-susedgrad\", \"country\": \"Hrvatska\", \"street\": \"Zagreb, ulica Matije Ilirika Vlačića 2\"}": null,
+"{\"city\": \"Zaostrog\", \"country\": \"Hrvatska\", \"street\": \"Gradac, Konopljike bb\"}": null,
+"{\"city\": \"Zemunik\", \"country\": \"Hrvatska\", \"street\": \"Galovac, Galovac ulica i 14\"}": null,
+"{\"city\": \"Zemunik\", \"country\": \"Hrvatska\", \"street\": \"Zemunik Donji, ulica I. 22\"}": null,
 "{\"city\": \"Čabar\", \"country\": \"Hrvatska\", \"street\": \"Tršće, Ivana Kovača 16\"}": null,
+"{\"city\": \"Čakovec\", \"country\": \"Hrvatska\", \"street\": \"Macinec, Glavna ulica 26\"}": null,
 "{\"city\": \"Čakovec\", \"country\": \"Hrvatska\", \"street\": \"Strahoninec, Dravska 32\"}": null,
+"{\"city\": \"Čepin\", \"country\": \"Hrvatska\", \"street\": \"Beketinci, Čepinska 42a\"}": null,
+"{\"city\": \"Đakovo\", \"country\": \"Hrvatska\", \"street\": \"Trnava, Ivana Meštrovića 34\"}": null,
+"{\"city\": \"Đelekovec\", \"country\": \"Hrvatska\", \"street\": \"Drnje, trg Kralja Tomislava 3\"}": null,
 "{\"city\": \"Đurđenovac\", \"country\": \"Hrvatska\", \"street\": \"Feričanci, Ul. Dore Pejačević 1\"}": null,
+"{\"city\": \"Đurđevac\", \"country\": \"Hrvatska\", \"street\": \"Ferdinandovac, trg Slobode 29\"}": null,
+"{\"city\": \"Đurđevac\", \"country\": \"Hrvatska\", \"street\": \"Kloštar Podravski, ulica 1.Svibnja 9\"}": null,
+"{\"city\": \"Đurđevac\", \"country\": \"Hrvatska\", \"street\": \"Podravske Sesvete, Ivana Mažuranića 1\"}": null,
+"{\"city\": \"Đurđevac\", \"country\": \"Hrvatska\", \"street\": \"Virje, ulica Đure Sudete bb\"}": null,
+"{\"city\": \"Šenkovec\", \"country\": \"Hrvatska\", \"street\": \"Dubravica, ulica Pavla Štoosa 34\"}": null,
+"{\"city\": \"Šibenik\", \"country\": \"Hrvatska\", \"street\": \"Brodarica, Krapanjskih Spužvara 31\"}": null,
 "{\"city\": \"Šibenik\", \"country\": \"Hrvatska\", \"street\": \"Ul. 8. Udarne Dalmat. Brigade 16\"}": null,
+"{\"city\": \"Šibenik\", \"country\": \"Hrvatska\", \"street\": \"Zaton, Hrvatskih Baranitelja 2\"}": null,
 "{\"country\": \"Hrvatska\", \"postalcode\": \"10000\", \"street\": \"Abramovićeva ulica 5\"}": [
 45.7622359,
 15.9927017
@@ -820,29 +948,144 @@
 15.9738054
 ],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"10020\", \"street\": \"Zagreb, Avenija Većeslava Holjevca 22\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10020\", \"street\": \"Zagreb, Karamanov Prilaz 4\"}": null,
 "{\"country\": \"Hrvatska\", \"postalcode\": \"10020\", \"street\": \"Zagreb, Kauzlarićev Prilaz 7\"}": null,
 "{\"country\": \"Hrvatska\", \"postalcode\": \"10020\"}": [
 45.7667282,
 15.9633294
 ],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"10040\", \"street\": \"Zagreb, Aleja Lipa 2a\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10040\", \"street\": \"Zagreb, Grižanska ulica 4\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10040\", \"street\": \"Zagreb, Slavonska ulica 35\"}": null,
 "{\"country\": \"Hrvatska\", \"postalcode\": \"10040\"}": [
 45.8361006,
 16.0601176
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10090\", \"street\": \"Zagreb, Gornje Padine 30\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10090\", \"street\": \"Zagreb, Vrabečak 4\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10090\", \"street\": \"Zagreb, Vrabečak 4/i\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10090\", \"street\": \"Zagreb, trg Ivana Kukuljevića bb\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10090\", \"street\": \"Zagreb, ulica Matije Ilirika Vlačića 2\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10090\"}": [
+45.8110023,
+15.8847334
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10257\", \"street\": \"Brezovička cesta 123\"}": [
+45.7314312,
+15.9150086
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10290\", \"street\": \"Ulica Ivana Mažuranića 32\"}": [
+45.8682259,
+15.8000142
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10290\", \"street\": \"Ulica Pavla Lončara 1\"}": [
+45.8575285,
+15.8020892
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10291\", \"street\": \"Brdovec, ulica Pavla Beluhana 1\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10291\", \"street\": \"Marija Gorica, Gorička ulica 18a\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10291\", \"street\": \"Zagrebačka 24\"}": [
+45.8782131,
+15.7397441
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10291\"}": [
+45.8685221,
+15.7491535
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10292\", \"street\": \"Dubravica, ulica Pavla Štoosa 34\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10292\", \"street\": \"Zagrebačka ulica 44\"}": [
+45.9772718,
+15.8438027
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10292\"}": [
+45.8898207,
+15.6993247
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10297\", \"street\": \"Luka, trg Sv. Roka 1\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10297\", \"street\": \"Stubička cesta 4\"}": [
+45.9478776,
+15.8489434
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10297\"}": [
+45.9409277,
+15.8514803
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10298\", \"street\": \"Donja Bistra, Bistranska ulica 6\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10298\", \"street\": \"Gornja Bistra, Bistranska ulica 240\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10298\"}": [
+45.876042,
+15.8475852
 ],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"10310\", \"street\": \"Omladinska ulica 25\"}": [
 45.7045214,
 16.3885547
 ],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10314\", \"street\": \"Ulica Zdeneka Tomičeka bb\"}": [
+45.6630004,
+16.5244688
+],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"10340\", \"street\": \"Ulica 7. Svibnja 14\"}": [
 45.8867889,
 16.4178252
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10342\", \"street\": \"Farkaševac, Farkaševac 43a\"}": [
+45.8802999,
+16.6234725
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10342\", \"street\": \"Ulica Kralja Tomislava 7\"}": [
+45.8351448,
+16.5393355
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10360\", \"street\": \"Budimska ulica 3\"}": [
+45.8251798,
+16.1202703
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10360\", \"street\": \"Dugoselska cesta 43\"}": [
+45.8162039,
+16.1766689
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10360\", \"street\": \"Kašinska cesta 7\"}": [
+45.8287483,
+16.1097888
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10360\", \"street\": \"Ninska ulica 10\"}": [
+45.8263375,
+16.1086848
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10360\", \"street\": \"Ninska ulica 20\"}": [
+45.826336,
+16.1072607
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10360\", \"street\": \"Selska cesta 26\"}": [
+45.8254406,
+16.1434436
 ],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"10360\", \"street\": \"Ulica Augusta Šenoe 12a\"}": [
 45.8748774,
 16.1113271
 ],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10360\", \"street\": \"Ulica Blage Zadre 17b\"}": [
+45.8254924,
+16.1264406
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10362\", \"street\": \"Cesta Ivana Mažuranića 47\"}": [
+45.9088307,
+16.1239928
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10370\", \"street\": \"Brckovljani, Stjepana Radića 6\"}": null,
 "{\"country\": \"Hrvatska\", \"postalcode\": \"10370\", \"street\": \"Rugvica, Staroškolska ulica bb\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10370\", \"street\": \"Ulica 2. Gardijske Brigade 'Gromovi' 3\"}": [
+45.8036543,
+16.2378936
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10370\", \"street\": \"Ulica Antuna Mihanovića 1/i\"}": [
+45.8061909,
+16.2349409
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10370\", \"street\": \"Ulica Dragutina Domjanića 12\"}": [
+45.8159052,
+15.9970523
+],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"10370\", \"street\": \"Ulica Dragutina Domjanića 12a\"}": [
 45.8067201,
 16.2372665
@@ -855,16 +1098,37 @@
 45.960368,
 16.2424648
 ],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10380\", \"street\": \"Bocakova ulica 5/i\"}": [
+45.9610756,
+16.2403048
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10410\", \"street\": \"Dubranec, Dubranec bb\"}": null,
 "{\"country\": \"Hrvatska\", \"postalcode\": \"10410\", \"street\": \"Orle, Orle 7\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10410\", \"street\": \"Ulica Matice Hrvatske 5\"}": [
+45.7140765,
+16.0661938
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10410\", \"street\": \"Ulica Matice Hrvatske bb\"}": [
+45.7128453,
+16.0655006
+],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"10410\", \"street\": \"Ulica Petra Pl. Škrleca 11\"}": [
 45.7204205,
 16.0644398
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10410\", \"street\": \"Črnkovec, Črnkovec bb\"}": [
+45.7490872,
+16.1106872
 ],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"10410\"}": [
 45.7128653,
 16.0665185
 ],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"10430\", \"street\": \"Bregana, Samoborska ulica 12\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10430\", \"street\": \"Starogradska ulica 26\"}": [
+45.8008514,
+15.7019631
+],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"10430\", \"street\": \"Ulica Ljudevita Gaja 37\"}": [
 45.805687,
 15.713133
@@ -877,10 +1141,45 @@
 45.8031793,
 15.7153116
 ],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10431\", \"street\": \"Rakitje, Školska ulica bb\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10431\"}": [
+45.7983024,
+15.7840778
+],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"10435\", \"street\": \"Galgovo, ulica Mirka Bogovića 1\"}": null,
 "{\"country\": \"Hrvatska\", \"postalcode\": \"10435\"}": [
 45.7475235,
 15.7345198
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10436\", \"street\": \"Horvati, Horvaćanski trg 1\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10436\"}": [
+45.7172208,
+15.8043956
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10450\", \"street\": \"Bukovac Svetojanski, Bukovac Svetojanski bb\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10450\", \"street\": \"Kralja Tomislava 29\"}": [
+45.8705148,
+15.847228
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10450\", \"street\": \"Trg Ljube Babića bb\"}": [
+45.6716386,
+15.6542507
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10450\", \"street\": \"Zrinski-frankopanska 2\"}": [
+45.6719162,
+15.6500992
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10450\"}": [
+45.6842264,
+15.652434
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10451\", \"street\": \"Karlovačka 10\"}": [
+45.8251414,
+16.1112718
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"10454\", \"street\": \"Krašić bb\"}": [
+45.6193931,
+15.5190639
 ],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"20000\", \"street\": \"Andrije Hebranga 106\"}": [
 42.6504625,
@@ -947,18 +1246,67 @@
 42.6481824,
 18.0958022
 ],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"20207\", \"street\": \"Kuparska bb\"}": [
+42.6437999,
+18.1022685
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"20210\", \"street\": \"Put od Cavtata 12\"}": [
+42.5776638,
+18.2215973
+],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"20230\", \"street\": \"Put Br. Mihanović 7\"}": null,
 "{\"country\": \"Hrvatska\", \"postalcode\": \"20230\"}": [
 42.8322301,
 17.7036088
 ],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"20236\", \"street\": \"Nova Mokošica, Bartola Kašića 10\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"20236\"}": [
+42.6756963,
+18.1011808
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"20240\", \"street\": \"Kralja Tomislava bb\"}": [
+43.008529,
+17.271069
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"20250\", \"street\": \"Kralja Tomislava 22\"}": [
+42.97714,
+17.1778513
+],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"20260\", \"street\": \"Ulica 57 5\"}": [
 42.9493797,
 17.1361238
 ],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"20270\", \"street\": \"Ulica 1 1\"}": [
+42.9676884,
+16.7120491
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"20271\", \"street\": \"32. ulica 11\"}": [
+42.9382051,
+16.7926778
+],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"20271\", \"street\": \"33. ulica 4\"}": [
 42.9382899,
 16.7920509
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"20271\", \"street\": \"92. ulica 11\"}": [
+42.9632224,
+16.7186333
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"20340\", \"street\": \"Trg Kralja Tomislava 9\"}": [
+43.0507459,
+17.4339003
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"20340\", \"street\": \"Ulica Vladimira Nazora 2\"}": [
+43.2368994,
+17.0793175
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"20350\", \"street\": \"Ulica Ante Starčevića 12\"}": [
+43.0537251,
+17.6472976
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"20350\", \"street\": \"Ulica Ivana Gundulića 19\"}": [
+43.0542577,
+17.6475108
 ],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"20355\", \"street\": \"Zagrebačka 3\"}": [
 43.0598949,
@@ -1258,28 +1606,125 @@
 43.5119377,
 16.4553922
 ],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"21203\", \"street\": \"Donji Muć 222\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"21203\"}": [
+43.6900951,
+16.4885577
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"21204\", \"street\": \"Klis, Iza grada 2\"}": null,
 "{\"country\": \"Hrvatska\", \"postalcode\": \"21204\", \"street\": \"Lećevica, trg Ante Bužančića Tice 3\"}": null,
 "{\"country\": \"Hrvatska\", \"postalcode\": \"21204\"}": [
 43.5847231,
 16.5818469
 ],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"21210\", \"street\": \"Kralja Zvonimira bb\"}": [
+43.5060487,
+16.4465625
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"21210\", \"street\": \"Solinske Mladeži 69c\"}": [
+43.5416475,
+16.4767296
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"21210\", \"street\": \"Ulica Petra Krešimira Iv 34\"}": [
+43.1863682,
+16.59923
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"21210\", \"street\": \"Žižić dr. Martina 6\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"21210\"}": [
+43.5399031,
+16.4869498
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"21212\", \"street\": \"Ulica Kneza Trpimira 1\"}": [
+43.545858,
+16.4295687
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"21214\", \"street\": \"Kaštel Gomilica, cesta dr. Franje Tuđmana bb\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"21214\", \"street\": \"Kaštel Gomilica, ulica Petra Zrinskog 18\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"21214\"}": [
+43.5515857,
+16.3780398
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"21217\", \"street\": \"Kaštel Novi, cesta dr. Franje Tuđmana bb\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"21217\", \"street\": \"Kaštel Stari, cesta dr. Franje Tuđmana bb\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"21217\"}": [
+43.5415266,
+16.3094966
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"21220\", \"street\": \"Kardinala A.stepinca 17\"}": [
+45.2594795,
+19.1628862
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"21220\", \"street\": \"Slatine, Duboke Garme 6a\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"21220\"}": [
+43.5180823,
+16.2559164
+],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"21230\", \"street\": \"Put Ruduše 26\"}": [
 43.6999256,
 16.6327163
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"21230\", \"street\": \"Ramska ulica bb\"}": [
+43.7005507,
+16.6311974
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"21230\", \"street\": \"Ulica Domovinskog Rata 86\"}": [
+43.7036451,
+16.6503682
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"21233\", \"street\": \"Hrvace 229\"}": [
+43.7687035,
+16.6206685
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"21240\", \"street\": \"Poljičke Republike 3\"}": [
+43.6166896,
+16.7268269
 ],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"21240\", \"street\": \"Poljičke Republike bb\"}": [
 43.6166896,
 16.7268269
 ],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"21260\", \"street\": \"Jezeranska 7\"}": [
+43.4490313,
+17.2117961
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"21260\", \"street\": \"Runović, Runović bb\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"21260\", \"street\": \"Ul.bruna Bušića 57\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"21260\", \"street\": \"Ul.dr. Josipa Mladinova 20\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"21260\"}": [
+43.4477457,
+17.2189572
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"21276\", \"street\": \"Vukovarska 23\"}": [
+43.2018199,
+17.3753616
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"21292\", \"street\": \"Poljičke Kneževine 25\"}": [
+43.4828351,
+16.6124062
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"21300\", \"street\": \"Stjepana Ivičevića 2\"}": [
+43.2923638,
+17.0221029
+],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"21310\", \"street\": \"Punta bb\"}": [
 43.4425326,
 16.6912558
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"21310\", \"street\": \"Put Mlije 2\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"21310\"}": [
+43.4266727,
+16.7109999
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"21311\", \"street\": \"Cetinska 18\"}": [
+43.5155786,
+16.4874637
 ],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"21311\", \"street\": \"Podstrana, Kaštelančićeva 1\"}": null,
 "{\"country\": \"Hrvatska\", \"postalcode\": \"21311\", \"street\": \"Sv. Josipa 2\"}": [
 43.4437815,
 16.642814
 ],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"21311\", \"street\": \"Žrnovnica, Krešimirova 6\"}": null,
 "{\"country\": \"Hrvatska\", \"postalcode\": \"21311\"}": [
 43.5013806,
 16.5212021
@@ -1288,40 +1733,141 @@
 43.4437685,
 16.6424187
 ],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"21327\", \"street\": \"Put Sv. Vicenca 1\"}": [
+43.2351425,
+17.0786657
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"21334\", \"street\": \"Gradac, Konopljike bb\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"21334\"}": [
+43.1400063,
+17.2781594
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"21400\", \"street\": \"Sutivan, Perića Kala 20\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"21400\"}": [
+43.3828293,
+16.5507009
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"21420\", \"street\": \"Loža 1\"}": [
+43.2621799,
+16.6579991
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"21460\", \"street\": \"Obala Hrvatskih Branitelja bb\"}": [
+43.1860116,
+16.5901043
+],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"21485\", \"street\": \"Ul.komiških Iseljenika bb\"}": null,
 "{\"country\": \"Hrvatska\", \"postalcode\": \"21485\"}": [
 43.0450581,
 16.0896057
 ],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"22000\", \"street\": \"Brodarica, Krapanjskih Spužvara 31\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"22000\", \"street\": \"Draga bb\"}": [
+43.7853553,
+15.9180172
+],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"22000\", \"street\": \"Kralja Zvonimira 23\"}": [
 43.8216608,
 15.6678162
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"22000\", \"street\": \"Narodnog Preporoda 12\"}": [
+43.7067954,
+15.9193159
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"22000\", \"street\": \"Prilaz Tvornici 39\"}": [
+43.7423323,
+15.8867837
 ],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"22000\", \"street\": \"Put Kroz Meterize 32\"}": [
 43.7495431,
 15.8945843
 ],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"22000\", \"street\": \"Stjepana Radića 29\"}": [
+44.1677191,
+15.3774834
+],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"22000\", \"street\": \"Ul. 8. Udarne Dalmat. Brigade 16\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"22000\", \"street\": \"Zaton, Hrvatskih Baranitelja 2\"}": null,
 "{\"country\": \"Hrvatska\", \"postalcode\": \"22000\"}": [
 43.7229129,
 15.9120846
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"22202\", \"street\": \"Rogoznica, obala Kneza Domagoja bb\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"22202\", \"street\": \"Rogoznica, ulica Ante Starčevića 16\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"22202\"}": [
+43.5857887,
+15.9275921
 ],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"22211\", \"street\": \"Tribunj, Put Male Gospe bb\"}": null,
 "{\"country\": \"Hrvatska\", \"postalcode\": \"22211\"}": [
 43.760378,
 15.7779832
 ],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"22213\", \"street\": \"Trg Domovinskog Rata 17\"}": [
+43.8172138,
+15.6672406
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"22300\", \"street\": \"Nelipićeva 1\"}": [
+44.0381904,
+16.1958776
+],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"22320\", \"street\": \"Drinovci, Drinovci \\\\\"}": [
 43.8515021,
 16.0164514
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"22320\", \"street\": \"Oklaj, Put Kroz Oklaj bb\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"22320\", \"street\": \"Ružić, Kljaci bb\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"22320\"}": [
+43.8530984,
+16.1537449
 ],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"23000\", \"street\": \"Andrije Medulića 1\"}": [
 44.1126031,
 15.2281436
 ],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"23000\", \"street\": \"Benkovačka cesta 42\"}": [
+44.1041766,
+15.2636265
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"23000\", \"street\": \"Frane Alfirevića 8\"}": [
+44.1178337,
+15.2303921
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"23000\", \"street\": \"Ivana Mažuranića 28a\"}": [
+44.1201404,
+15.233763
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"23000\", \"street\": \"Ivana Tanzlingera Zanottija 6\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"23000\", \"street\": \"Molatska ulica 11\"}": [
+43.9448572,
+15.4565631
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"23000\", \"street\": \"Obala Kneza Trpimira 2\"}": [
+44.1197469,
+15.2271299
+],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"23000\", \"street\": \"Poljana Pavla Pavlovića bb\"}": [
 44.1122832,
 15.2272213
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"23000\", \"street\": \"Put Pudarice 15n\"}": [
+44.121014,
+15.2532108
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"23000\", \"street\": \"Rine Aras 1\"}": [
+44.1163718,
+15.2489861
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"23000\", \"street\": \"Stadionska 2\"}": [
+44.2511645,
+15.1526738
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"23000\", \"street\": \"Veslačka ulica 2\"}": [
+44.1150747,
+15.2329485
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"23000\"}": [
+44.1239299,
+15.2359057
 ],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"23206\", \"street\": \"Hrvatskih Branitelja 10\"}": [
 44.0464579,
@@ -1331,10 +1877,56 @@
 43.5160389,
 16.4575712
 ],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"23212\", \"street\": \"Tkon 97b\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"23212\"}": [
+43.9198318,
+15.4197105
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"23222\", \"street\": \"Galovac, Galovac ulica i 14\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"23222\", \"street\": \"Zemunik Donji, ulica I. 22\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"23222\"}": [
+44.0950597,
+15.3642783
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"23234\", \"street\": \"Ulica Franje Tuđmana 27/a\"}": [
+44.2998588,
+15.0847386
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"23235\", \"street\": \"Ulica dr. Franje Tuđmana 31\"}": [
+44.2919582,
+15.442453
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"23242\", \"street\": \"Ulica Marinka Vedrić 9\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"23242\"}": [
+44.2060488,
+15.4804124
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"23244\", \"street\": \"Starigrad, Starigradskih Zidara bb\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"23244\"}": [
+44.2839111,
+15.4648434
+],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"23250\", \"street\": \"Povljana, Ul. Ante Starčevića 35\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"23250\", \"street\": \"Prosika 17\"}": [
+44.4409436,
+15.0488241
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"23250\", \"street\": \"Prosika bb\"}": [
+44.4413846,
+15.048297
+],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"23250\"}": [
 44.4416998,
 15.0453217
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"23271\", \"street\": \"Kukljica bb\"}": [
+44.0331795,
+15.246425
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"23273\", \"street\": \"Ugljan, ulica Ugljan 16\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"23273\"}": [
+44.0827187,
+15.1865569
 ],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"23286\", \"street\": \"Božava bb\"}": [
 44.1404451,
@@ -1345,6 +1937,8 @@
 15.6812099
 ],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"23450\", \"street\": \"Jasenice, Maslenica ulica Petra Zoranića 61\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"23450\", \"street\": \"Ob. Hr. Čas. Senada Župan 10\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"23450\", \"street\": \"Ul. Stjepana Radića bb\"}": null,
 "{\"country\": \"Hrvatska\", \"postalcode\": \"23450\"}": [
 44.1722373,
 15.6310238
@@ -1514,64 +2108,278 @@
 45.5512585,
 18.6881251
 ],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"31216\", \"street\": \"Ernestinovo, Školska 2\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"31216\"}": [
+45.4974223,
+18.6706985
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"31220\", \"street\": \"Ulica Nikole Šubića Zrinjskog 3\"}": [
+45.5652225,
+18.6201882
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"31224\", \"street\": \"Trg dr. Franje Tuđmana 4\"}": [
+45.5458108,
+18.2857336
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"31300\", \"street\": \"Batina, trg Slobode 5\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"31300\", \"street\": \"Kneževo, Vijenac grada Vukovara 5\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"31300\", \"street\": \"Školska 5\"}": [
+45.6150201,
+18.489227
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"31300\"}": [
+45.7689178,
+18.6042167
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"31326\", \"street\": \"Čeminac, Ljudevita Gaja 2\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"31326\"}": [
+45.6254563,
+18.6909634
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"31327\", \"street\": \"Kralja Zvonimira 33\"}": [
+45.3759186,
+18.9564222
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"31400\", \"street\": \"Augusta Šenoe 41\"}": [
+45.3087381,
+18.4229722
+],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"31400\", \"street\": \"P.preradovića 2\"}": [
 46.3064997,
 16.3412345
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"31400\", \"street\": \"Trnava, Ivana Meštrovića 34\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"31400\"}": [
+45.3179898,
+18.4067904
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"31431\", \"street\": \"Beketinci, Čepinska 42a\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"31431\", \"street\": \"Ulica grada Vukovara 6b\"}": [
+45.5298458,
+18.5627657
 ],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"31431\", \"street\": \"Ulica grada Vukovara bb\"}": [
 45.5261423,
 18.563906
 ],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"31431\"}": [
+45.5267205,
+18.5865956
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"31500\", \"street\": \"Podgorač, trg Pavla Pejačevića 5\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"31500\", \"street\": \"Ul. Bana Jelačića 10\"}": null,
 "{\"country\": \"Hrvatska\", \"postalcode\": \"31500\", \"street\": \"Ul. Bana Jelačića 6\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"31500\", \"street\": \"Ul. Ivane Brlić Mažuranić 3\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"31500\", \"street\": \"Ulica Bana Teodora Pejačevića 1 a\"}": [
+45.4901623,
+18.0967774
+],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"31500\"}": [
 45.4943014,
 18.100707
 ],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"31511\", \"street\": \"Feričanci, Ul. Dore Pejačević 1\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"31511\", \"street\": \"Kolodvorska 2\"}": [
+45.5428964,
+18.0444551
+],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"31511\"}": [
 45.5534014,
 18.0486276
 ],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"31540\", \"street\": \"Trg Ante Starčevića 25\"}": [
+45.7634882,
+18.1647416
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"31540\", \"street\": \"Viljevo, Braće Radića 106\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"31540\"}": [
+45.7608611,
+18.1719123
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"31550\", \"street\": \"Petrijevci, Republike 112\"}": null,
 "{\"country\": \"Hrvatska\", \"postalcode\": \"31550\", \"street\": \"Ulica Kralja Petra Krešimira Iv 4\"}": [
 45.6612882,
 18.4164407
 ],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"31550\"}": [
+45.6568482,
+18.4189527
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"31551\", \"street\": \"Baranjsko Petrovo Selo, Glavna ulica 2\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"31551\", \"street\": \"Marijanci, ulica Kralja Dmitra Zvonimira 2\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"31551\", \"street\": \"Vijenac Salamona Henricha Gutmanna 28\"}": [
+45.6874574,
+18.4086859
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"31551\", \"street\": \"Črnkovci, Kardinala Alojzija Stepinca 53\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"31551\"}": [
+45.6849504,
+18.4046779
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"32000\", \"street\": \"Blage Zadre 1\"}": [
+45.3755546,
+18.9650532
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"32000\", \"street\": \"Borovo, Glavna 3\"}": null,
 "{\"country\": \"Hrvatska\", \"postalcode\": \"32000\", \"street\": \"Dalmatinska 24\"}": [
 45.3427798,
 19.0050018
 ],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"32000\", \"street\": \"Negoslavci, Petrovačka 1\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"32000\", \"street\": \"Sajmište 1\"}": [
+45.3434792,
+19.0033166
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"32000\", \"street\": \"Trg Kralja Tomislava 2\"}": [
+45.3495126,
+19.0029465
+],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"32000\"}": [
 45.3498694,
 18.9761987
 ],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"32100\", \"street\": \"Cerić, Ivana Meštrovića 3\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"32100\", \"street\": \"Frana Kršinića 17\"}": [
+45.2780134,
+18.7919999
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"32100\", \"street\": \"Hrvatskih Kraljeva 76 e\"}": [
+45.2961287,
+18.8157511
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"32100\", \"street\": \"Hrvatskih Kraljeva 76h\"}": [
+45.2963714,
+18.8160025
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"32100\", \"street\": \"Hrvatskih Žrtava 18\"}": [
+45.2892408,
+18.8077435
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"32100\", \"street\": \"Ivankovo, Rojičani 62\"}": null,
 "{\"country\": \"Hrvatska\", \"postalcode\": \"32100\", \"street\": \"Jarmina, Josipa Juraja Strossmayera bb\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"32100\", \"street\": \"Kralja Zvonimira 1\"}": [
+45.340033,
+17.680887
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"32100\", \"street\": \"Kralja Zvonimira 53\"}": [
+45.2947135,
+18.8079981
+],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"32100\", \"street\": \"Retkovci, Braće Radić 2\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"32100\", \"street\": \"Zvonarska ulica 57\"}": [
+45.2926392,
+18.8189593
+],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"32100\"}": [
 45.2862478,
 18.8016282
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"32213\", \"street\": \"Tordinci, Antuna Gustava Matoša 2\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"32213\"}": [
+45.3751736,
+18.7043433
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"32236\", \"street\": \"Bapska, Josipa Jurja Strossmayera 2\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"32236\", \"street\": \"J.j.strossmayera 49\"}": [
+44.955469,
+18.9900395
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"32236\"}": [
+45.2218706,
+19.3731734
 ],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"32252\", \"street\": \"Kralja Petra Krešimira Iv 1\"}": [
 45.1463993,
 18.8842087
 ],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"32252\", \"street\": \"Privlaka, Faličevci 6\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"32252\"}": [
+45.1472536,
+18.8847303
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"32257\", \"street\": \"Gunja, Vladimira Nazora 235\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"32257\", \"street\": \"Soljani, Vrbanjska 12\"}": null,
 "{\"country\": \"Hrvatska\", \"postalcode\": \"32257\", \"street\": \"Veliki Šor 16\"}": [
 44.9208259,
 18.9142752
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"32257\", \"street\": \"Vrbanja, Kneza Lj.posavskog 7\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"32257\"}": [
+44.9205626,
+18.8867706
 ],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"32270\", \"street\": \"Dr. Franje Račkog 32\"}": [
 45.0737162,
 18.7002203
 ],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"32272\", \"street\": \"Šetalište dr. Franje Tuđmana 7\"}": [
+45.1900543,
+18.6879277
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"32284\", \"street\": \"Matije Gupca 2\"}": [
+45.2855986,
+18.55495
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"32284\", \"street\": \"Vrbica, Đurđanačka 2\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"32284\"}": [
+45.2895309,
+18.5578281
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"33000\", \"street\": \"Bušetina, Matije Gupca 25\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"33000\", \"street\": \"Ulica Hrvatskih Žrtava 4\"}": [
+45.839775,
+17.391068
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"33000\", \"street\": \"Ulica Ivana Gorana Kovačića 13\"}": [
+45.8311834,
+17.3824172
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"33000\", \"street\": \"Ulica Ljudevita Gaja 21\"}": [
+45.8286653,
+17.3890066
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"33000\", \"street\": \"Ulica Stjepana Radića 114\"}": [
+45.8280974,
+17.3942154
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"33000\"}": [
+45.8216574,
+17.3945672
+],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"33405\", \"street\": \"Trg Kralja Tomislava 3\"}": [
 46.2068335,
 16.9092564
 ],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"33410\", \"street\": \"Gradina, trg Kralja Zvonimira 3\"}": null,
 "{\"country\": \"Hrvatska\", \"postalcode\": \"33410\", \"street\": \"Kralja Zvonimira 2\"}": [
 45.8017383,
 17.4896018
 ],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"33410\"}": [
+45.7902162,
+17.5045171
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"33515\", \"street\": \"Stjepana Mlakara 1\"}": [
+45.5316666,
+17.8805916
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"33520\", \"street\": \"Bana Jelačića 33\"}": [
+45.3859348,
+17.8916718
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"33520\", \"street\": \"Bana Jelačića 39\"}": [
+45.3866706,
+17.8912761
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"33520\", \"street\": \"Bana Jelačića 6\"}": [
+45.4407137,
+17.6665321
+],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"34000\", \"street\": \"Jakšić, Osječka bb\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"34000\", \"street\": \"Josipa Eugena Tomića 3\"}": [
+45.3324145,
+17.6722335
+],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"34000\", \"street\": \"Matice Hrvatske 5\"}": [
 45.3313005,
 17.675026
@@ -1579,6 +2387,10 @@
 "{\"country\": \"Hrvatska\", \"postalcode\": \"34000\", \"street\": \"Matije Gupca 10\"}": [
 45.3330581,
 17.6747053
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"34000\", \"street\": \"Matije Gupca 21\"}": [
+45.3331862,
+17.6743407
 ],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"34000\", \"street\": \"Vukovarska 31\"}": [
 45.3529221,
@@ -1588,14 +2400,59 @@
 45.3348213,
 17.6769081
 ],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"34310\", \"street\": \"Prilaz bb\"}": [
+45.2862543,
+17.7987345
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"34330\", \"street\": \"Vladimira Nazora 4\"}": [
+45.4438062,
+17.6638702
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"34340\", \"street\": \"Kralja Zvonimira bb\"}": [
+45.3520442,
+17.7615457
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"34350\", \"street\": \"Kolodvorska 22\"}": [
+45.3542632,
+17.7604089
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"34550\", \"street\": \"Bolnička ulica 29\"}": [
+45.4369098,
+17.1916887
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"34550\", \"street\": \"Bolnička ulica 68\"}": [
+45.4328714,
+17.190363
+],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"35000\", \"street\": \"Borovska ulica 7\"}": [
 45.159559,
 18.0056218
 ],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"35000\", \"street\": \"Bukovlje, ulica Josipa Kozarca 20\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"35000\", \"street\": \"Gornja Vrba, ulica Vrbskih Žrtava 10\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"35000\", \"street\": \"Pilareva ulica 5\"}": [
+45.1597362,
+18.0110993
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"35000\", \"street\": \"Ulica Ante Starčevića 14\"}": [
+45.3471716,
+18.4225336
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"35000\", \"street\": \"Ulica Augusta Cesarca 21\"}": [
+45.1585184,
+18.0157867
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"35000\", \"street\": \"Ulica Ivana Cankara 8\"}": [
+45.1678715,
+18.0204491
+],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"35000\", \"street\": \"Ulica Matije Antuna Reljkovića 18\"}": [
 45.1545528,
 18.0254829
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"35000\", \"street\": \"Ulica Stjepana Pl. Horvata 19\"}": [
+45.1557768,
+18.0173424
 ],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"35000\", \"street\": \"Ulica Stjepana Pl. Horvata 28\"}": [
 45.1557768,
@@ -1605,15 +2462,57 @@
 45.1632057,
 18.0099874
 ],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"35212\", \"street\": \"Ulica Kralja Tomislava 101\"}": [
+45.1825214,
+18.1827515
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"35214\", \"street\": \"Trg Kralja Tomislava 13\"}": [
+45.0730765,
+18.6948472
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"35221\", \"street\": \"V.nazora 3\"}": [
+43.0462811,
+17.4758196
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"35400\", \"street\": \"Matije Antuna Relkovića 7\"}": [
+45.2572953,
+17.3802532
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"35400\", \"street\": \"Naselje Urije 26\"}": [
+45.2550222,
+17.3839718
+],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"35400\", \"street\": \"Rešetari, Vladimira Nazora 26a\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"35400\", \"street\": \"Rešetari, Vladimira Nazora 30\"}": null,
 "{\"country\": \"Hrvatska\", \"postalcode\": \"35400\"}": [
 45.2470253,
 17.3797607
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"40000\", \"street\": \"France Prešerna 13\"}": [
+46.3872913,
+16.4477543
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"40000\", \"street\": \"I.g.kovačića 1e\"}": [
+45.4168225,
+14.7046064
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"40000\", \"street\": \"Ljudevita Gaja 9\"}": [
+46.3872098,
+16.4371482
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"40000\", \"street\": \"Macinec, Glavna ulica 26\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"40000\", \"street\": \"Pleškovec, Pleškovec 30\"}": [
+46.4401626,
+16.3778605
 ],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"40000\", \"street\": \"Strahoninec, Dravska 32\"}": null,
 "{\"country\": \"Hrvatska\", \"postalcode\": \"40000\", \"street\": \"Ulica Franje Punčeca 2\"}": [
 46.3919231,
 16.431843
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"40000\", \"street\": \"Ulica Matice Hrvatske bb\"}": [
+46.3874802,
+16.4358167
 ],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"40000\"}": [
 46.3877555,
@@ -1622,6 +2521,21 @@
 "{\"country\": \"Hrvatska\", \"postalcode\": \"40313\", \"street\": \"Štrigova, Štrigova 87\"}": [
 46.5010453,
 16.2866302
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"40320\", \"street\": \"Donji Vidovec, Rade Končara 7\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"40320\", \"street\": \"Goričan, Školska 16a\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"40320\", \"street\": \"Kotoriba, ulica Kralja Tomislava 119/a\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"40320\", \"street\": \"Čakovečka 5\"}": [
+46.4629366,
+16.5467937
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"40320\"}": [
+46.3810022,
+16.6377024
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"40323\", \"street\": \"Jug Ii 32\"}": [
+46.3297152,
+16.6189281
 ],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"40323\", \"street\": \"Ulica Kralja Petra Krešimira Iv 7\"}": [
 46.3085462,
@@ -1738,18 +2652,49 @@
 16.3345678
 ],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"42202\", \"street\": \"Jalžabet, trg Braće Radića bb\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"42202\", \"street\": \"Šemovec, Koprivnička ulica bb\"}": null,
 "{\"country\": \"Hrvatska\", \"postalcode\": \"42202\"}": [
 46.2980485,
 16.4134552
 ],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"42204\", \"street\": \"Beletinec, ulica Stjepana Radića bb\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"42204\"}": [
+46.258997,
+16.3629617
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"42220\", \"street\": \"Breznica, Breznica 50\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"42220\", \"street\": \"Breznica, Breznica bb\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"42220\", \"street\": \"Ljubešćica, Zagrebačka bb\"}": null,
 "{\"country\": \"Hrvatska\", \"postalcode\": \"42220\", \"street\": \"Varaždinska ulica 19b\"}": [
 46.1843757,
 16.3432983
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"42220\", \"street\": \"Zagorska ulica 21\"}": [
+46.1634165,
+16.3322312
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"42220\"}": [
+46.1714119,
+16.3223278
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"42223\", \"street\": \"Trg Antuna Mihanovića 1\"}": [
+46.2077683,
+16.4190003
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"42230\", \"street\": \"Sveti Đurđ, ulica Braće Radić 1\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"42230\", \"street\": \"Vinogradska ulica 1\"}": [
+46.2453952,
+16.6203414
 ],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"42230\", \"street\": \"Zagrebačka ulica 8\"}": [
 46.2545127,
 16.6147573
 ],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"42230\"}": [
+46.2439238,
+16.608927
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"42240\", \"street\": \"Klenovnik, Klenovnik bb\"}": null,
 "{\"country\": \"Hrvatska\", \"postalcode\": \"42240\", \"street\": \"Radovan, Varaždinska ulica 11\"}": null,
 "{\"country\": \"Hrvatska\", \"postalcode\": \"42240\", \"street\": \"Varaždinska ulica 4a\"}": [
 46.3751463,
@@ -1759,30 +2704,82 @@
 46.2233954,
 16.1342119
 ],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"42243\", \"street\": \"Marčan, Gornja ulica 76\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"42243\"}": [
+46.2720643,
+16.1809061
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"42250\", \"street\": \"Trg Kralja Tomislava 8\"}": [
+45.8061407,
+15.9795278
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"43000\", \"street\": \"Antun Mihanović 23\"}": [
+45.8012277,
+15.7207289
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"43000\", \"street\": \"Antun Mihanović 8\"}": [
+45.8012277,
+15.7207289
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"43000\", \"street\": \"Ivanska, Petra Preradovića bb\"}": null,
 "{\"country\": \"Hrvatska\", \"postalcode\": \"43000\", \"street\": \"Rovišće, trg Hrvatskih Branitelja 11\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"43000\", \"street\": \"Ul. Josipa Jelačića 13c\"}": null,
 "{\"country\": \"Hrvatska\", \"postalcode\": \"43000\", \"street\": \"Ul. Nikole Jurišića 11\"}": null,
 "{\"country\": \"Hrvatska\", \"postalcode\": \"43000\", \"street\": \"Ul. Petra Zrinskog 1c\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"43000\", \"street\": \"Ul. Tomaše G. Masaryka 9\"}": null,
 "{\"country\": \"Hrvatska\", \"postalcode\": \"43000\", \"street\": \"Ulica Velike Sredice 11\"}": null,
 "{\"country\": \"Hrvatska\", \"postalcode\": \"43000\"}": [
 45.9226013,
 16.8605909
 ],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"43240\", \"street\": \"Kralja Tomislava 16\"}": [
+45.7480982,
+16.6159815
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"43270\", \"street\": \"Velika Pisanica, ulica Jurja Vlahovca 6\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"43270\"}": [
+45.8035023,
+17.1602655
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"43280\", \"street\": \"Garešnički Brestovac, Brestovačka ulica bb\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"43280\", \"street\": \"Hercegovac, ulica Hrvatskih Branitelja \\\\\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"43280\", \"street\": \"Trg Hrvatskih Branitelja 7\"}": [
+45.3984068,
+16.8912094
+],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"43280\", \"street\": \"Vladimira Nazora 18\"}": [
 45.5873874,
 17.0321796
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"43280\"}": [
+45.583826,
+16.9477354
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"43290\", \"street\": \"Braće Radića 1\"}": [
+46.0715766,
+16.9906649
 ],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"43290\", \"street\": \"Veliki Zdenci, trg Kralja Tomislava bb\"}": null,
 "{\"country\": \"Hrvatska\", \"postalcode\": \"43290\"}": [
 45.701129,
 17.1677753
 ],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"43500\", \"street\": \"Končanica, Končanica bb\"}": null,
 "{\"country\": \"Hrvatska\", \"postalcode\": \"43500\", \"street\": \"Petra Preradovića bb\"}": [
 45.5900944,
 17.2259799
 ],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"43500\"}": [
+45.6035052,
+17.2205858
+],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"44000\", \"street\": \"Galdovačka ulica bb\"}": [
 45.4786218,
 16.3892452
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"44000\", \"street\": \"Ulica Braće Kavurić 2\"}": [
+45.4568463,
+16.3881295
 ],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"44000\", \"street\": \"Ulica Ferde Hefelea 10\"}": [
 45.4959445,
@@ -1792,18 +2789,74 @@
 45.4838667,
 16.3749714
 ],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"44000\", \"street\": \"Ulica Oktavijana Augusta 2/i\"}": [
+45.4853649,
+16.3761205
+],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"44000\", \"street\": \"Ulica Silvija Strahimira Kranjčevića 11/ii\"}": [
 45.4852256,
 16.3723365
 ],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"44250\", \"street\": \"Matije Gupca 4\"}": [
+45.4419485,
+16.2746227
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"44317\", \"street\": \"Sisačka 16\"}": [
+45.4405945,
+16.2967519
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"44317\", \"street\": \"Trg Grofova Erdoedyja 17\"}": null,
 "{\"country\": \"Hrvatska\", \"postalcode\": \"44317\", \"street\": \"Velika Ludina, Crkvena ulica 2\"}": null,
 "{\"country\": \"Hrvatska\", \"postalcode\": \"44317\"}": [
 45.5658373,
 16.6278866
 ],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"44320\", \"street\": \"Banova Jaruga, ulica Stjepana Radića 43\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"44320\", \"street\": \"Dalmatinska ulica 6\"}": [
+45.3426024,
+16.965587
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"44320\", \"street\": \"Ulica Antuna Gustava Matoša 42\"}": [
+45.485912,
+16.7680641
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"44320\", \"street\": \"Ulica Kneza Trpimira 4\"}": [
+45.4550631,
+16.3792099
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"44320\"}": [
+45.4824007,
+16.7766582
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"44330\", \"street\": \"Jasenovac, trg Kralja Petra Svačića 28\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"44330\", \"street\": \"Lipovljani, ulica Ante Starčevića bb\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"44330\", \"street\": \"Ulica Kralja Zvonimira 96\"}": [
+45.3297076,
+16.977051
+],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"44330\", \"street\": \"Zagrebačka ulica 6\"}": [
 45.3436641,
 16.9754829
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"44330\"}": [
+45.3389956,
+16.9745287
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"44400\", \"street\": \"Vukovarska ulica 41\"}": [
+45.3337039,
+16.0848265
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"44440\", \"street\": \"Ulica Kralja Tomislava 42\"}": [
+45.0720003,
+16.369301
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"47000\", \"street\": \"Dr. Vladka Mačeka 30/i\"}": [
+45.492078,
+15.5488449
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"47000\", \"street\": \"Dr. Vladka Mačeka 48\"}": [
+45.4921058,
+15.5416852
 ],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"47000\", \"street\": \"Dragutina Domjanića 19\"}": [
 45.4821679,
@@ -1821,27 +2874,91 @@
 45.2622313,
 17.3871345
 ],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"47000\", \"street\": \"Jana Masaryka 30\"}": [
+45.4977579,
+15.5498693
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"47000\", \"street\": \"Maksimilijana Vrhovca 23\"}": [
+45.4810823,
+15.5482819
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"47000\", \"street\": \"Marmontova 8\"}": [
+45.493555,
+15.5375554
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"47000\", \"street\": \"Rečica, Rečica 50\"}": [
+45.5044436,
+15.6646561
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"47000\", \"street\": \"Senjska ulica 106b\"}": [
+45.4790465,
+15.545378
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"47000\", \"street\": \"Skopska 28\"}": [
+45.4793965,
+15.5444854
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"47000\", \"street\": \"Tadije Smičiklasa 8\"}": [
+45.4889623,
+15.5544468
+],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"47206\", \"street\": \"Lasinjska cesta 8\"}": null,
 "{\"country\": \"Hrvatska\", \"postalcode\": \"47206\"}": [
 45.5200059,
 15.8764371
 ],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"47220\", \"street\": \"Andrije Hebranga 28\"}": [
+45.3253378,
+15.6914018
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"47220\", \"street\": \"Krnjak, Krnjak 5\"}": [
+45.3376247,
+15.6088421
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"47240\", \"street\": \"Ulica Plitvička 18a\"}": [
+45.1121146,
+15.5831603
+],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"47250\", \"street\": \"Bana Josipa Jelačića 4\"}": [
 45.6758537,
 15.6536683
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"47280\", \"street\": \"Kolodvorska cesta 2\"}": [
+45.6125124,
+15.4791891
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"47280\", \"street\": \"Orljakovo, Orljakovo 8b\"}": [
+45.6370898,
+15.3791073
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"47300\", \"street\": \"Bernardina Frankopana 14\"}": [
+45.2640847,
+15.2280373
 ],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"47300\", \"street\": \"Bolnička 35a\"}": [
 45.2561801,
 15.2341077
 ],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"47300\", \"street\": \"Tounj, Linije 3b\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"47300\", \"street\": \"Vladimira Nazora 9\"}": [
+44.9705558,
+14.7587606
+],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"47300\"}": [
 45.2634096,
 15.2324659
 ],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"47304\", \"street\": \"Ulica Ivane Brlić Mažuranić 3\"}": [
+45.2637155,
+15.2271966
+],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"48000\", \"street\": \"Trg Tomislava dr. Bardeka 10\"}": [
 46.1042996,
 16.7078701
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"48000\", \"street\": \"Ulica Ivana Mažuranića 10\"}": [
+46.391419,
+16.4404114
 ],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"48214\", \"street\": \"Predavec Križevački, Predavec Križevački 5\"}": [
 45.9421572,
@@ -1851,19 +2968,76 @@
 46.0219086,
 16.5434413
 ],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"48316\", \"street\": \"Drnje, trg Kralja Tomislava 3\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"48316\", \"street\": \"Mihovila P. Miškine 42\"}": [
+46.2475745,
+16.8665962
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"48316\"}": [
+46.2259334,
+16.8818896
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"48331\", \"street\": \"Pavleka Miškine 1\"}": [
+46.3301078,
+16.7358624
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"48350\", \"street\": \"Ferdinandovac, trg Slobode 29\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"48350\", \"street\": \"Kloštar Podravski, ulica 1.Svibnja 9\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"48350\", \"street\": \"Ljudevita Gaja 1\"}": [
+46.041589,
+17.0704704
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"48350\", \"street\": \"Ljudevita Gaja 3\"}": [
+46.0416142,
+17.0707412
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"48350\", \"street\": \"Podravske Sesvete, Ivana Mažuranića 1\"}": null,
 "{\"country\": \"Hrvatska\", \"postalcode\": \"48350\", \"street\": \"Ulica Bana Jelačića 62\"}": [
 46.0466171,
 17.0530001
 ],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"48350\", \"street\": \"Virje, ulica Đure Sudete bb\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"48350\"}": [
+46.0414752,
+17.0484781
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"49000\", \"street\": \"Ulica dr. Mirka Crkvenca 1\"}": [
+46.1599639,
+15.8755679
+],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"49210\", \"street\": \"Ulica Ivana i Cvjete Huis 8\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"49210\", \"street\": \"Veliko Trgovišće, trg Stjepana i Franje Tuđmana 3\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"49210\"}": [
+46.0216277,
+15.8984148
+],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"49218\", \"street\": \"Ulica Augusta Cesarca 1\"}": [
 46.3056962,
 16.3372274
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"49223\", \"street\": \"Trg Julija Lembergera 1\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"49223\"}": [
+46.0829323,
+15.9109856
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"49225\", \"street\": \"Đurmanec 152\"}": [
+46.1957187,
+15.8400819
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"49231\", \"street\": \"Hum na Sutli 172\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"49240\", \"street\": \"Gornja Stubica, trg Svetog Jurja 21\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"49240\"}": [
+45.9778237,
+15.9716573
 ],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"49246\", \"street\": \"Zlatar-bistrica, Zagorska ulica 5\"}": null,
 "{\"country\": \"Hrvatska\", \"postalcode\": \"49246\"}": [
 46.0214612,
 16.0970163
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"49250\", \"street\": \"Ulica Ivana Gorana Kovačića 1/i\"}": [
+46.095221,
+16.0765392
 ],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"51000\", \"street\": \"Adamićeva 24/ii\"}": [
 45.3272753,
@@ -2228,42 +3402,191 @@
 45.3405135,
 14.4220226
 ],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"51211\", \"street\": \"Dalmatinskih Brigada 30 b\"}": [
+45.3644961,
+14.3147637
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"51211\", \"street\": \"Dalmatinskih Brigada 30b\"}": [
+45.3644961,
+14.3147637
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"51215\", \"street\": \"Ćikovići 98\"}": [
+45.3653933,
+14.3517481
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"51215\", \"street\": \"Šporova Jama 1\"}": [
+45.3708319,
+14.3518051
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"51218\", \"street\": \"Podkilavačka 6\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"51218\"}": [
+45.382749,
+14.4951727
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"51226\", \"street\": \"Hreljin 240a\"}": [
+45.3270151,
+14.618894
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"51226\", \"street\": \"Hreljin bb\"}": [
+45.3270151,
+14.618894
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"51226\", \"street\": \"Krasica, Krasica 157\"}": [
+45.3045695,
+14.5608832
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"51250\", \"street\": \"Bribir, Bribir 8\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"51250\"}": [
+45.1264414,
+14.7974412
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"51262\", \"street\": \"Frankopanska 9\"}": [
+45.0762553,
+14.6779014
+],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"51280\", \"street\": \"Palit, Palit 143 a\"}": [
 44.7637765,
 14.7578816
 ],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"51300\", \"street\": \"Fužine, Sveti Križ 13\"}": null,
 "{\"country\": \"Hrvatska\", \"postalcode\": \"51300\", \"street\": \"Lokve, Šetalište Golubinjak 3\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"51300\", \"street\": \"Skrad, Josipa Blaževića - Blaža 9\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"51300\", \"street\": \"Šetalište Ivana Gorana Kovačića bb\"}": [
+45.3971137,
+14.8041475
+],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"51300\"}": [
 45.3930755,
 14.8028888
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"51306\", \"street\": \"Narodnog Oslobođenja 7\"}": [
+45.5956338,
+14.6444291
 ],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"51306\", \"street\": \"Tršće, Ivana Kovača 16\"}": null,
 "{\"country\": \"Hrvatska\", \"postalcode\": \"51306\"}": [
 45.5553143,
 14.6705309
 ],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"51326\", \"street\": \"Dobra 20\"}": [
+45.3743318,
+15.0708612
+],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"51326\", \"street\": \"Moravice, Nikole Bunjevca bb\"}": null,
 "{\"country\": \"Hrvatska\", \"postalcode\": \"51326\"}": [
 45.3737509,
 15.0711677
 ],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"51410\", \"street\": \"Maršala Tita 4\"}": [
+45.3339446,
+14.305678
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"51410\", \"street\": \"Nova cesta 153\"}": [
+45.3411771,
+14.307413
+],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"51410\", \"street\": \"Nova cesta 97\"}": [
 45.3411771,
 14.307413
 ],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"51410\", \"street\": \"Poljane, Poljane bb\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"51410\"}": [
+45.3402555,
+14.3102293
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"51415\", \"street\": \"9. Rujna 3\"}": [
+45.2907838,
+14.2744956
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"51417\", \"street\": \"Barba Rike 5a\"}": [
+45.2387121,
+14.252737
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"51500\", \"street\": \"Punat, Pod Topol 2\"}": null,
 "{\"country\": \"Hrvatska\", \"postalcode\": \"51500\", \"street\": \"Slavka Nikolića 34\"}": [
 45.0321203,
 14.5702945
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"51500\", \"street\": \"Vinogradska bb\"}": [
+45.0133859,
+14.6293583
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"51500\"}": [
+45.0337091,
+14.5448799
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"51511\", \"street\": \"Dobrinj, Dobrinj bb\"}": [
+45.1294468,
+14.6049349
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"51511\", \"street\": \"Šilo, Nova cesta bb\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"51511\"}": [
+45.1138366,
+14.5234249
 ],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"51550\", \"street\": \"Priko 69\"}": [
 44.5333571,
 14.4622864
 ],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"52000\", \"street\": \"Jurja Dobrile 1\"}": [
+45.3357459,
+14.3048985
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"52000\", \"street\": \"Tinjan, Tinjan 13\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"52000\"}": [
+45.246599,
+13.9028599
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"52100\", \"street\": \"Fažana, ulica Braće Ilić - Via Fratelli Ilić 13\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"52100\", \"street\": \"Istarska ulica 15\"}": [
+44.8720473,
+13.8487387
+],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"52100\", \"street\": \"Ližnjan, Ližnjan 147\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"52100\", \"street\": \"Negrijeva ulica 5\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"52100\", \"street\": \"Palladiova ulica 22\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"52100\", \"street\": \"Pazinska ulica 10\"}": [
+45.0832283,
+13.6352247
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"52100\", \"street\": \"Ulica Bartolomea Dei Vitrei 13\"}": [
+44.8671012,
+13.8522774
+],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"52100\"}": [
 44.8624244,
 13.8565828
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"52210\", \"street\": \"Ulica Mattea Benussija - Via Matteo Benussi 6\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"52210\"}": [
+45.081835,
+13.6472286
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"52220\", \"street\": \"Raša, Tesle Nikole bb\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"52220\", \"street\": \"Svetog Mikule 2\"}": [
+45.1001971,
+14.1188883
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"52220\"}": [
+45.0731411,
+14.1193809
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"52333\", \"street\": \"Potpićan, Istarska 2\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"52333\"}": [
+45.1940867,
+14.0872568
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"52341\", \"street\": \"Svetvinčenat, Svetvinčenat 96a\"}": [
+45.089527,
+13.8813327
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"52420\", \"street\": \"Naselje Goričica 1\"}": [
+45.4093893,
+13.9636397
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"52440\", \"street\": \"Labinci, Labinci 103 c\"}": [
+45.2990578,
+13.6891089
 ],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"52440\", \"street\": \"Maura Gioseffia 2\"}": null,
 "{\"country\": \"Hrvatska\", \"postalcode\": \"52440\", \"street\": \"Pical 1\"}": null,
@@ -2271,13 +3594,47 @@
 45.2169264,
 13.6331697
 ],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"52460\", \"street\": \"Istarska ulica 15\"}": [
+45.4078098,
+13.6592395
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"52466\", \"street\": \"Karigador, Ladin Gaj 132\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"52466\"}": [
+45.3281127,
+13.5642106
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"52470\", \"street\": \"Ulica E.pascalia 3a\"}": null,
+"{\"country\": \"Hrvatska\", \"postalcode\": \"52470\"}": [
+45.4162188,
+13.5367455
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"53000\", \"street\": \"Ulica 118. Brigade Hrvatske Vojske 3\"}": [
+44.5433214,
+15.3787522
+],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"53202\", \"street\": \"Ulica dr. Ante Starčevića 20\"}": [
 44.6490558,
 15.3803415
 ],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"53220\", \"street\": \"Vladimira Nazora 21\"}": [
+44.8666323,
+15.2389625
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"53230\", \"street\": \"Ulica Zagrebačka 41\"}": [
+44.7497905,
+15.7016287
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"53234\", \"street\": \"Trg Hrvatskih Vitezova 3\"}": [
+44.5326613,
+15.7666979
+],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"53270\", \"street\": \"Stara cesta 43\"}": [
 44.9898101,
 14.906083
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"53291\", \"street\": \"Špital 1\"}": [
+44.5465043,
+14.8917882
 ],
 "{\"q\": \"Opća bolnica Vukovar, Hrvatska\"}": [
 45.2926392,
