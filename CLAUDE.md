@@ -128,8 +128,9 @@ We deliberately do **not** use: microservices, Kubernetes, a separate API gatewa
 
 ### 2.3 Design system
 - **Tokens** in `globals.css` as CSS variables (`--background`, `--primary`, `--urgent`, `--success`, radii, shadows); light + dark themes; `prefers-color-scheme` respected with manual toggle.
-- **Palette:** calm clinical base (off-white / deep navy), one confident accent (teal), a reserved **urgent red** used *only* for emergencies so it never loses meaning.
-- **Type:** Inter (or Geist) with `font-feature-settings: "ss01"`; Croatian diacritics checked (č ć đ š ž). Large-text mode scales the root font size.
+- **Palette:** Marshmallow White `#F0EDF0` (background), ink `#16132E` (text), **Galactic Violet `#573DFE`** (primary actions), **Bubblegum Pink `#FF6BD3`** (small accents only, e.g. the mic button — always dark ink text on pink, never white). A reserved **urgent red** is used *only* for emergencies so it never loses meaning. The violet→pink gradient is a soft decorative glow only, never behind text.
+- **Style: minimalist and inclusive.** Must work for a 75-year-old: one column, one main action per screen, plain short Croatian sentences, bold sentence-case headings (no thin or all-caps display type), big solid buttons (≥ 56–64px tall), solid colours behind text, no decorative clutter or mock-ups. The landing page (`app/src/app/page.tsx`) is the reference.
+- **Type:** Inter with `font-feature-settings: "ss01"`; Croatian diacritics checked (č ć đ š ž). Base text is 18px; the "Veća slova" toggle (`TextSizeToggle`) scales the root to 21px — layouts must not break at that size.
 - **Motion:** 150–250 ms, ease-out; respect `prefers-reduced-motion`. Motion explains state change — it never decorates for its own sake.
 - **States:** every async component has designed loading (skeleton), empty, error and success states. No raw spinners, no blank screens.
 - **Mobile-first patient app** (the demo phone frame is 390×844); doctor portal is desktop-first.

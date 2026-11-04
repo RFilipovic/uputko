@@ -1,0 +1,161 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* Dark mode follows the .dark class on <html>; set before paint from the
+   user's saved choice or prefers-color-scheme (see layout.tsx). */
+@custom-variant dark (&:is(.dark *));
+
+/* Design tokens.
+   Brand palette: Marshmallow White #F0EDF0 · Galactic Violet #573DFE ·
+   Bubblegum Pink #FF6BD3. Urgent red is reserved ONLY for emergencies.
+   Contrast notes: white on violet ≈ 6:1 (ok); white on pink ≈ 2.5:1 (fails),
+   so anything sitting on pink uses dark ink text. */
+:root {
+  --radius: 1rem;
+
+  --marshmallow: #f0edf0;
+  --violet: #573dfe;
+  --violet-deep: #3f25e0;
+  --pink: #ff6bd3;
+  --ink: #16132e;
+
+  --background: var(--marshmallow);
+  --foreground: var(--ink);
+  --card: #ffffff;
+  --card-foreground: var(--ink);
+  --popover: #ffffff;
+  --popover-foreground: var(--ink);
+
+  --primary: var(--violet);
+  --primary-foreground: #ffffff;
+  --secondary: #e6e2ee;
+  --secondary-foreground: var(--ink);
+  --muted: #e8e4ec;
+  --muted-foreground: #565170;
+  --accent: var(--pink);
+  --accent-foreground: var(--ink);
+
+  --destructive: oklch(0.53 0.2 27);
+  --urgent: oklch(0.53 0.21 27);
+  --urgent-foreground: oklch(0.99 0 0);
+  --success: oklch(0.52 0.12 155);
+  --success-foreground: oklch(0.99 0 0);
+
+  --border: #dcd7e4;
+  --input: #d3cde0;
+  --ring: var(--violet);
+
+  --shadow-soft:
+    0 1px 2px rgb(22 19 46 / 0.06), 0 4px 16px rgb(22 19 46 / 0.06);
+}
+
+.dark {
+  --background: #0e0b1f;
+  --foreground: #f0edf0;
+  --card: #1a1534;
+  --card-foreground: #f0edf0;
+  --popover: #1a1534;
+  --popover-foreground: #f0edf0;
+
+  --primary: #6a52ff; /* white text ≈ 4.9:1 */
+  --primary-foreground: #ffffff;
+  --secondary: #241e45;
+  --secondary-foreground: #f0edf0;
+  --muted: #221c40;
+  --muted-foreground: #b9b2d6;
+  --accent: var(--pink);
+  --accent-foreground: var(--ink);
+
+  --destructive: oklch(0.68 0.19 25);
+  --urgent: oklch(0.62 0.21 27);
+  --urgent-foreground: oklch(0.99 0 0);
+  --success: oklch(0.72 0.14 155);
+  --success-foreground: var(--ink);
+
+  --border: #2c2550;
+  --input: #352d5e;
+  --ring: #9a8aff;
+
+  --shadow-soft: 0 1px 2px rgb(0 0 0 / 0.3), 0 4px 16px rgb(0 0 0 / 0.25);
+}
+
+@theme inline {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-urgent: var(--urgent);
+  --color-urgent-foreground: var(--urgent-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-violet: var(--violet);
+  --color-violet-deep: var(--violet-deep);
+  --color-pink: var(--pink);
+  --color-ink: var(--ink);
+  --color-marshmallow: var(--marshmallow);
+
+  --radius-sm: calc(var(--radius) - 6px);
+  --radius-md: calc(var(--radius) - 4px);
+  --radius-lg: calc(var(--radius) - 2px);
+  --radius-xl: var(--radius);
+  --radius-2xl: calc(var(--radius) + 6px);
+  --radius-3xl: calc(var(--radius) + 14px);
+
+  --shadow-soft: var(--shadow-soft);
+}
+
+/* Violet → pink signature gradient. */
+@utility bg-brand-gradient {
+  background: linear-gradient(
+    120deg,
+    var(--violet) 0%,
+    #a24ff0 55%,
+    var(--pink) 100%
+  );
+}
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    font-size: 112.5%; /* 18px base: readable for older users by default */
+    -webkit-text-size-adjust: 100%;
+  }
+  /* "Veća slova" mode scales the root font size. */
+  html[data-text="large"] {
+    font-size: 131.25%; /* 21px base */
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-delay: 0ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
