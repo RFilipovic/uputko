@@ -93,6 +93,14 @@ def attempts(row: pd.Series) -> list[tuple[str, dict[str, str]]]:
             out.append(("street", {**street, "city": city}))
     if row["id"].startswith("h-") and not addr:
         out.append(("name", {"q": f"{name}, Hrvatska"}))
+    # HZZO writes village practices as "Vidovec, trg Sv. Vida 2" under the town's
+    # postcode (42000 Varaždin). Try the street in that village, then the village
+    # itself, before falling back to the postcode centre (which may be another town).
+    if "," in addr:
+        place, rest = (p.strip() for p in addr.split(",", 1))
+        if place and place.lower() != city.lower():
+            out.append(("street", {"street": rest, "city": place, "country": "Hrvatska"}))
+            out.append(("village", {"city": place, "country": "Hrvatska"}))
     if pc:
         out.append(("postcode", {"postalcode": pc, "country": "Hrvatska"}))
     if city:

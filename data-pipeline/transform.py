@@ -595,6 +595,27 @@ def match_zagreb(inst: pd.DataFrame, zg: pd.DataFrame) -> pd.DataFrame:
 # ---------------------------------------------------------------- main
 
 
+def town_from_name(name: str, towns: set[str]) -> str:
+    """'Opća županijska bolnica Požega-lokacija Pakrac' → 'Pakrac'. Prefers the
+    town after 'lokacija', else the last known town named in the text. Croatian
+    case endings are tolerated ('u Osijeku' → 'Osijek')."""
+    m = re.search(r"(?:lokacija\s+|\s-\s+)(.+)$", name, flags=re.I)
+    if m and " " not in m.group(1).strip() and m.group(1).strip() not in towns:
+        return m.group(1).strip()  # a single-word place not in our town list, e.g. Klenovnik
+    text = m.group(1) if m else name
+    words = re.findall(r"[\wčćđšžČĆĐŠŽ]+", text)
+    best = ""
+    for i in range(len(words)):
+        for j in range(i + 1, min(i + 4, len(words) + 1)):
+            phrase = " ".join(words[i:j])
+            for t in towns:
+                if phrase == t or (
+                    j - i == len(t.split()) and phrase.startswith(t) and len(phrase) - len(t) <= 2
+                ):
+                    best = t if len(t) >= len(best) or m else best
+    return best
+
+
 def main() -> int:
     CLEAN.mkdir(parents=True, exist_ok=True)
     hosp, hosp_svc = build_hospitals()
@@ -603,6 +624,10 @@ def main() -> int:
     osm = load_osm()
 
     inst = pd.concat([hosp, pzz], ignore_index=True)
+    # Hospitals missing from the HZZO address book: take the town from the name.
+    towns = set(pzz["city"].dropna()) - {""}
+    no_city = inst["id"].str.startswith("h-") & (inst["city"].fillna("") == "")
+    inst.loc[no_city, "city"] = inst.loc[no_city, "name"].map(lambda n: town_from_name(n, towns))
     inst["lat"], inst["lng"] = float("nan"), float("nan")
     inst["geo_precision"], inst["osm_id"] = "", ""
 

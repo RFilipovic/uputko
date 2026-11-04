@@ -6,6 +6,7 @@ from transform import (
     provider_label,
     slugify,
     title_hr,
+    town_from_name,
 )
 
 
@@ -61,3 +62,17 @@ def test_slugify():
     assert slugify("Hitna medicina (OHBP)") == "hitna-medicina-ohbp"
     assert slugify("Dermatologija i venerologija") == "dermatologija-i-venerologija"
     assert slugify("Đakovo") == "djakovo"
+
+
+def test_town_from_name():
+    towns = {"Pakrac", "Požega", "Osijek", "Zabok", "Knin", "Nova Gradiška", "Slavonski Brod"}
+    assert town_from_name("Opća županijska bolnica Požega-lokacija Pakrac", towns) == "Pakrac"
+    assert town_from_name("Opća bolnica Zabok", towns) == "Zabok"
+    assert town_from_name("Opća bolnica Varaždin - Klenovnik", towns | {"Varaždin"}) == "Klenovnik"
+    assert town_from_name("Magdalena klinika … Sveučilišta u Osijeku", towns) == "Osijek"
+    assert (
+        town_from_name(
+            "Opća bolnica dr. Josip Benčević Slavonski Brod Lokacija Nova Gradiška", towns
+        )
+        == "Nova Gradiška"
+    )

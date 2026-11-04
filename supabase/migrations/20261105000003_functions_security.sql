@@ -49,7 +49,7 @@ as $$
     join institution_services s on s.institution_id = i.id and s.specialty_code = p_specialty
     where i.geom is not null
     order by i.geom <-> (select g from here)
-    limit greatest(p_limit, 1) * (case when p_open_now then 20 else 1 end)
+    limit greatest(p_limit, 1) * (case when p_open_now then 20 else 5 end)
   )
   select c.id, c.name, c.type, c.address, c.city, c.phone, c.web,
          st_y(c.geom::geometry), st_x(c.geom::geometry),
@@ -59,7 +59,11 @@ as $$
   from candidates c
   cross join lateral open_status(c.id, p_at) o
   where not p_open_now or o.open_now
+  -- Approximate coordinates (postcode/town centre) can sit far from the real
+  -- practice, so they rank behind exact ones at a similar distance.
   order by st_distance(c.geom, (select g from here))
+           + case c.geo_precision when 'postcode' then 5000 when 'city' then 5000
+                                  when 'village' then 1000 else 0 end
   limit p_limit
 $$;
 

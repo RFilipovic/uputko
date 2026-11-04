@@ -49,7 +49,8 @@ HZZO primary-care teams (3–6) ─► practitioners ─► one practice locatio
 
 - **Hospitals:** dataset 2 names each hospital and lists its specialist clinics.
   We match it to dataset 1 by normalised name (`rapidfuzz` token sort ≥ 82) to
-  get the address: **54 of 65** matched. The other 11 are located by name.
+  get the address: **54 of 65** matched. The other 11 are located by name, and
+  their town is read from the name ("Opća bolnica Zabok" → Zabok).
 - **Specialties:** HZZO's *djelatnost* names become stable codes
   (`Otorinolaringologija` → `otorinolaringologija`, `Hitna medicina (OHBP)` →
   `hitna-medicina-ohbp`). This is the specialty ↔ institution table the agent
@@ -60,8 +61,11 @@ HZZO primary-care teams (3–6) ─► practitioners ─► one practice locatio
   dentist or family doctor.
 - **Coordinates** (column `geo_precision`): `geoportal` (Zagreb open data),
   `osm` (OpenStreetMap match), `street` (Nominatim, street level), `name`
-  (Nominatim, institution name), `postcode` / `city` (Nominatim fallback,
-  approximate: about the centre of the postcode area or town).
+  (Nominatim, institution name), `village` (HZZO writes village practices as
+  "Vidovec, trg Sv. Vida 2" under the nearest town's postcode; we locate the
+  village), `postcode` / `city` (Nominatim fallback, approximate: the centre of
+  the postcode area or town). Search results rank approximate locations behind
+  exact ones at a similar distance; the distance shown is never altered.
 - **Opening hours:** `osm` where OpenStreetMap has them; `ohbp_0-24` for
   emergency departments (open around the clock by definition).
 - Every row keeps `source_dataset`, e.g. `hzzo_bolnicki_sadrzaji+hzzo_bolnice+osm(hospital-name)`.
@@ -87,7 +91,10 @@ demo emails go to team inboxes only.
   hospitals have reorganised. The pipeline runs unchanged on a newer export.
 - HZZO publishes no opening hours or on-call (*dežurstvo*) schedules in a
   machine-readable form. That is the biggest gap for "where can I go right now".
-- Postcode-level coordinates are approximate; the UI shows the address too.
+- Coordinates for all 5,128 locations: 3,850 street-level, 679 Zagreb geoportal,
+  85 OpenStreetMap, 153 village centre, 2 by name/town, and **359 (7%) only at
+  postcode level** (approximate, can be a few km off). Those rank behind exact
+  locations in search, and the UI always shows the full address.
 - HZZO dataset licences are not stated in the CKAN metadata: `TODO(verify)`
   with the publisher (data.gov.hr content is generally under the Open Licence of
   the Republic of Croatia).
