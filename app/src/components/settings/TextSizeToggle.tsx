@@ -5,7 +5,14 @@ import { hr } from "@/i18n/hr";
 import { cn } from "@/lib/utils";
 
 /** Switches the whole app to bigger text; remembered on this device. */
-export function TextSizeToggle({ className }: { className?: string }) {
+export function TextSizeToggle({
+  className,
+  compact = false,
+}: {
+  className?: string;
+  /** Icon-only (still labelled for screen readers) for tight headers. */
+  compact?: boolean;
+}) {
   const [large, setLarge] = useState(false);
 
   useEffect(() => {
@@ -30,8 +37,11 @@ export function TextSizeToggle({ className }: { className?: string }) {
       type="button"
       onClick={toggle}
       aria-pressed={large}
+      aria-label={compact ? hr.settings.largeText : undefined}
+      title={hr.settings.largeText}
       className={cn(
-        "inline-flex min-h-12 items-center gap-2 rounded-full border-2 px-4 text-base font-semibold whitespace-nowrap transition-colors duration-200 focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none",
+        "inline-flex min-h-12 items-center justify-center gap-2 rounded-full border-2 text-base font-semibold whitespace-nowrap transition-colors duration-200 focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none",
+        compact ? "min-w-12 px-2" : "px-4",
         large
           ? "border-primary bg-primary text-primary-foreground"
           : "border-border bg-card text-foreground hover:border-primary",
@@ -41,7 +51,7 @@ export function TextSizeToggle({ className }: { className?: string }) {
       <span aria-hidden className="text-lg leading-none font-bold">
         A<span className="text-sm">A</span>
       </span>
-      {hr.settings.largeText}
+      {compact ? null : hr.settings.largeText}
     </button>
   );
 }

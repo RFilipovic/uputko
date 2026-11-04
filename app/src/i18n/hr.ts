@@ -31,6 +31,26 @@ export const hr = {
   },
   settings: {
     largeText: "Veća slova",
+    darkTheme: "Uključi tamnu temu",
+    lightTheme: "Uključi svijetlu temu",
+  },
+  nav: {
+    back: "Natrag",
+  },
+  chat: {
+    title: "Razgovor",
+    greeting: "Dobar dan! Što vas muči?",
+    hint: "Napišite svojim riječima ili odaberite jedno od ovoga:",
+    suggestions: [
+      "Boli me zub",
+      "Dijete ima temperaturu",
+      "Boli me uho",
+      "Nešto drugo",
+    ],
+    inputLabel: "Vaša poruka",
+    placeholder: "Napišite što vas muči…",
+    send: "Pošalji",
+    voice: "Govorite",
   },
   emergency: {
     banner: "Hitan slučaj?",

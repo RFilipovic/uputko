@@ -1,6 +1,7 @@
 import { ArrowRight, Mic } from "lucide-react";
+import Link from "next/link";
 import { Always112Banner } from "@/components/emergency/Always112Banner";
-import { SiteHeader } from "@/components/landing/SiteHeader";
+import { AppHeader } from "@/components/layout/AppHeader";
 import { hr } from "@/i18n/hr";
 
 const t = hr.landing;
@@ -19,7 +20,7 @@ export default function Home() {
       />
 
       <Always112Banner />
-      <SiteHeader />
+      <AppHeader className="mx-auto max-w-2xl" />
 
       <main className="mx-auto flex w-full max-w-2xl flex-1 flex-col gap-12 px-5 pt-6 pb-12 sm:pt-12">
         <section
@@ -35,22 +36,22 @@ export default function Home() {
           <p className="text-xl leading-relaxed text-foreground/85">{t.lead}</p>
 
           <div className="mt-2 flex flex-col gap-3 sm:flex-row">
-            <button
-              type="button"
+            <Link
+              href="/chat"
               className="inline-flex min-h-16 flex-1 items-center justify-center gap-3 rounded-2xl bg-primary px-6 text-xl font-semibold text-primary-foreground shadow-[0_10px_30px_-10px_rgb(87_61_254/0.7)] transition-colors duration-200 hover:bg-violet-deep focus-visible:ring-4 focus-visible:ring-ring/50 focus-visible:outline-none"
             >
               {t.cta}
               <ArrowRight aria-hidden className="size-6" />
-            </button>
-            <button
-              type="button"
+            </Link>
+            <Link
+              href="/chat?glas=1"
               className="inline-flex min-h-16 items-center justify-center gap-3 rounded-2xl border-2 border-border bg-card px-6 text-xl font-semibold transition-colors duration-200 hover:border-primary focus-visible:ring-4 focus-visible:ring-ring/50 focus-visible:outline-none"
             >
               <span className="grid size-9 place-items-center rounded-full bg-pink text-ink">
                 <Mic aria-hidden className="size-5" />
               </span>
               {t.voice}
-            </button>
+            </Link>
           </div>
         </section>
 

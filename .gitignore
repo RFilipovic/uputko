@@ -1,0 +1,10 @@
+# Python pipeline
+data-pipeline/.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+
+# Supabase CLI local state
+supabase/.temp/
+supabase/.branches/
+supabase/snippets/
