@@ -4,7 +4,7 @@ AI health-navigation agent for Croatian citizens — Datathon Portala otvorenih 
 
 > Opišite problem jednom. Ostalo rješavamo mi.
 
-**Demo URL:** TODO (Vercel) · **Status:** see the repo's GitHub Issues → Milestones.
+**Demo URL:** https://uputko.vercel.app · **Status:** see the repo's GitHub Issues → Milestones.
 
 All patient data in this project is synthetic. Uputko never diagnoses; in an emergency call **112**.
 
@@ -53,10 +53,10 @@ cd data-pipeline && .venv/bin/python -m pytest -q && .venv/bin/ruff check .
 
 ## Deploy (Vercel)
 
-1. Import the GitHub repo in Vercel.
-2. Set **Root Directory** to `app` (framework preset: Next.js).
-3. Add the env vars from `app/.env.example` (Project → Settings → Environment Variables).
-4. Every push to `main` deploys.
+Live at **https://uputko.vercel.app** (Vercel project `uputko`, Root Directory `app`).
+Every push to `main` deploys to production; other branches get a preview URL.
+Env vars from `app/.env.example` are set in Vercel → Project → Settings → Environment Variables
+(Production + Preview; secrets marked Sensitive). Ask René for access.
 
 For the hosted database: create a Supabase project in the EU (Frankfurt) region, then
 `pnpm dlx supabase@3.0.0 link --project-ref <ref>` and `pnpm dlx supabase@3.0.0 db push --remote --include-seed`.
