@@ -7,7 +7,13 @@ import { hr } from "@/i18n/hr";
 import { ui } from "@/lib/ui";
 
 /** What happened after the intake, shown under the last chat message. */
-export function OutcomeCard({ outcome, onEmergency }: { outcome: Outcome; onEmergency: () => void }) {
+export function OutcomeCard({
+  outcome,
+  onEmergency,
+}: {
+  outcome: Outcome;
+  onEmergency: () => void;
+}) {
   if (outcome.kind === "emergency") {
     return (
       <div className="flex flex-col gap-3 rounded-3xl border-2 border-urgent bg-urgent/5 p-5">
@@ -31,12 +37,23 @@ export function OutcomeCard({ outcome, onEmergency }: { outcome: Outcome; onEmer
           {outcome.anyOpen ? hr.direct.title : hr.direct.titleClosed}
         </h2>
         <p className="text-lg">{hr.direct.noReferral}</p>
-        {outcome.farNote && <p className="text-lg font-medium">{outcome.farNote}</p>}
-        {!outcome.anyOpen && <p className="text-lg text-muted-foreground">{hr.direct.allClosed}</p>}
+        {outcome.farNote && (
+          <p className="text-lg font-medium">{outcome.farNote}</p>
+        )}
+        {!outcome.anyOpen && (
+          <p className="text-lg text-muted-foreground">{hr.direct.allClosed}</p>
+        )}
         {first && (
           <>
             <PlaceCard place={first} highlight />
-            <InstitutionMap points={outcome.places.map((p, i) => ({ lat: p.lat, lng: p.lng, label: p.name, kind: i === 0 ? "place" : "place" }))} />
+            <InstitutionMap
+              points={outcome.places.map((p, i) => ({
+                lat: p.lat,
+                lng: p.lng,
+                label: p.name,
+                kind: i === 0 ? "place" : "place",
+              }))}
+            />
           </>
         )}
         {rest.map((p) => (
@@ -50,16 +67,29 @@ export function OutcomeCard({ outcome, onEmergency }: { outcome: Outcome; onEmer
   }
 
   return (
-    <section className={`${ui.card} flex flex-col gap-3`} aria-labelledby="sent-title">
-      <h2 id="sent-title" className="flex items-center gap-2 text-2xl font-bold">
+    <section
+      className={`${ui.card} flex flex-col gap-3`}
+      aria-labelledby="sent-title"
+    >
+      <h2
+        id="sent-title"
+        className="flex items-center gap-2 text-2xl font-bold"
+      >
         <CheckCircle2 aria-hidden className="size-7 text-success" />
         {hr.chat.sentTitle}
       </h2>
-      <p className="text-lg leading-relaxed">{hr.chat.sentBody(outcome.doctorName)}</p>
+      <p className="text-lg leading-relaxed">
+        {hr.chat.sentBody(outcome.doctorName)}
+      </p>
       <Link href={`/slucaj/${outcome.caseId}`} className={ui.btnPrimary}>
         {hr.chat.openCase}
       </Link>
-      <a href={outcome.demoDoctorUrl} target="_blank" rel="noreferrer" className={`${ui.btnLink} self-start`}>
+      <a
+        href={outcome.demoDoctorUrl}
+        target="_blank"
+        rel="noreferrer"
+        className={`${ui.btnLink} self-start`}
+      >
         <ExternalLink aria-hidden className="size-4" />
         {hr.case.demoDoctor}
       </a>

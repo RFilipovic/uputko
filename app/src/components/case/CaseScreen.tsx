@@ -14,12 +14,25 @@ import type { CaseView } from "@/lib/caseData";
 import { hr } from "@/i18n/hr";
 import { ui } from "@/lib/ui";
 
-export function CaseScreen({ initial, patientId }: { initial: CaseView; patientId: string }) {
+export function CaseScreen({
+  initial,
+  patientId,
+}: {
+  initial: CaseView;
+  patientId: string;
+}) {
   const { view, refresh, live, error } = useLiveCase(initial, patientId);
   const sent = view.events.find((e) => e.kind === "sent_to_doctor");
-  const demoUrl = typeof sent?.payload.demo_doctor_url === "string" ? sent.payload.demo_doctor_url : null;
-  const doctorName = typeof sent?.payload.doctor_name === "string" ? sent.payload.doctor_name : null;
-  const waiting = view.status === "sent_to_doctor" || view.status === "viewed_by_doctor";
+  const demoUrl =
+    typeof sent?.payload.demo_doctor_url === "string"
+      ? sent.payload.demo_doctor_url
+      : null;
+  const doctorName =
+    typeof sent?.payload.doctor_name === "string"
+      ? sent.payload.doctor_name
+      : null;
+  const waiting =
+    view.status === "sent_to_doctor" || view.status === "viewed_by_doctor";
   const invited = view.events.some((e) => e.kind === "invited_to_exam");
 
   if (view.status === "emergency_escalated") {
@@ -39,7 +52,11 @@ export function CaseScreen({ initial, patientId }: { initial: CaseView; patientI
             </span>
           )}
         </div>
-        {view.summary && <p className="text-lg text-foreground/85">{view.summary.chief_complaint}</p>}
+        {view.summary && (
+          <p className="text-lg text-foreground/85">
+            {view.summary.chief_complaint}
+          </p>
+        )}
         {error && (
           <p role="alert" className="text-base text-urgent">
             {hr.case.error}
@@ -48,13 +65,19 @@ export function CaseScreen({ initial, patientId }: { initial: CaseView; patientI
       </div>
 
       {view.offers
-        .filter((o) => o.kind === "earlier_slot_offer" || o.kind === "reschedule_offer")
+        .filter(
+          (o) =>
+            o.kind === "earlier_slot_offer" || o.kind === "reschedule_offer",
+        )
         .map((o) => (
           <OfferCard key={o.id} offer={o} onChanged={refresh} />
         ))}
 
       {waiting && (
-        <section className={`${ui.card} flex flex-col gap-3`} aria-live="polite">
+        <section
+          className={`${ui.card} flex flex-col gap-3`}
+          aria-live="polite"
+        >
           <p className="flex items-center gap-2 text-xl font-bold">
             <Hourglass aria-hidden className="size-6" />
             {hr.case.statuses[view.status as keyof typeof hr.case.statuses]}
@@ -63,11 +86,18 @@ export function CaseScreen({ initial, patientId }: { initial: CaseView; patientI
           <p className="text-lg">{hr.case.waitingDoctor}</p>
           {demoUrl && (
             <div className="rounded-2xl border border-dashed border-border p-3">
-              <a href={demoUrl} target="_blank" rel="noreferrer" className={ui.btnLink}>
+              <a
+                href={demoUrl}
+                target="_blank"
+                rel="noreferrer"
+                className={ui.btnLink}
+              >
                 <ExternalLink aria-hidden className="size-4" />
                 {hr.case.demoDoctor}
               </a>
-              <p className="text-sm text-muted-foreground">{hr.case.demoDoctorHint}</p>
+              <p className="text-sm text-muted-foreground">
+                {hr.case.demoDoctorHint}
+              </p>
             </div>
           )}
         </section>
@@ -87,15 +117,26 @@ export function CaseScreen({ initial, patientId }: { initial: CaseView; patientI
           </h2>
           <p className="text-lg">{hr.direct.noReferral}</p>
           <PlaceCard place={view.places[0]} highlight />
-          <InstitutionMap points={view.places.map((p) => ({ lat: p.lat, lng: p.lng, label: p.name, kind: "place" }))} />
+          <InstitutionMap
+            points={view.places.map((p) => ({
+              lat: p.lat,
+              lng: p.lng,
+              label: p.name,
+              kind: "place",
+            }))}
+          />
           {view.places.slice(1).map((p) => (
             <PlaceCard key={p.id} place={p} />
           ))}
         </section>
       )}
 
-      {view.appointment && <AppointmentCard appointment={view.appointment} onChanged={refresh} />}
-      {view.referral && !view.appointment && <p className={`${ui.card} text-lg`}>{hr.appointment.noSlot}</p>}
+      {view.appointment && (
+        <AppointmentCard appointment={view.appointment} onChanged={refresh} />
+      )}
+      {view.referral && !view.appointment && (
+        <p className={`${ui.card} text-lg`}>{hr.appointment.noSlot}</p>
+      )}
       {view.referral && <ReferralCard referral={view.referral} />}
 
       <CaseTimeline events={view.events} />

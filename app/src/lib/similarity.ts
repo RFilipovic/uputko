@@ -3,7 +3,8 @@ import { normalize } from "@/lib/agent/redFlags";
 const bigrams = (s: string) => {
   const t = ` ${normalize(s)} `;
   const out = new Map<string, number>();
-  for (let i = 0; i < t.length - 1; i++) out.set(t.slice(i, i + 2), (out.get(t.slice(i, i + 2)) ?? 0) + 1);
+  for (let i = 0; i < t.length - 1; i++)
+    out.set(t.slice(i, i + 2), (out.get(t.slice(i, i + 2)) ?? 0) + 1);
   return out;
 };
 
@@ -22,13 +23,21 @@ export function similarity(a: string, b: string): number {
 }
 
 /** Best match above a threshold, or null. Also accepts containment ("ORL" ⊂ "...ORL..."). */
-export function bestMatch<T>(query: string, items: T[], label: (t: T) => string, min = 0.45): T | null {
+export function bestMatch<T>(
+  query: string,
+  items: T[],
+  label: (t: T) => string,
+  min = 0.45,
+): T | null {
   const q = normalize(query);
   let best: T | null = null;
   let score = 0;
   for (const it of items) {
     const l = normalize(label(it));
-    const s = l.includes(q) || q.includes(l) ? Math.max(0.9, similarity(q, l)) : similarity(q, l);
+    const s =
+      l.includes(q) || q.includes(l)
+        ? Math.max(0.9, similarity(q, l))
+        : similarity(q, l);
     if (s > score) {
       score = s;
       best = it;

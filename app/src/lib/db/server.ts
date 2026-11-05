@@ -12,16 +12,24 @@ let client: Db | null = null;
 export function db(): Db {
   if (!client) {
     const env = serverEnv();
-    client = createClient<Database>(env.NEXT_PUBLIC_SUPABASE_URL, env.SUPABASE_SERVICE_ROLE_KEY, {
-      auth: { persistSession: false, autoRefreshToken: false },
-    });
+    client = createClient<Database>(
+      env.NEXT_PUBLIC_SUPABASE_URL,
+      env.SUPABASE_SERVICE_ROLE_KEY,
+      {
+        auth: { persistSession: false, autoRefreshToken: false },
+      },
+    );
   }
   return client;
 }
 
 /** Unwrap a Supabase response or throw. */
-export function must<T>(res: { data: T; error: { message: string } | null }, what: string): NonNullable<T> {
+export function must<T>(
+  res: { data: T; error: { message: string } | null },
+  what: string,
+): NonNullable<T> {
   if (res.error) throw new Error(`${what}: ${res.error.message}`);
-  if (res.data === null || res.data === undefined) throw new Error(`${what}: not found`);
+  if (res.data === null || res.data === undefined)
+    throw new Error(`${what}: not found`);
   return res.data as NonNullable<T>;
 }

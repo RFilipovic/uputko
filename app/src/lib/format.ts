@@ -13,7 +13,9 @@ function zagreb(iso: string) {
     hourCycle: "h23",
   }).formatToParts(new Date(iso));
   const get = (t: string) => parts.find((p) => p.type === t)?.value ?? "";
-  const weekday = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].indexOf(get("weekday"));
+  const weekday = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].indexOf(
+    get("weekday"),
+  );
   return {
     weekday,
     day: Number(get("day")),
@@ -24,7 +26,15 @@ function zagreb(iso: string) {
   };
 }
 
-const DAYS = ["nedjelja", "ponedjeljak", "utorak", "srijeda", "četvrtak", "petak", "subota"];
+const DAYS = [
+  "nedjelja",
+  "ponedjeljak",
+  "utorak",
+  "srijeda",
+  "četvrtak",
+  "petak",
+  "subota",
+];
 
 /** "utorak, 10. 11. u 9:30" */
 export function formatWhen(iso: string): string {

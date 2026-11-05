@@ -74,11 +74,31 @@ export const hr = {
     title: "Razgovor",
     greeting: "Dobar dan! Što vas muči?",
     hint: "Napišite svojim riječima ili odaberite jedno od ovoga:",
-    suggestions: ["Boli me zub", "Dijete ima temperaturu", "Boli me uho", "Nešto drugo"],
+    suggestions: [
+      "Boli me zub",
+      "Dijete ima temperaturu",
+      "Boli me uho",
+      "Nešto drugo",
+    ],
     inputLabel: "Vaša poruka",
     placeholder: "Napišite što vas muči…",
     send: "Pošalji",
     voice: "Govorite",
+    finishMessage: "Molim pošaljite moj opis liječniku.",
+    finish: {
+      button: "Pošalji liječniku",
+      ready: "Možete poslati sada, ili odgovorite na još koje pitanje.",
+      notReady: "Opišite još malo pa možete poslati.",
+      missing: (items: string) => `Recite još: ${items}.`,
+      basics: {
+        what: "što vas muči",
+        where: "gdje",
+        when: "od kada traje",
+        howBad: "koliko je jako",
+        fever: "imate li temperaturu",
+      } as Record<string, string>,
+      failed: "Slanje nije uspjelo. Pokušajte ponovno.",
+    },
     you: "Vi",
     assistant: "Uputko",
     typing: "Uputko piše…",
@@ -106,12 +126,16 @@ export const hr = {
     errors: {
       noPatient: "Prvo odaberite osobu u profilu.",
       tooLong: "Poruka je preduga. Napišite kraće, do 800 znakova.",
-      rateLimited: "Previše poruka u kratkom vremenu. Pričekajte malo pa pokušajte ponovno.",
+      rateLimited:
+        "Previše poruka u kratkom vremenu. Pričekajte malo pa pokušajte ponovno.",
       busy: "Uputko je trenutno preopterećen. Pokušajte kasnije. Ako je hitno, nazovite 112.",
       caseLimit: "Ovaj razgovor je predug. Započnite novi razgovor.",
-      caseClosed: "Ovaj slučaj je već poslan. Za novu tegobu započnite novi razgovor.",
-      generic: "Nešto nije uspjelo. Pokušajte ponovno. Ako je hitno, nazovite 112.",
-      refused: "Na to ne mogu odgovoriti. Opišite molim vas svoju zdravstvenu tegobu. Ako je hitno, nazovite 112.",
+      caseClosed:
+        "Ovaj slučaj je već poslan. Za novu tegobu započnite novi razgovor.",
+      generic:
+        "Nešto nije uspjelo. Pokušajte ponovno. Ako je hitno, nazovite 112.",
+      refused:
+        "Na to ne mogu odgovoriti. Opišite molim vas svoju zdravstvenu tegobu. Ako je hitno, nazovite 112.",
       offline: "Nema veze s internetom. Provjerite vezu i pokušajte ponovno.",
     },
   },
@@ -119,7 +143,8 @@ export const hr = {
     title: "Idite ovdje",
     titleClosed: "Najbliže ordinacije",
     noReferral: "Za ovo vam ne treba uputnica.",
-    allClosed: "Trenutno nijedna obližnja nije otvorena. Ovo su najbliže, s radnim vremenom.",
+    allClosed:
+      "Trenutno nijedna obližnja nije otvorena. Ovo su najbliže, s radnim vremenom.",
     openUntil: (t: string) => `Otvoreno do ${t}`,
     openNow: "Otvoreno sada",
     closedNow: "Sada zatvoreno",
@@ -197,7 +222,11 @@ export const hr = {
     note: "Napomena liječnika",
     document: "Pogledaj uputnicu",
     issuedBy: (doctor: string) => `Izdao: dr. ${doctor}`,
-    priorities: { redovna: "Redovna", prioritetna: "Prioritetna", hitna: "Hitna" } as Record<string, string>,
+    priorities: {
+      redovna: "Redovna",
+      prioritetna: "Prioritetna",
+      hitna: "Hitna",
+    } as Record<string, string>,
     demo: "Demo uputnica — u stvarnosti se izdaje u CEZIH-u",
   },
   appointment: {
@@ -217,8 +246,13 @@ export const hr = {
     addToCalendar: "Dodaj u kalendar",
     directions: "Upute do ustanove",
     whatToBring: "Ponesite",
-    bring: ["Uputnicu (broj je na kartici iznad)", "Osobnu iskaznicu", "Iskaznicu zdravstvenog osiguranja"],
-    noSlot: "Trenutno nema slobodnog termina u toj ustanovi. Ustanova će vam se javiti.",
+    bring: [
+      "Uputnicu (broj je na kartici iznad)",
+      "Osobnu iskaznicu",
+      "Iskaznicu zdravstvenog osiguranja",
+    ],
+    noSlot:
+      "Trenutno nema slobodnog termina u toj ustanovi. Ustanova će vam se javiti.",
     error: "Promjena nije uspjela. Pokušajte ponovno.",
     taken: "Taj termin je u međuvremenu zauzet. Pogledajte novu ponudu.",
     synthetic: "Termini su demo podaci",
@@ -237,9 +271,11 @@ export const hr = {
     empty: "Nema novih obavijesti.",
     open: "Obavijesti",
     earlierTitle: "Oslobodio se raniji termin",
-    earlierBody: (when: string, place: string) => `${when}, ${place}. Želite li ga umjesto svojeg?`,
+    earlierBody: (when: string, place: string) =>
+      `${when}, ${place}. Želite li ga umjesto svojeg?`,
     rescheduleTitle: "Novi prijedlog termina",
-    rescheduleBody: (when: string, place: string) => `${when}, ${place}. Odgovara li vam?`,
+    rescheduleBody: (when: string, place: string) =>
+      `${when}, ${place}. Odgovara li vam?`,
     accept: "Prihvati",
     decline: "Odbij",
     accepted: "Prihvaćeno",
@@ -254,7 +290,11 @@ export const hr = {
     patient: "Pacijent",
     currentlyIn: "Trenutno u",
     urgency: "Hitnost",
-    urgencies: { hitno: "Hitno", uskoro: "Uskoro (1–2 dana)", rutinski: "Rutinski" } as Record<string, string>,
+    urgencies: {
+      hitno: "Hitno",
+      uskoro: "Uskoro (1–2 dana)",
+      rutinski: "Rutinski",
+    } as Record<string, string>,
     summary: "Sažetak razgovora",
     summaryNote: "Pripremio asistent iz razgovora — nije dijagnoza.",
     suggestion: "Prijedlog specijalnosti (prijedlog, ne dijagnoza)",
@@ -281,13 +321,16 @@ export const hr = {
       failed: "Uputnicu nije moguće pročitati. Pokušajte s jasnijom datotekom.",
       rateLimited: "Previše učitavanja. Pokušajte kasnije.",
       checkTitle: "Provjerite podatke s uputnice",
-      checkBody: "Ovo je Uputko pročitao. Ako je sve točno, pošaljite pacijentu.",
+      checkBody:
+        "Ovo je Uputko pročitao. Ako je sve točno, pošaljite pacijentu.",
       send: "Pošalji pacijentu",
       sending: "Šaljem…",
       retry: "Učitaj drugu",
       sent: "Uputnica je poslana pacijentu.",
-      sentAppointment: (when: string) => `Pacijentu je predložen termin: ${when}.`,
-      sentNoSlot: "Nema slobodnog termina u toj ustanovi — pacijent je obaviješten.",
+      sentAppointment: (when: string) =>
+        `Pacijentu je predložen termin: ${when}.`,
+      sentNoSlot:
+        "Nema slobodnog termina u toj ustanovi — pacijent je obaviješten.",
       unknownInstitution: "Ustanova nije prepoznata — odaberite s popisa.",
       pickInstitution: "Odaberite ustanovu",
     },
@@ -324,7 +367,16 @@ export const hr = {
       return `Izvor: ${parts.join(", ") || "javni podaci"}`;
     },
   },
-  days: ["nedjelja", "ponedjeljak", "utorak", "srijeda", "četvrtak", "petak", "subota"],
+  days: [
+    "nedjelja",
+    "ponedjeljak",
+    "utorak",
+    "srijeda",
+    "četvrtak",
+    "petak",
+    "subota",
+  ],
   daysShort: ["ned", "pon", "uto", "sri", "čet", "pet", "sub"],
-  disclaimer: "Uputko nije liječnik i ne postavlja dijagnozu. U hitnom slučaju odmah nazovite 112.",
+  disclaimer:
+    "Uputko nije liječnik i ne postavlja dijagnozu. U hitnom slučaju odmah nazovite 112.",
 };

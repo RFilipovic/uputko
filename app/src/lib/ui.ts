@@ -1,5 +1,6 @@
 /** Shared class strings so every screen uses the same big, accessible controls. */
-const focus = "focus-visible:ring-4 focus-visible:ring-ring/50 focus-visible:outline-none";
+const focus =
+  "focus-visible:ring-4 focus-visible:ring-ring/50 focus-visible:outline-none";
 
 export const ui = {
   btnPrimary: `inline-flex min-h-14 items-center justify-center gap-2 rounded-2xl bg-primary px-6 text-lg font-semibold text-primary-foreground transition-colors duration-200 hover:bg-violet-deep disabled:opacity-60 ${focus}`,

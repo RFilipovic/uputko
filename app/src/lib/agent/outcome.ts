@@ -6,7 +6,11 @@ import { DoctorCaseEmail } from "@/lib/email/DoctorCaseEmail";
 import { sendDemoEmail } from "@/lib/email/send";
 import { formatKm } from "@/lib/geo/distance";
 import { nearestPreferOpen, type Place } from "@/lib/geo/places";
-import { cityPoint, saveCaseLocation, type ResolvedLocation } from "@/lib/location";
+import {
+  cityPoint,
+  saveCaseLocation,
+  type ResolvedLocation,
+} from "@/lib/location";
 import type { PatientProfile } from "@/lib/patients";
 import { ROLE_LABEL } from "@/lib/patients";
 import { escalatesFromUrgency, type RedFlagId } from "./redFlags";
@@ -52,7 +56,11 @@ export async function resolveLocation(
     .select("patient_lat, patient_lng, patient_city, location_source")
     .eq("id", caseId)
     .single();
-  if (c?.patient_lat != null && c.patient_lng != null && c.location_source !== "home") {
+  if (
+    c?.patient_lat != null &&
+    c.patient_lng != null &&
+    c.location_source !== "home"
+  ) {
     return {
       lat: c.patient_lat,
       lng: c.patient_lng,
@@ -63,7 +71,12 @@ export async function resolveLocation(
   if (mentionedCity) {
     const pt = await cityPoint(mentionedCity);
     if (pt) {
-      const loc: ResolvedLocation = { lat: pt.lat, lng: pt.lng, city: pt.city, source: "chat" };
+      const loc: ResolvedLocation = {
+        lat: pt.lat,
+        lng: pt.lng,
+        city: pt.city,
+        source: "chat",
+      };
       await saveCaseLocation(caseId, loc);
       return loc;
     }
@@ -77,11 +90,29 @@ export async function escalateEmergency(
   patient: PatientProfile,
   rules: RedFlagId[],
 ): Promise<Outcome> {
-  const loc = (await resolveLocation(caseId, patient, null)) ?? homeLocation(patient);
+  const loc =
+    (await resolveLocation(caseId, patient, null)) ?? homeLocation(patient);
   if (loc?.source === "home") await saveCaseLocation(caseId, loc);
-  const places = loc ? (await nearestPreferOpen({ specialty: OHBP, lat: loc.lat, lng: loc.lng, limit: 3 })).places : [];
-  await db().from("cases").update({ route: "emergency", urgency: "hitno" }).eq("id", caseId);
-  await addCaseEvent(caseId, "emergency_escalated", { rules }, "emergency_escalated");
+  const places = loc
+    ? (
+        await nearestPreferOpen({
+          specialty: OHBP,
+          lat: loc.lat,
+          lng: loc.lng,
+          limit: 3,
+        })
+      ).places
+    : [];
+  await db()
+    .from("cases")
+    .update({ route: "emergency", urgency: "hitno" })
+    .eq("id", caseId);
+  await addCaseEvent(
+    caseId,
+    "emergency_escalated",
+    { rules },
+    "emergency_escalated",
+  );
   return { kind: "emergency", caseId, rules, places };
 }
 
@@ -96,7 +127,10 @@ export async function submitCase(opts: {
 
   await db()
     .from("cases")
-    .update({ summary_json: summary as unknown as Json, urgency: summary.urgency })
+    .update({
+      summary_json: summary as unknown as Json,
+      urgency: summary.urgency,
+    })
     .eq("id", caseId);
 
   // Second safety layer: the model judged it urgent.
@@ -104,7 +138,11 @@ export async function submitCase(opts: {
     return escalateEmergency(caseId, patient, []);
   }
 
-  const current = await resolveLocation(caseId, patient, summary.current_location);
+  const current = await resolveLocation(
+    caseId,
+    patient,
+    summary.current_location,
+  );
   const home = homeLocation(patient);
   const decision = decideRoute({
     category: summary.category,
@@ -116,7 +154,12 @@ export async function submitCase(opts: {
     .from("cases")
     .update({ route: decision.route, target_role: decision.role })
     .eq("id", caseId);
-  await addCaseEvent(caseId, "triaged", { category: summary.category, route: decision.route }, "triaged");
+  await addCaseEvent(
+    caseId,
+    "triaged",
+    { category: summary.category, route: decision.route },
+    "triaged",
+  );
 
   if (decision.route === "direct" && current) {
     const { places, anyOpen } = await nearestPreferOpen({
@@ -133,24 +176,43 @@ export async function submitCase(opts: {
     await addCaseEvent(
       caseId,
       "routed_direct",
-      { places: places.map((p) => p.id), any_open: anyOpen, city: current.city },
+      {
+        places: places.map((p) => p.id),
+        any_open: anyOpen,
+        city: current.city,
+      },
       "routed_direct",
     );
-    return { kind: "direct", caseId, places, anyOpen, city: current.city, farNote };
+    return {
+      kind: "direct",
+      caseId,
+      places,
+      anyOpen,
+      city: current.city,
+      farNote,
+    };
   }
 
-  const doctor = patient.doctors.find((d) => d.role === decision.role) ?? patient.doctors[0];
-  const token = await createDoctorToken(caseId, doctor?.practitioner_id ?? null);
+  const doctor =
+    patient.doctors.find((d) => d.role === decision.role) ?? patient.doctors[0];
+  const token = await createDoctorToken(
+    caseId,
+    doctor?.practitioner_id ?? null,
+  );
   const caseUrl = `${origin}/lijecnik/slucaj/${token}`;
   const age = new Date().getFullYear() - patient.birth_year;
   const email = await sendDemoEmail({
-    subject: `Novi slučaj: ${patient.name} — ${summary.chief_complaint}`.slice(0, 120),
+    subject: `Novi slučaj: ${patient.name} — ${summary.chief_complaint}`.slice(
+      0,
+      120,
+    ),
     react: DoctorCaseEmail({
       doctorName: doctor?.full_name ?? "liječnik",
       patientName: patient.name,
       patientAge: age,
       summary,
-      currentCity: current?.city ?? summary.current_location ?? patient.home_city,
+      currentCity:
+        current?.city ?? summary.current_location ?? patient.home_city,
       caseUrl,
     }),
   });
@@ -186,7 +248,9 @@ export function outcomeForModel(o: Outcome): string {
       return JSON.stringify({
         ishod: "hitno",
         uputa: "Reci pacijentu neka odmah nazove 112. Ne postavljaj pitanja.",
-        najblize_hitne: o.places.slice(0, 2).map((p) => `${p.name}, ${p.address ?? ""}, ${p.city ?? ""}`),
+        najblize_hitne: o.places
+          .slice(0, 2)
+          .map((p) => `${p.name}, ${p.address ?? ""}, ${p.city ?? ""}`),
       });
     case "direct":
       return JSON.stringify({

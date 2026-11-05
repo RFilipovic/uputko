@@ -33,7 +33,9 @@ export async function MyCases() {
         </Link>
       </div>
       {(cases ?? []).length === 0 ? (
-        <p className="text-lg text-muted-foreground">{hr.notifications.empty}</p>
+        <p className="text-lg text-muted-foreground">
+          {hr.notifications.empty}
+        </p>
       ) : (
         <ul className="flex flex-col gap-2">
           {(cases ?? []).map((c) => (
@@ -44,14 +46,20 @@ export async function MyCases() {
               >
                 <div className="min-w-0 flex-1">
                   <p className="truncate text-lg font-semibold">
-                    {(c.summary_json as CaseSummary | null)?.chief_complaint ?? hr.case.title}
+                    {(c.summary_json as CaseSummary | null)?.chief_complaint ??
+                      hr.case.title}
                   </p>
-                  <p className="text-sm text-muted-foreground">{formatWhen(c.created_at)}</p>
+                  <p className="text-sm text-muted-foreground">
+                    {formatWhen(c.created_at)}
+                  </p>
                   <div className="mt-1">
                     <StatusPill status={c.status} />
                   </div>
                 </div>
-                <ChevronRight aria-hidden className="size-6 shrink-0 text-muted-foreground" />
+                <ChevronRight
+                  aria-hidden
+                  className="size-6 shrink-0 text-muted-foreground"
+                />
               </Link>
             </li>
           ))}

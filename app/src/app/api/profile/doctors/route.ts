@@ -20,9 +20,11 @@ export async function POST(req: Request) {
     .eq("id", body.data.practitionerId)
     .maybeSingle();
   if (!pr || pr.role !== body.data.role) return jsonError(400, "wrong_role");
-  const { error } = await db()
-    .from("patient_practitioners")
-    .upsert({ patient_id: patientId, role: body.data.role, practitioner_id: pr.id });
+  const { error } = await db().from("patient_practitioners").upsert({
+    patient_id: patientId,
+    role: body.data.role,
+    practitioner_id: pr.id,
+  });
   if (error) return jsonError(500, "failed");
   return Response.json({ ok: true });
 }

@@ -43,7 +43,12 @@ export async function nearestPlaces(opts: {
 }
 
 /** Open places first; if nothing is open, the nearest ones with their hours. */
-export async function nearestPreferOpen(opts: { specialty: string; lat: number; lng: number; limit?: number }) {
+export async function nearestPreferOpen(opts: {
+  specialty: string;
+  lat: number;
+  lng: number;
+  limit?: number;
+}) {
   const open = await nearestPlaces({ ...opts, openNow: true });
   if (open.length) return { places: open, anyOpen: true };
   return { places: await nearestPlaces(opts), anyOpen: false };

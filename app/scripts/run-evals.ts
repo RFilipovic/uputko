@@ -46,23 +46,42 @@ async function turn(cookie: string, body: Record<string, unknown>) {
 
 async function run(s: EvalScenario) {
   const cookie = await session(s.persona);
-  let r = await turn(cookie, { message: s.first, location: s.city ? { source: "city", city: s.city } : undefined });
+  let r = await turn(cookie, {
+    message: s.first,
+    location: s.city ? { source: "city", city: s.city } : undefined,
+  });
   const caseId = r.caseId;
   const questions: string[] = [r.reply.trim()];
   const pool = [...s.answers];
   for (let i = 0; i < MAX_TURNS && !r.outcome; i++) {
-    r = await turn(cookie, { caseId, message: pool.shift() ?? "Ne znam, to je sve." });
+    r = await turn(cookie, {
+      caseId,
+      message: pool.shift() ?? "Ne znam, to je sve.",
+    });
     questions.push(r.reply.trim());
   }
-  const view = await (await fetch(`${BASE}/api/cases/${caseId}`, { headers: { cookie } })).json();
+  const view = await (
+    await fetch(`${BASE}/api/cases/${caseId}`, { headers: { cookie } })
+  ).json();
   const got = r.outcome;
   const e = s.expect;
   let pass = Boolean(got) && got!.kind === e.kind;
   if (pass && e.kind === "sent_to_doctor") {
-    pass = view.targetRole === e.role && (!e.urgency || e.urgency.includes(view.urgency));
+    pass =
+      view.targetRole === e.role &&
+      (!e.urgency || e.urgency.includes(view.urgency));
   }
-  if (pass && e.kind === "emergency" && e.layer === "rules") pass = questions.length === 1;
-  return { s, pass, got: got?.kind ?? "none", role: view.targetRole, urgency: view.urgency, turns: questions.length, questions };
+  if (pass && e.kind === "emergency" && e.layer === "rules")
+    pass = questions.length === 1;
+  return {
+    s,
+    pass,
+    got: got?.kind ?? "none",
+    role: view.targetRole,
+    urgency: view.urgency,
+    turns: questions.length,
+    questions,
+  };
 }
 
 const only = process.argv[2];
@@ -75,7 +94,10 @@ for (const s of list) {
     console.log(
       `${r.pass ? "PASS" : "FAIL"}  ${s.id.padEnd(22)} got=${r.got}${r.role ? `/${r.role}` : ""}${r.urgency ? `/${r.urgency}` : ""} turns=${r.turns}  expected=${JSON.stringify(s.expect)}`,
     );
-    if (!r.pass || process.env.EVAL_VERBOSE) r.questions.forEach((q, i) => console.log(`      ${i + 1}. ${q.replace(/\s+/g, " ").slice(0, 160)}`));
+    if (!r.pass || process.env.EVAL_VERBOSE)
+      r.questions.forEach((q, i) =>
+        console.log(`      ${i + 1}. ${q.replace(/\s+/g, " ").slice(0, 160)}`),
+      );
   } catch (err) {
     console.log(`ERROR ${s.id}: ${(err as Error).message}`);
   }

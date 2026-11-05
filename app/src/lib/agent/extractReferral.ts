@@ -14,7 +14,11 @@ export const ExtractedReferral = z.object({
 });
 export type ExtractedReferral = z.infer<typeof ExtractedReferral>;
 
-export const ACCEPTED_TYPES = ["application/pdf", "image/jpeg", "image/png"] as const;
+export const ACCEPTED_TYPES = [
+  "application/pdf",
+  "image/jpeg",
+  "image/png",
+] as const;
 export type AcceptedType = (typeof ACCEPTED_TYPES)[number];
 
 const INSTRUCTIONS = `Ovo je hrvatska uputnica (dokument liječnika). Pročitaj iz nje samo:
@@ -26,21 +30,43 @@ const INSTRUCTIONS = `Ovo je hrvatska uputnica (dokument liječnika). Pročitaj 
 Ako dokument nije uputnica, postavi is_referral na false i ostalo na null. Ne izmišljaj podatke koji ne pišu.`;
 
 /** Read the uputnica with Claude (PDF or image). Synthetic demo documents only. */
-export async function extractReferral(file: { mime: AcceptedType; base64: string }): Promise<ExtractedReferral> {
+export async function extractReferral(file: {
+  mime: AcceptedType;
+  base64: string;
+}): Promise<ExtractedReferral> {
   const env = serverEnv();
   if (!env.ANTHROPIC_API_KEY) throw new Error("ANTHROPIC_API_KEY is not set");
-  const client = new Anthropic({ apiKey: env.ANTHROPIC_API_KEY, timeout: 60_000, maxRetries: 2 });
+  const client = new Anthropic({
+    apiKey: env.ANTHROPIC_API_KEY,
+    timeout: 60_000,
+    maxRetries: 2,
+  });
 
   const source: Anthropic.ContentBlockParam =
     file.mime === "application/pdf"
-      ? { type: "document", source: { type: "base64", media_type: "application/pdf", data: file.base64 } }
-      : { type: "image", source: { type: "base64", media_type: file.mime, data: file.base64 } };
+      ? {
+          type: "document",
+          source: {
+            type: "base64",
+            media_type: "application/pdf",
+            data: file.base64,
+          },
+        }
+      : {
+          type: "image",
+          source: { type: "base64", media_type: file.mime, data: file.base64 },
+        };
 
   const response = await client.messages.parse({
     model: env.ANTHROPIC_MODEL,
     max_tokens: 2000,
-    output_config: { effort: "low", format: zodOutputFormat(ExtractedReferral) },
-    messages: [{ role: "user", content: [source, { type: "text", text: INSTRUCTIONS }] }],
+    output_config: {
+      effort: "low",
+      format: zodOutputFormat(ExtractedReferral),
+    },
+    messages: [
+      { role: "user", content: [source, { type: "text", text: INSTRUCTIONS }] },
+    ],
   });
   if (response.stop_reason === "refusal" || !response.parsed_output) {
     throw new Error("referral could not be read");

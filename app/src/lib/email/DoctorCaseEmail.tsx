@@ -23,7 +23,14 @@ export function DoctorCaseEmail(props: {
     ["Tegoba", s.chief_complaint],
     ["Gdje", s.body_location],
     ["Od kada", `${s.onset}${s.duration ? ` · ${s.duration}` : ""}`],
-    ["Temperatura", s.fever === "da" ? (s.fever_celsius ? `da, ${s.fever_celsius} °C` : "da") : s.fever],
+    [
+      "Temperatura",
+      s.fever === "da"
+        ? s.fever_celsius
+          ? `da, ${s.fever_celsius} °C`
+          : "da"
+        : s.fever,
+    ],
     ["Jačina", s.severity ? `${s.severity}/10` : "nije navedeno"],
     ["Prateće tegobe", s.associated_symptoms.join(", ") || "nema"],
     ["Povijest", s.relevant_history || "ništa navedeno"],
@@ -31,17 +38,21 @@ export function DoctorCaseEmail(props: {
   if (s.for_child) rows.unshift(["Dijete", s.child_age ?? "dob nije navedena"]);
 
   return (
-    <Layout preview={`Novi slučaj: ${props.patientName} — ${s.chief_complaint}`}>
+    <Layout
+      preview={`Novi slučaj: ${props.patientName} — ${s.chief_complaint}`}
+    >
       <Heading style={styles.h1}>Novi slučaj: {props.patientName}</Heading>
       <Text style={styles.p}>
-        Poštovani/a dr. {props.doctorName}, vaš pacijent opisao je tegobu u Uputku. Sažetak je pripremio asistent iz
-        razgovora — <strong>nije dijagnoza</strong>.
+        Poštovani/a dr. {props.doctorName}, vaš pacijent opisao je tegobu u
+        Uputku. Sažetak je pripremio asistent iz razgovora —{" "}
+        <strong>nije dijagnoza</strong>.
       </Text>
       <Text style={styles.badge(u.bg, u.fg)}>{u.label}</Text>
       <Section style={{ margin: "16px 0 0" }}>
         <Text style={styles.label}>Pacijent</Text>
         <Text style={styles.value}>
-          {props.patientName}, {props.patientAge} g. · trenutno u: {props.currentCity}
+          {props.patientName}, {props.patientAge} g. · trenutno u:{" "}
+          {props.currentCity}
         </Text>
         {rows.map(([k, v]) => (
           <div key={k}>
@@ -49,7 +60,9 @@ export function DoctorCaseEmail(props: {
             <Text style={styles.value}>{v}</Text>
           </div>
         ))}
-        <Text style={styles.label}>Prijedlog specijalnosti (prijedlog, ne dijagnoza)</Text>
+        <Text style={styles.label}>
+          Prijedlog specijalnosti (prijedlog, ne dijagnoza)
+        </Text>
         <Text style={styles.value}>{s.suggested_specialty}</Text>
       </Section>
       <Section style={{ margin: "8px 0 0" }}>
@@ -58,7 +71,8 @@ export function DoctorCaseEmail(props: {
         </Button>
       </Section>
       <Text style={{ ...styles.label, marginTop: "12px" }}>
-        Poveznica je osobna i vrijedi 72 sata. U portalu učitajte uputnicu; pacijent je dobiva odmah.
+        Poveznica je osobna i vrijedi 72 sata. U portalu učitajte uputnicu;
+        pacijent je dobiva odmah.
       </Text>
     </Layout>
   );

@@ -5,16 +5,31 @@ import { useEffect, useRef, useState } from "react";
 import { hr } from "@/i18n/hr";
 import { cn } from "@/lib/utils";
 
-export type MapPoint = { lat: number; lng: number; label: string; kind: "place" | "you" | "emergency" };
+export type MapPoint = {
+  lat: number;
+  lng: number;
+  label: string;
+  kind: "place" | "you" | "emergency";
+};
 
 const STYLE = "https://tiles.openfreemap.org/styles/liberty";
-const COLORS = { place: "#573DFE", you: "#16132E", emergency: "#C81E1E" } as const;
+const COLORS = {
+  place: "#573DFE",
+  you: "#16132E",
+  emergency: "#C81E1E",
+} as const;
 
 /**
  * Small map (MapLibre + OpenFreeMap, no API key). Flies to the first point.
  * Decorative support only: every place is also listed in text next to it.
  */
-export function InstitutionMap({ points, className }: { points: MapPoint[]; className?: string }) {
+export function InstitutionMap({
+  points,
+  className,
+}: {
+  points: MapPoint[];
+  className?: string;
+}) {
   const el = useRef<HTMLDivElement>(null);
   const [state, setState] = useState<"loading" | "ready" | "error">("loading");
   const key = points.map((p) => `${p.lat},${p.lng},${p.kind}`).join("|");
@@ -29,7 +44,9 @@ export function InstitutionMap({ points, className }: { points: MapPoint[]; clas
         const maplibre = await import("maplibre-gl");
         if (cancelled || !el.current) return;
         maplibre.setWorkerUrl("/maplibre/maplibre-gl-worker.mjs");
-        const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const reduce = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
         const first = points[0];
         const m = new maplibre.Map({
           container: el.current,
@@ -41,21 +58,34 @@ export function InstitutionMap({ points, className }: { points: MapPoint[]; clas
         });
         map = m;
         // Individual tile/glyph errors are normal; only give up if nothing loads.
-        timer = setTimeout(() => setState((s) => (s === "loading" ? "error" : s)), 12_000);
+        timer = setTimeout(
+          () => setState((s) => (s === "loading" ? "error" : s)),
+          12_000,
+        );
         m.on("load", () => {
           setState("ready");
           for (const p of points) {
             const dot = document.createElement("div");
             dot.style.cssText = `width:22px;height:22px;border-radius:999px;border:3px solid white;box-shadow:0 1px 4px rgba(0,0,0,.4);background:${COLORS[p.kind]}`;
             dot.setAttribute("aria-hidden", "true");
-            new maplibre.Marker({ element: dot }).setLngLat([p.lng, p.lat]).addTo(m);
+            new maplibre.Marker({ element: dot })
+              .setLngLat([p.lng, p.lat])
+              .addTo(m);
           }
           if (points.length > 1) {
             const b = new maplibre.LngLatBounds();
             points.forEach((p) => b.extend([p.lng, p.lat]));
-            m.fitBounds(b, { padding: 50, maxZoom: 14, duration: reduce ? 0 : 900 });
+            m.fitBounds(b, {
+              padding: 50,
+              maxZoom: 14,
+              duration: reduce ? 0 : 900,
+            });
           } else {
-            m.flyTo({ center: [first.lng, first.lat], zoom: 14, duration: reduce ? 0 : 900 });
+            m.flyTo({
+              center: [first.lng, first.lat],
+              zoom: 14,
+              duration: reduce ? 0 : 900,
+            });
           }
         });
       } catch {
@@ -73,9 +103,21 @@ export function InstitutionMap({ points, className }: { points: MapPoint[]; clas
 
   if (points.length === 0) return null;
   return (
-    <div className={cn("relative h-52 overflow-hidden rounded-2xl border border-border bg-muted", className)}>
-      <div ref={el} className="h-full w-full" aria-label={points.map((p) => p.label).join(", ")} role="img" />
-      {state === "loading" && <div className="absolute inset-0 animate-pulse bg-muted" aria-hidden />}
+    <div
+      className={cn(
+        "relative h-52 overflow-hidden rounded-2xl border border-border bg-muted",
+        className,
+      )}
+    >
+      <div
+        ref={el}
+        className="h-full w-full"
+        aria-label={points.map((p) => p.label).join(", ")}
+        role="img"
+      />
+      {state === "loading" && (
+        <div className="absolute inset-0 animate-pulse bg-muted" aria-hidden />
+      )}
       {state === "error" && (
         <p className="absolute inset-0 grid place-items-center p-4 text-center text-base text-muted-foreground">
           {hr.map.unavailable}

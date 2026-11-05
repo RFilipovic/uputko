@@ -2,7 +2,8 @@ import type { ReactElement } from "react";
 import { Resend } from "resend";
 import { serverEnv } from "@/lib/env";
 
-export type SendResult = { sent: true; id: string } | { sent: false; reason: string };
+export type SendResult =
+  { sent: true; id: string } | { sent: false; reason: string };
 
 /**
  * Send a demo email. It ALWAYS goes to DEMO_INBOX (team-controlled), never to
@@ -11,10 +12,15 @@ export type SendResult = { sent: true; id: string } | { sent: false; reason: str
 export async function sendDemoEmail(opts: {
   subject: string;
   react: ReactElement;
-  attachments?: Array<{ filename: string; content: string; contentType?: string }>;
+  attachments?: Array<{
+    filename: string;
+    content: string;
+    contentType?: string;
+  }>;
 }): Promise<SendResult> {
   const env = serverEnv();
-  if (!env.RESEND_API_KEY || !env.DEMO_INBOX) return { sent: false, reason: "email_not_configured" };
+  if (!env.RESEND_API_KEY || !env.DEMO_INBOX)
+    return { sent: false, reason: "email_not_configured" };
   try {
     const resend = new Resend(env.RESEND_API_KEY);
     const { data, error } = await resend.emails.send({
@@ -24,9 +30,13 @@ export async function sendDemoEmail(opts: {
       react: opts.react,
       attachments: opts.attachments,
     });
-    if (error || !data) return { sent: false, reason: error?.message ?? "unknown" };
+    if (error || !data)
+      return { sent: false, reason: error?.message ?? "unknown" };
     return { sent: true, id: data.id };
   } catch (err) {
-    return { sent: false, reason: err instanceof Error ? err.message : "unknown" };
+    return {
+      sent: false,
+      reason: err instanceof Error ? err.message : "unknown",
+    };
   }
 }

@@ -21,7 +21,11 @@ export function clientKey(req: Request): string {
 }
 
 /** Counts one hit; true while under the limit. Fails closed if the DB is unreachable. */
-export async function allow(key: string, windowSeconds: number, max: number): Promise<boolean> {
+export async function allow(
+  key: string,
+  windowSeconds: number,
+  max: number,
+): Promise<boolean> {
   const { data, error } = await db().rpc("hit_rate_limit", {
     p_key: key,
     p_window_seconds: windowSeconds,

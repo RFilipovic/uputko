@@ -15,7 +15,11 @@ export function QuickReplies({
   disabled?: boolean;
 }) {
   return (
-    <ul className={cn(variant === "list" ? "flex flex-col gap-2" : "flex flex-wrap gap-2")}>
+    <ul
+      className={cn(
+        variant === "list" ? "flex flex-col gap-2" : "flex flex-wrap gap-2",
+      )}
+    >
       {options.map((o) => (
         <li key={o} className={variant === "list" ? "" : "min-w-0"}>
           <button
@@ -24,7 +28,9 @@ export function QuickReplies({
             onClick={() => onPick(o)}
             className={cn(
               "flex min-h-14 items-center rounded-2xl border-2 bg-card px-5 text-left text-lg font-semibold transition-colors duration-200 hover:border-primary focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none disabled:opacity-50",
-              variant === "list" ? "w-full border-border" : "border-primary/40 text-primary dark:text-foreground",
+              variant === "list"
+                ? "w-full border-border"
+                : "border-primary/40 text-primary dark:text-foreground",
             )}
           >
             {o}

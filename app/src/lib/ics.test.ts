@@ -18,7 +18,8 @@ describe("buildIcs", () => {
   });
   it("uses CRLF and folds long lines", () => {
     expect(ics.includes("\r\n")).toBe(true);
-    for (const line of ics.split("\r\n")) expect(Buffer.byteLength(line)).toBeLessThanOrEqual(75);
+    for (const line of ics.split("\r\n"))
+      expect(Buffer.byteLength(line)).toBeLessThanOrEqual(75);
   });
 });
 

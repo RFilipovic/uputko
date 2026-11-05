@@ -8,5 +8,6 @@ const require = createRequire(import.meta.url);
 const dist = dirname(require.resolve("maplibre-gl/package.json")) + "/dist";
 const out = join(process.cwd(), "public", "maplibre");
 mkdirSync(out, { recursive: true });
-for (const f of ["maplibre-gl-worker.mjs", "maplibre-gl-shared.mjs"]) copyFileSync(join(dist, f), join(out, f));
+for (const f of ["maplibre-gl-worker.mjs", "maplibre-gl-shared.mjs"])
+  copyFileSync(join(dist, f), join(out, f));
 console.log("maplibre worker copied to public/maplibre");

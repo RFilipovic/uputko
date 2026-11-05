@@ -8,10 +8,17 @@ export type ResolvedLocation = {
   source: "gps" | "city" | "chat" | "home";
 };
 
-const CityPoint = z.object({ city: z.string(), lat: z.number(), lng: z.number(), n: z.number() });
+const CityPoint = z.object({
+  city: z.string(),
+  lat: z.number(),
+  lng: z.number(),
+  n: z.number(),
+});
 
 /** Centre of a town from our open data ("Varazdin" → Varaždin). */
-export async function cityPoint(name: string): Promise<z.infer<typeof CityPoint> | null> {
+export async function cityPoint(
+  name: string,
+): Promise<z.infer<typeof CityPoint> | null> {
   const clean = name.replace(/^(u|na|kod)\s+/i, "").trim();
   if (clean.length < 2) return null;
   const { data } = await db().rpc("city_point", { p_city: clean });

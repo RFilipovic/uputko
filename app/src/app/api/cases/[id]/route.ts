@@ -5,7 +5,10 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 /** Fresh case data — the case page refetches this whenever a live update arrives. */
-export async function GET(_req: Request, ctx: { params: Promise<{ id: string }> }) {
+export async function GET(
+  _req: Request,
+  ctx: { params: Promise<{ id: string }> },
+) {
   const patientId = await requirePatient();
   if (!patientId) return jsonError(401, "no_patient");
   const { id } = await ctx.params;

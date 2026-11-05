@@ -5,7 +5,12 @@ import { formatKm } from "@/lib/geo/distance";
 import { nearestPreferOpen } from "@/lib/geo/places";
 import type { PatientProfile } from "@/lib/patients";
 import { ROLE_LABEL } from "@/lib/patients";
-import { outcomeForModel, resolveLocation, submitCase, type Outcome } from "./outcome";
+import {
+  outcomeForModel,
+  resolveLocation,
+  submitCase,
+  type Outcome,
+} from "./outcome";
 import { patientContext, SYSTEM_PROMPT } from "./prompt";
 import { ROLES, SPECIALTY_BY_ROLE } from "./routing";
 import { CASE_SUMMARY_JSON_SCHEMA, CaseSummary } from "./schemas";
@@ -22,9 +27,15 @@ const FindPlacesInput = z.object({
 const TOOLS: Anthropic.Tool[] = [
   {
     name: "get_my_doctors",
-    description: "Vraća pacijentove izabrane liječnike (uloga, ime, adresa ordinacije).",
+    description:
+      "Vraća pacijentove izabrane liječnike (uloga, ime, adresa ordinacije).",
     strict: true,
-    input_schema: { type: "object", properties: {}, required: [], additionalProperties: false },
+    input_schema: {
+      type: "object",
+      properties: {},
+      required: [],
+      additionalProperties: false,
+    },
   },
   {
     name: "find_places",
@@ -37,7 +48,10 @@ const TOOLS: Anthropic.Tool[] = [
       required: ["kind", "open_now"],
       properties: {
         kind: { type: "string", enum: [...ROLES, "hitna"] },
-        open_now: { type: "boolean", description: "Samo one koje su sada otvorene." },
+        open_now: {
+          type: "boolean",
+          description: "Samo one koje su sada otvorene.",
+        },
       },
     },
   },
@@ -46,13 +60,22 @@ const TOOLS: Anthropic.Tool[] = [
     description:
       "Završava razgovor: šalje strukturirani sažetak. Sustav sam odlučuje kome ide (izabrani liječnik ili najbliža otvorena ordinacija) i vraća ishod.",
     strict: true,
-    input_schema: CASE_SUMMARY_JSON_SCHEMA as unknown as Anthropic.Tool.InputSchema,
+    input_schema:
+      CASE_SUMMARY_JSON_SCHEMA as unknown as Anthropic.Tool.InputSchema,
   },
 ];
 
 export type Emit = (event: string, data: Record<string, unknown>) => void;
 
-export type TurnResult = { text: string; outcome: Outcome | null; refused: boolean };
+/** Operator instruction when the patient presses "Pošalji liječniku". */
+const FINISH_NOW =
+  "Pacijent je pritisnuo gumb 'Pošalji liječniku'. Ne postavljaj više pitanja: odmah pozovi alat submit_case_summary s onim što znaš. Za podatke koje pacijent nije rekao upiši 'nije navedeno' (brojčana polja: null; temperatura: 'nepoznato').";
+
+export type TurnResult = {
+  text: string;
+  outcome: Outcome | null;
+  refused: boolean;
+};
 
 export async function runAgentTurn(opts: {
   caseId: string;
@@ -61,12 +84,20 @@ export async function runAgentTurn(opts: {
   location: { city: string | null; source: string | null };
   origin: string;
   emit: Emit;
+  /** The patient pressed "Pošalji liječniku": submit now with what is known. */
+  finishNow?: boolean;
 }): Promise<TurnResult> {
   const env = serverEnv();
   if (!env.ANTHROPIC_API_KEY) throw new Error("ANTHROPIC_API_KEY is not set");
-  const client = new Anthropic({ apiKey: env.ANTHROPIC_API_KEY, timeout: 45_000, maxRetries: 2 });
+  const client = new Anthropic({
+    apiKey: env.ANTHROPIC_API_KEY,
+    timeout: 45_000,
+    maxRetries: 2,
+  });
 
   const messages: Anthropic.MessageParam[] = [...opts.history];
+  // Mid-conversation system message right after the patient's last message.
+  if (opts.finishNow) messages.push({ role: "system", content: FINISH_NOW });
   let text = "";
   let outcome: Outcome | null = null;
 
@@ -94,9 +125,12 @@ export async function runAgentTurn(opts: {
     if (message.stop_reason === "refusal") {
       return { text, outcome, refused: true };
     }
-    const toolUses = message.content.filter((b): b is Anthropic.ToolUseBlock => b.type === "tool_use");
+    const toolUses = message.content.filter(
+      (b): b is Anthropic.ToolUseBlock => b.type === "tool_use",
+    );
     if (toolUses.length === 0) break;
-    if (message.stop_reason === "max_tokens") throw new Error("tool input truncated (max_tokens)");
+    if (message.stop_reason === "max_tokens")
+      throw new Error("tool input truncated (max_tokens)");
 
     // Append-only: the assistant turn goes back unchanged (thinking blocks included).
     messages.push({ role: "assistant", content: message.content });
@@ -148,9 +182,18 @@ async function runTool(
       const input = FindPlacesInput.safeParse(use.input);
       if (!input.success) return err("Neispravni parametri.");
       const loc = await resolveLocation(opts.caseId, opts.patient, null);
-      if (!loc) return err("Lokacija pacijenta nije poznata. Pitaj u kojem je gradu.");
-      const specialty = input.data.kind === "hitna" ? "hitna-medicina-ohbp" : SPECIALTY_BY_ROLE[input.data.kind];
-      const { places, anyOpen } = await nearestPreferOpen({ specialty, lat: loc.lat, lng: loc.lng, limit: 3 });
+      if (!loc)
+        return err("Lokacija pacijenta nije poznata. Pitaj u kojem je gradu.");
+      const specialty =
+        input.data.kind === "hitna"
+          ? "hitna-medicina-ohbp"
+          : SPECIALTY_BY_ROLE[input.data.kind];
+      const { places, anyOpen } = await nearestPreferOpen({
+        specialty,
+        lat: loc.lat,
+        lng: loc.lng,
+        limit: 3,
+      });
       return ok(
         JSON.stringify({
           od: loc.city,
@@ -170,7 +213,9 @@ async function runTool(
       if (current) return err("Sažetak je već poslan.");
       const parsed = CaseSummary.safeParse(use.input);
       if (!parsed.success) {
-        return err(`Sažetak nije ispravan: ${parsed.error.issues.map((i) => i.path.join(".")).join(", ")}`);
+        return err(
+          `Sažetak nije ispravan: ${parsed.error.issues.map((i) => i.path.join(".")).join(", ")}`,
+        );
       }
       const outcome = await submitCase({
         caseId: opts.caseId,
@@ -185,6 +230,8 @@ async function runTool(
     return err(`Nepoznat alat: ${use.name}`);
   } catch (e) {
     console.error("tool failed", use.name, e instanceof Error ? e.message : e);
-    return err("Došlo je do greške u sustavu. Reci pacijentu da pokuša ponovno.");
+    return err(
+      "Došlo je do greške u sustavu. Reci pacijentu da pokuša ponovno.",
+    );
   }
 }

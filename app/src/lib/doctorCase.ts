@@ -7,11 +7,18 @@ export async function doctorCase(token: string) {
   if (!check.ok) return { ok: false as const, reason: check.reason };
   const { data: c } = await db()
     .from("cases")
-    .select("id, patient_id, status, patient_lat, patient_lng, patient_city, summary_json, target_role, urgency")
+    .select(
+      "id, patient_id, status, patient_lat, patient_lng, patient_city, summary_json, target_role, urgency",
+    )
     .eq("id", check.caseId)
     .single();
   if (!c) return { ok: false as const, reason: "invalid" as const };
-  return { ok: true as const, case: c, practitionerId: check.practitionerId, firstUse: check.firstUse };
+  return {
+    ok: true as const,
+    case: c,
+    practitionerId: check.practitionerId,
+    firstUse: check.firstUse,
+  };
 }
 
 /** Statuses after which the doctor's decision is already made. */

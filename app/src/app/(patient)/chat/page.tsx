@@ -8,16 +8,25 @@ import { getPatientProfile } from "@/lib/patients";
 import { currentPatientId } from "@/lib/session";
 import { hr } from "@/i18n/hr";
 
-export const metadata: Metadata = { title: `${hr.chat.title} · ${hr.app.name}` };
+export const metadata: Metadata = {
+  title: `${hr.chat.title} · ${hr.app.name}`,
+};
 export const dynamic = "force-dynamic";
 
-export default async function ChatPage({ searchParams }: { searchParams: Promise<{ glas?: string }> }) {
+export default async function ChatPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ glas?: string }>;
+}) {
   const { glas } = await searchParams;
   const patientId = await currentPatientId();
   const patient = patientId ? await getPatientProfile(patientId) : null;
-  if (!patient) redirect(`/profil?next=${encodeURIComponent(glas === "1" ? "/chat?glas=1" : "/chat")}`);
+  if (!patient)
+    redirect(
+      `/profil?next=${encodeURIComponent(glas === "1" ? "/chat?glas=1" : "/chat")}`,
+    );
   return (
-    <PhoneFrame>
+    <PhoneFrame pinned>
       <Always112Banner />
       <AppHeader backHref="/" title={hr.chat.title} />
       <ChatScreen autoVoice={glas === "1"} patientName={patient.name} />

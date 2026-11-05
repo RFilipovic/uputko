@@ -8,10 +8,16 @@ import { loadCaseView } from "@/lib/caseData";
 import { currentPatientId } from "@/lib/session";
 import { hr } from "@/i18n/hr";
 
-export const metadata: Metadata = { title: `${hr.case.title} · ${hr.app.name}` };
+export const metadata: Metadata = {
+  title: `${hr.case.title} · ${hr.app.name}`,
+};
 export const dynamic = "force-dynamic";
 
-export default async function CasePage({ params }: { params: Promise<{ id: string }> }) {
+export default async function CasePage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
   const { id } = await params;
   const patientId = await currentPatientId();
   if (!patientId) redirect(`/profil?next=/slucaj/${id}`);

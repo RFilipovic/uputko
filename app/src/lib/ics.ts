@@ -7,8 +7,17 @@ export function buildIcs(e: {
   location: string;
   description: string;
 }): string {
-  const stamp = (iso: string) => new Date(iso).toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
-  const esc = (s: string) => s.replace(/\\/g, "\\\\").replace(/;/g, "\;").replace(/,/g, "\\,").replace(/\r?\n/g, "\\n");
+  const stamp = (iso: string) =>
+    new Date(iso)
+      .toISOString()
+      .replace(/[-:]/g, "")
+      .replace(/\.\d{3}/, "");
+  const esc = (s: string) =>
+    s
+      .replace(/\\/g, "\\\\")
+      .replace(/;/g, "\;")
+      .replace(/,/g, "\\,")
+      .replace(/\r?\n/g, "\\n");
   // Lines longer than 75 octets are folded (RFC 5545 §3.1).
   const fold = (line: string) => {
     const out: string[] = [];

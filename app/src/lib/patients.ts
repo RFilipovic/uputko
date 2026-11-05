@@ -30,8 +30,12 @@ const Profile = z.object({
 export type PatientProfile = z.infer<typeof Profile>;
 export type ChosenDoctor = z.infer<typeof Doctor>;
 
-export async function getPatientProfile(patientId: string): Promise<PatientProfile | null> {
-  const { data, error } = await db().rpc("patient_profile", { p_patient_id: patientId });
+export async function getPatientProfile(
+  patientId: string,
+): Promise<PatientProfile | null> {
+  const { data, error } = await db().rpc("patient_profile", {
+    p_patient_id: patientId,
+  });
   if (error) throw new Error(`patient profile: ${error.message}`);
   return data ? Profile.parse(data) : null;
 }

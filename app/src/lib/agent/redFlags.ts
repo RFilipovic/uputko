@@ -43,7 +43,8 @@ export function normalize(text: string): string {
 const gap = (n: number) => `(?:\\S+\\s+){0,${n}}`;
 
 // A match counts only if it is not negated just before ("nemam bolove u prsima").
-const NEGATION = /\b(nema|nemam|nemamo|nemaju|nije|nisam|nismo|bez|nikakv\w*)\s+(?:\S+\s+){0,1}$/;
+const NEGATION =
+  /\b(nema|nemam|nemamo|nemaju|nije|nisam|nismo|bez|nikakv\w*)\s+(?:\S+\s+){0,1}$/;
 
 function affirmed(text: string, re: RegExp): boolean {
   const g = new RegExp(re.source, "g");
@@ -59,11 +60,14 @@ const R = {
     `\\b(bol|boli|bole|bolov\\w*|probad\\w*|pece|stisc\\w*|stez\\w*|pritis\\w*|tisti)\\s+${gap(3)}(u\\s+)?(prs\\w*|grud\\w*|src\\w*)` +
       `|\\b(prs\\w*|grud\\w*)\\s+${gap(2)}(bol\\w*|boli|stisc\\w*|stez\\w*|pece)`,
   ),
-  severeChest: /\b(jak\w*|uzasn\w*|strasn\w*|nepodnosljiv\w*)\s+(?:\S+\s+){0,2}bol\w*\s+(?:\S+\s+){0,2}(u\s+)?(prs|grud)/,
+  severeChest:
+    /\b(jak\w*|uzasn\w*|strasn\w*|nepodnosljiv\w*)\s+(?:\S+\s+){0,2}bol\w*\s+(?:\S+\s+){0,2}(u\s+)?(prs|grud)/,
   breathing:
     /\b(ne mogu (da )?disat\w*|ne moze (da )?disat\w*|gusim se|gusi (me|se)|se gusi|ne dobivam zrak\w*|nemam zraka|ostao bez zraka|ostala bez zraka|ne mogu doci do zraka|jedva disem|jedva dise|tesko disem|tesko dise|nedostaje mi zraka|kratak dah|zadihan\w*)/,
-  radiating: /\b(sir\w*|ide|zraci|zrace|seli)\s+(?:\S+\s+){0,3}(u\s+)?(ruk\w*|celjust\w*|vrat\w*|led\w*|lopatic\w*)/,
-  sweatOrFaint: /\b(znoj\w*|hladan znoj|onesvijest\w*|nesvjest\w*|vrti mi se|mucnin\w*)/,
+  radiating:
+    /\b(sir\w*|ide|zraci|zrace|seli)\s+(?:\S+\s+){0,3}(u\s+)?(ruk\w*|celjust\w*|vrat\w*|led\w*|lopatic\w*)/,
+  sweatOrFaint:
+    /\b(znoj\w*|hladan znoj|onesvijest\w*|nesvjest\w*|vrti mi se|mucnin\w*)/,
   faceDroop: new RegExp(
     `\\b(objesen\\w*|objesil\\w*|objesi|spusten\\w*|spustil\\w*|iskrivljen\\w*|iskrivil\\w*|krivo|ukoso|visi)\\s+${gap(2)}(lice|usta|usn\\w*|kut usana)` +
       `|\\b(lice|usta|usn\\w*)\\s+${gap(2)}(objesen\\w*|spusten\\w*|iskrivljen\\w*|krivo|visi)`,
@@ -89,10 +93,13 @@ const R = {
   ),
   seizure:
     /\b(konvulzij\w*|epilepti\w*|napadaj(?! panike)|grcevi po cijelom tijelu|trese (ga|ju|je) i ne reagira|ima grceve i ne reagira|trza se i ne reagira)/,
-  stiffNeck: /\b(ukocen\w*|ukrucen\w*|krut\w*|ne moze sagnuti|ne mogu sagnuti)\s+(?:\S+\s+){0,2}(vrat\w*|glav\w*)/,
+  stiffNeck:
+    /\b(ukocen\w*|ukrucen\w*|krut\w*|ne moze sagnuti|ne mogu sagnuti)\s+(?:\S+\s+){0,2}(vrat\w*|glav\w*)/,
   fever: /\b(temperatur\w*|vrucic\w*|groznic\w*|febril\w*|39|40)\b/,
-  headHit: /\b(udari\w*|udario|udarila|pao|pala|palo|ozlijedi\w*|ozljed\w*)\s+(?:\S+\s+){0,4}glav\w*/,
-  headDanger: /\b(povrac\w*|nesvijest\w*|onesvijest\w*|zbunjen\w*|pospan\w*|ne sjeca|ne sjecam|krv iz (nosa|uha)|bistra tekucina)/,
+  headHit:
+    /\b(udari\w*|udario|udarila|pao|pala|palo|ozlijedi\w*|ozljed\w*)\s+(?:\S+\s+){0,4}glav\w*/,
+  headDanger:
+    /\b(povrac\w*|nesvijest\w*|onesvijest\w*|zbunjen\w*|pospan\w*|ne sjeca|ne sjecam|krv iz (nosa|uha)|bistra tekucina)/,
   poisoning:
     /\b(progutao|progutala|progutalo|popio|popila|popilo|pojeo|pojela|pojelo)\s+(?:\S+\s+){0,4}(puno|previse|cijelu|sve|kutiju|tablet\w*|lijekov\w*|otrov\w*|deterdzent\w*|varikin\w*|kemikalij\w*|baterij\w*|gljiv\w*)|\bpredozir\w*|\botrov(an|ala|ao|anje|ali)\b/,
   pregnant: /\btrudn\w*/,
@@ -107,17 +114,28 @@ export function checkRedFlags(message: string): RedFlagResult {
   const chest = affirmed(t, R.chestPain);
   if (
     affirmed(t, R.severeChest) ||
-    (chest && (affirmed(t, R.breathing) || affirmed(t, R.radiating) || affirmed(t, R.sweatOrFaint)))
+    (chest &&
+      (affirmed(t, R.breathing) ||
+        affirmed(t, R.radiating) ||
+        affirmed(t, R.sweatOrFaint)))
   ) {
     rules.push("chest_pain");
   }
   if (affirmed(t, R.breathing) && !rules.includes("chest_pain")) {
     // "kratak dah" / "zadihan" alone is common and mild; require a stronger phrase.
-    if (/\b(ne mogu|ne moze|gusim|gusi|ne dobivam|nemam zraka|bez zraka|doci do zraka|jedva dis)/.test(t)) {
+    if (
+      /\b(ne mogu|ne moze|gusim|gusi|ne dobivam|nemam zraka|bez zraka|doci do zraka|jedva dis)/.test(
+        t,
+      )
+    ) {
       rules.push("breathing");
     }
   }
-  if (affirmed(t, R.faceDroop) || affirmed(t, R.oneSideWeak) || affirmed(t, R.speech)) {
+  if (
+    affirmed(t, R.faceDroop) ||
+    affirmed(t, R.oneSideWeak) ||
+    affirmed(t, R.speech)
+  ) {
     rules.push("stroke");
   }
   if (affirmed(t, R.heavyBleeding)) rules.push("heavy_bleeding");
@@ -125,15 +143,20 @@ export function checkRedFlags(message: string): RedFlagResult {
   if (affirmed(t, R.unconscious)) rules.push("unconscious");
   if (affirmed(t, R.anaphylaxis)) rules.push("anaphylaxis");
   if (affirmed(t, R.seizure)) rules.push("seizure");
-  if (affirmed(t, R.stiffNeck) && affirmed(t, R.fever)) rules.push("meningitis");
-  if (affirmed(t, R.headHit) && affirmed(t, R.headDanger)) rules.push("head_injury");
+  if (affirmed(t, R.stiffNeck) && affirmed(t, R.fever))
+    rules.push("meningitis");
+  if (affirmed(t, R.headHit) && affirmed(t, R.headDanger))
+    rules.push("head_injury");
   if (affirmed(t, R.poisoning)) rules.push("poisoning");
-  if (affirmed(t, R.pregnant) && affirmed(t, R.anyBleeding)) rules.push("pregnancy_bleeding");
+  if (affirmed(t, R.pregnant) && affirmed(t, R.anyBleeding))
+    rules.push("pregnancy_bleeding");
 
   return { triggered: rules.length > 0, rules };
 }
 
 /** The model's own urgency is the second safety layer: "hitno" escalates too. */
-export function escalatesFromUrgency(urgency: string | null | undefined): boolean {
+export function escalatesFromUrgency(
+  urgency: string | null | undefined,
+): boolean {
   return urgency === "hitno";
 }

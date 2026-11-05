@@ -10,7 +10,10 @@ export async function requirePatient(): Promise<string | null> {
 }
 
 /** Does this appointment belong to the current patient? Returns its case id. */
-export async function ownsAppointment(patientId: string, appointmentId: string) {
+export async function ownsAppointment(
+  patientId: string,
+  appointmentId: string,
+) {
   const { data } = await db()
     .from("appointments")
     .select("id, patient_id, referral_id, referrals(case_id)")

@@ -7,10 +7,22 @@ import { hr } from "@/i18n/hr";
 import { ui } from "@/lib/ui";
 import { cn } from "@/lib/utils";
 
-export type PersonaSummary = { id: string; name: string; age: number; homeCity: string; note: string | null };
+export type PersonaSummary = {
+  id: string;
+  name: string;
+  age: number;
+  homeCity: string;
+  note: string | null;
+};
 
 /** Pick one of the synthetic demo personas (no real login). */
-export function PersonaPicker({ personas, currentId }: { personas: PersonaSummary[]; currentId: string | null }) {
+export function PersonaPicker({
+  personas,
+  currentId,
+}: {
+  personas: PersonaSummary[];
+  currentId: string | null;
+}) {
   const router = useRouter();
   const [busy, setBusy] = useState<string | null>(null);
   const [error, setError] = useState(false);
@@ -33,7 +45,14 @@ export function PersonaPicker({ personas, currentId }: { personas: PersonaSummar
       {personas.map((p) => {
         const active = p.id === currentId;
         return (
-          <li key={p.id} className={cn(ui.card, "flex flex-col gap-3", active && "border-2 border-primary")}>
+          <li
+            key={p.id}
+            className={cn(
+              ui.card,
+              "flex flex-col gap-3",
+              active && "border-2 border-primary",
+            )}
+          >
             <div className="flex items-start gap-3">
               <span className="grid size-12 shrink-0 place-items-center rounded-full bg-primary/10 text-primary dark:text-foreground">
                 <UserRound aria-hidden className="size-6" />

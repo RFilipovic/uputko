@@ -18,9 +18,18 @@ function nextWorkingDays(n: number) {
   }
   return out;
 }
-const iso = (d: Date) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+const iso = (d: Date) =>
+  `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
 
-export function AvailabilityPicker({ onSubmit, onCancel, busy }: { onSubmit: (a: Availability) => void; onCancel: () => void; busy: boolean }) {
+export function AvailabilityPicker({
+  onSubmit,
+  onCancel,
+  busy,
+}: {
+  onSubmit: (a: Availability) => void;
+  onCancel: () => void;
+  busy: boolean;
+}) {
   const days = useMemo(() => nextWorkingDays(10), []);
   const [chosen, setChosen] = useState<Record<string, Set<Part>>>({});
   const [error, setError] = useState(false);
@@ -45,8 +54,12 @@ export function AvailabilityPicker({ onSubmit, onCancel, busy }: { onSubmit: (a:
 
   return (
     <fieldset className="flex flex-col gap-3">
-      <legend className="text-xl font-bold">{hr.appointment.availability.title}</legend>
-      <p className="text-base text-muted-foreground">{hr.appointment.availability.body}</p>
+      <legend className="text-xl font-bold">
+        {hr.appointment.availability.title}
+      </legend>
+      <p className="text-base text-muted-foreground">
+        {hr.appointment.availability.body}
+      </p>
       <ul className="flex flex-col gap-2">
         {days.map((d) => {
           const key = iso(d);
@@ -65,10 +78,14 @@ export function AvailabilityPicker({ onSubmit, onCancel, busy }: { onSubmit: (a:
                     onClick={() => toggle(key, part)}
                     className={cn(
                       "min-h-12 flex-1 rounded-xl border-2 px-2 text-base font-semibold transition-colors focus-visible:ring-4 focus-visible:ring-ring/50 focus-visible:outline-none",
-                      on ? "border-primary bg-primary text-primary-foreground" : "border-border bg-card hover:border-primary",
+                      on
+                        ? "border-primary bg-primary text-primary-foreground"
+                        : "border-border bg-card hover:border-primary",
                     )}
                   >
-                    {part === "morning" ? hr.appointment.availability.morning : hr.appointment.availability.afternoon}
+                    {part === "morning"
+                      ? hr.appointment.availability.morning
+                      : hr.appointment.availability.afternoon}
                   </button>
                 );
               })}
@@ -82,10 +99,20 @@ export function AvailabilityPicker({ onSubmit, onCancel, busy }: { onSubmit: (a:
         </p>
       )}
       <div className="flex flex-col gap-2 sm:flex-row">
-        <button type="button" className={`${ui.btnPrimary} flex-1`} onClick={submit} disabled={busy}>
+        <button
+          type="button"
+          className={`${ui.btnPrimary} flex-1`}
+          onClick={submit}
+          disabled={busy}
+        >
           {hr.appointment.availability.send}
         </button>
-        <button type="button" className={`${ui.btnSecondary} flex-1`} onClick={onCancel} disabled={busy}>
+        <button
+          type="button"
+          className={`${ui.btnSecondary} flex-1`}
+          onClick={onCancel}
+          disabled={busy}
+        >
           {hr.appointment.availability.cancel}
         </button>
       </div>

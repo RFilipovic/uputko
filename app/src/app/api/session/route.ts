@@ -16,10 +16,18 @@ export async function GET() {
 
 /** Pick a demo persona (synthetic patients only; no real login). */
 export async function POST(req: Request) {
-  const body = z.object({ patientId: z.uuid() }).safeParse(await req.json().catch(() => null));
-  if (!body.success) return Response.json({ error: "bad_request" }, { status: 400 });
-  const { data } = await db().from("patients").select("id").eq("id", body.data.patientId).maybeSingle();
-  if (!data) return Response.json({ error: "unknown_patient" }, { status: 404 });
+  const body = z
+    .object({ patientId: z.uuid() })
+    .safeParse(await req.json().catch(() => null));
+  if (!body.success)
+    return Response.json({ error: "bad_request" }, { status: 400 });
+  const { data } = await db()
+    .from("patients")
+    .select("id")
+    .eq("id", body.data.patientId)
+    .maybeSingle();
+  if (!data)
+    return Response.json({ error: "unknown_patient" }, { status: 404 });
   (await cookies()).set(PATIENT_COOKIE, data.id, {
     httpOnly: true,
     sameSite: "lax",

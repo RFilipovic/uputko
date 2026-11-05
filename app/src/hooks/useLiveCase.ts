@@ -18,7 +18,9 @@ export function useLiveCase(initial: CaseView, patientId: string) {
     if (inflight.current) return;
     inflight.current = true;
     try {
-      const res = await fetch(`/api/cases/${initial.id}`, { cache: "no-store" });
+      const res = await fetch(`/api/cases/${initial.id}`, {
+        cache: "no-store",
+      });
       if (!res.ok) throw new Error(String(res.status));
       setView((await res.json()) as CaseView);
       setError(false);
@@ -31,13 +33,14 @@ export function useLiveCase(initial: CaseView, patientId: string) {
 
   useEffect(() => {
     const supabase = browserDb();
-    const channels = [`case:${initial.id}`, `patient:${patientId}`].map((topic) =>
-      supabase
-        .channel(topic)
-        .on("broadcast", { event: "*" }, () => void refresh())
-        .subscribe((status) => {
-          if (status === "SUBSCRIBED") setLive(true);
-        }),
+    const channels = [`case:${initial.id}`, `patient:${patientId}`].map(
+      (topic) =>
+        supabase
+          .channel(topic)
+          .on("broadcast", { event: "*" }, () => void refresh())
+          .subscribe((status) => {
+            if (status === "SUBSCRIBED") setLive(true);
+          }),
     );
     const poll = setInterval(() => void refresh(), 15_000);
     return () => {

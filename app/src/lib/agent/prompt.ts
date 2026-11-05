@@ -25,6 +25,7 @@ Sigurnost:
 
 Kraj razgovora:
 - Kad imaš dovoljno podataka (ili nakon otprilike 6 pitanja), pozovi alat submit_case_summary. Ne pitaj za dopuštenje i ne prepričavaj sažetak prije toga.
+- Pacijent u svakom trenutku može pritisnuti gumb "Pošalji liječniku". Tada odmah šalješ sažetak s onim što znaš, bez novih pitanja.
 - Kad alat vrati rezultat, napiši kratku završnu poruku (najviše 3 rečenice) točno prema rezultatu. Ne izmišljaj imena, adrese ni vremena kojih nema u rezultatu. Ne postavljaj nova pitanja.
 
 Brzi odgovori:
@@ -34,14 +35,33 @@ Najviše 4 kratka odgovora. Primjeri: "OPCIJE: Da | Ne | Ne znam" ili "OPCIJE: 1
 
 Ako pacijent pita nešto što nema veze sa zdravljem, ljubazno reci da pomažeš samo oko zdravstvenih tegoba.`;
 
-const DAYS = ["nedjelja", "ponedjeljak", "utorak", "srijeda", "četvrtak", "petak", "subota"];
+const DAYS = [
+  "nedjelja",
+  "ponedjeljak",
+  "utorak",
+  "srijeda",
+  "četvrtak",
+  "petak",
+  "subota",
+];
 
 /** Per-patient context. Stable within one conversation, so it caches per case. */
-export function patientContext(p: PatientProfile, location: { city: string | null; source: string | null }, now = new Date()) {
-  const zg = new Date(now.toLocaleString("en-US", { timeZone: "Europe/Zagreb" }));
+export function patientContext(
+  p: PatientProfile,
+  location: { city: string | null; source: string | null },
+  now = new Date(),
+) {
+  const zg = new Date(
+    now.toLocaleString("en-US", { timeZone: "Europe/Zagreb" }),
+  );
   const age = zg.getFullYear() - p.birth_year;
   const doctors = p.doctors.length
-    ? p.doctors.map((d) => `- ${ROLE_LABEL[d.role]}: dr. ${d.full_name}, ${d.address ?? ""}, ${d.city ?? ""}`).join("\n")
+    ? p.doctors
+        .map(
+          (d) =>
+            `- ${ROLE_LABEL[d.role]}: dr. ${d.full_name}, ${d.address ?? ""}, ${d.city ?? ""}`,
+        )
+        .join("\n")
     : "- (nije odabran nijedan liječnik)";
   const where =
     location.city && location.source !== "home"

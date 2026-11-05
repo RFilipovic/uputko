@@ -29,36 +29,76 @@ export const CASE_SUMMARY_JSON_SCHEMA = {
   type: "object",
   additionalProperties: false,
   required: [
-    "chief_complaint", "category", "for_child", "child_age", "onset", "duration", "fever",
-    "fever_celsius", "severity", "body_location", "associated_symptoms", "relevant_history",
-    "current_location", "suggested_specialty", "urgency",
+    "chief_complaint",
+    "category",
+    "for_child",
+    "child_age",
+    "onset",
+    "duration",
+    "fever",
+    "fever_celsius",
+    "severity",
+    "body_location",
+    "associated_symptoms",
+    "relevant_history",
+    "current_location",
+    "suggested_specialty",
+    "urgency",
   ],
   properties: {
-    chief_complaint: { type: "string", description: "Glavna tegoba svojim riječima pacijenta, kratko." },
+    chief_complaint: {
+      type: "string",
+      description: "Glavna tegoba svojim riječima pacijenta, kratko.",
+    },
     category: {
       type: "string",
       enum: [...CATEGORIES],
-      description: "zub = zubi/desni; ginekolosko = ginekološke tegobe ili trudnoća; dijete = bolest djeteta (do 18 g.); ostalo = sve ostalo.",
+      description:
+        "zub = zubi/desni; ginekolosko = ginekološke tegobe ili trudnoća; dijete = bolest djeteta (do 18 g.); ostalo = sve ostalo.",
     },
     for_child: { type: "boolean" },
-    child_age: { type: ["string", "null"], description: "Dob djeteta ako se radi o djetetu, inače null." },
-    onset: { type: "string", description: "Kada je počelo, npr. 'prije 2 dana'." },
-    duration: { type: "string", description: "Koliko traje / je li stalno ili povremeno." },
+    child_age: {
+      type: ["string", "null"],
+      description: "Dob djeteta ako se radi o djetetu, inače null.",
+    },
+    onset: {
+      type: "string",
+      description: "Kada je počelo, npr. 'prije 2 dana'.",
+    },
+    duration: {
+      type: "string",
+      description: "Koliko traje / je li stalno ili povremeno.",
+    },
     fever: { type: "string", enum: ["da", "ne", "nepoznato"] },
-    fever_celsius: { type: ["number", "null"], description: "Izmjerena temperatura u °C ili null." },
-    severity: { type: ["integer", "null"], description: "Jačina 1–10 prema pacijentu ili null." },
+    fever_celsius: {
+      type: ["number", "null"],
+      description: "Izmjerena temperatura u °C ili null.",
+    },
+    severity: {
+      type: ["integer", "null"],
+      description: "Jačina 1–10 prema pacijentu ili null.",
+    },
     body_location: { type: "string" },
     associated_symptoms: { type: "array", items: { type: "string" } },
-    relevant_history: { type: "string", description: "Važne bolesti, lijekovi, alergije koje je pacijent naveo; prazno ako ništa." },
-    current_location: { type: "string", description: "Grad u kojem je pacijent sada." },
+    relevant_history: {
+      type: "string",
+      description:
+        "Važne bolesti, lijekovi, alergije koje je pacijent naveo; prazno ako ništa.",
+    },
+    current_location: {
+      type: "string",
+      description: "Grad u kojem je pacijent sada.",
+    },
     suggested_specialty: {
       type: "string",
-      description: "Prijedlog specijalnosti za liječnika (npr. 'otorinolaringologija'). Prijedlog, NE dijagnoza.",
+      description:
+        "Prijedlog specijalnosti za liječnika (npr. 'otorinolaringologija'). Prijedlog, NE dijagnoza.",
     },
     urgency: {
       type: "string",
       enum: ["hitno", "uskoro", "rutinski"],
-      description: "hitno = treba hitna pomoć odmah; uskoro = liječnik u 1–2 dana; rutinski = može pričekati.",
+      description:
+        "hitno = treba hitna pomoć odmah; uskoro = liječnik u 1–2 dana; rutinski = može pričekati.",
     },
   },
 } as const;

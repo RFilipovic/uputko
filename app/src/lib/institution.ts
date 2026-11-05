@@ -9,14 +9,18 @@ export type Booking = {
   startsAt: string;
   institutionId: string;
   specialtyCode: string;
-  availability: { days: Array<{ date: string; parts: Array<"morning" | "afternoon"> }> } | null;
+  availability: {
+    days: Array<{ date: string; parts: Array<"morning" | "afternoon"> }>;
+  } | null;
 };
 
 /** All live Uputko bookings (demo panel; synthetic patients only). */
 export async function listBookings(): Promise<Booking[]> {
   const { data } = await db()
     .from("appointments")
-    .select("id, status, patient_availability_json, patients(name), slots(starts_at, institution_id, specialty_code, institutions(name), specialties(name))")
+    .select(
+      "id, status, patient_availability_json, patients(name), slots(starts_at, institution_id, specialty_code, institutions(name), specialties(name))",
+    )
     .neq("status", "cancelled")
     .order("updated_at", { ascending: false })
     .limit(30);
@@ -31,13 +35,15 @@ export async function listBookings(): Promise<Booking[]> {
     return {
       appointmentId: a.id,
       status: a.status,
-      patientName: (a.patients as unknown as { name: string } | null)?.name ?? "",
+      patientName:
+        (a.patients as unknown as { name: string } | null)?.name ?? "",
       institutionName: slot.institutions?.name ?? "",
       specialtyName: slot.specialties?.name ?? slot.specialty_code,
       startsAt: slot.starts_at,
       institutionId: slot.institution_id,
       specialtyCode: slot.specialty_code,
-      availability: (a.patient_availability_json as Booking["availability"]) ?? null,
+      availability:
+        (a.patient_availability_json as Booking["availability"]) ?? null,
     };
   });
 }
@@ -54,10 +60,16 @@ export async function slotsMatching(b: Booking, limit = 4) {
     .gt("starts_at", new Date(Date.now() + 2 * 3600_000).toISOString())
     .order("starts_at")
     .limit(400);
-  const wanted = new Map(b.availability.days.map((d) => [d.date, new Set(d.parts)]));
+  const wanted = new Map(
+    b.availability.days.map((d) => [d.date, new Set(d.parts)]),
+  );
   return (data ?? [])
     .filter((s) => {
-      const local = new Date(new Date(s.starts_at).toLocaleString("en-US", { timeZone: "Europe/Zagreb" }));
+      const local = new Date(
+        new Date(s.starts_at).toLocaleString("en-US", {
+          timeZone: "Europe/Zagreb",
+        }),
+      );
       const date = `${local.getFullYear()}-${String(local.getMonth() + 1).padStart(2, "0")}-${String(local.getDate()).padStart(2, "0")}`;
       const parts = wanted.get(date);
       if (!parts) return false;

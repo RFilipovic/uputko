@@ -15,12 +15,24 @@ export async function addCaseEvent(
   status?: CaseStatus,
 ) {
   if (status) {
-    must(await db().from("cases").update({ status }).eq("id", caseId).select("id").single(), "case status");
+    must(
+      await db()
+        .from("cases")
+        .update({ status })
+        .eq("id", caseId)
+        .select("id")
+        .single(),
+      "case status",
+    );
   }
   const event = must(
     await db()
       .from("case_events")
-      .insert({ case_id: caseId, kind, payload: payload as { [key: string]: Json } })
+      .insert({
+        case_id: caseId,
+        kind,
+        payload: payload as { [key: string]: Json },
+      })
       .select("id, kind, payload, at")
       .single(),
     "case event",

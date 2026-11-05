@@ -1,5 +1,9 @@
 import { z } from "zod";
-import { ACCEPTED_TYPES, extractReferral, type AcceptedType } from "@/lib/agent/extractReferral";
+import {
+  ACCEPTED_TYPES,
+  extractReferral,
+  type AcceptedType,
+} from "@/lib/agent/extractReferral";
 import { addCaseEvent } from "@/lib/cases";
 import { db } from "@/lib/db/server";
 import { BOOKABLE_SPECIALTIES, DECIDED, doctorCase } from "@/lib/doctorCase";
@@ -22,8 +26,10 @@ type Ctx = { params: Promise<{ token: string; action: string }> };
 
 async function readFile(form: FormData) {
   const file = form.get("file");
-  if (!(file instanceof File)) return { error: jsonError(400, "no_file", hr.doctor.upload.badType) };
-  if (file.size > MAX_BYTES) return { error: jsonError(413, "too_big", hr.doctor.upload.tooBig) };
+  if (!(file instanceof File))
+    return { error: jsonError(400, "no_file", hr.doctor.upload.badType) };
+  if (file.size > MAX_BYTES)
+    return { error: jsonError(413, "too_big", hr.doctor.upload.tooBig) };
   if (!ACCEPTED_TYPES.includes(file.type as AcceptedType)) {
     return { error: jsonError(415, "bad_type", hr.doctor.upload.badType) };
   }
@@ -32,11 +38,18 @@ async function readFile(form: FormData) {
 }
 
 async function specialtyOptions() {
-  const { data } = await db().from("specialties").select("code, name").in("code", [...BOOKABLE_SPECIALTIES]);
+  const { data } = await db()
+    .from("specialties")
+    .select("code, name")
+    .in("code", [...BOOKABLE_SPECIALTIES]);
   return (data ?? []).sort((a, b) => a.name.localeCompare(b.name, "hr"));
 }
 
-async function institutionOptions(specialty: string, lat: number | null, lng: number | null) {
+async function institutionOptions(
+  specialty: string,
+  lat: number | null,
+  lng: number | null,
+) {
   if (lat == null || lng == null) return [];
   return (await nearestPlaces({ specialty, lat, lng, limit: 8 })).map((p) => ({
     id: p.id,
@@ -52,16 +65,29 @@ export async function GET(req: Request, ctx: Ctx) {
   if (action !== "institutions") return jsonError(404, "not_found");
   const dc = await doctorCase(token);
   if (!dc.ok) return jsonError(403, dc.reason);
-  const specialty = z.enum(BOOKABLE_SPECIALTIES).safeParse(new URL(req.url).searchParams.get("specialty"));
+  const specialty = z
+    .enum(BOOKABLE_SPECIALTIES)
+    .safeParse(new URL(req.url).searchParams.get("specialty"));
   if (!specialty.success) return jsonError(400, "bad_specialty");
-  return Response.json({ institutions: await institutionOptions(specialty.data, dc.case.patient_lat, dc.case.patient_lng) });
+  return Response.json({
+    institutions: await institutionOptions(
+      specialty.data,
+      dc.case.patient_lat,
+      dc.case.patient_lng,
+    ),
+  });
 }
 
 /** POST /api/doctor/:token/(extract|issue|invite) */
 export async function POST(req: Request, ctx: Ctx) {
   const { token, action } = await ctx.params;
   const dc = await doctorCase(token);
-  if (!dc.ok) return jsonError(403, dc.reason, dc.reason === "expired" ? hr.doctor.expired : hr.doctor.invalid);
+  if (!dc.ok)
+    return jsonError(
+      403,
+      dc.reason,
+      dc.reason === "expired" ? hr.doctor.expired : hr.doctor.invalid,
+    );
   const c = dc.case;
   const origin = new URL(req.url).origin;
 
@@ -77,17 +103,27 @@ export async function POST(req: Request, ctx: Ctx) {
     if ("error" in f) return f.error;
     let extracted;
     try {
-      extracted = await extractReferral({ mime: f.mime, base64: f.bytes.toString("base64") });
+      extracted = await extractReferral({
+        mime: f.mime,
+        base64: f.bytes.toString("base64"),
+      });
     } catch (e) {
       console.error("extract failed", e instanceof Error ? e.message : e);
       return jsonError(422, "unreadable", hr.doctor.upload.failed);
     }
-    if (!extracted.is_referral) return jsonError(422, "not_referral", hr.doctor.upload.failed);
+    if (!extracted.is_referral)
+      return jsonError(422, "not_referral", hr.doctor.upload.failed);
 
     const specialties = await specialtyOptions();
-    const spec = extracted.specialty ? bestMatch(extracted.specialty, specialties, (s) => s.name) : null;
-    const institutions = spec ? await institutionOptions(spec.code, c.patient_lat, c.patient_lng) : [];
-    const inst = extracted.institution ? bestMatch(extracted.institution, institutions, (i) => i.name, 0.4) : null;
+    const spec = extracted.specialty
+      ? bestMatch(extracted.specialty, specialties, (s) => s.name)
+      : null;
+    const institutions = spec
+      ? await institutionOptions(spec.code, c.patient_lat, c.patient_lng)
+      : [];
+    const inst = extracted.institution
+      ? bestMatch(extracted.institution, institutions, (i) => i.name, 0.4)
+      : null;
     return Response.json({
       extracted,
       specialtyCode: spec?.code ?? null,
@@ -98,7 +134,8 @@ export async function POST(req: Request, ctx: Ctx) {
     });
   }
 
-  if (DECIDED.has(c.status)) return jsonError(409, "already_decided", hr.doctor.alreadyDone);
+  if (DECIDED.has(c.status))
+    return jsonError(409, "already_decided", hr.doctor.alreadyDone);
 
   if (action === "issue") {
     const form = await req.formData();
@@ -112,8 +149,13 @@ export async function POST(req: Request, ctx: Ctx) {
         institution: z.string().min(3).max(40),
         note: z.string().max(500).optional(),
       })
-      .safeParse(Object.fromEntries([...form.entries()].filter(([, v]) => typeof v === "string")));
-    if (!fields.success) return jsonError(400, "bad_fields", hr.doctor.upload.failed);
+      .safeParse(
+        Object.fromEntries(
+          [...form.entries()].filter(([, v]) => typeof v === "string"),
+        ),
+      );
+    if (!fields.success)
+      return jsonError(400, "bad_fields", hr.doctor.upload.failed);
 
     const { data: ref, error } = await db()
       .from("referrals")
@@ -132,33 +174,62 @@ export async function POST(req: Request, ctx: Ctx) {
       .select("id")
       .single();
     if (error || !ref) return jsonError(500, "failed", hr.doctor.upload.failed);
-    await addCaseEvent(c.id, "referral_issued", { referral_id: ref.id }, "referral_issued");
+    await addCaseEvent(
+      c.id,
+      "referral_issued",
+      { referral_id: ref.id },
+      "referral_issued",
+    );
 
     // Book the earliest free slot and hold it for 15 minutes.
-    const { data: appt } = await db().rpc("propose_appointment", { p_referral_id: ref.id });
+    const { data: appt } = await db().rpc("propose_appointment", {
+      p_referral_id: ref.id,
+    });
     let when: string | null = null;
     if (appt?.id) {
-      const { data: slot } = await db().from("slots").select("starts_at").eq("id", appt.slot_id).single();
+      const { data: slot } = await db()
+        .from("slots")
+        .select("starts_at")
+        .eq("id", appt.slot_id)
+        .single();
       when = slot ? formatWhen(slot.starts_at) : null;
-      await db().from("notifications").insert({
-        patient_id: c.patient_id,
-        case_id: c.id,
-        kind: "appointment_proposed",
-        payload: { appointment_id: appt.id, starts_at: slot?.starts_at ?? null },
-      });
-      await addCaseEvent(c.id, "appointment_proposed", { appointment_id: appt.id, starts_at: slot?.starts_at ?? null }, "appointment_proposed");
+      await db()
+        .from("notifications")
+        .insert({
+          patient_id: c.patient_id,
+          case_id: c.id,
+          kind: "appointment_proposed",
+          payload: {
+            appointment_id: appt.id,
+            starts_at: slot?.starts_at ?? null,
+          },
+        });
+      await addCaseEvent(
+        c.id,
+        "appointment_proposed",
+        { appointment_id: appt.id, starts_at: slot?.starts_at ?? null },
+        "appointment_proposed",
+      );
     } else {
       await addCaseEvent(c.id, "no_slot", {});
     }
-    await broadcast(patientTopic(c.patient_id), "notification", { kind: "referral_issued" });
+    await broadcast(patientTopic(c.patient_id), "notification", {
+      kind: "referral_issued",
+    });
 
     const caseUrl = `${origin}/slucaj/${c.id}`;
     await sendDemoEmail({
-      subject: when ? `Vaša uputnica je izdana — termin ${when}` : "Vaša uputnica je izdana",
+      subject: when
+        ? `Vaša uputnica je izdana — termin ${when}`
+        : "Vaša uputnica je izdana",
       react: PatientEmail({
         preview: hr.referral.title,
         title: "Vaša uputnica je izdana",
-        lines: [when ? `Predložen termin: ${when}. Potvrdite ga u Uputku.` : hr.appointment.noSlot],
+        lines: [
+          when
+            ? `Predložen termin: ${when}. Potvrdite ga u Uputku.`
+            : hr.appointment.noSlot,
+        ],
         buttonLabel: hr.case.title,
         buttonUrl: caseUrl,
       }),
@@ -168,7 +239,9 @@ export async function POST(req: Request, ctx: Ctx) {
 
   if (action === "invite") {
     await addCaseEvent(c.id, "invited_to_exam", {}, "closed");
-    await broadcast(patientTopic(c.patient_id), "notification", { kind: "invited_to_exam" });
+    await broadcast(patientTopic(c.patient_id), "notification", {
+      kind: "invited_to_exam",
+    });
     await sendDemoEmail({
       subject: hr.case.invitedTitle,
       react: PatientEmail({

@@ -12,7 +12,12 @@ const tone: Record<string, string> = {
 export function StatusPill({ status }: { status: string }) {
   const label = (hr.case.statuses as Record<string, string>)[status] ?? status;
   return (
-    <span className={cn("inline-flex w-fit items-center rounded-full px-4 py-1.5 text-base font-semibold", tone[status] ?? "bg-muted text-foreground")}>
+    <span
+      className={cn(
+        "inline-flex w-fit items-center rounded-full px-4 py-1.5 text-base font-semibold",
+        tone[status] ?? "bg-muted text-foreground",
+      )}
+    >
       {label}
     </span>
   );
