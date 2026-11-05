@@ -11,7 +11,8 @@
     "test": "vitest run",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "eval": "node scripts/run-evals.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^1.4.0",
