@@ -534,15 +534,24 @@ def match_osm(
                 }
             )
 
-    # Hospitals: fuzzy name match against OSM hospitals.
+    # Hospitals: fuzzy name match against OSM hospitals, one-to-one. A name that
+    # contains another ("OB Varaždin" in "OB Varaždin - Klenovnik") must not
+    # give two sites the same location: the closest full-name match wins.
     oh = osm[(osm["kind"] == "hospital") & (osm["name"] != "")].reset_index(drop=True)
     names = oh["name"].map(norm_hospital).tolist()
+    pairs = []
     for idx in inst.index[inst["id"].str.startswith("h-")]:
-        best = process.extractOne(
-            norm_hospital(inst.at[idx, "name"]), names, scorer=fuzz.token_set_ratio
-        )
-        if best and best[1] >= 90:
-            take(idx, oh.iloc[best[2]], "hospital-name")
+        key = norm_hospital(inst.at[idx, "name"])
+        for _, score, j in process.extract(key, names, scorer=fuzz.token_set_ratio, limit=5):
+            if score >= 90:
+                pairs.append((score, fuzz.token_sort_ratio(key, names[j]), idx, j))
+    used_inst, used_osm = set(), set()
+    for _, _, idx, j in sorted(pairs, reverse=True):
+        if idx in used_inst or j in used_osm:
+            continue
+        used_inst.add(idx)
+        used_osm.add(j)
+        take(idx, oh.iloc[j], "hospital-name")
 
     # Practices: OSM doctors/dentists whose name contains the doctor's surname,
     # in the same city/postcode.
@@ -592,6 +601,41 @@ def match_zagreb(inst: pd.DataFrame, zg: pd.DataFrame) -> pd.DataFrame:
     return inst
 
 
+# ---------------------------------------------------------------- emergency gaps
+
+
+def emergency_from_osm_and_manual(inst: pd.DataFrame, osm: pd.DataFrame) -> pd.DataFrame:
+    """Extra OHBP rows: hospitals whose matched OSM object has emergency=yes,
+    plus data/manual/ohbp_overrides.csv (each row documented and marked)."""
+    rows = []
+    em_ids = set(osm.loc[osm["emergency"], "osm_id"])
+    hosp = inst[inst["id"].str.startswith("h-")]
+    for r in hosp.itertuples():
+        if r.osm_id and r.osm_id in em_ids:
+            rows.append((r.id, "osm(emergency=yes)"))
+    manual = ROOT / "data" / "manual" / "ohbp_overrides.csv"
+    if manual.exists():
+        for m in pd.read_csv(manual).itertuples():
+            hit = hosp[hosp["name"] == m.institution_name]
+            if hit.empty:
+                print(f"  ! manual OHBP override not matched: {m.institution_name}")
+            for iid in hit["id"]:
+                rows.append((iid, f"manual_override({m.status})"))
+    return pd.DataFrame(
+        [
+            {
+                "institution_id": iid,
+                "specialty_code": "hitna-medicina-ohbp",
+                "specialty_name": "Hitna medicina (OHBP)",
+                "djel_code": "2000001",
+                "units": None,
+                "source_dataset": src,
+            }
+            for iid, src in rows
+        ]
+    )
+
+
 # ---------------------------------------------------------------- main
 
 
@@ -638,6 +682,13 @@ def main() -> int:
     zg_new = zg[~zg["name"].map(norm_hospital).isin(set(inst["name"].map(norm_hospital)))]
     zg_new = zg_new.assign(geo_precision="geoportal", osm_id="")
     inst = pd.concat([inst, zg_new[inst.columns]], ignore_index=True)
+
+    # Emergency departments: HZZO (OHBP clinics) + OSM emergency=yes on matched
+    # hospitals + a tiny, documented manual list for gaps in both.
+    extra = emergency_from_osm_and_manual(inst, osm)
+    hosp_svc = pd.concat([hosp_svc, extra], ignore_index=True).drop_duplicates(
+        ["institution_id", "specialty_code"]
+    )
 
     # OHBP (hitna medicina) is open 0–24 by definition.
     ohbp = hosp_svc[hosp_svc["specialty_code"] == "hitna-medicina-ohbp"]["institution_id"].unique()

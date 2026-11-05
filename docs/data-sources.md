@@ -68,6 +68,16 @@ HZZO primary-care teams (3–6) ─► practitioners ─► one practice locatio
   exact ones at a similar distance; the distance shown is never altered.
 - **Opening hours:** `osm` where OpenStreetMap has them; `ohbp_0-24` for
   emergency departments (open around the clock by definition).
+- **Emergency departments (OHBP):** from HZZO's contracted *Hitna medicina (OHBP)*
+  clinics, plus hospitals whose matched OpenStreetMap object has
+  `emergency=yes` (adds e.g. KB Dubrava and OB Varaždin, missing from the 2017
+  file), plus a one-line manual list in
+  `data-pipeline/data/manual/ohbp_overrides.csv` for gaps in both sources
+  (currently only **KBC Split**, marked `TODO(verify)`). The `source_dataset`
+  of each row says which source it came from.
+- **Hospital ↔ OSM matching is one-to-one**, so a name contained in another
+  ("OB Varaždin" vs "OB Varaždin – Klenovnik") cannot give two sites the same
+  location; the unmatched sites are geocoded by town.
 - Every row keeps `source_dataset`, e.g. `hzzo_bolnicki_sadrzaji+hzzo_bolnice+osm(hospital-name)`.
 
 ## Synthetic data (clearly labelled)

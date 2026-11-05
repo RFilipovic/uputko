@@ -192,16 +192,16 @@ insert into public.institutions (id, name, type, address, postcode, city, geom, 
 ('h-021102112', 'Neuropsihijatrijska bolnica "dr. Ivan Barbot"', 'specijalna_bolnica', 'Jelengradska 1', '44317', 'Popovača', 'SRID=4326;POINT(16.6386838 45.5741824)', 'osm', '044/569-200', null, 'https://npbp.hr/', '021102112', 'way/522455976', 'hzzo_bolnicki_sadrzaji+hzzo_bolnice+osm(hospital-name)'),
 ('h-023902396', 'Klinički bolnički centar Osijek', 'KBC', 'J. Huttlera 4', '31000', 'Osijek', 'SRID=4326;POINT(18.7133460 45.5587417)', 'osm', '031/511-511', null, 'https://www.kbco.hr/', '023902396', 'way/77199285', 'hzzo_bolnicki_sadrzaji+hzzo_bolnice+osm(hospital-name)'),
 ('h-024602469', 'Specijalna bolnica za medicinsku rehabilitaciju Lipik', 'specijalna_bolnica', 'Marije Terezije 13', '34551', 'Lipik', 'SRID=4326;POINT(17.1610265 45.4136156)', 'osm', '034/440-700', null, 'https://toplice-lipik.hr/', '024602469', 'way/761316970', 'hzzo_bolnicki_sadrzaji+hzzo_bolnice+osm(hospital-name)'),
-('h-025902598', 'Psihijatrijska bolnica Rab', 'specijalna_bolnica', 'Kampor 224', '51280', 'Rab', 'SRID=4326;POINT(15.0990500 44.1108941)', 'osm', '051/750-640', null, 'https://www.pbu.hr', '025902598', 'way/61690492', 'hzzo_bolnicki_sadrzaji+hzzo_bolnice+osm(hospital-name)'),
-('h-026102617', 'Klinički bolnički centar Rijeka', 'KBC', 'Krešimirova 42', '51000', 'Rijeka', 'SRID=4326;POINT(14.4700462 45.3262407)', 'osm', '051/658-111', null, 'https://kbc-rijeka.hr', '026102617', 'way/53271331', 'hzzo_bolnicki_sadrzaji+hzzo_bolnice+osm(hospital-name)'),
+('h-025902598', 'Psihijatrijska bolnica Rab', 'specijalna_bolnica', 'Kampor 224', '51280', 'Rab', 'SRID=4326;POINT(14.7419661 44.7763925)', 'postcode', '051/750-640', null, null, '025902598', null, 'hzzo_bolnicki_sadrzaji+hzzo_bolnice'),
+('h-026102617', 'Klinički bolnički centar Rijeka', 'KBC', 'Krešimirova 42', '51000', 'Rijeka', 'SRID=4326;POINT(14.4274398 45.3323592)', 'osm', '051/658-111', null, 'https://kbc-rijeka.hr', '026102617', 'way/131470836', 'hzzo_bolnicki_sadrzaji+hzzo_bolnice+osm(hospital-name)'),
 ('h-027602761', 'Bolnica za ortopediju i rehabilitaciju "prim. dr. Martin Horvat"', 'specijalna_bolnica', 'Ulica Luigi Monti 2', '52210', 'Rovinj', 'SRID=4326;POINT(13.6337405 45.0986030)', 'osm', '052/811-011', null, 'https://www.bolnica-rovinj.hr/', '027602761', 'way/494147177', 'hzzo_bolnicki_sadrzaji+hzzo_bolnice+osm(hospital-name)'),
-('h-029602963', 'Klinički bolnički centar Split', 'KBC', 'Spinčićeva 1', '21000', 'Split', 'SRID=4326;POINT(16.4690302 43.5054827)', 'osm', '021/556-111', null, 'https://www.kbsplit.hr/', '029602963', 'way/116927077', 'hzzo_bolnicki_sadrzaji+hzzo_bolnice+osm(hospital-name)'),
-('h-031503152', 'Opća bolnica Varaždin - Klenovnik', 'OB', null, null, 'Klenovnik', 'SRID=4326;POINT(16.3267377 46.3029924)', 'osm', '+385 42 393 000', null, 'https://www.obv.hr/', '031503152', 'way/277802187', 'hzzo_bolnicki_sadrzaji+osm(hospital-name)'),
+('h-029602963', 'Klinički bolnički centar Split', 'KBC', 'Spinčićeva 1', '21000', 'Split', 'SRID=4326;POINT(16.4591932 43.5040602)', 'osm', '021/556-111', null, 'https://www.kbsplit.hr/', '029602963', 'way/142955090', 'hzzo_bolnicki_sadrzaji+hzzo_bolnice+osm(hospital-name)'),
+('h-031503152', 'Opća bolnica Varaždin - Klenovnik', 'OB', null, null, 'Klenovnik', 'SRID=4326;POINT(16.0779742 46.2682132)', 'city', null, null, null, '031503152', null, 'hzzo_bolnicki_sadrzaji'),
 ('h-033203326', 'Specijalna bolnica za medicinsku rehabilitaciju Krapinske Toplice', 'specijalna_bolnica', 'Gajeva 2', '49217', 'Krapinske Toplice', 'SRID=4326;POINT(15.8380196 46.0934340)', 'osm', '049/383-100', null, 'https://www.sbkt.hr/', '033203326', 'way/485330722', 'hzzo_bolnicki_sadrzaji+hzzo_bolnice+osm(hospital-name)'),
 ('h-033803382', 'Psihijatrijska bolnica Ugljan', 'specijalna_bolnica', 'Otočkih Dragovoljaca 42', '23275', 'Ugljan', 'SRID=4326;POINT(15.0990500 44.1108941)', 'osm', '023/208-200', null, 'https://www.pbu.hr', '033803382', 'way/61690492', 'hzzo_bolnicki_sadrzaji+hzzo_bolnice+osm(hospital-name)'),
 ('h-035703571', 'Specijalna bolnica za Med. rehabilitaciju Naftalan', 'specijalna_bolnica', 'Omladinska 23 A', '10310', 'Ivanić-grad', 'SRID=4326;POINT(16.3856278 45.7067065)', 'osm', '01/2834-555', null, 'https://naftalan.hr/', '035703571', 'way/1266784564', 'hzzo_bolnicki_sadrzaji+hzzo_bolnice+osm(hospital-name)'),
 ('h-044904495', 'Opća županijska bolnica Požega', 'OB', 'Osječka 107', '34000', 'Požega', 'SRID=4326;POINT(17.6994744 45.3437500)', 'osm', '034/254-555', null, 'https://www.pozeska-bolnica.hr/', '044904495', 'relation/13132740', 'hzzo_bolnicki_sadrzaji+hzzo_bolnice+osm(hospital-name)'),
-('h-045104514', 'Opća bolnica dr. Josip Benčević Slavonski Brod lokacija Nova Gradiška', 'OB', null, null, 'Nova Gradiška', 'SRID=4326;POINT(18.0255409 45.1554294)', 'osm', null, null, 'https://www.bolnicasb.hr/', '045104514', 'way/184487118', 'hzzo_bolnicki_sadrzaji+osm(hospital-name)'),
+('h-045104514', 'Opća bolnica dr. Josip Benčević Slavonski Brod lokacija Nova Gradiška', 'OB', null, null, 'Nova Gradiška', 'SRID=4326;POINT(17.3902254 45.2614836)', 'osm', '+385 35 217 900', null, 'https://www.bolnicang.hr/', '045104514', 'way/588797571', 'hzzo_bolnicki_sadrzaji+osm(hospital-name)'),
 ('h-045404542', 'Opća bolnica "dr. Ivo Pedišić" Sisak', 'OB', 'J.j. Strossmayera 59', '44000', 'Sisak', 'SRID=4326;POINT(16.3695055 45.4764280)', 'osm', '044/553-101', null, 'https://obs.hr/', '045404542', 'way/136874356', 'hzzo_bolnicki_sadrzaji+hzzo_bolnice+osm(hospital-name)'),
 ('h-045604568', 'Opća županijska bolnica Našice', 'OB', 'Ulica Bana Jelačića 6', '31500', 'Našice', 'SRID=4326;POINT(18.0977073 45.4887692)', 'osm', '031/613-620', null, 'https://www.obnasice.hr/', '045604568', 'way/1093821592', 'hzzo_bolnicki_sadrzaji+hzzo_bolnice+osm(hospital-name)'),
 ('h-045804583', 'Opća bolnica Zabok', 'OB', null, null, 'Zabok', 'SRID=4326;POINT(15.9406952 46.0177550)', 'osm', '+385 49 204 000', null, 'https://www.bolnica-zabok.hr/', '045804583', 'way/588799889', 'hzzo_bolnicki_sadrzaji+osm(hospital-name)'),
@@ -213,15 +213,15 @@ insert into public.institutions (id, name, type, address, postcode, city, geom, 
 ('h-047404744', 'Opća bolnica Varaždin', 'OB', 'I. Meštrovića B.b.', '42000', 'Varaždin', 'SRID=4326;POINT(16.3267377 46.3029924)', 'osm', '042/393-000', null, 'https://www.obv.hr/', '047404744', 'way/277802187', 'hzzo_bolnicki_sadrzaji+hzzo_bolnice+osm(hospital-name)'),
 ('h-047604760', 'Opća bolnica Virovitica', 'OB', 'Ljudevita Gaja 21', '33000', 'Virovitica', 'SRID=4326;POINT(17.3893633 45.8286552)', 'osm', '033/747-444', null, 'https://www.bolnica-virovitica.hr/', '047604760', 'way/406935223', 'hzzo_bolnicki_sadrzaji+hzzo_bolnice+osm(hospital-name)'),
 ('h-047804785', 'Klinička bolnica Dubrava', 'KB', 'Avenija Gojka Šuška 6', '10000', 'Zagreb', 'SRID=4326;POINT(16.0345905 45.8343882)', 'geoportal', '01/2902-444', null, 'https://www.kbd.hr/', '047804785', 'way/78326996', 'hzzo_bolnicki_sadrzaji+hzzo_bolnice+zg_zdravstvene_ustanove+osm(hospital-name)'),
-('h-047904798', 'Specijalna bolnica za Plućne bolesti', 'specijalna_bolnica', 'Rockefellerova 3', '10000', 'Zagreb', 'SRID=4326;POINT(15.9820282 45.8296045)', 'geoportal', '01/4684-400', null, 'https://pulmologija.hr/', '047904798', 'node/2624410045', 'hzzo_bolnicki_sadrzaji+hzzo_bolnice+zg_zdravstvene_ustanove+osm(hospital-name)'),
+('h-047904798', 'Specijalna bolnica za Plućne bolesti', 'specijalna_bolnica', 'Rockefellerova 3', '10000', 'Zagreb', 'SRID=4326;POINT(15.9820282 45.8296045)', 'geoportal', '01/4684-400', null, null, '047904798', 'way/297115568', 'hzzo_bolnicki_sadrzaji+hzzo_bolnice+zg_zdravstvene_ustanove+osm(hospital-name)'),
 ('h-048004804', 'Dječja bolnica Srebrnjak', 'specijalna_bolnica', 'Srebrnjak 100', '10000', 'Zagreb', 'SRID=4326;POINT(15.9930015 45.8251276)', 'geoportal', '01/6391 100', null, 'http://www.bolnica-srebrnjak.hr/', '048004804', 'way/1263186209', 'hzzo_bolnicki_sadrzaji+hzzo_bolnice+zg_zdravstvene_ustanove+osm(hospital-name)'),
-('h-048804886', 'Specijalna bolnica za zaštitu djece s Neurorazvojnim i Motoričkim Smetnjama', 'specijalna_bolnica', 'Goljak 2', '10000', 'Zagreb', 'SRID=4326;POINT(15.9638870 45.8188984)', 'geoportal', '01/4925 200', null, 'https://www.sbgoljak.hr', '048804886', 'way/804602582', 'hzzo_bolnicki_sadrzaji+hzzo_bolnice+zg_zdravstvene_ustanove+osm(hospital-name)'),
+('h-048804886', 'Specijalna bolnica za zaštitu djece s Neurorazvojnim i Motoričkim Smetnjama', 'specijalna_bolnica', 'Goljak 2', '10000', 'Zagreb', 'SRID=4326;POINT(15.9638870 45.8188984)', 'geoportal', '01/4925 200', null, 'https://www.sbgoljak.hr/', '048804886', 'way/1036382324', 'hzzo_bolnicki_sadrzaji+hzzo_bolnice+zg_zdravstvene_ustanove+osm(hospital-name)'),
 ('h-048904899', 'Thalassotherapia Opatija - specijalna bolnica za medicinsku rehabilitaciju bolesti Srca, Pluća i Reumatizma', 'specijalna_bolnica', 'Maršala Tita 188/1', '51410', 'Opatija', 'SRID=4326;POINT(14.3000432 45.3289567)', 'osm', '051/202-600', null, 'https://www.thalassotherapia-opatija.hr', '048904899', 'way/816454228', 'hzzo_bolnicki_sadrzaji+hzzo_bolnice+osm(hospital-name)'),
 ('h-049004905', 'Thalassotherapia Crikvenica, specijalna bolnica za medicinsku Reahabilitaciju Primorsko-goranske županije', 'specijalna_bolnica', 'Gajevo Šetalište 21', '51260', 'Crikvenica', 'SRID=4326;POINT(14.6769583 45.1860427)', 'osm', '051/407 666', null, 'https://thalasso-ck.hr', '049004905', 'way/808102949', 'hzzo_bolnicki_sadrzaji+hzzo_bolnice+osm(hospital-name)'),
 ('h-049104918', 'Psihijatrijska bolnica za Djecu i Mladež', 'specijalna_bolnica', 'Ivana Kukuljevića 11', '10000', 'Zagreb', 'SRID=4326;POINT(15.9632148 45.8150905)', 'geoportal', '01/4862-501', null, 'https://djecja-psihijatrija.hr/', '049104918', 'way/898576918', 'hzzo_bolnicki_sadrzaji+hzzo_bolnice+zg_zdravstvene_ustanove+osm(hospital-name)'),
-('h-049204920', 'Opća bolnica Varaždin - Novi Marof', 'OB', null, null, 'Novi Marof', 'SRID=4326;POINT(16.3267377 46.3029924)', 'osm', '+385 42 393 000', null, 'https://www.obv.hr/', '049204920', 'way/277802187', 'hzzo_bolnicki_sadrzaji+osm(hospital-name)'),
+('h-049204920', 'Opća bolnica Varaždin - Novi Marof', 'OB', null, null, 'Novi Marof', 'SRID=4326;POINT(16.3348602 46.1643817)', 'city', null, null, null, '049204920', null, 'hzzo_bolnicki_sadrzaji'),
 ('h-049304933', 'Specijalna bolnica za medicinsku rehabilitaciju "Biokovka"', 'specijalna_bolnica', 'Put Cvitačke 9', '21300', 'Makarska', 'SRID=4326;POINT(17.0076438 43.3038723)', 'osm', '021/602-200', null, 'https://www.biokovka.hr/', '049304933', 'node/11766237763', 'hzzo_bolnicki_sadrzaji+hzzo_bolnice+osm(hospital-name)'),
-('h-049404946', 'Specijalna bolnica za medicinsku rehabilitaciju Krapinske Toplice', 'specijalna_bolnica', 'Gajeva 2', '49217', 'Krapinske Toplice', 'SRID=4326;POINT(15.8380196 46.0934340)', 'osm', '049/383-100', null, 'https://www.sbkt.hr/', '049404946', 'way/485330722', 'hzzo_bolnicki_sadrzaji+hzzo_bolnice+osm(hospital-name)'),
+('h-049404946', 'Specijalna bolnica za medicinsku rehabilitaciju Krapinske Toplice', 'specijalna_bolnica', 'Gajeva 2', '49217', 'Krapinske Toplice', 'SRID=4326;POINT(17.2270514 45.5973152)', 'osm', '049/383-100', null, 'https://www.daruvarske-toplice.hr', '049404946', 'node/858926388', 'hzzo_bolnicki_sadrzaji+hzzo_bolnice+osm(hospital-name)'),
 ('h-049504959', 'Specijalna bolnica za medicinsku rehabilitaciju Varaždinske Toplice', 'specijalna_bolnica', 'Trg Slobode 1', '42223', 'Varaždinske Toplice', 'SRID=4326;POINT(16.4211018 46.2105137)', 'osm', '042/630-000', null, 'https://www.minerva.hr/', '049504959', 'way/316779182', 'hzzo_bolnicki_sadrzaji+hzzo_bolnice+osm(hospital-name)'),
 ('h-049604961', 'Specijalna bolnica za medicinsku rehabilitaciju "Kalos"', 'specijalna_bolnica', 'Ulica 3 Br.3', '20270', 'Vela Luka', 'SRID=4326;POINT(16.7128997 42.9681958)', 'osm', '020/755-100', null, 'https://kalos.hr/', '049604961', 'way/1266792453', 'hzzo_bolnicki_sadrzaji+hzzo_bolnice+osm(hospital-name)'),
 ('h-049704974', 'Opća bolnica Zadar', 'OB', 'Bože Peričića 5', '23000', 'Zadar', 'SRID=4326;POINT(15.2346765 44.1074667)', 'osm', '023/505-505', null, 'https://www.bolnica-zadar.hr/', '049704974', 'way/363356122', 'hzzo_bolnicki_sadrzaji+hzzo_bolnice+osm(hospital-name)'),
@@ -236,7 +236,7 @@ insert into public.institutions (id, name, type, address, postcode, city, geom, 
 ('h-266626661', 'Opća bolnica Ogulin', 'OB', null, null, 'Ogulin', 'SRID=4326;POINT(15.2313454 45.2573699)', 'osm', null, null, 'https://bolnica-ogulin.hr', '266626661', 'way/1266645732', 'hzzo_bolnicki_sadrzaji+osm(hospital-name)'),
 ('h-285128515', 'Lječilište Bizovačke Toplice', 'specijalna_bolnica', 'Sunčana 39', '31222', 'Bizovac', 'SRID=4326;POINT(18.4599822 45.5809818)', 'osm', '031/685-340', null, 'https://www.ljeciliste-bizovacke.hr/', '285128515', 'node/11771120266', 'hzzo_bolnicki_sadrzaji+hzzo_bolnice+osm(hospital-name)'),
 ('h-285428543', 'Opća županijska bolnica Požega-lokacija Pakrac', 'OB', null, null, 'Pakrac', 'SRID=4326;POINT(17.1935694 45.4366097)', 'city', null, null, null, '285428543', null, 'hzzo_bolnicki_sadrzaji'),
-('h-285628569', 'Lječilište Topusko', 'specijalna_bolnica', 'Trg Bana J. Jelačića 16', '44415', 'Topusko', 'SRID=4326;POINT(15.9724681 45.2945016)', 'osm', '044/886-666', null, 'https://www.ljeciliste-topusko.hr', '285628569', 'way/1266794241', 'hzzo_bolnicki_sadrzaji+hzzo_bolnice+osm(hospital-name)'),
+('h-285628569', 'Lječilište Topusko', 'specijalna_bolnica', 'Trg Bana J. Jelačića 16', '44415', 'Topusko', 'SRID=4326;POINT(15.9717851 45.2946809)', 'osm', '044/886-666', null, 'https://www.ljeciliste-topusko.hr', '285628569', 'relation/17395384', 'hzzo_bolnicki_sadrzaji+hzzo_bolnice+osm(hospital-name)'),
 ('h-304130419', 'Psihijatrijska bolnica Lopača', 'specijalna_bolnica', 'Lopača 11', '51218', 'Dražice', 'SRID=4326;POINT(14.4412666 45.3783302)', 'osm', '051/652-200', null, 'https://www.pbl.hr/', '304130419', 'way/1266793001', 'hzzo_bolnicki_sadrzaji+hzzo_bolnice+osm(hospital-name)'),
 ('h-308630866', 'Magdalena klinika za kardiovaskularne bolesti medicinskog fakulteta sveučilišta J.j. Strossmayera u Osijeku', 'klinika', null, null, 'Osijek', 'SRID=4326;POINT(15.8371297 46.0941872)', 'osm', null, null, 'https://magdalena.hr/', '308630866', 'node/4781063323', 'hzzo_bolnicki_sadrzaji+osm(hospital-name)'),
 ('h-309430941', 'Opća bolnica Vukovar', 'OB', null, null, 'Vukovar', 'SRID=4326;POINT(18.8189593 45.2926392)', 'name', null, null, null, '309430941', null, 'hzzo_bolnicki_sadrzaji'),
@@ -8310,6 +8310,12 @@ insert into public.institution_services (institution_id, specialty_code, units, 
 ('h-049704974', 'patohistoloska-dijagnostika', 0.75, 'hzzo_bolnicki_sadrzaji'),
 ('h-004200420', 'patohistoloska-dijagnostika', 2.0, 'hzzo_bolnicki_sadrzaji'),
 ('h-048004804', 'patohistoloska-dijagnostika', 1.0, 'hzzo_bolnicki_sadrzaji'),
+('h-047804785', 'hitna-medicina-ohbp', null, 'osm(emergency=yes)'),
+('h-047404744', 'hitna-medicina-ohbp', null, 'osm(emergency=yes)'),
+('h-004200420', 'hitna-medicina-ohbp', null, 'osm(emergency=yes)'),
+('h-027602761', 'hitna-medicina-ohbp', null, 'osm(emergency=yes)'),
+('h-013301330', 'hitna-medicina-ohbp', null, 'osm(emergency=yes)'),
+('h-029602963', 'hitna-medicina-ohbp', null, 'manual_override(TODO(verify))'),
 ('p-28c254b7f2e77050', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
 ('p-7aa901b65dcfd1cd', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
 ('p-252400d0ebf6dcf7', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
@@ -8332,15 +8338,15 @@ insert into public.institution_services (institution_id, specialty_code, units, 
 ('p-b638be390ba90de7', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
 ('p-fb018edf81a97b8f', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
 ('p-7db431dd8e83e60f', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
-('p-25671688de11d2e3', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
+('p-25671688de11d2e3', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca');
+
+insert into public.institution_services (institution_id, specialty_code, units, source_dataset) values
 ('p-d5d43b52997d3c55', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
 ('p-3a9b9f253a6d975d', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
 ('p-bba6ea866cd5dfdc', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
 ('p-be098315de8317b1', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
 ('p-5f48bed425ec04cb', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
-('p-beccfaf9b7fdff7e', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca');
-
-insert into public.institution_services (institution_id, specialty_code, units, source_dataset) values
+('p-beccfaf9b7fdff7e', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
 ('p-e2e2b8a7ca3168d3', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
 ('p-37090311dd20a8cb', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
 ('p-55c6dbff133292ab', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
@@ -8834,15 +8840,15 @@ insert into public.institution_services (institution_id, specialty_code, units, 
 ('p-f83e913ee65a5971', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
 ('p-616fdd2c8e099fa2', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
 ('p-0cb2a0fab457a6bc', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
-('p-b8edadaa3b2d88c9', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
+('p-b8edadaa3b2d88c9', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca');
+
+insert into public.institution_services (institution_id, specialty_code, units, source_dataset) values
 ('p-15df6b0c0c2b63bd', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
 ('p-6307d028d4163447', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
 ('p-e5afda7d6da7c0b1', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
 ('p-7164c019fab96778', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
 ('p-0cc5667aa850533d', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
-('p-b2e3c095f95fe996', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca');
-
-insert into public.institution_services (institution_id, specialty_code, units, source_dataset) values
+('p-b2e3c095f95fe996', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
 ('p-6ba2993be165e981', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
 ('p-fc3f01be2d0d498d', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
 ('p-74cc14b00348982c', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
@@ -9336,15 +9342,15 @@ insert into public.institution_services (institution_id, specialty_code, units, 
 ('p-3d123b68a0edd8be', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
 ('p-4e5da529a3317f6e', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
 ('p-2eecd256ed16e3bb', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
-('p-0af0bbaefe34e867', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
+('p-0af0bbaefe34e867', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca');
+
+insert into public.institution_services (institution_id, specialty_code, units, source_dataset) values
 ('p-3c0c4452ec6944b5', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
 ('p-68cd842313397e20', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
 ('p-df1dfcab60e4112c', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
 ('p-4458afadc3c3e6f9', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
 ('p-c3134d2c6db8ebf1', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
-('p-6726ace298170818', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca');
-
-insert into public.institution_services (institution_id, specialty_code, units, source_dataset) values
+('p-6726ace298170818', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
 ('p-17244754976e707a', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
 ('p-5028815081c6a45e', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
 ('p-be942979610ab875', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
@@ -9838,15 +9844,15 @@ insert into public.institution_services (institution_id, specialty_code, units, 
 ('p-66d9b191bde957c6', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
 ('p-2e36fa9bce438f93', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
 ('p-2c5a6a19f718058a', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
-('p-b78c16b0f8101365', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
+('p-b78c16b0f8101365', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca');
+
+insert into public.institution_services (institution_id, specialty_code, units, source_dataset) values
 ('p-8aa414df168d60ea', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
 ('p-f1b92746be622cd1', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
 ('p-abe5ec11563c296d', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
 ('p-bfd2baa96e7e85f2', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
 ('p-6efd5c7d80e7edc4', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
-('p-b71b7a13b9404ebf', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca');
-
-insert into public.institution_services (institution_id, specialty_code, units, source_dataset) values
+('p-b71b7a13b9404ebf', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
 ('p-d2ba5e4e93a0bf4b', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
 ('p-8575159bacd11b8d', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
 ('p-0c661bd2277b717b', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
@@ -10340,15 +10346,15 @@ insert into public.institution_services (institution_id, specialty_code, units, 
 ('p-ed0c33f211776e3d', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
 ('p-12d0d5305994d180', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
 ('p-57c759d026aa8e8c', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
-('p-7f4dbcefee4ace53', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
+('p-7f4dbcefee4ace53', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca');
+
+insert into public.institution_services (institution_id, specialty_code, units, source_dataset) values
 ('p-d0188f1782ec5539', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
 ('p-337b7f20e66dd511', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
 ('p-4b6235b535b8e6d3', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
 ('p-9e3b78168d8362b6', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
 ('p-54929a005a73afa8', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
-('p-6dc8bf4e69d86163', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca');
-
-insert into public.institution_services (institution_id, specialty_code, units, source_dataset) values
+('p-6dc8bf4e69d86163', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
 ('p-2de601686d5a6190', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
 ('p-250a418834f09967', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
 ('p-938a2e9762f49e30', 'obiteljska-medicina', 1.0, 'hzzo_pzz_opca'),
@@ -10842,15 +10848,15 @@ insert into public.institution_services (institution_id, specialty_code, units, 
 ('p-4528306e9d70011e', 'pedijatrija-pzz', 1.0, 'hzzo_pzz_ped'),
 ('p-a49c0c0c8e3af991', 'pedijatrija-pzz', 1.0, 'hzzo_pzz_ped'),
 ('p-85ea102ac8db2d63', 'pedijatrija-pzz', 1.0, 'hzzo_pzz_ped'),
-('p-39a47ec4fcc2e4cd', 'pedijatrija-pzz', 1.0, 'hzzo_pzz_ped'),
+('p-39a47ec4fcc2e4cd', 'pedijatrija-pzz', 1.0, 'hzzo_pzz_ped');
+
+insert into public.institution_services (institution_id, specialty_code, units, source_dataset) values
 ('p-d93410c8d52983f4', 'pedijatrija-pzz', 1.0, 'hzzo_pzz_ped'),
 ('p-0a365b3b9428eeda', 'pedijatrija-pzz', 1.0, 'hzzo_pzz_ped'),
 ('p-b637520dde4fc39f', 'pedijatrija-pzz', 1.0, 'hzzo_pzz_ped'),
 ('p-85040b2698e95558', 'pedijatrija-pzz', 1.0, 'hzzo_pzz_ped'),
 ('p-f4571f05d3539cdc', 'pedijatrija-pzz', 1.0, 'hzzo_pzz_ped'),
-('p-c608f91e3ec320bd', 'pedijatrija-pzz', 1.0, 'hzzo_pzz_ped');
-
-insert into public.institution_services (institution_id, specialty_code, units, source_dataset) values
+('p-c608f91e3ec320bd', 'pedijatrija-pzz', 1.0, 'hzzo_pzz_ped'),
 ('p-9694a2a1068149f0', 'pedijatrija-pzz', 1.0, 'hzzo_pzz_ped'),
 ('p-033813e53e8c817c', 'pedijatrija-pzz', 1.0, 'hzzo_pzz_ped'),
 ('p-207f577cac0aa9d3', 'pedijatrija-pzz', 1.0, 'hzzo_pzz_ped'),
@@ -11344,15 +11350,15 @@ insert into public.institution_services (institution_id, specialty_code, units, 
 ('p-de9b9fd85e2477c1', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent'),
 ('p-90d6aac1a5b09a0d', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent'),
 ('p-dc98a61d7d45ec74', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent'),
-('p-8cfecfa2fc883109', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent'),
+('p-8cfecfa2fc883109', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent');
+
+insert into public.institution_services (institution_id, specialty_code, units, source_dataset) values
 ('p-61db6001c60e3767', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent'),
 ('p-706993b6e7f17943', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent'),
 ('p-2b02a8f728f4ac6d', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent'),
 ('p-fff5cfddd1090bdd', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent'),
 ('p-e09f5d26a657a1bf', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent'),
-('p-ea4905dc52dcf4b1', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent');
-
-insert into public.institution_services (institution_id, specialty_code, units, source_dataset) values
+('p-ea4905dc52dcf4b1', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent'),
 ('p-8995b310b78c014c', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent'),
 ('p-85b2477a71932027', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent'),
 ('p-106faa6ce67c1cb1', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent'),
@@ -11846,15 +11852,15 @@ insert into public.institution_services (institution_id, specialty_code, units, 
 ('p-1b02f1782e5b6448', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent'),
 ('p-7b6e03ab8326984b', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent'),
 ('p-b227a2611c4d47bb', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent'),
-('p-9b309441e846d68d', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent'),
+('p-9b309441e846d68d', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent');
+
+insert into public.institution_services (institution_id, specialty_code, units, source_dataset) values
 ('p-dc0afadbdfc7dc9b', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent'),
 ('p-ec7d91e4278a0a15', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent'),
 ('p-a061e118a16e5308', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent'),
 ('p-49080d8f9df1c43b', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent'),
 ('p-4612e1908605d1d7', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent'),
-('p-d7bc04cc6ff9fdb8', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent');
-
-insert into public.institution_services (institution_id, specialty_code, units, source_dataset) values
+('p-d7bc04cc6ff9fdb8', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent'),
 ('p-44c91c2905f80606', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent'),
 ('p-00ec98f21fbef825', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent'),
 ('p-c3c20d98ba9e7ca6', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent'),
@@ -12348,15 +12354,15 @@ insert into public.institution_services (institution_id, specialty_code, units, 
 ('p-16dd7a163d86612c', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent'),
 ('p-d300522108e95bbb', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent'),
 ('p-7063c9c6945b1216', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent'),
-('p-d236fa8009291d29', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent'),
+('p-d236fa8009291d29', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent');
+
+insert into public.institution_services (institution_id, specialty_code, units, source_dataset) values
 ('p-e9621f9074491819', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent'),
 ('p-23aadfcada49f486', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent'),
 ('p-f2bc81aba3cfb539', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent'),
 ('p-52249c1448ad6578', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent'),
 ('p-d54a9be3bd7a09f0', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent'),
-('p-bc11882ad345eeca', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent');
-
-insert into public.institution_services (institution_id, specialty_code, units, source_dataset) values
+('p-bc11882ad345eeca', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent'),
 ('p-6e3203bccfdd04c6', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent'),
 ('p-a4610258af5fda6a', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent'),
 ('p-821dedab3f51f766', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent'),
@@ -12850,15 +12856,15 @@ insert into public.institution_services (institution_id, specialty_code, units, 
 ('p-63c622598193e31e', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent'),
 ('p-615107f3b9d3b16e', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent'),
 ('p-27d12ed418d6f6b9', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent'),
-('p-ce2d0391e689cf8e', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent'),
+('p-ce2d0391e689cf8e', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent');
+
+insert into public.institution_services (institution_id, specialty_code, units, source_dataset) values
 ('p-2cb2ede3a39cf456', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent'),
 ('p-6a239f55ef06a76c', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent'),
 ('p-412b41733d1de4b1', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent'),
 ('p-9e28c745ad4ee609', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent'),
 ('p-d94e33edc341a758', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent'),
-('p-dca00c26e1a5c212', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent');
-
-insert into public.institution_services (institution_id, specialty_code, units, source_dataset) values
+('p-dca00c26e1a5c212', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent'),
 ('p-b2d0933e82a6f1cc', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent'),
 ('p-296c769e1ea7f4cb', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent'),
 ('p-591afa3b70146041', 'dentalna-medicina', 1.0, 'hzzo_pzz_dent'),
@@ -13430,6 +13436,48 @@ insert into public.institution_hours (institution_id, weekday, opens, closes, is
 ('h-049704974', 5, '00:00', '24:00', true, 'ohbp_0-24'),
 ('h-049704974', 6, '00:00', '24:00', true, 'ohbp_0-24'),
 ('h-049704974', 7, '00:00', '24:00', true, 'ohbp_0-24'),
+('h-047804785', 1, '00:00', '24:00', true, 'ohbp_0-24'),
+('h-047804785', 2, '00:00', '24:00', true, 'ohbp_0-24'),
+('h-047804785', 3, '00:00', '24:00', true, 'ohbp_0-24'),
+('h-047804785', 4, '00:00', '24:00', true, 'ohbp_0-24'),
+('h-047804785', 5, '00:00', '24:00', true, 'ohbp_0-24'),
+('h-047804785', 6, '00:00', '24:00', true, 'ohbp_0-24'),
+('h-047804785', 7, '00:00', '24:00', true, 'ohbp_0-24'),
+('h-047404744', 1, '00:00', '24:00', true, 'ohbp_0-24'),
+('h-047404744', 2, '00:00', '24:00', true, 'ohbp_0-24'),
+('h-047404744', 3, '00:00', '24:00', true, 'ohbp_0-24'),
+('h-047404744', 4, '00:00', '24:00', true, 'ohbp_0-24'),
+('h-047404744', 5, '00:00', '24:00', true, 'ohbp_0-24'),
+('h-047404744', 6, '00:00', '24:00', true, 'ohbp_0-24'),
+('h-047404744', 7, '00:00', '24:00', true, 'ohbp_0-24'),
+('h-004200420', 1, '00:00', '24:00', true, 'ohbp_0-24'),
+('h-004200420', 2, '00:00', '24:00', true, 'ohbp_0-24'),
+('h-004200420', 3, '00:00', '24:00', true, 'ohbp_0-24'),
+('h-004200420', 4, '00:00', '24:00', true, 'ohbp_0-24'),
+('h-004200420', 5, '00:00', '24:00', true, 'ohbp_0-24'),
+('h-004200420', 6, '00:00', '24:00', true, 'ohbp_0-24'),
+('h-004200420', 7, '00:00', '24:00', true, 'ohbp_0-24'),
+('h-027602761', 1, '00:00', '24:00', true, 'ohbp_0-24'),
+('h-027602761', 2, '00:00', '24:00', true, 'ohbp_0-24'),
+('h-027602761', 3, '00:00', '24:00', true, 'ohbp_0-24'),
+('h-027602761', 4, '00:00', '24:00', true, 'ohbp_0-24'),
+('h-027602761', 5, '00:00', '24:00', true, 'ohbp_0-24'),
+('h-027602761', 6, '00:00', '24:00', true, 'ohbp_0-24'),
+('h-027602761', 7, '00:00', '24:00', true, 'ohbp_0-24'),
+('h-013301330', 1, '00:00', '24:00', true, 'ohbp_0-24'),
+('h-013301330', 2, '00:00', '24:00', true, 'ohbp_0-24'),
+('h-013301330', 3, '00:00', '24:00', true, 'ohbp_0-24'),
+('h-013301330', 4, '00:00', '24:00', true, 'ohbp_0-24'),
+('h-013301330', 5, '00:00', '24:00', true, 'ohbp_0-24'),
+('h-013301330', 6, '00:00', '24:00', true, 'ohbp_0-24'),
+('h-013301330', 7, '00:00', '24:00', true, 'ohbp_0-24'),
+('h-029602963', 1, '00:00', '24:00', true, 'ohbp_0-24'),
+('h-029602963', 2, '00:00', '24:00', true, 'ohbp_0-24'),
+('h-029602963', 3, '00:00', '24:00', true, 'ohbp_0-24'),
+('h-029602963', 4, '00:00', '24:00', true, 'ohbp_0-24'),
+('h-029602963', 5, '00:00', '24:00', true, 'ohbp_0-24'),
+('h-029602963', 6, '00:00', '24:00', true, 'ohbp_0-24'),
+('h-029602963', 7, '00:00', '24:00', true, 'ohbp_0-24'),
 ('p-003551ab77ab0b26', 1, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-003551ab77ab0b26', 2, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-003551ab77ab0b26', 3, '07:00', '14:00', false, 'demo_hand_filled'),
@@ -13689,7 +13737,9 @@ insert into public.institution_hours (institution_id, weekday, opens, closes, is
 ('p-09875d3c1ceadb1c', 2, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-09875d3c1ceadb1c', 3, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-09875d3c1ceadb1c', 4, '07:00', '14:00', false, 'demo_hand_filled'),
-('p-09875d3c1ceadb1c', 5, '07:00', '14:00', false, 'demo_hand_filled'),
+('p-09875d3c1ceadb1c', 5, '07:00', '14:00', false, 'demo_hand_filled');
+
+insert into public.institution_hours (institution_id, weekday, opens, closes, is_on_call, source) values
 ('p-0998a7a9cac72780', 1, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-0998a7a9cac72780', 2, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-0998a7a9cac72780', 3, '07:00', '14:00', false, 'demo_hand_filled'),
@@ -13731,9 +13781,7 @@ insert into public.institution_hours (institution_id, weekday, opens, closes, is
 ('p-0b049cca581dc774', 4, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-0b049cca581dc774', 5, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-0b04b8bfb3044e3d', 1, '13:00', '20:00', false, 'demo_hand_filled'),
-('p-0b04b8bfb3044e3d', 2, '13:00', '20:00', false, 'demo_hand_filled');
-
-insert into public.institution_hours (institution_id, weekday, opens, closes, is_on_call, source) values
+('p-0b04b8bfb3044e3d', 2, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-0b04b8bfb3044e3d', 3, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-0b04b8bfb3044e3d', 4, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-0b04b8bfb3044e3d', 5, '13:00', '20:00', false, 'demo_hand_filled'),
@@ -14191,7 +14239,9 @@ insert into public.institution_hours (institution_id, weekday, opens, closes, is
 ('p-19858ebd48890629', 2, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-19858ebd48890629', 3, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-19858ebd48890629', 4, '13:00', '20:00', false, 'demo_hand_filled'),
-('p-19858ebd48890629', 5, '13:00', '20:00', false, 'demo_hand_filled'),
+('p-19858ebd48890629', 5, '13:00', '20:00', false, 'demo_hand_filled');
+
+insert into public.institution_hours (institution_id, weekday, opens, closes, is_on_call, source) values
 ('p-19b403a42beed12a', 1, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-19b403a42beed12a', 2, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-19b403a42beed12a', 3, '07:00', '14:00', false, 'demo_hand_filled'),
@@ -14233,9 +14283,7 @@ insert into public.institution_hours (institution_id, weekday, opens, closes, is
 ('p-1a6df08b406f608c', 4, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-1a6df08b406f608c', 5, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-1a7d5c0ca8b39a83', 1, '13:00', '20:00', false, 'demo_hand_filled'),
-('p-1a7d5c0ca8b39a83', 2, '13:00', '20:00', false, 'demo_hand_filled');
-
-insert into public.institution_hours (institution_id, weekday, opens, closes, is_on_call, source) values
+('p-1a7d5c0ca8b39a83', 2, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-1a7d5c0ca8b39a83', 3, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-1a7d5c0ca8b39a83', 4, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-1a7d5c0ca8b39a83', 5, '13:00', '20:00', false, 'demo_hand_filled'),
@@ -14693,7 +14741,9 @@ insert into public.institution_hours (institution_id, weekday, opens, closes, is
 ('p-29b3f0d2a3eaa59c', 2, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-29b3f0d2a3eaa59c', 3, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-29b3f0d2a3eaa59c', 4, '07:00', '14:00', false, 'demo_hand_filled'),
-('p-29b3f0d2a3eaa59c', 5, '07:00', '14:00', false, 'demo_hand_filled'),
+('p-29b3f0d2a3eaa59c', 5, '07:00', '14:00', false, 'demo_hand_filled');
+
+insert into public.institution_hours (institution_id, weekday, opens, closes, is_on_call, source) values
 ('p-29d311d3096f9b93', 1, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-29d311d3096f9b93', 2, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-29d311d3096f9b93', 3, '13:00', '20:00', false, 'demo_hand_filled'),
@@ -14735,9 +14785,7 @@ insert into public.institution_hours (institution_id, weekday, opens, closes, is
 ('p-2b02a8f728f4ac6d', 4, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-2b02a8f728f4ac6d', 5, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-2b496c66b847bb0a', 1, '07:00', '14:00', false, 'demo_hand_filled'),
-('p-2b496c66b847bb0a', 2, '07:00', '14:00', false, 'demo_hand_filled');
-
-insert into public.institution_hours (institution_id, weekday, opens, closes, is_on_call, source) values
+('p-2b496c66b847bb0a', 2, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-2b496c66b847bb0a', 3, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-2b496c66b847bb0a', 4, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-2b496c66b847bb0a', 5, '07:00', '14:00', false, 'demo_hand_filled'),
@@ -15195,7 +15243,9 @@ insert into public.institution_hours (institution_id, weekday, opens, closes, is
 ('p-3e9f3b2bb7e484ad', 2, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-3e9f3b2bb7e484ad', 3, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-3e9f3b2bb7e484ad', 4, '13:00', '20:00', false, 'demo_hand_filled'),
-('p-3e9f3b2bb7e484ad', 5, '13:00', '20:00', false, 'demo_hand_filled'),
+('p-3e9f3b2bb7e484ad', 5, '13:00', '20:00', false, 'demo_hand_filled');
+
+insert into public.institution_hours (institution_id, weekday, opens, closes, is_on_call, source) values
 ('p-3eb7f7280660e3f9', 1, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-3eb7f7280660e3f9', 2, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-3eb7f7280660e3f9', 3, '13:00', '20:00', false, 'demo_hand_filled'),
@@ -15237,9 +15287,7 @@ insert into public.institution_hours (institution_id, weekday, opens, closes, is
 ('p-3fc04c7f8c240ca3', 4, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-3fc04c7f8c240ca3', 5, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-3fc13267edc0db65', 1, '13:00', '20:00', false, 'demo_hand_filled'),
-('p-3fc13267edc0db65', 2, '13:00', '20:00', false, 'demo_hand_filled');
-
-insert into public.institution_hours (institution_id, weekday, opens, closes, is_on_call, source) values
+('p-3fc13267edc0db65', 2, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-3fc13267edc0db65', 3, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-3fc13267edc0db65', 4, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-3fc13267edc0db65', 5, '13:00', '20:00', false, 'demo_hand_filled'),
@@ -15697,7 +15745,9 @@ insert into public.institution_hours (institution_id, weekday, opens, closes, is
 ('p-51ec8cf93a8bbc53', 2, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-51ec8cf93a8bbc53', 3, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-51ec8cf93a8bbc53', 4, '13:00', '20:00', false, 'demo_hand_filled'),
-('p-51ec8cf93a8bbc53', 5, '13:00', '20:00', false, 'demo_hand_filled'),
+('p-51ec8cf93a8bbc53', 5, '13:00', '20:00', false, 'demo_hand_filled');
+
+insert into public.institution_hours (institution_id, weekday, opens, closes, is_on_call, source) values
 ('p-52237b71ae483a51', 1, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-52237b71ae483a51', 2, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-52237b71ae483a51', 3, '13:00', '20:00', false, 'demo_hand_filled'),
@@ -15739,9 +15789,7 @@ insert into public.institution_hours (institution_id, weekday, opens, closes, is
 ('p-53c9a86a3171be42', 4, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-53c9a86a3171be42', 5, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-53e54cb625a8d233', 1, '13:00', '20:00', false, 'demo_hand_filled'),
-('p-53e54cb625a8d233', 2, '13:00', '20:00', false, 'demo_hand_filled');
-
-insert into public.institution_hours (institution_id, weekday, opens, closes, is_on_call, source) values
+('p-53e54cb625a8d233', 2, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-53e54cb625a8d233', 3, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-53e54cb625a8d233', 4, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-53e54cb625a8d233', 5, '13:00', '20:00', false, 'demo_hand_filled'),
@@ -16199,7 +16247,9 @@ insert into public.institution_hours (institution_id, weekday, opens, closes, is
 ('p-6425ec76e8348ba3', 2, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-6425ec76e8348ba3', 3, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-6425ec76e8348ba3', 4, '13:00', '20:00', false, 'demo_hand_filled'),
-('p-6425ec76e8348ba3', 5, '13:00', '20:00', false, 'demo_hand_filled'),
+('p-6425ec76e8348ba3', 5, '13:00', '20:00', false, 'demo_hand_filled');
+
+insert into public.institution_hours (institution_id, weekday, opens, closes, is_on_call, source) values
 ('p-646604b769508071', 1, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-646604b769508071', 2, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-646604b769508071', 3, '13:00', '20:00', false, 'demo_hand_filled'),
@@ -16241,9 +16291,7 @@ insert into public.institution_hours (institution_id, weekday, opens, closes, is
 ('p-66831a0703872f42', 4, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-66831a0703872f42', 5, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-6691be6761436bd3', 1, '13:00', '20:00', false, 'demo_hand_filled'),
-('p-6691be6761436bd3', 2, '13:00', '20:00', false, 'demo_hand_filled');
-
-insert into public.institution_hours (institution_id, weekday, opens, closes, is_on_call, source) values
+('p-6691be6761436bd3', 2, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-6691be6761436bd3', 3, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-6691be6761436bd3', 4, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-6691be6761436bd3', 5, '13:00', '20:00', false, 'demo_hand_filled'),
@@ -16701,7 +16749,9 @@ insert into public.institution_hours (institution_id, weekday, opens, closes, is
 ('p-777e5a69c76a699c', 2, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-777e5a69c76a699c', 3, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-777e5a69c76a699c', 4, '07:00', '14:00', false, 'demo_hand_filled'),
-('p-777e5a69c76a699c', 5, '07:00', '14:00', false, 'demo_hand_filled'),
+('p-777e5a69c76a699c', 5, '07:00', '14:00', false, 'demo_hand_filled');
+
+insert into public.institution_hours (institution_id, weekday, opens, closes, is_on_call, source) values
 ('p-778af38a9bf6973f', 1, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-778af38a9bf6973f', 2, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-778af38a9bf6973f', 3, '13:00', '20:00', false, 'demo_hand_filled'),
@@ -16743,9 +16793,7 @@ insert into public.institution_hours (institution_id, weekday, opens, closes, is
 ('p-784f403889d1c882', 4, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-784f403889d1c882', 5, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-7858950153460c52', 1, '07:00', '14:00', false, 'demo_hand_filled'),
-('p-7858950153460c52', 2, '07:00', '14:00', false, 'demo_hand_filled');
-
-insert into public.institution_hours (institution_id, weekday, opens, closes, is_on_call, source) values
+('p-7858950153460c52', 2, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-7858950153460c52', 3, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-7858950153460c52', 4, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-7858950153460c52', 5, '07:00', '14:00', false, 'demo_hand_filled'),
@@ -17203,7 +17251,9 @@ insert into public.institution_hours (institution_id, weekday, opens, closes, is
 ('p-89d776cd6097363c', 2, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-89d776cd6097363c', 3, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-89d776cd6097363c', 4, '07:00', '14:00', false, 'demo_hand_filled'),
-('p-89d776cd6097363c', 5, '07:00', '14:00', false, 'demo_hand_filled'),
+('p-89d776cd6097363c', 5, '07:00', '14:00', false, 'demo_hand_filled');
+
+insert into public.institution_hours (institution_id, weekday, opens, closes, is_on_call, source) values
 ('p-8a40fdb4c2f48b5a', 1, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-8a40fdb4c2f48b5a', 2, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-8a40fdb4c2f48b5a', 3, '07:00', '14:00', false, 'demo_hand_filled'),
@@ -17245,9 +17295,7 @@ insert into public.institution_hours (institution_id, weekday, opens, closes, is
 ('p-8b36f1efd6c27b7d', 4, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-8b36f1efd6c27b7d', 5, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-8b44726492a39196', 1, '07:00', '14:00', false, 'demo_hand_filled'),
-('p-8b44726492a39196', 2, '07:00', '14:00', false, 'demo_hand_filled');
-
-insert into public.institution_hours (institution_id, weekday, opens, closes, is_on_call, source) values
+('p-8b44726492a39196', 2, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-8b44726492a39196', 3, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-8b44726492a39196', 4, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-8b44726492a39196', 5, '07:00', '14:00', false, 'demo_hand_filled'),
@@ -17705,7 +17753,9 @@ insert into public.institution_hours (institution_id, weekday, opens, closes, is
 ('p-9b94ec346b92df0c', 2, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-9b94ec346b92df0c', 3, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-9b94ec346b92df0c', 4, '07:00', '14:00', false, 'demo_hand_filled'),
-('p-9b94ec346b92df0c', 5, '07:00', '14:00', false, 'demo_hand_filled'),
+('p-9b94ec346b92df0c', 5, '07:00', '14:00', false, 'demo_hand_filled');
+
+insert into public.institution_hours (institution_id, weekday, opens, closes, is_on_call, source) values
 ('p-9b9fbadcd67e77cb', 1, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-9b9fbadcd67e77cb', 2, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-9b9fbadcd67e77cb', 3, '13:00', '20:00', false, 'demo_hand_filled'),
@@ -17747,9 +17797,7 @@ insert into public.institution_hours (institution_id, weekday, opens, closes, is
 ('p-9d03b9471d8691a9', 4, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-9d03b9471d8691a9', 5, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-9d06b64ecc4841d1', 1, '13:00', '20:00', false, 'demo_hand_filled'),
-('p-9d06b64ecc4841d1', 2, '13:00', '20:00', false, 'demo_hand_filled');
-
-insert into public.institution_hours (institution_id, weekday, opens, closes, is_on_call, source) values
+('p-9d06b64ecc4841d1', 2, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-9d06b64ecc4841d1', 3, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-9d06b64ecc4841d1', 4, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-9d06b64ecc4841d1', 5, '13:00', '20:00', false, 'demo_hand_filled'),
@@ -18207,7 +18255,9 @@ insert into public.institution_hours (institution_id, weekday, opens, closes, is
 ('p-aeb6dea852cdc90c', 2, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-aeb6dea852cdc90c', 3, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-aeb6dea852cdc90c', 4, '07:00', '14:00', false, 'demo_hand_filled'),
-('p-aeb6dea852cdc90c', 5, '07:00', '14:00', false, 'demo_hand_filled'),
+('p-aeb6dea852cdc90c', 5, '07:00', '14:00', false, 'demo_hand_filled');
+
+insert into public.institution_hours (institution_id, weekday, opens, closes, is_on_call, source) values
 ('p-aec3fb7a2b360f21', 1, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-aec3fb7a2b360f21', 2, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-aec3fb7a2b360f21', 3, '13:00', '20:00', false, 'demo_hand_filled'),
@@ -18249,9 +18299,7 @@ insert into public.institution_hours (institution_id, weekday, opens, closes, is
 ('p-b0586a37135f2e52', 4, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-b0586a37135f2e52', 5, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-b060087c265a8c64', 1, '07:00', '14:00', false, 'demo_hand_filled'),
-('p-b060087c265a8c64', 2, '07:00', '14:00', false, 'demo_hand_filled');
-
-insert into public.institution_hours (institution_id, weekday, opens, closes, is_on_call, source) values
+('p-b060087c265a8c64', 2, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-b060087c265a8c64', 3, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-b060087c265a8c64', 4, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-b060087c265a8c64', 5, '07:00', '14:00', false, 'demo_hand_filled'),
@@ -18709,7 +18757,9 @@ insert into public.institution_hours (institution_id, weekday, opens, closes, is
 ('p-bf70d4bc4d96745b', 2, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-bf70d4bc4d96745b', 3, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-bf70d4bc4d96745b', 4, '13:00', '20:00', false, 'demo_hand_filled'),
-('p-bf70d4bc4d96745b', 5, '13:00', '20:00', false, 'demo_hand_filled'),
+('p-bf70d4bc4d96745b', 5, '13:00', '20:00', false, 'demo_hand_filled');
+
+insert into public.institution_hours (institution_id, weekday, opens, closes, is_on_call, source) values
 ('p-bf78c27b3141aca0', 1, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-bf78c27b3141aca0', 2, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-bf78c27b3141aca0', 3, '07:00', '14:00', false, 'demo_hand_filled'),
@@ -18751,9 +18801,7 @@ insert into public.institution_hours (institution_id, weekday, opens, closes, is
 ('p-c02f79b31914e6b4', 4, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-c02f79b31914e6b4', 5, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-c02f8dad85c00ef6', 1, '07:00', '14:00', false, 'demo_hand_filled'),
-('p-c02f8dad85c00ef6', 2, '07:00', '14:00', false, 'demo_hand_filled');
-
-insert into public.institution_hours (institution_id, weekday, opens, closes, is_on_call, source) values
+('p-c02f8dad85c00ef6', 2, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-c02f8dad85c00ef6', 3, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-c02f8dad85c00ef6', 4, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-c02f8dad85c00ef6', 5, '07:00', '14:00', false, 'demo_hand_filled'),
@@ -19211,7 +19259,9 @@ insert into public.institution_hours (institution_id, weekday, opens, closes, is
 ('p-d2213e0878c42b58', 2, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-d2213e0878c42b58', 3, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-d2213e0878c42b58', 4, '07:00', '14:00', false, 'demo_hand_filled'),
-('p-d2213e0878c42b58', 5, '07:00', '14:00', false, 'demo_hand_filled'),
+('p-d2213e0878c42b58', 5, '07:00', '14:00', false, 'demo_hand_filled');
+
+insert into public.institution_hours (institution_id, weekday, opens, closes, is_on_call, source) values
 ('p-d236fa8009291d29', 1, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-d236fa8009291d29', 2, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-d236fa8009291d29', 3, '13:00', '20:00', false, 'demo_hand_filled'),
@@ -19253,9 +19303,7 @@ insert into public.institution_hours (institution_id, weekday, opens, closes, is
 ('p-d437dd61dfe06016', 4, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-d437dd61dfe06016', 5, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-d4818299f77a397c', 1, '07:00', '14:00', false, 'demo_hand_filled'),
-('p-d4818299f77a397c', 2, '07:00', '14:00', false, 'demo_hand_filled');
-
-insert into public.institution_hours (institution_id, weekday, opens, closes, is_on_call, source) values
+('p-d4818299f77a397c', 2, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-d4818299f77a397c', 3, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-d4818299f77a397c', 4, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-d4818299f77a397c', 5, '07:00', '14:00', false, 'demo_hand_filled'),
@@ -19713,7 +19761,9 @@ insert into public.institution_hours (institution_id, weekday, opens, closes, is
 ('p-e377f55702d5df5c', 2, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-e377f55702d5df5c', 3, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-e377f55702d5df5c', 4, '07:00', '14:00', false, 'demo_hand_filled'),
-('p-e377f55702d5df5c', 5, '07:00', '14:00', false, 'demo_hand_filled'),
+('p-e377f55702d5df5c', 5, '07:00', '14:00', false, 'demo_hand_filled');
+
+insert into public.institution_hours (institution_id, weekday, opens, closes, is_on_call, source) values
 ('p-e381473ec942e95c', 1, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-e381473ec942e95c', 2, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-e381473ec942e95c', 3, '07:00', '14:00', false, 'demo_hand_filled'),
@@ -19755,9 +19805,7 @@ insert into public.institution_hours (institution_id, weekday, opens, closes, is
 ('p-e4927894d900d162', 4, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-e4927894d900d162', 5, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-e4c3adda263c6e79', 1, '13:00', '20:00', false, 'demo_hand_filled'),
-('p-e4c3adda263c6e79', 2, '13:00', '20:00', false, 'demo_hand_filled');
-
-insert into public.institution_hours (institution_id, weekday, opens, closes, is_on_call, source) values
+('p-e4c3adda263c6e79', 2, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-e4c3adda263c6e79', 3, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-e4c3adda263c6e79', 4, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-e4c3adda263c6e79', 5, '13:00', '20:00', false, 'demo_hand_filled'),
@@ -20215,7 +20263,9 @@ insert into public.institution_hours (institution_id, weekday, opens, closes, is
 ('p-f431e00445b85294', 2, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-f431e00445b85294', 3, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-f431e00445b85294', 4, '07:00', '14:00', false, 'demo_hand_filled'),
-('p-f431e00445b85294', 5, '07:00', '14:00', false, 'demo_hand_filled'),
+('p-f431e00445b85294', 5, '07:00', '14:00', false, 'demo_hand_filled');
+
+insert into public.institution_hours (institution_id, weekday, opens, closes, is_on_call, source) values
 ('p-f44e63f8779269c5', 1, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-f44e63f8779269c5', 2, '13:00', '20:00', false, 'demo_hand_filled'),
 ('p-f44e63f8779269c5', 3, '13:00', '20:00', false, 'demo_hand_filled'),
@@ -20257,9 +20307,7 @@ insert into public.institution_hours (institution_id, weekday, opens, closes, is
 ('p-f55a970349910764', 4, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-f55a970349910764', 5, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-f565b3099dece966', 1, '07:00', '14:00', false, 'demo_hand_filled'),
-('p-f565b3099dece966', 2, '07:00', '14:00', false, 'demo_hand_filled');
-
-insert into public.institution_hours (institution_id, weekday, opens, closes, is_on_call, source) values
+('p-f565b3099dece966', 2, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-f565b3099dece966', 3, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-f565b3099dece966', 4, '07:00', '14:00', false, 'demo_hand_filled'),
 ('p-f565b3099dece966', 5, '07:00', '14:00', false, 'demo_hand_filled'),

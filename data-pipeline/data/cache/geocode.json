@@ -881,6 +881,10 @@
 46.2829003,
 16.0796117
 ],
+"{\"city\": \"Klenovnik\", \"country\": \"Hrvatska\"}": [
+46.2682132,
+16.0779742
+],
 "{\"city\": \"Klinča Sela\", \"country\": \"Hrvatska\", \"street\": \"Matije Gupca bb\"}": [
 45.6824247,
 15.7514172
@@ -1300,6 +1304,10 @@
 "{\"city\": \"Novi Marof\", \"country\": \"Hrvatska\", \"street\": \"Breznica, Breznica bb\"}": null,
 "{\"city\": \"Novi Marof\", \"country\": \"Hrvatska\", \"street\": \"Ljubešćica, Zagrebačka 17\"}": null,
 "{\"city\": \"Novi Marof\", \"country\": \"Hrvatska\", \"street\": \"Ljubešćica, Zagrebačka bb\"}": null,
+"{\"city\": \"Novi Marof\", \"country\": \"Hrvatska\"}": [
+46.1643817,
+16.3348602
+],
 "{\"city\": \"Novi Vinodolski\", \"country\": \"Hrvatska\", \"street\": \"Bribir, Bribir 8\"}": null,
 "{\"city\": \"Novigrad Podravski\", \"country\": \"Hrvatska\", \"street\": \"Virovska 1\"}": [
 46.0754977,
@@ -1627,6 +1635,7 @@
 45.4337526,
 18.4165318
 ],
+"{\"city\": \"Rab\", \"country\": \"Hrvatska\", \"street\": \"Kampor 224\"}": null,
 "{\"city\": \"Rabac\", \"country\": \"Hrvatska\", \"street\": \"obala Maršala Tita 24\"}": [
 45.0782925,
 14.1592787
@@ -8770,6 +8779,7 @@
 44.7590276,
 14.7594087
 ],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"51280\", \"street\": \"Kampor 224\"}": null,
 "{\"country\": \"Hrvatska\", \"postalcode\": \"51280\", \"street\": \"Lopar, Lopar 487\"}": [
 44.8250804,
 14.7394157
@@ -8781,6 +8791,10 @@
 "{\"country\": \"Hrvatska\", \"postalcode\": \"51280\", \"street\": \"Palit, Palit 143a\"}": [
 44.7637765,
 14.7578816
+],
+"{\"country\": \"Hrvatska\", \"postalcode\": \"51280\"}": [
+44.7763925,
+14.7419661
 ],
 "{\"country\": \"Hrvatska\", \"postalcode\": \"51300\", \"street\": \"Fužine, Sveti Križ 13\"}": null,
 "{\"country\": \"Hrvatska\", \"postalcode\": \"51300\", \"street\": \"Lokve, Šetalište Golubinjak 3\"}": null,
@@ -9267,6 +9281,8 @@
 44.5465043,
 14.8917882
 ],
+"{\"q\": \"Opća bolnica Varaždin - Klenovnik, Hrvatska\"}": null,
+"{\"q\": \"Opća bolnica Varaždin - Novi Marof, Hrvatska\"}": null,
 "{\"q\": \"Opća bolnica Vukovar, Hrvatska\"}": [
 45.2926392,
 18.8189593
