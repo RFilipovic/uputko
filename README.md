@@ -59,6 +59,7 @@ cd data-pipeline && .venv/bin/python -m pytest -q && .venv/bin/ruff check .
 4. Every push to `main` deploys.
 
 For the hosted database: create a Supabase project in the EU (Frankfurt) region, then
-`pnpm dlx supabase@3.0.0 link --project-ref <ref>` and `pnpm dlx supabase@3.0.0 db push --include-seed`.
+`pnpm dlx supabase@3.0.0 link --project-ref <ref>` and `pnpm dlx supabase@3.0.0 db push --remote --include-seed`.
+The CLI targets the local database unless you pass `--remote`. The hosted project already exists (Central EU / Frankfurt); ask René for access.
 
 See `CLAUDE.md` and `PLAN.md` for the full plan.
