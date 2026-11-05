@@ -1,0 +1,53 @@
+# Continues Nominatim geocoding in the cloud and commits the cache back.
+# Runs in 10-minute chunks and commits after each, so progress is never lost.
+name: geocode
+
+on:
+  push:
+    branches: [data/geocode]
+    paths: [".github/workflows/geocode.yml", "data-pipeline/**.py"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: geocode
+  cancel-in-progress: false
+
+jobs:
+  geocode:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    defaults:
+      run:
+        working-directory: data-pipeline
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - run: python transform.py
+
+      - name: Geocode in chunks, committing after each
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for i in $(seq 1 20); do
+            echo "::group::chunk $i"
+            if timeout -s INT 600 python -u geocode.py; then done=1; else done=0; fi
+            echo "::endgroup::"
+            git add data/cache/geocode.json
+            git commit -m "data: geocode cache (chunk $i)" || true
+            git pull --rebase -q && git push -q
+            [ "$done" = 1 ] && break
+          done
+
+      - name: Rebuild clean data and seed with all coordinates
+        run: |
+          python geocode.py --offline
+          python load.py
+          git add data/cache data/clean ../supabase/seed.sql
+          git commit -m "data: rebuild clean data and seed after geocoding" || true
+          git pull --rebase -q && git push -q
