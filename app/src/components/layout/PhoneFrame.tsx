@@ -11,16 +11,26 @@ export function PhoneFrame({
 }: {
   children: React.ReactNode;
   className?: string;
-  /** Exactly one screen tall on phones: content scrolls inside, the bottom bar stays put (chat). */
+  /**
+   * Exactly one screen tall on every device; nothing outside scrolls. The page
+   * content scrolls inside (the chat), header and bottom bar stay put.
+   */
   pinned?: boolean;
 }) {
   return (
-    <div className="flex min-h-dvh justify-center lg:items-center lg:py-8">
+    <div
+      className={cn(
+        "flex justify-center lg:items-center lg:py-8",
+        pinned ? "h-dvh overflow-hidden overscroll-none" : "min-h-dvh",
+      )}
+    >
       <div
         className={cn(
-          "relative flex w-full flex-col",
-          pinned ? "h-dvh" : "min-h-dvh",
-          "bg-background lg:h-[844px] lg:min-h-0 lg:w-[390px] lg:overflow-hidden lg:rounded-[2.75rem] lg:border-[10px] lg:border-ink lg:shadow-2xl dark:lg:border-[#2a2450]",
+          "relative flex w-full flex-col bg-background lg:w-[390px] lg:overflow-hidden lg:rounded-[2.75rem] lg:border-[10px] lg:border-ink lg:shadow-2xl dark:lg:border-[#2a2450]",
+          // Pinned: fill the screen on phones; on laptops shrink to fit short screens (max 844px).
+          pinned
+            ? "h-full lg:h-[min(844px,100%)]"
+            : "min-h-dvh lg:h-[844px] lg:min-h-0",
           className,
         )}
       >
