@@ -1,4 +1,4 @@
-# PLAN.md — Uputko (working name)
+# PLAN.md — Uputko
 
 **Datathon Portala otvorenih podataka 2026 · Challenge A: Društvo i javne usluge**
 **Today: Wed 04.11.2026 · Submission: Mon 09.11.2026, 24:00 → open.data@mpudt.hr**

@@ -1,4 +1,4 @@
-# CLAUDE.md — Uputko (working name)
+# CLAUDE.md — Uputko
 
 > AI health-navigation agent for Croatian citizens. Built for the **Datathon Portala otvorenih podataka 2026**, Challenge A (*Društvo i javne usluge*).
 > **Hard deadline: submission by email to open.data@mpudt.hr by 09.11.2026 at 24:00.** Every decision in this repo is weighed against that date.
