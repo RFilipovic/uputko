@@ -48,105 +48,107 @@ Daily: 15-min sync at 10:00 and 21:00. Main branch always deploys. Mentor review
 
 ## 3. Phased Development Roadmap
 
+This section is the plan, not the status. Progress is tracked in GitHub Issues, one milestone per phase (see CLAUDE.md §3.1).
+
 ### Phase 0 — Kickoff (Wed 04.11 evening, ~2h)
-- [ ] Repo, Next.js app, Tailwind + shadcn, Supabase project (EU region), Vercel deploy of "hello world"
-- [ ] API keys: Claude, Resend (verify a sending domain or use the sandbox sender), Supabase
-- [ ] Decide final name + accent colour (C)
-- [ ] A starts browsing data.gov.hr and lists candidate datasets
-- [ ] Everyone turns off model training on their data in Claude / ChatGPT / Codex settings
-- [ ] Confirm with the mentor (and the *Pravila za Datathon*) that AI-assisted coding is allowed; we write the plan and architecture ourselves either way
+- Repo, Next.js app, Tailwind + shadcn, Supabase project (EU region), Vercel deploy of "hello world"
+- API keys: Claude, Resend (verify a sending domain or use the sandbox sender), Supabase
+- Decide final name + accent colour (C)
+- A starts browsing data.gov.hr and lists candidate datasets
+- Everyone turns off model training on their data in Claude / ChatGPT / Codex settings
+- Confirm with the mentor (and the *Pravila za Datathon*) that AI-assisted coding is allowed; we write the plan and architecture ourselves either way
 **Exit:** blank app deployed on a public URL; everyone can run it locally.
 
 ### Phase 1 — Core Foundation & Data Layer (Thu 05.11)
 **A — Data**
-- [ ] Fetch via **CKAN Action API** (`/api/3/action/package_search`, `package_show`) and store raw files with metadata (URL, publisher, licence, fetch date). Candidate datasets to verify:
+- Fetch via **CKAN Action API** (`/api/3/action/package_search`, `package_show`) and store raw files with metadata (URL, publisher, licence, fetch date). Candidate datasets to verify:
   - HZZO *Pokazatelji uspješnosti rada ordinacija primarne zdravstvene zaštite* (practitioners/practices)
   - HZZO *Mreža javne zdravstvene službe* (primary-care network by area)
   - *Lokacije ordinacija primarne zdravstvene zaštite* and *Adresar zdravstvenih ustanova / privatnih praksi* — `TODO(verify)` still published
   - Ministarstvo zdravstva *Zdravstvene ustanove* (XLS)
   - City portals, e.g. Grad Zagreb *Geoportal zdravstvene ustanove* (GeoJSON, already geocoded)
   - OpenStreetMap (`amenity=hospital|clinic|doctors`, `emergency=yes`) as geo backfill
-- [ ] Transform: normalise names/addresses, map institution type, build **specialty ↔ institution** table (hand-curated for the major hospitals where data lacks departments — document this honestly)
-- [ ] Geocode missing coordinates with Nominatim (1 req/s, cached, committed)
-- [ ] Dedupe across sources with rapidfuzz (name + city); keep `source_dataset` on every row
+- Transform: normalise names/addresses, map institution type, build **specialty ↔ institution** table (hand-curated for the major hospitals where data lacks departments — document this honestly)
+- Geocode missing coordinates with Nominatim (1 req/s, cached, committed)
+- Dedupe across sources with rapidfuzz (name + city); keep `source_dataset` on every row
 
 **A/B — Schema**
-- [ ] Migrations for the tables in CLAUDE.md §2.4, PostGIS, RLS, indexes
-- [ ] SQL function `nearest_institutions(specialty, lat, lng, limit)` using KNN `<->`
-- [ ] Opening hours + on-call (*dežurstvo*) info into `institution_hours` wherever a dataset has it; hand-fill for the demo cities where it doesn't, and mark it as such
-- [ ] Seed 3 synthetic personas, each with chosen doctors: *Ana, 72, Zagreb* (ear pain → obiteljski → ORL) · *Luka, 21, student in Varaždin, doctors in Osijek* (toothache → direct route) · *Maja, 34, Split, with a sick child* (→ pedijatar)
-- [ ] Generate synthetic `slots` for the next 3 weeks at demo institutions (realistic spread, a few gaps)
+- Migrations for the tables in CLAUDE.md §2.4, PostGIS, RLS, indexes
+- SQL function `nearest_institutions(specialty, lat, lng, limit)` using KNN `<->`
+- Opening hours + on-call (*dežurstvo*) info into `institution_hours` wherever a dataset has it; hand-fill for the demo cities where it doesn't, and mark it as such
+- Seed 3 synthetic personas, each with chosen doctors: *Ana, 72, Zagreb* (ear pain → obiteljski → ORL) · *Luka, 21, student in Varaždin, doctors in Osijek* (toothache → direct route) · *Maja, 34, Split, with a sick child* (→ pedijatar)
+- Generate synthetic `slots` for the next 3 weeks at demo institutions (realistic spread, a few gaps)
 
 **C — Foundation UI**
-- [ ] Tokens, light/dark themes, typography, large-text mode
-- [ ] App shell, phone-frame layout, landing screen, empty chat screen
+- Tokens, light/dark themes, typography, large-text mode
+- App shell, phone-frame layout, landing screen, empty chat screen
 
 **Exit:** `nearest_institutions('kardiologija', 43.51, 16.44)` returns sensible results; seed loads from scratch in one command.
 
 ### Phase 2 — Feature Engineering & Business Logic (Fri 06.11)
 **B — Agent**
-- [ ] `/api/chat` streaming with Vercel AI SDK; Croatian system prompt; tools `getMyDoctor`, `findInstitutions`, `submitCaseSummary`
-- [ ] Red-flag rules + tests; `EmergencyTakeover` trigger
-- [ ] Structured summary (Zod) → `cases.summary_json`; status transitions write `case_events`
-- [ ] Routing table (complaint → chosen doctor role) + direct path when away from home
-- [ ] 15 scripted eval scenarios, including "boli me zub, u Varaždinu sam", "dijete ima temperaturu", "boli me uho dva dana", "bol u prsima"; tune the prompt until urgency **and** route are right on all of them
+- `/api/chat` streaming with Vercel AI SDK; Croatian system prompt; tools `getMyDoctor`, `findInstitutions`, `submitCaseSummary`
+- Red-flag rules + tests; `EmergencyTakeover` trigger
+- Structured summary (Zod) → `cases.summary_json`; status transitions write `case_events`
+- Routing table (complaint → chosen doctor role) + direct path when away from home
+- 15 scripted eval scenarios, including "boli me zub, u Varaždinu sam", "dijete ima temperaturu", "boli me uho dva dana", "bol u prsima"; tune the prompt until urgency **and** route are right on all of them
 
 **B — Doctor loop**
-- [ ] Email to doctor (React Email): patient, summary, urgency badge, current location, "Otvori slučaj" button with signed token
-- [ ] Doctor portal `/lijecnik/slucaj/[token]`: summary, chat transcript (collapsible), suggested specialty, ranked institutions near the patient on a map, form to issue uputnica (type, specialty, priority, institution, note), or "Pozovite pacijenta na pregled" as an alternative outcome
-- [ ] Issuing writes `referrals` + event → Realtime broadcast
-- [ ] Patient confirmation email with referral details
+- Email to doctor (React Email): patient, summary, urgency badge, current location, "Otvori slučaj" button with signed token
+- Doctor portal `/lijecnik/slucaj/[token]`: summary, chat transcript (collapsible), suggested specialty, ranked institutions near the patient on a map, form to issue uputnica (type, specialty, priority, institution, note), or "Pozovite pacijenta na pregled" as an alternative outcome
+- Issuing writes `referrals` + event → Realtime broadcast
+- Patient confirmation email with referral details
 
 **B — Appointments & changes**
-- [ ] On referral issued: pick the earliest free slot at the chosen institution, hold it 15 min, notify the patient (`appointment_proposed`)
-- [ ] Patient actions: **Potvrdi** / **Ne paše mi** (availability picker: days + morning/afternoon) / **Otkaži**
-- [ ] Demo institution panel `/ustanova`: list bookings, **Oslobodi termin** (simulates a cancellation), answer reschedule requests with a new slot
-- [ ] Freed slot → `earlier_slot_offer` to the patient with the latest later appointment → Prihvati / Odbij
-- [ ] Atomic slot booking (one SQL transaction) + `.ics` generation + email/in-app notification for every change
+- On referral issued: pick the earliest free slot at the chosen institution, hold it 15 min, notify the patient (`appointment_proposed`)
+- Patient actions: **Potvrdi** / **Ne paše mi** (availability picker: days + morning/afternoon) / **Otkaži**
+- Demo institution panel `/ustanova`: list bookings, **Oslobodi termin** (simulates a cancellation), answer reschedule requests with a new slot
+- Freed slot → `earlier_slot_offer` to the patient with the latest later appointment → Prihvati / Odbij
+- Atomic slot booking (one SQL transaction) + `.ics` generation + email/in-app notification for every change
 
 **A — Geo & routing**
-- [ ] Browser geolocation with manual city fallback; store on case
-- [ ] Ranking: distance, institution type fits specialty, (optional) OSRM ETA with timeout → straight-line fallback
+- Browser geolocation with manual city fallback; store on case
+- Ranking: distance, institution type fits specialty, (optional) OSRM ETA with timeout → straight-line fallback
 
 **C — Screens (functional, not yet pretty)**
-- [ ] Chat (streaming bubbles, quick-reply chips, composer, voice button)
-- [ ] Case page with timeline driven by `case_events`
-- [ ] Referral card + institution map
-- [ ] Onboarding: choose doctors from open data (search by name/city)
-- [ ] Appointment card, notification center, action toasts
+- Chat (streaming bubbles, quick-reply chips, composer, voice button)
+- Case page with timeline driven by `case_events`
+- Referral card + institution map
+- Onboarding: choose doctors from open data (search by name/city)
+- Appointment card, notification center, action toasts
 
 **Exit:** the full golden path works end-to-end on the deployed URL, ugly or not: chat → doctor → uputnica → slot confirmed. The toothache direct route also works. Rescheduling may slip to Saturday morning if needed. **This is the most important checkpoint in the plan.** If it slips, cut Phase 3 scope, not Phase 2.
 
 ### Phase 3 — Visual Identity & Interface Polish (Sat 07.11)
-- [ ] Chat: message enter animations, typing indicator that feels alive, quick replies that morph into the answer, smooth autoscroll
-- [ ] Case timeline: animated status steps (*Poslano liječniku → Pregledano → Uputnica izdana → Na putu*)
-- [ ] **Referral arrival:** card slides in with a subtle confetti-free success pulse; map flies to the institution; "Upute" button opens native maps
-- [ ] Appointment card: date/time big and clear, location, "otvoreno do 20:00" live badge, what to bring (uputnica no., ID, health card), Dodaj u kalendar
-- [ ] Notifications: earlier-slot offer slides in as an actionable toast; accepting animates the old slot out and the new one in
-- [ ] Persistent but calm "Hitno? Zovi 112" banner from the first screen
-- [ ] Emergency takeover: full-screen, high-contrast, one giant "Nazovi 112" button, nearest OHBP card, nothing else competing for attention
-- [ ] Doctor portal: dense but calm desktop layout, keyboard shortcuts, issue form under 3 clicks
-- [ ] Data-provenance chips ("Izvor: HZZO, data.gov.hr") on institutions and doctor — earns rubric points visibly
-- [ ] Optional "Javni podaci" page: small map + counts of institutions/doctors by county from our dataset (cheap, shows data linkage)
-- [ ] Accessibility pass: axe DevTools clean, keyboard-only run, screen reader labels, large-text mode, contrast in both themes
-- [ ] Lighthouse ≥ 90 performance and 100 accessibility on the patient pages
+- Chat: message enter animations, typing indicator that feels alive, quick replies that morph into the answer, smooth autoscroll
+- Case timeline: animated status steps (*Poslano liječniku → Pregledano → Uputnica izdana → Na putu*)
+- **Referral arrival:** card slides in with a subtle confetti-free success pulse; map flies to the institution; "Upute" button opens native maps
+- Appointment card: date/time big and clear, location, "otvoreno do 20:00" live badge, what to bring (uputnica no., ID, health card), Dodaj u kalendar
+- Notifications: earlier-slot offer slides in as an actionable toast; accepting animates the old slot out and the new one in
+- Persistent but calm "Hitno? Zovi 112" banner from the first screen
+- Emergency takeover: full-screen, high-contrast, one giant "Nazovi 112" button, nearest OHBP card, nothing else competing for attention
+- Doctor portal: dense but calm desktop layout, keyboard shortcuts, issue form under 3 clicks
+- Data-provenance chips ("Izvor: HZZO, data.gov.hr") on institutions and doctor — earns rubric points visibly
+- Optional "Javni podaci" page: small map + counts of institutions/doctors by county from our dataset (cheap, shows data linkage)
+- Accessibility pass: axe DevTools clean, keyboard-only run, screen reader labels, large-text mode, contrast in both themes
+- Lighthouse ≥ 90 performance and 100 accessibility on the patient pages
 
 **Exit:** a stranger can complete the golden path on a phone without help and says "wow" at the referral moment. Send URL to mentor tonight.
 
 ### Phase 4 — Demo Integration & Edge-Case Handling (Sun 08.11 → Mon 09.11)
 **Sunday**
-- [ ] Mentor feedback → fix top 5 issues only
-- [ ] Edge cases: LLM timeout (retry + friendly message), patient denies location, no institution for specialty nearby (widen radius, say so), nothing open right now (show next opening + on-call service), doctor opens expired link, no free slot in 3 weeks (offer a nearby institution), patient declines twice, two patients accept the same freed slot, empty/garbled input, user switches to English
-- [ ] **Demo-safe mode:** `?demo=1` seeds a fresh case per persona and uses a cached agent transcript if the API is slow — so the recording never depends on luck
-- [ ] Playwright golden path + emergency path green
-- [ ] Record the video (script below), two takes minimum, screen at 1080p+
-- [ ] Write `docs/architecture.md` (diagram, data flow, scaling path, CEZIH/FHIR integration path, legal prerequisites) and `docs/data-sources.md`
+- Mentor feedback → fix top 5 issues only
+- Edge cases: LLM timeout (retry + friendly message), patient denies location, no institution for specialty nearby (widen radius, say so), nothing open right now (show next opening + on-call service), doctor opens expired link, no free slot in 3 weeks (offer a nearby institution), patient declines twice, two patients accept the same freed slot, empty/garbled input, user switches to English
+- **Demo-safe mode:** `?demo=1` seeds a fresh case per persona and uses a cached agent transcript if the API is slow — so the recording never depends on luck
+- Playwright golden path + emergency path green
+- Record the video (script below), two takes minimum, screen at 1080p+
+- Write `docs/architecture.md` (diagram, data flow, scaling path, CEZIH/FHIR integration path, legal prerequisites) and `docs/data-sources.md`
 
 **Monday**
-- [ ] Final README: problem, live URL, test credentials, how to run, how to rebuild data
-- [ ] Freeze code at 15:00; tag `v1.0-datathon`
-- [ ] Package: repo link (public GitHub) + zip, docs as PDF, video (link to unlisted YouTube/Drive plus file if size allows), short cover email listing team, mentor, challenge (A)
-- [ ] Send by 18:00; one teammate confirms the email and all links open from a logged-out browser
+- Final README: problem, live URL, test credentials, how to run, how to rebuild data
+- Freeze code at 15:00; tag `v1.0-datathon`
+- Package: repo link (public GitHub) + zip, docs as PDF, video (link to unlisted YouTube/Drive plus file if size allows), short cover email listing team, mentor, challenge (A)
+- Send by 18:00; one teammate confirms the email and all links open from a logged-out browser
 
 ### 3-minute video script (draft)
 | Time | Content |

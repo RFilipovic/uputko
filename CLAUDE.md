@@ -80,6 +80,7 @@ We deliberately do **not** use: microservices, Kubernetes, a separate API gatewa
 ├── CLAUDE.md
 ├── PLAN.md
 ├── README.md                    # setup + demo URL + credentials for judges
+├── scripts/create-issues.mjs    # one-off: GitHub milestones + issues from PLAN.md (see §3.1)
 ├── docs/
 │   ├── architecture.md          # diagrams, data flow, CEZIH path, legal prerequisites
 │   ├── data-sources.md          # every dataset: URL, publisher, licence, fetch date, transform
@@ -185,7 +186,7 @@ Indexes: GIST on `institutions.geom`; btree on `institution_services.specialty_c
 
 ## 3. Execution Instructions for AI Assistants
 
-1. **Read `PLAN.md` first.** Work on the current phase only. If a request falls outside it, say so before doing it.
+1. **Read `PLAN.md` first, then check the GitHub Issues** (see §3.1). Work on the current phase only. If a request falls outside it, say so before doing it.
 2. **Deadline mode.** Prefer the simplest thing that works and looks good. Do not introduce new dependencies, services or abstractions without stating why the existing stack can't do it.
 3. **Small, verifiable steps.** Make one change, run `pnpm typecheck && pnpm lint && pnpm test` (or the relevant pytest), and report the result. Never claim something works without running it.
 4. **Respect the structure** in §2.1. New components go in the matching folder; new strings go in `hr.ts`.
@@ -196,3 +197,51 @@ Indexes: GIST on `institutions.geom`; btree on `institution_services.specialty_c
 9. **Commits:** Conventional Commits (`feat:`, `fix:`, `data:`, `docs:`, `style:`). One logical change per commit.
 10. **When unsure about Croatian healthcare rules** (uputnica types, CEZIH, HZZO), say so and flag it for a human to verify rather than inventing specifics.
 11. **Demo reliability over cleverness.** Anything on the demo path needs a fallback: cached LLM response for the scripted scenario, local snapshot of open data, straight-line distance if routing fails.
+
+### 3.1 Progress protocol
+Teammates work on separate laptops and must be able to continue each other's work from GitHub alone. **GitHub Issues are the shared state; `PLAN.md` describes the plan but does not track progress.** Every session that changes the project follows these steps. They need the `gh` CLI, logged in with the person's own account. If `gh` is missing or not logged in, stop and tell the person; do not work around it.
+
+| State | On GitHub |
+|---|---|
+| To-do | Open, no assignee |
+| In progress | Open, assignee + `in-progress` label |
+| Finished | Closed |
+
+Each phase is a milestone, and the **current phase is the lowest-numbered milestone with open issues**. New tasks found during the work become new issues in the right milestone.
+
+**When the session starts**
+1. Run `git fetch origin` and bring your branch up to date with `main`.
+2. Read the state: `gh issue list --state open --limit 200 --json number,title,milestone,assignees,labels`. For context, read recently closed issues and their last comments: `gh issue list --state closed --limit 20` and `gh issue view <n> --comments`.
+3. Tell the person the current phase, what is taken, and what is free to pick up.
+
+**Before starting a task**
+4. Do not start a task that has an assignee. A claim counts as abandoned only if the issue and its branch have had no activity for 12 hours; then you may take it over and say so in a comment.
+5. Claim it: `gh issue edit <n> --add-assignee @me --add-label in-progress`. Then check with `gh issue view <n> --json assignees`. If someone else is also assigned, remove yourself and pick another task.
+
+**When a task is finished**
+6. Run the checks from rule 3 above, or the relevant pytest. Do not close an issue if they fail.
+7. Put `Closes #<n>` in the commit message or PR, then get the work onto `main`. Work counts as done only once it is on `main`; GitHub closes the issue at that point. Before that, leave a handoff comment on the issue. Remove the `in-progress` label when the issue closes.
+8. Close an issue only if everything in it is done and verified. If part of it is done, leave it open and describe the state in a comment.
+9. Tasks done outside the repo (API keys, Supabase project, Vercel deploy) are closed with `gh issue close <n> --comment "..."`, without any secret values.
+
+**When a whole phase is finished**
+10. When the only open issue left in a milestone is `[P<n>] Exit criteria`, check those criteria for real and close it with a comment saying how you checked. A phase without that issue is finished when its milestone has no open issues.
+
+**When a session stops before the task is finished**
+11. Push the branch, keep the assignee and label, and leave a handoff comment saying what works, what does not, and where to continue.
+
+**Handoff comment format**
+```
+**Done:** what now exists, with commit or branch.
+**Not verified:** what was not run or checked.
+**Open:** what is left, and any known problems.
+**Next:** the most useful next step.
+```
+
+**Rules**
+- Write only what you did and ran. "Not verified" is a valid answer; a wrongly closed issue costs a teammate more than an open one.
+- Changes the next person needs in order to run the project go in the repo, not in comments: env var names in `app/.env.example`, commands in `README.md`.
+- Issues and comments follow the same rules as the repo: no secrets, no real health data.
+- Updating issues and pushing finished work to `main` is part of this protocol, so the person does not need to ask for it separately. If the person says not to push, respect that and tell them the team will not see the change.
+
+Issues are created once from `PLAN.md` with `node scripts/create-issues.mjs` (add `--dry-run` to preview); after that, edit the issues directly.
