@@ -3,7 +3,7 @@ import { choosePersona, PERSONA, PHONE, say } from "./helpers";
 
 const SHOTS = process.env.E2E_SHOTS ?? "test-results/shots";
 
-test.use({ viewport: PHONE, isMobile: true, hasTouch: true });
+test.use({ viewport: PHONE });
 
 test("emergency path: chest pain → 112 takeover with nearest emergency department", async ({ page }) => {
   await choosePersona(page, PERSONA.maja);

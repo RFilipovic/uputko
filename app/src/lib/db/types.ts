@@ -451,7 +451,7 @@ isOneToOne: false
             }[]
                            },
 "offer_freed_slot":
-{ Args: { "p_slot_id": string }; Returns: string
+{ Args: { "p_exclude_appointment"?: string,"p_slot_id": string }; Returns: string
                            },
 "offer_reschedule":
 { Args: { "p_appointment_id": string,"p_slot_id": string }; Returns: string

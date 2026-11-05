@@ -2,10 +2,13 @@ import { expect, test } from "@playwright/test";
 import { choosePersona, finishIntake, PERSONA, PHONE, say } from "./helpers";
 
 const SHOTS = process.env.E2E_SHOTS ?? "test-results/shots";
+
+// The change flow needs the appointment the golden path creates: run in order.
+test.describe.configure({ mode: "serial" });
 const UPUTNICA = "public/demo/uputnica-ana-orl.png";
 
 test("golden path: chat → doctor uploads uputnica → patient sees appointment live → confirms", async ({ browser }) => {
-  const patientCtx = await browser.newContext({ viewport: PHONE, isMobile: true, hasTouch: true });
+  const patientCtx = await browser.newContext({ viewport: PHONE });
   const doctorCtx = await browser.newContext({ viewport: { width: 1280, height: 900 } });
   const phone = await patientCtx.newPage();
   const laptop = await doctorCtx.newPage();
@@ -49,4 +52,45 @@ test("golden path: chat → doctor uploads uputnica → patient sees appointment
 
   await patientCtx.close();
   await doctorCtx.close();
+});
+
+/** Runs after the golden path: Ana has a confirmed appointment. */
+test("changes by notification: ne paše mi → institution offers → accept; earlier slot → accept", async ({ browser }) => {
+  const phone = await (await browser.newContext({ viewport: PHONE })).newPage();
+  const desk = await (await browser.newContext({ viewport: { width: 1200, height: 900 } })).newPage();
+
+  await phone.goto("/profil");
+  const ana = phone.locator("li", { has: phone.getByText("Ana Horvat", { exact: true }) });
+  if (await ana.getByRole("button", { name: "Odaberi" }).isVisible()) await ana.getByRole("button", { name: "Odaberi" }).click();
+  await expect(ana.getByRole("button", { name: "Odabrano" })).toBeVisible();
+  await phone.goto("/");
+  await phone.locator("a", { hasText: "Termin potvrđen" }).first().click();
+  await expect(phone.getByRole("heading", { name: "Termin potvrđen" })).toBeVisible();
+
+  // "Ne paše mi": the first 5 days are full, so pick mornings from day 6 on.
+  await phone.getByRole("button", { name: "Ne paše mi" }).click();
+  const mornings = phone.getByRole("button", { name: "Ujutro" });
+  for (const i of [5, 6, 7, 8]) await mornings.nth(i).click();
+  await phone.screenshot({ path: `${SHOTS}/20-availability.png`, fullPage: true });
+  await phone.getByRole("button", { name: "Pošalji", exact: true }).click();
+  await expect(phone.getByRole("heading", { name: "Tražite drugi termin" })).toBeVisible();
+
+  await desk.goto("/ustanova");
+  await desk.getByRole("button", { name: /Ponudi ovaj termin/ }).first().click();
+  await expect(desk.getByText("Ponuda je poslana pacijentu.")).toBeVisible();
+  await expect(phone.getByRole("heading", { name: "Novi prijedlog termina" })).toBeVisible({ timeout: 20_000 });
+  await phone.screenshot({ path: `${SHOTS}/21-reschedule-offer.png` });
+  await phone.getByRole("button", { name: "Prihvati" }).click();
+  await expect(phone.getByRole("heading", { name: "Termin potvrđen" })).toBeVisible();
+
+  await desk.goto("/ustanova");
+  await desk.getByRole("button", { name: "Oslobodi raniji termin" }).first().click();
+  await expect(desk.getByText("Termin je oslobođen i ponuđen pacijentu.")).toBeVisible();
+  await expect(phone.getByRole("heading", { name: "Oslobodio se raniji termin" })).toBeVisible({ timeout: 20_000 });
+  await phone.screenshot({ path: `${SHOTS}/22-earlier-offer.png` });
+  await phone.getByRole("button", { name: "Prihvati" }).click();
+  await expect(phone.getByRole("heading", { name: "Oslobodio se raniji termin" })).toHaveCount(0);
+  await expect(phone.getByRole("heading", { name: "Termin potvrđen" })).toBeVisible();
+  await expect(phone.getByText("Termin promijenjen").first()).toBeVisible();
+  await phone.screenshot({ path: `${SHOTS}/23-moved.png`, fullPage: true });
 });

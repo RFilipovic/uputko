@@ -1,4 +1,4 @@
-import { defineConfig } from "@playwright/test";
+import { defineConfig, devices } from "@playwright/test";
 
 /** E2E: golden path + emergency path (CLAUDE.md §2.6). Uses the real model (cents per run). */
 export default defineConfig({
@@ -14,7 +14,13 @@ export default defineConfig({
     locale: "hr-HR",
     timezoneId: "Europe/Zagreb",
     trace: "retain-on-failure",
+    // E2E_SLOWMO=400 slows every action down so people can watch a headed run.
+    launchOptions: { slowMo: Number(process.env.E2E_SLOWMO ?? 0) },
   },
+  projects: [
+    { name: "chromium", use: { ...devices["Desktop Chrome"] } },
+    { name: "firefox", use: { ...devices["Desktop Firefox"] } },
+  ],
   webServer: process.env.E2E_BASE_URL
     ? undefined
     : { command: "pnpm dev", url: "http://localhost:3000", reuseExistingServer: true, timeout: 120_000 },

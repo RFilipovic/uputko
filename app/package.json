@@ -12,7 +12,8 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "test:e2e": "playwright test",
-    "eval": "node scripts/run-evals.ts"
+    "eval": "node scripts/run-evals.ts",
+    "test:e2e:watch": "E2E_SLOWMO=400 playwright test --project=firefox --headed"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^1.4.0",

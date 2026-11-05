@@ -130,7 +130,7 @@ end $$;
 -- Offer a freed slot to the patient with the latest later appointment for the
 -- same institution + specialty (skipping anyone who already declined it).
 -- Holds the slot for them for 15 min. Returns the notification id or null.
-create or replace function public.offer_freed_slot(p_slot_id uuid)
+create or replace function public.offer_freed_slot(p_slot_id uuid, p_exclude_appointment uuid default null)
 returns uuid
 language plpgsql
 set search_path = public
@@ -152,6 +152,7 @@ begin
   join slots s on s.id = a.slot_id
   join referrals ref on ref.id = a.referral_id
   where a.status = 'confirmed'
+    and a.id is distinct from p_exclude_appointment
     and s.institution_id = v_slot.institution_id
     and s.specialty_code = v_slot.specialty_code
     and s.starts_at > v_slot.starts_at
@@ -236,7 +237,8 @@ begin
   update notifications set action_state = 'accepted', read_at = now() where id = p_notification_id;
 
   update slots set status = 'free', held_until = null where id = v_old_slot;
-  perform offer_freed_slot(v_old_slot);
+  -- Offer the old slot onward, but never back to the appointment that just left it.
+  perform offer_freed_slot(v_old_slot, v_appt.id);
   return v_appt;
 end $$;
 
@@ -445,7 +447,7 @@ begin
     'release_expired_holds()',
     'propose_appointment(uuid)',
     'confirm_appointment(uuid)',
-    'offer_freed_slot(uuid)',
+    'offer_freed_slot(uuid, uuid)',
     'cancel_appointment(uuid)',
     'accept_slot_offer(uuid)',
     'decline_slot_offer(uuid)',
