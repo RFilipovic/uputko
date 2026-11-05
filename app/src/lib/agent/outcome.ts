@@ -78,6 +78,7 @@ export async function escalateEmergency(
   rules: RedFlagId[],
 ): Promise<Outcome> {
   const loc = (await resolveLocation(caseId, patient, null)) ?? homeLocation(patient);
+  if (loc?.source === "home") await saveCaseLocation(caseId, loc);
   const places = loc ? (await nearestPreferOpen({ specialty: OHBP, lat: loc.lat, lng: loc.lng, limit: 3 })).places : [];
   await db().from("cases").update({ route: "emergency", urgency: "hitno" }).eq("id", caseId);
   await addCaseEvent(caseId, "emergency_escalated", { rules }, "emergency_escalated");

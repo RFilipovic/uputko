@@ -273,7 +273,7 @@ declare
 begin
   update appointments
   set status = 'reschedule_requested', patient_availability_json = p_availability
-  where id = p_appointment_id and status in ('proposed', 'confirmed')
+  where id = p_appointment_id and status in ('proposed', 'confirmed', 'reschedule_requested')
   returning * into v_appt;
   if not found then raise exception 'appointment_not_reschedulable'; end if;
   -- A proposal that was never confirmed releases its hold right away.
