@@ -310,6 +310,20 @@ export const hr = {
     availability: "Pacijentu odgovara",
     error: "Radnja nije uspjela.",
   },
+  map: {
+    unavailable: "Karta trenutno nije dostupna. Adresa je napisana iznad.",
+  },
+  sources: {
+    label: (dataset: string) => {
+      const parts: string[] = [];
+      if (dataset.includes("hzzo")) parts.push("HZZO");
+      if (dataset.includes("zg_")) parts.push("Grad Zagreb");
+      if (parts.length) parts[parts.length - 1] += " (data.gov.hr)";
+      if (dataset.includes("osm")) parts.push("OpenStreetMap");
+      if (dataset.includes("manual")) parts.push("ručna dopuna");
+      return `Izvor: ${parts.join(", ") || "javni podaci"}`;
+    },
+  },
   days: ["nedjelja", "ponedjeljak", "utorak", "srijeda", "četvrtak", "petak", "subota"],
   daysShort: ["ned", "pon", "uto", "sri", "čet", "pet", "sub"],
   disclaimer: "Uputko nije liječnik i ne postavlja dijagnozu. U hitnom slučaju odmah nazovite 112.",
