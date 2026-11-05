@@ -3,7 +3,6 @@ import { redirect } from "next/navigation";
 import { ChatScreen } from "@/components/chat/ChatScreen";
 import { Always112Banner } from "@/components/emergency/Always112Banner";
 import { AppHeader } from "@/components/layout/AppHeader";
-import { PhoneFrame } from "@/components/layout/PhoneFrame";
 import { getPatientProfile } from "@/lib/patients";
 import { currentPatientId } from "@/lib/session";
 import { hr } from "@/i18n/hr";
@@ -26,10 +25,15 @@ export default async function ChatPage({
       `/profil?next=${encodeURIComponent(glas === "1" ? "/chat?glas=1" : "/chat")}`,
     );
   return (
-    <PhoneFrame pinned>
+    // Full screen like a chat app: only the conversation scrolls.
+    <div className="relative flex h-dvh flex-col overflow-hidden overscroll-none bg-background">
       <Always112Banner />
-      <AppHeader backHref="/" title={hr.chat.title} />
+      <AppHeader
+        backHref="/"
+        title={hr.chat.title}
+        className="mx-auto max-w-5xl"
+      />
       <ChatScreen autoVoice={glas === "1"} patientName={patient.name} />
-    </PhoneFrame>
+    </div>
   );
 }

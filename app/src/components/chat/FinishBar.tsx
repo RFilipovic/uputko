@@ -29,7 +29,7 @@ export function FinishBar({
         )
       : hr.chat.finish.notReady;
   return (
-    <div className="flex flex-col gap-1.5 border-t border-border bg-background px-3 pt-3">
+    <div className="flex flex-col gap-1.5">
       <button
         type="button"
         onClick={onFinish}

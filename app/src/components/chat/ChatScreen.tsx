@@ -16,6 +16,7 @@ import { hr } from "@/i18n/hr";
 import { visibleText } from "@/lib/agent/options";
 import type { Outcome } from "@/lib/agent/outcome";
 import { ui } from "@/lib/ui";
+import { cn } from "@/lib/utils";
 
 let seq = 0;
 const nextId = () => `m${++seq}`;
@@ -58,6 +59,7 @@ export function ChatScreen({
   const [showEmergency, setShowEmergency] = useState(false);
   const [location, setLocation] = useState<ChatLocation | null>(null);
   const [locationSent, setLocationSent] = useState(false);
+  const [locationSkipped, setLocationSkipped] = useState(false);
   const [ready, setReady] = useState<{ ready: boolean; missing: string[] }>({
     ready: false,
     missing: [],
@@ -65,6 +67,8 @@ export function ChatScreen({
   const endRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Follow the conversation; the empty welcome screen stays at the top.
+    if (messages.length === 0) return;
     const reduce = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
@@ -177,84 +181,110 @@ export function ChatScreen({
 
   return (
     <>
-      <main className="flex min-h-0 flex-1 flex-col gap-5 overflow-y-auto overscroll-contain px-5 pt-4 pb-6">
-        {!started ? (
-          <div className="flex animate-in flex-col gap-4 duration-300 ease-out fade-in slide-in-from-bottom-2">
-            <h1 className="text-3xl leading-tight font-bold">
-              {hr.chat.greeting}
-            </h1>
-            <p className="text-lg text-muted-foreground">
-              {patientName} · {hr.chat.hint}
-            </p>
-            <LocationBar value={location} onChange={setLocation} />
-            <QuickReplies
-              options={hr.chat.suggestions}
-              onPick={(o) =>
-                o === hr.chat.suggestions[3]
-                  ? document.getElementById("composer")?.focus()
-                  : void send(o)
-              }
-            />
-          </div>
-        ) : (
-          <>
-            {!locationSent && !outcome && (
-              <LocationBar value={location} onChange={setLocation} />
-            )}
-            <ol
-              className="flex flex-col gap-3"
-              role="log"
-              aria-live="polite"
-              aria-relevant="additions text"
-            >
-              {messages.map((m) => (
-                <MessageBubble
-                  key={m.id}
-                  message={m}
-                  typing={busy && m.id === lastId}
+      <main className="min-h-0 flex-1 overflow-y-auto overscroll-contain">
+        <div
+          className={cn(
+            "mx-auto flex w-full max-w-3xl flex-col gap-5 px-5 pt-4 pb-6",
+            !started && "min-h-full justify-center",
+          )}
+        >
+          {!started ? (
+            <div className="flex animate-in flex-col gap-4 duration-300 ease-out fade-in slide-in-from-bottom-2">
+              <h1 className="text-3xl leading-tight font-bold sm:text-4xl">
+                {hr.chat.greeting}
+              </h1>
+              <p className="text-lg text-muted-foreground">
+                {patientName} · {hr.chat.hint}
+              </p>
+              {!locationSkipped && (
+                <LocationBar
+                  value={location}
+                  onChange={setLocation}
+                  onSkip={() => setLocationSkipped(true)}
                 />
-              ))}
-            </ol>
-            {options.length > 0 && !busy && !outcome && (
+              )}
               <QuickReplies
-                options={options}
-                onPick={(o) => void send(o)}
-                variant="chips"
+                options={hr.chat.suggestions}
+                onPick={(o) =>
+                  o === hr.chat.suggestions[3]
+                    ? document.getElementById("composer")?.focus()
+                    : void send(o)
+                }
               />
-            )}
-            {outcome && (
-              <OutcomeCard
-                outcome={outcome}
-                onEmergency={() => setShowEmergency(true)}
-              />
-            )}
-            {outcome && (
-              <button type="button" onClick={reset} className={ui.btnSecondary}>
-                <RotateCcw aria-hidden className="size-5" />
-                {hr.chat.newChat}
-              </button>
-            )}
-          </>
-        )}
-        <div ref={endRef} />
+            </div>
+          ) : (
+            <>
+              {!locationSent && !locationSkipped && !outcome && (
+                <LocationBar
+                  value={location}
+                  onChange={setLocation}
+                  onSkip={() => setLocationSkipped(true)}
+                />
+              )}
+              <ol
+                className="flex flex-col gap-3"
+                role="log"
+                aria-live="polite"
+                aria-relevant="additions text"
+              >
+                {messages.map((m) => (
+                  <MessageBubble
+                    key={m.id}
+                    message={m}
+                    typing={busy && m.id === lastId}
+                  />
+                ))}
+              </ol>
+              {options.length > 0 && !busy && !outcome && (
+                <QuickReplies
+                  options={options}
+                  onPick={(o) => void send(o)}
+                  variant="chips"
+                />
+              )}
+              {outcome && (
+                <OutcomeCard
+                  outcome={outcome}
+                  onEmergency={() => setShowEmergency(true)}
+                />
+              )}
+              {outcome && (
+                <button
+                  type="button"
+                  onClick={reset}
+                  className={ui.btnSecondary}
+                >
+                  <RotateCcw aria-hidden className="size-5" />
+                  {hr.chat.newChat}
+                </button>
+              )}
+            </>
+          )}
+          <div ref={endRef} />
+        </div>
       </main>
-      {started && !outcome && caseId && (
-        <FinishBar
-          ready={ready.ready}
-          missing={ready.missing}
-          busy={busy}
-          onFinish={() => void send("", true)}
-        />
-      )}
-      {!outcome && (
-        <Composer
-          value={draft}
-          onChange={setDraft}
-          onSend={(t) => void send(t)}
-          autoVoice={autoVoice}
-          disabled={busy}
-        />
-      )}
+      <div className="mx-auto flex w-full max-w-3xl flex-col gap-2 px-3 pt-2 pb-3">
+        {started && !outcome && caseId && (
+          <FinishBar
+            ready={ready.ready}
+            missing={ready.missing}
+            busy={busy}
+            onFinish={() => void send("", true)}
+          />
+        )}
+        {!outcome && (
+          <Composer
+            value={draft}
+            onChange={setDraft}
+            onSend={(t) => void send(t)}
+            autoVoice={autoVoice}
+            disabled={busy}
+          />
+        )}
+        <p className="px-2 text-center text-sm text-muted-foreground">
+          {hr.disclaimer}
+        </p>
+      </div>
       {showEmergency && outcome?.kind === "emergency" && (
         <EmergencyTakeover
           places={outcome.places}

@@ -13,9 +13,12 @@ export type ChatLocation =
 export function LocationBar({
   value,
   onChange,
+  onSkip,
 }: {
   value: ChatLocation | null;
   onChange: (v: ChatLocation | null) => void;
+  /** "Preskoči": hide the question for the rest of this conversation. */
+  onSkip?: () => void;
 }) {
   const [mode, setMode] = useState<"ask" | "city" | "hidden">(
     value ? "hidden" : "ask",
@@ -134,7 +137,10 @@ export function LocationBar({
       <button
         type="button"
         className={`${ui.btnLink} self-start`}
-        onClick={() => setMode("hidden")}
+        onClick={() => {
+          setMode("hidden");
+          onSkip?.();
+        }}
       >
         {hr.chat.location.skip}
       </button>

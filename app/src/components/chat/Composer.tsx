@@ -40,7 +40,7 @@ export function Composer({
         e.preventDefault();
         submit();
       }}
-      className="flex items-end gap-2 border-t border-border bg-background p-3"
+      className="flex items-end gap-2 rounded-[2rem] border-2 border-input bg-card p-2 shadow-soft transition-colors focus-within:border-primary"
     >
       <label htmlFor="composer" className="sr-only">
         {hr.chat.inputLabel}
@@ -58,7 +58,7 @@ export function Composer({
           }
         }}
         placeholder={hr.chat.placeholder}
-        className="min-h-14 w-full min-w-0 flex-1 resize-none rounded-3xl border-2 border-input bg-card px-5 py-3.5 text-lg leading-snug placeholder:text-muted-foreground focus-visible:border-primary focus-visible:outline-none"
+        className="min-h-14 w-full min-w-0 flex-1 resize-none bg-transparent px-4 py-3.5 text-lg leading-snug placeholder:text-muted-foreground focus-visible:outline-none"
       />
       <VoiceButton onTranscript={onChange} autoStart={autoVoice} />
       <button
