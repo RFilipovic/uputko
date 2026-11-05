@@ -101,10 +101,15 @@ demo emails go to team inboxes only.
   hospitals have reorganised. The pipeline runs unchanged on a newer export.
 - HZZO publishes no opening hours or on-call (*dežurstvo*) schedules in a
   machine-readable form. That is the biggest gap for "where can I go right now".
-- Coordinates for all 5,128 locations: 3,850 street-level, 679 Zagreb geoportal,
-  85 OpenStreetMap, 153 village centre, 2 by name/town, and **359 (7%) only at
+- Coordinates for all 5,128 locations: 3,568 street-level, 679 Zagreb geoportal,
+  82 OpenStreetMap, 154 village centre, 4 town centre, and **641 (12%) only at
   postcode level** (approximate, can be a few km off). Those rank behind exact
   locations in search, and the UI always shows the full address.
+- **Wrong-town check:** many Croatian towns share street names (Strossmayerova,
+  Preradovićeva…). Every street/village result is compared with its own town's
+  centre; if it is more than 15 km away it is rejected (252 cases) and the
+  location falls back to the town/postcode. After the check, no exact result is
+  outside its own town.
 - HZZO dataset licences are not stated in the CKAN metadata: `TODO(verify)`
   with the publisher (data.gov.hr content is generally under the Open Licence of
   the Republic of Croatia).

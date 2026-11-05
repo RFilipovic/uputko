@@ -78,6 +78,23 @@ class Geocoder:
         return result
 
 
+def km(a: list[float], b: list[float]) -> float:
+    """Great-circle distance in km."""
+    import math
+
+    la1, lo1, la2, lo2 = map(math.radians, (a[0], a[1], b[0], b[1]))
+    h = (
+        math.sin((la2 - la1) / 2) ** 2
+        + math.cos(la1) * math.cos(la2) * math.sin((lo2 - lo1) / 2) ** 2
+    )
+    return 2 * 6371 * math.asin(math.sqrt(h))
+
+
+# A street/village/name result farther than this from its own town is a
+# same-name street elsewhere in Croatia (e.g. "Strossmayerova 7" in another city).
+MAX_KM_FROM_TOWN = 15
+
+
 def s(v: object) -> str:
     return "" if pd.isna(v) else str(v).strip()
 
@@ -133,13 +150,26 @@ def main() -> int:
     print(f"{len(todo)} institutions without coordinates, {len(keys)} distinct addresses to try")
 
     resolved: dict[str, tuple[float, float, str]] = {}
+    rejected = 0
     try:
         for n, (_, row) in enumerate(keys.iterrows(), 1):
+            town = s(row["city"])
+            ref = g.lookup({"city": town, "country": "Hrvatska"}) if town else None
+            if ref is None and s(row["postcode"]):
+                ref = g.lookup({"postalcode": s(row["postcode"]), "country": "Hrvatska"})
             for precision, params in attempts(row):
                 hit = g.lookup(params)
-                if hit:
-                    resolved[row["addr_key"]] = (hit[0], hit[1], precision)
-                    break
+                if not hit:
+                    continue
+                if (
+                    ref
+                    and precision in ("street", "village", "name")
+                    and km(hit, ref) > MAX_KM_FROM_TOWN
+                ):
+                    rejected += 1
+                    continue
+                resolved[row["addr_key"]] = (hit[0], hit[1], precision)
+                break
             if n % 100 == 0:
                 print(f"  {n}/{len(keys)} (network calls: {g.calls})")
     finally:
@@ -150,6 +180,7 @@ def main() -> int:
         if hit:
             df.at[idx, "lat"], df.at[idx, "lng"], df.at[idx, "geo_precision"] = hit
     df.to_csv(CLEAN, index=False)
+    print(f"rejected far-away street matches: {rejected}")
     print(f"with coordinates: {df['lat'].notna().sum()}/{len(df)}")
     print(df["geo_precision"].value_counts(dropna=False).to_dict())
     return 0
