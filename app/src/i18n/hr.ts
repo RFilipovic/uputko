@@ -332,7 +332,11 @@ export const hr = {
       sentNoSlot:
         "Nema slobodnog termina u toj ustanovi — pacijent je obaviješten.",
       unknownInstitution: "Ustanova nije prepoznata — odaberite s popisa.",
-      pickInstitution: "Odaberite ustanovu",
+      pickInstitution: "Ustanova — kliknite za odabir",
+      onReferral: "S uputnice",
+      fromPatient: "od pacijenta",
+      noInstitutions:
+        "Nema ustanova s tom specijalnošću u blizini. Odaberite drugu specijalnost.",
     },
     invite: "Pozovite pacijenta na pregled",
     invited: "Pacijent je pozvan na pregled.",

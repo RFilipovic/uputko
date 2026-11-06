@@ -1,9 +1,18 @@
 "use client";
 
-import { Download, FileUp, Send, UserCheck } from "lucide-react";
+import {
+  Check,
+  ChevronDown,
+  Download,
+  FileUp,
+  MapPin,
+  Send,
+  UserCheck,
+} from "lucide-react";
 import { useRef, useState } from "react";
 import { hr } from "@/i18n/hr";
 import { ui } from "@/lib/ui";
+import { cn } from "@/lib/utils";
 
 type Option = { code: string; name: string };
 type Inst = {
@@ -27,6 +36,38 @@ type Extract = {
 
 const TYPES = ["A1", "A2", "A3"]; // TODO(verify): full uputnica type list with HZZO rules
 const PRIORITIES = ["redovna", "prioritetna", "hitna"] as const;
+
+/** A native dropdown with a visible arrow, so it is obviously clickable. */
+function Select({
+  label,
+  value,
+  onChange,
+  children,
+}: {
+  label: string;
+  value: string;
+  onChange: (v: string) => void;
+  children: React.ReactNode;
+}) {
+  return (
+    <label className="grid gap-1">
+      <span className={ui.label}>{label}</span>
+      <span className="relative">
+        <select
+          className={`${ui.input} cursor-pointer appearance-none pr-12`}
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+        >
+          {children}
+        </select>
+        <ChevronDown
+          aria-hidden
+          className="pointer-events-none absolute top-1/2 right-4 size-5 -translate-y-1/2 text-muted-foreground"
+        />
+      </span>
+    </label>
+  );
+}
 
 /** Upload the uputnica → check what was read → send to the patient (or invite to an exam). */
 export function DoctorDecision({ token }: { token: string }) {
@@ -145,7 +186,6 @@ export function DoctorDecision({ token }: { token: string }) {
     );
   }
 
-  const select = `${ui.input} appearance-none`;
   return (
     <section
       className={`${ui.card} flex flex-col gap-4`}
@@ -204,73 +244,104 @@ export function DoctorDecision({ token }: { token: string }) {
             {hr.doctor.upload.checkBody}
           </p>
           <div className="grid gap-4 sm:grid-cols-2">
-            <label className="grid gap-1">
-              <span className={ui.label}>{hr.referral.type}</span>
-              <select
-                className={select}
-                value={form.type}
-                onChange={(e) => setForm({ ...form, type: e.target.value })}
-              >
-                {TYPES.map((t) => (
-                  <option key={t}>{t}</option>
-                ))}
-              </select>
-            </label>
-            <label className="grid gap-1">
-              <span className={ui.label}>{hr.referral.priority}</span>
-              <select
-                className={select}
-                value={form.priority}
-                onChange={(e) => setForm({ ...form, priority: e.target.value })}
-              >
-                {PRIORITIES.map((p) => (
-                  <option key={p} value={p}>
-                    {hr.referral.priorities[p]}
-                  </option>
-                ))}
-              </select>
-            </label>
+            <Select
+              label={hr.referral.type}
+              value={form.type}
+              onChange={(v) => setForm({ ...form, type: v })}
+            >
+              {TYPES.map((t) => (
+                <option key={t}>{t}</option>
+              ))}
+            </Select>
+            <Select
+              label={hr.referral.priority}
+              value={form.priority}
+              onChange={(v) => setForm({ ...form, priority: v })}
+            >
+              {PRIORITIES.map((p) => (
+                <option key={p} value={p}>
+                  {hr.referral.priorities[p]}
+                </option>
+              ))}
+            </Select>
           </div>
-          <label className="grid gap-1">
-            <span className={ui.label}>{hr.referral.specialty}</span>
-            <select
-              className={select}
-              value={form.specialty}
-              onChange={(e) => void changeSpecialty(e.target.value)}
-            >
-              {data.specialties.map((s) => (
-                <option key={s.code} value={s.code}>
-                  {s.name}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label className="grid gap-1">
-            <span className={ui.label}>{hr.referral.institution}</span>
-            <select
-              className={select}
-              value={form.institution}
-              onChange={(e) =>
-                setForm({ ...form, institution: e.target.value })
-              }
-              aria-describedby="inst-hint"
-            >
-              {!form.institution && (
-                <option value="">{hr.doctor.upload.pickInstitution}</option>
-              )}
-              {institutions.map((i) => (
-                <option key={i.id} value={i.id}>
-                  {i.name} — {i.city} (
-                  {i.distance_km.toFixed(1).replace(".", ",")} km)
-                </option>
-              ))}
-            </select>
+          <Select
+            label={hr.referral.specialty}
+            value={form.specialty}
+            onChange={(v) => void changeSpecialty(v)}
+          >
+            {data.specialties.map((sp) => (
+              <option key={sp.code} value={sp.code}>
+                {sp.name}
+              </option>
+            ))}
+          </Select>
+          <fieldset className="grid gap-2">
+            <legend className={`${ui.label} mb-1`}>
+              {hr.doctor.upload.pickInstitution}
+            </legend>
             {!data.institutionMatched && (
-              <span id="inst-hint" className="text-base text-muted-foreground">
+              <p className="text-base text-muted-foreground">
                 {hr.doctor.upload.unknownInstitution}
-              </span>
+              </p>
             )}
-          </label>
+            {institutions.length === 0 && (
+              <p className="text-base text-muted-foreground">
+                {hr.doctor.upload.noInstitutions}
+              </p>
+            )}
+            {institutions.map((i) => {
+              const chosen = form.institution === i.id;
+              const fromReferral =
+                data.institutionMatched && i.id === data.institutionId;
+              return (
+                <label
+                  key={i.id}
+                  className={cn(
+                    "flex cursor-pointer items-center gap-3 rounded-2xl border-2 p-4 transition-colors focus-within:ring-4 focus-within:ring-ring/50",
+                    chosen
+                      ? "border-primary bg-primary/5"
+                      : "border-border bg-card hover:border-primary/60",
+                  )}
+                >
+                  <input
+                    type="radio"
+                    name="institution"
+                    value={i.id}
+                    checked={chosen}
+                    onChange={() => setForm({ ...form, institution: i.id })}
+                    className="sr-only"
+                  />
+                  <span
+                    aria-hidden
+                    className={cn(
+                      "grid size-7 shrink-0 place-items-center rounded-full border-2",
+                      chosen
+                        ? "border-primary bg-primary text-primary-foreground"
+                        : "border-border",
+                    )}
+                  >
+                    {chosen && <Check className="size-4" />}
+                  </span>
+                  <span className="min-w-0 flex-1">
+                    <span className="block text-lg font-semibold">
+                      {i.name}
+                    </span>
+                    <span className="flex items-center gap-1 text-base text-muted-foreground">
+                      <MapPin aria-hidden className="size-4" />
+                      {i.city} · {i.distance_km.toFixed(1).replace(".", ",")} km{" "}
+                      {hr.doctor.upload.fromPatient}
+                    </span>
+                  </span>
+                  {fromReferral && (
+                    <span className="shrink-0 rounded-full bg-muted px-3 py-1 text-sm font-semibold">
+                      {hr.doctor.upload.onReferral}
+                    </span>
+                  )}
+                </label>
+              );
+            })}
+          </fieldset>
           <label className="grid gap-1">
             <span className={ui.label}>{hr.referral.note}</span>
             <textarea
