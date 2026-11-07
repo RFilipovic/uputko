@@ -9,7 +9,7 @@ import {
   type ChatMessage,
 } from "@/components/chat/MessageBubble";
 import { OutcomeCard } from "@/components/chat/OutcomeCard";
-import { QuickReplies } from "@/components/chat/QuickReplies";
+import { QuickReplies, replyLayoutId } from "@/components/chat/QuickReplies";
 import { FinishBar } from "@/components/chat/FinishBar";
 import { EmergencyTakeover } from "@/components/emergency/EmergencyTakeover";
 import { hr } from "@/i18n/hr";
@@ -82,13 +82,20 @@ export function ChatScreen({
     setMessages((ms) => ms.map((m) => (m.id === id ? { ...m, ...patch } : m)));
   }
 
-  async function send(text: string, finish = false) {
+  async function send(text: string, finish = false, fromChip = false) {
     const message = finish ? hr.chat.finishMessage : text.trim();
     if (!message || busy || outcome) return;
     const replyId = nextId();
     setMessages((ms) => [
       ...ms,
-      { id: nextId(), role: "user", text: message },
+      {
+        id: nextId(),
+        role: "user",
+        text: message,
+        layoutId: fromChip
+          ? replyLayoutId(messages.length, message)
+          : undefined,
+      },
       { id: replyId, role: "assistant", text: "" },
     ]);
     setDraft("");
@@ -208,7 +215,7 @@ export function ChatScreen({
                 onPick={(o) =>
                   o === hr.chat.suggestions[3]
                     ? document.getElementById("composer")?.focus()
-                    : void send(o)
+                    : void send(o, false, true)
                 }
               />
             </div>
@@ -238,8 +245,9 @@ export function ChatScreen({
               {options.length > 0 && !busy && !outcome && (
                 <QuickReplies
                   options={options}
-                  onPick={(o) => void send(o)}
+                  onPick={(o) => void send(o, false, true)}
                   variant="chips"
+                  scope={messages.length}
                 />
               )}
               {outcome && (

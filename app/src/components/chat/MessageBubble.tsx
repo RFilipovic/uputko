@@ -1,4 +1,5 @@
 import { Sparkles } from "lucide-react";
+import { motion } from "motion/react";
 import { hr } from "@/i18n/hr";
 import { cn } from "@/lib/utils";
 
@@ -7,22 +8,44 @@ export type ChatMessage = {
   role: "user" | "assistant";
   text: string;
   error?: boolean;
+  /** Set when the message came from a tapped quick reply: the chip morphs into this bubble. */
+  layoutId?: string;
 };
 
+/** Three dots in a soft wave, so a wait never looks frozen. */
 function Typing() {
   return (
     <span
+      role="status"
       className="inline-flex items-center gap-1.5 py-2"
       aria-label={hr.chat.typing}
     >
-      {[0, 150, 300].map((d) => (
-        <span
-          key={d}
-          className="size-2.5 animate-bounce rounded-full bg-muted-foreground/70"
-          style={{ animationDelay: `${d}ms` }}
+      {[0, 1, 2].map((i) => (
+        <motion.span
+          key={i}
+          className="size-2.5 rounded-full bg-primary/70 dark:bg-foreground/70"
+          animate={{ y: [0, -5, 0], opacity: [0.45, 1, 0.45] }}
+          transition={{
+            duration: 1.1,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: i * 0.16,
+          }}
         />
       ))}
     </span>
+  );
+}
+
+/** Blinking caret at the end of a reply while it is still streaming. */
+function Caret() {
+  return (
+    <motion.span
+      aria-hidden
+      className="ml-0.5 inline-block h-[1.1em] w-[3px] translate-y-[3px] rounded-full bg-primary dark:bg-foreground"
+      animate={{ opacity: [1, 0, 1] }}
+      transition={{ duration: 0.9, repeat: Infinity, ease: "linear" }}
+    />
   );
 }
 
@@ -36,11 +59,21 @@ export function MessageBubble({
 }) {
   if (message.role === "user") {
     return (
-      <li className="flex animate-in justify-end duration-200 fade-in slide-in-from-bottom-1">
-        <div className="max-w-[85%] rounded-3xl rounded-br-lg bg-primary px-5 py-3.5 text-lg leading-relaxed whitespace-pre-wrap text-primary-foreground">
+      <li
+        className={cn(
+          "flex justify-end",
+          !message.layoutId &&
+            "animate-in duration-200 fade-in slide-in-from-bottom-1",
+        )}
+      >
+        <motion.div
+          layoutId={message.layoutId}
+          transition={{ type: "spring", stiffness: 380, damping: 32 }}
+          className="max-w-[85%] rounded-3xl rounded-br-lg bg-primary px-5 py-3.5 text-lg leading-relaxed whitespace-pre-wrap text-primary-foreground"
+        >
           <span className="sr-only">{hr.chat.you}: </span>
           {message.text}
-        </div>
+        </motion.div>
       </li>
     );
   }
@@ -59,7 +92,14 @@ export function MessageBubble({
         )}
       >
         <span className="sr-only">{hr.chat.assistant}: </span>
-        {typing && !message.text ? <Typing /> : message.text}
+        {typing && !message.text ? (
+          <Typing />
+        ) : (
+          <>
+            {message.text}
+            {typing && <Caret />}
+          </>
+        )}
       </div>
     </li>
   );
