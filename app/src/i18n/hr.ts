@@ -173,6 +173,17 @@ export const hr = {
     loading: "Učitavanje slučaja…",
     error: "Slučaj se nije mogao učitati. Osvježite stranicu.",
     timeline: "Tijek",
+    progressTitle: "Koliko je slučaj odmaknuo",
+    progress: [
+      "Poslano liječniku",
+      "Liječnik pregledao",
+      "Uputnica izdana",
+      "Termin potvrđen",
+    ],
+    showAll: (n: number) => `Prikaži cijeli tijek (${n})`,
+    stepDone: "gotovo",
+    stepCurrent: "sada",
+    stepNext: "slijedi",
     summary: "Vaš opis",
     statuses: {
       intake: "Razgovor u tijeku",
@@ -228,6 +239,14 @@ export const hr = {
       hitna: "Hitna",
     } as Record<string, string>,
     demo: "Demo uputnica — u stvarnosti se izdaje u CEZIH-u",
+    number: "Broj (demo)",
+    arrivedTitle: "Stigla je uputnica!",
+    arrivedBody: (doctor: string | null, hasSlot: boolean) =>
+      `${doctor ? `dr. ${doctor} vas` : "Liječnik vas"} upućuje dalje. ${
+        hasSlot
+          ? "Predložili smo vam termin — pogledajte ispod."
+          : "Ustanova će vam javiti termin."
+      }`,
   },
   appointment: {
     title: "Vaš termin",
@@ -246,6 +265,8 @@ export const hr = {
     addToCalendar: "Dodaj u kalendar",
     directions: "Upute do ustanove",
     whatToBring: "Ponesite",
+    at: "u",
+    bringReferral: (no: string) => `Uputnicu br. ${no}`,
     bring: [
       "Uputnicu (broj je na kartici iznad)",
       "Osobnu iskaznicu",
@@ -314,6 +335,7 @@ export const hr = {
       title: "Učitajte uputnicu",
       body: "Učitajte uputnicu koju ste izdali (PDF ili slika). Uputko pročita specijalnost i ustanovu i predloži termin pacijentu.",
       choose: "Odaberi datoteku",
+      drop: "ili je povucite ovdje (PDF, JPG, PNG)",
       reading: "Čitam uputnicu…",
       sample: "Demo: preuzmi primjer uputnice",
       tooBig: "Datoteka je prevelika (najviše 4 MB).",
@@ -339,6 +361,11 @@ export const hr = {
         "Nema ustanova s tom specijalnošću u blizini. Odaberite drugu specijalnost.",
     },
     invite: "Pozovite pacijenta na pregled",
+    shortcuts: {
+      title: "Tipkovnica:",
+      upload: "učitaj uputnicu",
+      send: "pošalji pacijentu",
+    },
     invited: "Pacijent je pozvan na pregled.",
     alreadyDone: "Za ovaj slučaj je već odlučeno.",
   },
@@ -357,10 +384,70 @@ export const hr = {
     availability: "Pacijentu odgovara",
     error: "Radnja nije uspjela.",
   },
+  openData: {
+    title: "Javni podaci",
+    lead: "Uputko je izgrađen na otvorenim podacima s portala data.gov.hr. Povezali smo popise liječnika, bolnica i njihovih djelatnosti s lokacijama, da bismo znali kome i kamo vas uputiti.",
+    stats: {
+      practitioners: "Izabranih liječnika",
+      institutions: "Ustanova i ordinacija",
+      hospitals: "Bolnica",
+      emergency: "Hitnih prijema (OHBP)",
+      linked: "Povezano iz više izvora",
+      cities: "Gradova i mjesta",
+    },
+    roles: "Liječnici po vrsti",
+    citiesTitle: "Gdje je najviše ustanova",
+    citiesNote: "Broj ustanova i ordinacija po gradu.",
+    datasetsTitle: "Skupovi podataka",
+    datasetsNote:
+      "Preuzeto preko CKAN API-ja portala data.gov.hr, 4. 11. 2026. Podaci HZZO-a su iz 2017. i 2018.",
+    other: "Ostali otvoreni izvori",
+    synthetic:
+      "Pacijenti, uputnice i termini u ovom demu su izmišljeni. Otvoreni podaci ne sadrže podatke o pacijentima ni slobodne termine.",
+    datasets: [
+      {
+        name: "Adresar zdravstvenih ustanova/privatnih praksi",
+        publisher: "HZZO",
+        use: "Adrese i telefoni bolnica",
+        url: "https://data.gov.hr/ckan/dataset/adresar-zdravstvenih-ustanova-privatnih-praksi",
+      },
+      {
+        name: "Ugovoreni sadržaji bolničke zdravstvene zaštite",
+        publisher: "HZZO",
+        use: "Koja bolnica ima koju specijalnost i hitni prijem",
+        url: "https://data.gov.hr/ckan/dataset/ugovoreni-sadr-aji-bolni-ke-zdravstvene-za-tite",
+      },
+      {
+        name: "Ugovoreni sadržaji primarne zdravstvene zaštite",
+        publisher: "HZZO",
+        use: "Obiteljski liječnici, pedijatri, ginekolozi i stomatolozi",
+        url: "https://data.gov.hr/ckan/dataset/ugovoreni-sadr-aji-primarne-zdravstvene-za-tite",
+      },
+      {
+        name: "Geoportal Zdravstvene ustanove",
+        publisher: "Grad Zagreb",
+        use: "Točne lokacije ustanova u Zagrebu",
+        url: "https://data.gov.hr/ckan/dataset/geoportal-zdravstvene-ustanove",
+      },
+      {
+        name: "Geoportal Domovi zdravlja",
+        publisher: "Grad Zagreb",
+        use: "Lokacije domova zdravlja u Zagrebu",
+        url: "https://data.gov.hr/ckan/dataset/geoportal-domovi-zdravlja",
+      },
+    ],
+    otherSources: [
+      "OpenStreetMap — lokacije i radno vrijeme (ODbL)",
+      "Nominatim (OpenStreetMap) — lokacije adresa (ODbL)",
+    ],
+    open: "Otvori na data.gov.hr",
+    error: "Brojke se trenutno ne mogu učitati.",
+  },
   map: {
     unavailable: "Karta trenutno nije dostupna. Adresa je napisana iznad.",
   },
   sources: {
+    more: "Otkud ovi podaci? Pogledajte javne podatke",
     label: (dataset: string) => {
       const parts: string[] = [];
       if (dataset.includes("hzzo")) parts.push("HZZO");

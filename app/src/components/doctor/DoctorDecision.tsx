@@ -9,7 +9,7 @@ import {
   Send,
   UserCheck,
 } from "lucide-react";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { hr } from "@/i18n/hr";
 import { ui } from "@/lib/ui";
 import { cn } from "@/lib/utils";
@@ -69,9 +69,29 @@ function Select({
   );
 }
 
-/** Upload the uputnica → check what was read → send to the patient (or invite to an exam). */
+/** A small keyboard key hint, e.g. <Kbd>U</Kbd>. */
+function Kbd({ children }: { children: React.ReactNode }) {
+  return (
+    <kbd className="rounded-md border border-border bg-muted px-1.5 py-0.5 font-sans text-sm font-semibold text-foreground">
+      {children}
+    </kbd>
+  );
+}
+
+/** Typing in a field must never trigger a shortcut. */
+const typing = (t: EventTarget | null) =>
+  t instanceof HTMLElement &&
+  (t.isContentEditable || ["INPUT", "TEXTAREA", "SELECT"].includes(t.tagName));
+
+/**
+ * Upload the uputnica → check what was read → send to the patient (or invite
+ * to an exam). Three clicks at most; keyboard: U upload, Ctrl+Enter send.
+ */
 export function DoctorDecision({ token }: { token: string }) {
   const fileRef = useRef<File | null>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
+  const [dragging, setDragging] = useState(false);
   const [state, setState] = useState<
     "idle" | "reading" | "review" | "sending" | "sent" | "invited"
   >("idle");
@@ -172,6 +192,25 @@ export function DoctorDecision({ token }: { token: string }) {
     setState("invited");
   }
 
+  // Keyboard shortcuts for a doctor working through many cases.
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Enter" && (e.ctrlKey || e.metaKey) && state === "review") {
+        e.preventDefault();
+        formRef.current?.requestSubmit();
+        return;
+      }
+      if (e.ctrlKey || e.metaKey || e.altKey || typing(e.target)) return;
+      const k = e.key.toLowerCase();
+      if (k === "u" && state === "idle") {
+        e.preventDefault();
+        inputRef.current?.click();
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [state]);
+
   if (state === "sent" || state === "invited") {
     return (
       <div
@@ -203,14 +242,35 @@ export function DoctorDecision({ token }: { token: string }) {
             {hr.doctor.upload.body}
           </p>
           <label
-            className={`${ui.btnPrimary} cursor-pointer`}
+            className={cn(
+              "flex cursor-pointer flex-col items-center gap-3 rounded-2xl border-2 border-dashed p-5 text-center transition-colors duration-200 focus-within:ring-4 focus-within:ring-ring/50",
+              dragging
+                ? "border-primary bg-primary/5"
+                : "border-border hover:border-primary/60",
+            )}
             aria-busy={state === "reading"}
+            onDragOver={(e) => {
+              e.preventDefault();
+              setDragging(true);
+            }}
+            onDragLeave={() => setDragging(false)}
+            onDrop={(e) => {
+              e.preventDefault();
+              setDragging(false);
+              void onFile(e.dataTransfer.files?.[0]);
+            }}
           >
-            <FileUp aria-hidden className="size-5" />
-            {state === "reading"
-              ? hr.doctor.upload.reading
-              : hr.doctor.upload.choose}
+            <span className={`${ui.btnPrimary} pointer-events-none w-full`}>
+              <FileUp aria-hidden className="size-5" />
+              {state === "reading"
+                ? hr.doctor.upload.reading
+                : hr.doctor.upload.choose}
+            </span>
+            <span className="text-base text-muted-foreground">
+              {hr.doctor.upload.drop}
+            </span>
             <input
+              ref={inputRef}
               type="file"
               accept="application/pdf,image/jpeg,image/png"
               className="sr-only"
@@ -234,6 +294,7 @@ export function DoctorDecision({ token }: { token: string }) {
 
       {(state === "review" || state === "sending") && data && (
         <form
+          ref={formRef}
           className="grid gap-4"
           onSubmit={(e) => {
             e.preventDefault();
@@ -362,6 +423,9 @@ export function DoctorDecision({ token }: { token: string }) {
               {state === "sending"
                 ? hr.doctor.upload.sending
                 : hr.doctor.upload.send}
+              <span className="hidden text-sm font-medium opacity-80 lg:inline">
+                Ctrl+Enter
+              </span>
             </button>
             <button
               type="button"
@@ -390,6 +454,23 @@ export function DoctorDecision({ token }: { token: string }) {
           <UserCheck aria-hidden className="size-5" />
           {hr.doctor.invite}
         </button>
+      )}
+
+      {(state === "idle" || state === "review") && (
+        <p className="hidden flex-wrap items-center gap-x-4 gap-y-1 text-sm text-muted-foreground lg:flex">
+          <span className="font-semibold">{hr.doctor.shortcuts.title}</span>
+          {state === "idle" ? (
+            <>
+              <span>
+                <Kbd>U</Kbd> {hr.doctor.shortcuts.upload}
+              </span>
+            </>
+          ) : (
+            <span>
+              <Kbd>Ctrl</Kbd>+<Kbd>Enter</Kbd> {hr.doctor.shortcuts.send}
+            </span>
+          )}
+        </p>
       )}
     </section>
   );

@@ -1,14 +1,20 @@
 import { FileText } from "lucide-react";
+import { SourceChip } from "@/components/data/SourceChip";
 import type { CaseView } from "@/lib/caseData";
+import { referralNumber } from "@/lib/format";
 import { hr } from "@/i18n/hr";
 import { ui } from "@/lib/ui";
 
 export function ReferralCard({
   referral,
+  fresh = false,
 }: {
   referral: NonNullable<CaseView["referral"]>;
+  /** Arrived live just now: slide in (on page load it shows at once). */
+  fresh?: boolean;
 }) {
   const rows: Array<[string, string]> = [
+    [hr.referral.number, referralNumber(referral.id)],
     [hr.referral.type, referral.type],
     [hr.referral.specialty, referral.specialtyName],
     [
@@ -21,7 +27,7 @@ export function ReferralCard({
   return (
     <section
       aria-labelledby="ref-title"
-      className={`${ui.card} flex animate-in flex-col gap-3 duration-300 fade-in slide-in-from-bottom-2`}
+      className={`${ui.card} flex flex-col gap-3 ${fresh ? "animate-in duration-300 fade-in slide-in-from-bottom-2" : ""}`}
     >
       <h2 id="ref-title" className="flex items-center gap-2 text-2xl font-bold">
         <FileText
@@ -38,6 +44,7 @@ export function ReferralCard({
           </div>
         ))}
       </dl>
+      <SourceChip dataset={referral.institution?.source_dataset} />
       {referral.doctorName && (
         <p className="text-base text-muted-foreground">
           {hr.referral.issuedBy(referral.doctorName)}

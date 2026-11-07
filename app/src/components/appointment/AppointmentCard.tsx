@@ -1,14 +1,17 @@
 "use client";
 
-import { CalendarPlus, CalendarClock, Navigation } from "lucide-react";
+import { CalendarPlus, CalendarClock, MapPin, Navigation } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 import {
   AvailabilityPicker,
   type Availability,
 } from "@/components/appointment/AvailabilityPicker";
+import { SourceChip } from "@/components/data/SourceChip";
 import { InstitutionMap } from "@/components/map/InstitutionMap";
+import { OpenBadge } from "@/components/map/OpenBadge";
 import type { CaseView } from "@/lib/caseData";
-import { directionsUrl, formatWhen } from "@/lib/format";
+import { directionsUrl, whenParts } from "@/lib/format";
 import { hr } from "@/i18n/hr";
 import { ui } from "@/lib/ui";
 import { cn } from "@/lib/utils";
@@ -19,15 +22,22 @@ type Appt = NonNullable<CaseView["appointment"]>;
 export function AppointmentCard({
   appointment,
   onChanged,
+  referralNo,
+  fresh = false,
 }: {
   appointment: Appt;
   onChanged: () => void;
+  /** Uputnica number to bring along. */
+  referralNo?: string | null;
+  /** Arrived live just now: the map flies in from all of Croatia. */
+  fresh?: boolean;
 }) {
   const [mode, setMode] = useState<"idle" | "picking" | "cancelling">("idle");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const inst = appointment.institution;
   const status = appointment.status;
+  const when = whenParts(appointment.startsAt);
 
   async function act(
     action: "confirm" | "cancel" | "reschedule",
@@ -68,7 +78,9 @@ export function AppointmentCard({
       aria-labelledby="appt-title"
       className={cn(
         ui.card,
-        "flex animate-in flex-col gap-4 duration-300 fade-in slide-in-from-bottom-2",
+        "flex flex-col gap-4",
+        // Slide in only when it arrives live; on page load show it at once.
+        fresh && "animate-in duration-300 fade-in slide-in-from-bottom-2",
         status === "proposed" && "border-2 border-primary",
       )}
     >
@@ -79,15 +91,35 @@ export function AppointmentCard({
         <CalendarClock aria-hidden className="size-6" />
         {title}
       </h2>
-      <p className="text-3xl leading-tight font-bold">
-        {formatWhen(appointment.startsAt)}
-      </p>
+      {/* A new time (earlier slot, reschedule) slides the old one out. */}
+      <div className="relative overflow-hidden" aria-live="polite">
+        <AnimatePresence mode="popLayout" initial={false}>
+          <motion.p
+            key={appointment.startsAt}
+            className="flex flex-wrap items-baseline gap-x-3 leading-tight"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -24 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+          >
+            <span className="w-full text-xl font-semibold text-foreground/85 first-letter:uppercase">
+              {when.weekday}
+            </span>
+            <span className="text-4xl font-bold">{when.date}</span>
+            <span className="text-4xl font-bold text-primary dark:text-foreground">
+              {hr.appointment.at} {when.time}
+            </span>
+          </motion.p>
+        </AnimatePresence>
+      </div>
       {inst && (
-        <div>
+        <div className="flex flex-col gap-2">
           <p className="text-xl font-semibold">{inst.name}</p>
-          <p className="text-lg text-foreground/85">
+          <p className="flex items-start gap-2 text-lg text-foreground/85">
+            <MapPin aria-hidden className="mt-1 size-5 shrink-0" />
             {[inst.address, inst.city].filter(Boolean).join(", ")}
           </p>
+          <OpenBadge info={inst.open} />
         </div>
       )}
       {status === "reschedule_requested" && (
@@ -197,7 +229,12 @@ export function AppointmentCard({
         <div>
           <h3 className="text-lg font-bold">{hr.appointment.whatToBring}</h3>
           <ul className="mt-1 list-disc pl-6 text-lg">
-            {hr.appointment.bring.map((b) => (
+            <li>
+              {referralNo
+                ? hr.appointment.bringReferral(referralNo)
+                : hr.appointment.bring[0]}
+            </li>
+            {hr.appointment.bring.slice(1).map((b) => (
               <li key={b}>{b}</li>
             ))}
           </ul>
@@ -205,14 +242,18 @@ export function AppointmentCard({
       )}
       {inst?.lat != null && inst.lng != null && (
         <InstitutionMap
+          flyFromCountry={fresh}
           points={[
             { lat: inst.lat, lng: inst.lng, label: inst.name, kind: "place" },
           ]}
         />
       )}
-      <p className="text-sm text-muted-foreground">
-        {hr.appointment.synthetic}
-      </p>
+      <div className="flex flex-wrap gap-2">
+        <SourceChip dataset={inst?.source_dataset} />
+        <span className="inline-flex min-h-8 items-center rounded-full bg-muted px-3 py-1 text-sm font-medium text-muted-foreground">
+          {hr.appointment.synthetic}
+        </span>
+      </div>
     </section>
   );
 }

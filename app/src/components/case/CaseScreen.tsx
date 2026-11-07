@@ -1,8 +1,12 @@
 "use client";
 
 import { ExternalLink, Hourglass, Radio } from "lucide-react";
+import { AnimatePresence } from "motion/react";
+import { useRef } from "react";
 import { AppointmentCard } from "@/components/appointment/AppointmentCard";
+import { CaseProgress } from "@/components/case/CaseProgress";
 import { CaseTimeline } from "@/components/case/CaseTimeline";
+import { ReferralArrived } from "@/components/case/ReferralArrived";
 import { ReferralCard } from "@/components/case/ReferralCard";
 import { StatusPill } from "@/components/case/StatusPill";
 import { EmergencyTakeover } from "@/components/emergency/EmergencyTakeover";
@@ -12,6 +16,7 @@ import { OfferCard } from "@/components/notifications/OfferCard";
 import { useLiveCase } from "@/hooks/useLiveCase";
 import type { CaseView } from "@/lib/caseData";
 import { hr } from "@/i18n/hr";
+import { referralNumber } from "@/lib/format";
 import { ui } from "@/lib/ui";
 
 export function CaseScreen({
@@ -22,6 +27,10 @@ export function CaseScreen({
   patientId: string;
 }) {
   const { view, refresh, live, error } = useLiveCase(initial, patientId);
+  // The uputnica "arrives" only if it was not there when the page opened.
+  const firstReferral = useRef(initial.referral?.id ?? null);
+  const arrived =
+    view.referral != null && view.referral.id !== firstReferral.current;
   const sent = view.events.find((e) => e.kind === "sent_to_doctor");
   const demoUrl =
     typeof sent?.payload.demo_doctor_url === "string"
@@ -31,6 +40,9 @@ export function CaseScreen({
     typeof sent?.payload.doctor_name === "string"
       ? sent.payload.doctor_name
       : null;
+  const offers = view.offers.filter(
+    (o) => o.kind === "earlier_slot_offer" || o.kind === "reschedule_offer",
+  );
   const waiting =
     view.status === "sent_to_doctor" || view.status === "viewed_by_doctor";
   const invited = view.events.some((e) => e.kind === "invited_to_exam");
@@ -65,14 +77,14 @@ export function CaseScreen({
           )}
         </div>
 
-        {view.offers
-          .filter(
-            (o) =>
-              o.kind === "earlier_slot_offer" || o.kind === "reschedule_offer",
-          )
-          .map((o) => (
-            <OfferCard key={o.id} offer={o} onChanged={refresh} />
-          ))}
+        <CaseProgress status={view.status} />
+
+        {arrived && (
+          <ReferralArrived
+            doctorName={view.referral?.doctorName ?? null}
+            hasSlot={view.appointment != null}
+          />
+        )}
 
         {waiting && (
           <section
@@ -136,14 +148,32 @@ export function CaseScreen({
         )}
 
         {view.appointment && (
-          <AppointmentCard appointment={view.appointment} onChanged={refresh} />
+          <AppointmentCard
+            appointment={view.appointment}
+            onChanged={refresh}
+            referralNo={view.referral ? referralNumber(view.referral.id) : null}
+            fresh={arrived}
+          />
         )}
         {view.referral && !view.appointment && (
           <p className={`${ui.card} text-lg`}>{hr.appointment.noSlot}</p>
         )}
-        {view.referral && <ReferralCard referral={view.referral} />}
+        {view.referral && (
+          <ReferralCard referral={view.referral} fresh={arrived} />
+        )}
 
         <CaseTimeline events={view.events} />
+        {/* Room to scroll the page above an open offer notification. */}
+        {offers.length > 0 && <div aria-hidden className="h-72 shrink-0" />}
+      </div>
+
+      {/* Offers arrive like a phone notification at the bottom of the screen. */}
+      <div className="pointer-events-none fixed inset-x-0 bottom-0 z-40 flex flex-col items-center gap-3 p-3 sm:p-5">
+        <AnimatePresence>
+          {offers.map((o) => (
+            <OfferCard key={o.id} offer={o} onChanged={refresh} />
+          ))}
+        </AnimatePresence>
       </div>
     </main>
   );

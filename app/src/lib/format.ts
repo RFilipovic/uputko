@@ -55,3 +55,17 @@ export const hhmm = (t: string | null | undefined) => (t ? t.slice(0, 5) : "");
 export function directionsUrl(lat: number, lng: number) {
   return `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
 }
+
+/** Appointment parts for the big date display: "ponedjeljak", "9. 11.", "9:00". */
+export function whenParts(iso: string) {
+  const z = zagreb(iso);
+  return {
+    weekday: DAYS[z.weekday],
+    date: `${z.day}. ${z.month}.`,
+    time: `${z.hour}:${z.minute}`,
+  };
+}
+
+/** Short, readable demo number for an uputnica ("UP-3F9A21C0"). */
+export const referralNumber = (id: string) =>
+  `UP-${id.replace(/-/g, "").slice(0, 8).toUpperCase()}`;
