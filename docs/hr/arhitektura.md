@@ -18,15 +18,13 @@ e-Građani i pravni preduvjeti.
 > prototipu su **sintetički** i tako su označeni u sučelju. Otvoreni podaci ne
 > sadrže ništa od toga.
 
-> Dijagrami su na engleskom; opis svakog koraka nalazi se u tekstu ispod njih.
-
 ---
 
 ## 1. Pregled sustava
 
-![Pregled sustava Uputko: pacijent, liječnik i šalter bolnice lijevo; Next.js aplikacija u sredini (API za razgovor, pravila za hitne znakove, AI agent, tablica usmjeravanja, portal za liječnike, API za naručivanje, stranica slučaja); Supabase Postgres i Realtime desno; cjevovod otvorenih podataka dolje; Claude, Resend i OpenFreeMap gore.](../diagrams/system-overview.png)
+![Pregled sustava Uputko: pacijent, liječnik i šalter bolnice lijevo; Next.js aplikacija u sredini (API za razgovor, pravila za hitne znakove, AI agent, tablica usmjeravanja, portal za liječnike, API za naručivanje, stranica slučaja); Supabase Postgres i Realtime desno; cjevovod otvorenih podataka dolje; Claude, Resend i OpenFreeMap gore.](../diagrams/system-overview.hr.png)
 
-*Izvor: [`diagrams/system-overview.py`](../diagrams/system-overview.py) · [SVG](../diagrams/system-overview.svg)*
+*Izvor: [`diagrams/system-overview.py`](../diagrams/system-overview.py) · [SVG](../diagrams/system-overview.hr.svg)*
 
 | Dio | Tehnologija | Zašto |
 |---|---|---|
@@ -45,9 +43,9 @@ e-Građani i pravni preduvjeti.
 
 ### 2.1 Glavni put: pacijent → liječnik → uputnica → termin
 
-![Glavni put po stazama: 1 pacijent opiše problem; 2 pravila za hitne znakove; 3 AI postavi nekoliko pitanja dok pacijent odgovara; 4 tablica usmjeravanja odabere obiteljskog liječnika; 5 liječnik dobije link e-poštom i otvori portal; 6 učita uputnicu, AI je pročita i liječnik je pošalje; 7 najraniji termin bolnice drži se 15 minuta; 8 na pacijentovom mobitelu uživo se pojavi „Stigla je uputnica!” i pacijent potvrdi; 9 termin je rezerviran, uz datoteku za kalendar i upute za dolazak.](../diagrams/golden-path.png)
+![Glavni put po stazama: 1 pacijent opiše problem; 2 pravila za hitne znakove; 3 AI postavi nekoliko pitanja dok pacijent odgovara; 4 tablica usmjeravanja odabere obiteljskog liječnika; 5 liječnik dobije link e-poštom i otvori portal; 6 učita uputnicu, AI je pročita i liječnik je pošalje; 7 najraniji termin bolnice drži se 15 minuta; 8 na pacijentovom mobitelu uživo se pojavi „Stigla je uputnica!” i pacijent potvrdi; 9 termin je rezerviran, uz datoteku za kalendar i upute za dolazak.](../diagrams/golden-path.hr.png)
 
-*Izvor: [`diagrams/golden-path.py`](../diagrams/golden-path.py) · [SVG](../diagrams/golden-path.svg)*
+*Izvor: [`diagrams/golden-path.py`](../diagrams/golden-path.py) · [SVG](../diagrams/golden-path.hr.svg)*
 
 1. **Profil.** Pacijent odabere demo osobu. Njezini izabrani liječnici su
    stvarni liječnici iz otvorenih podataka HZZO-a (pri postavljanju se svi mogu
@@ -238,9 +236,9 @@ ne traži redizajn:
 
 ## 8. Put do produkcije (dokumentiran, nije izgrađen)
 
-![Put do produkcije: pacijent se prijavi preko e-Građana / NIAS-a i jednom opiše problem Uputku; Uputko šalje sažetak u certificirani program ordinacije izabranog liječnika primarne zaštite; liječnik izdaje e-uputnicu u CEZIH-u; uputnica ide u e-Naručivanje, koje naručuje kod bolnice; termini, raniji termini i nova vremena vraćaju se Uputku, koji obavještava pacijenta push porukom ili SMS-om.](../diagrams/production-path.png)
+![Put do produkcije: pacijent se prijavi preko e-Građana / NIAS-a i jednom opiše problem Uputku; Uputko šalje sažetak u certificirani program ordinacije izabranog liječnika primarne zaštite; liječnik izdaje e-uputnicu u CEZIH-u; uputnica ide u e-Naručivanje, koje naručuje kod bolnice; termini, raniji termini i nova vremena vraćaju se Uputku, koji obavještava pacijenta push porukom ili SMS-om.](../diagrams/production-path.hr.png)
 
-*Izvor: [`diagrams/production-path.py`](../diagrams/production-path.py) · [SVG](../diagrams/production-path.svg)*
+*Izvor: [`diagrams/production-path.py`](../diagrams/production-path.py) · [SVG](../diagrams/production-path.hr.svg)*
 
 | Dio prototipa | Postaje | Napomene |
 |---|---|---|

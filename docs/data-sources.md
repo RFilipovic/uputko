@@ -45,15 +45,9 @@ a map, and links to each dataset below.
 
 ## How the data is linked
 
-```
-HZZO hospital address book (1) ──fuzzy name match──┐
-HZZO hospital services (2) ─── hospital × specialty ┼─► institutions + institution_services
-Zagreb geoportal (7, 8) ──── same address / name ───┤      (geom from geoportal / OSM / Nominatim)
-OpenStreetMap ───────────── name (+ city) match ────┘
-HZZO primary-care teams (3–6) ─► practitioners ─► one practice location each ─► institutions
-                                       │
-                         patient's chosen doctors (synthetic personas)
-```
+![How the open data is linked: HZZO hospital services (2) become specialty codes in institution_services and, fuzzy-matched with the HZZO hospital address book (1), hospitals in institutions; the Zagreb geoportal (7, 8), OpenStreetMap and Nominatim give every place coordinates; OpenStreetMap also gives opening hours; HZZO primary-care teams (3–6) become practitioners, each with one practice location in institutions; synthetic personas pick their chosen doctors in patient_practitioners.](diagrams/data-linking.png)
+
+*Source: [`diagrams/data-linking.py`](diagrams/data-linking.py) · [SVG](diagrams/data-linking.svg)*
 
 - **Hospitals:** dataset 2 names each hospital and lists its specialist clinics.
   We match it to dataset 1 by normalised name (`rapidfuzz` token sort ≥ 82) to

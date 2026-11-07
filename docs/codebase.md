@@ -17,7 +17,7 @@ for the data, see [`data-sources.md`](data-sources.md).
 ├── README.md, README.hr.md    run, test, deploy (English, Croatian)
 ├── docs/                      architecture, data sources, this guide
 │   ├── hr/                    Croatian versions of these documents
-│   └── diagrams/              diagrams as code (.py) → .svg + .png
+│   └── diagrams/              diagrams as code (.py) → .svg + .png, English + Croatian (.hr)
 ├── scripts/create-issues.mjs  one-off: GitHub issues from PLAN.md
 ├── data-pipeline/             Python ETL → supabase/seed.sql
 ├── supabase/
@@ -250,11 +250,14 @@ database), update `src/lib/db/types.ts`. After merging to `main`:
 `pnpm dlx supabase@3.0.0 db push --remote` from the repo root (the project must
 be linked; ask René).
 
-**Edit a diagram.** The diagrams in `docs/architecture.md` are drawn in code:
-`docs/diagrams/*.py` place every box and arrow by coordinate (shared helpers in
-`kit.py`). Change the script, then from `docs/diagrams/` run
-`python3 <name>.py && node render.cjs` to regenerate the SVG and the PNG
-(needs `app/node_modules`). Commit all three files.
+**Edit a diagram.** The diagrams in `docs/architecture.md` and
+`docs/data-sources.md` are drawn in code: `docs/diagrams/*.py` place every box
+and arrow by coordinate (shared helpers in `kit.py`). Each script holds the
+English and Croatian text side by side (`t("English", "Hrvatski")`) and writes
+`<name>.svg` and `<name>.hr.svg`. Change the script, then from `docs/diagrams/`
+run `python3 <name>.py && node render.cjs` to regenerate the SVGs and PNGs
+(needs `app/node_modules`). Check that the longer Croatian labels still fit, and
+commit the script, SVGs and PNGs.
 
 **Update the docs.** Documentation exists in English (`README.md`, `docs/*.md`)
 and Croatian (`README.hr.md`, `docs/hr/*.md`). When you change one, change the other.

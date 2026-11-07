@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1520 900" width="1520" height="900" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif">
+<title>Kako su otvoreni podaci povezani</title>
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0,0 L10,5 L0,10 z" fill="#7A7493"/>
+  </marker>
+  <marker id="arrow-start" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0,0 L10,5 L0,10 z" fill="#7A7493"/>
+  </marker>
+</defs>
+<rect width="1520" height="900" fill="#FFFFFF"/>
+<text x="30" y="40" text-anchor="start" font-size="15" font-weight="700" fill="#565170">KAKO SU OTVORENI PODACI POVEZANI · BROJEVI = SKUPOVI U IZVORI-PODATAKA.MD</text>
+<rect x="20" y="70" width="390" height="805" rx="22" fill="#F7F5F9" stroke="#C9C2DA" stroke-width="1.5" stroke-dasharray="6 5"/>
+<text x="40" y="100" text-anchor="start" font-size="15" font-weight="700" fill="#565170">OTVORENI PODACI</text>
+<rect x="500" y="70" width="420" height="805" rx="22" fill="#F7F5F9" stroke="#C9C2DA" stroke-width="1.5" stroke-dasharray="6 5"/>
+<text x="520" y="100" text-anchor="start" font-size="15" font-weight="700" fill="#565170">CJEVOVOD · PYTHON</text>
+<rect x="1040" y="70" width="440" height="805" rx="22" fill="#F7F5F9" stroke="#C9C2DA" stroke-width="1.5" stroke-dasharray="6 5"/>
+<text x="1060" y="100" text-anchor="start" font-size="15" font-weight="700" fill="#565170">TABLICE U SUPABASEU</text>
+<rect x="40" y="130.0" width="350" height="90" rx="14" fill="#FFF6D9" stroke="#C9A227" stroke-width="2"/>
+<text x="215.0" y="169.5" text-anchor="middle"><tspan x="215.0" dy="0" font-size="17" font-weight="700" fill="#16132E">Bolnički sadržaji HZZO (2)</tspan><tspan x="215.0" dy="20" font-size="14" font-weight="500" fill="#565170">bolnica × djelatnost, 2017.</tspan></text>
+<rect x="40" y="255.0" width="350" height="90" rx="14" fill="#FFF6D9" stroke="#C9A227" stroke-width="2"/>
+<text x="215.0" y="294.5" text-anchor="middle"><tspan x="215.0" dy="0" font-size="17" font-weight="700" fill="#16132E">Adresar bolnica HZZO (1)</tspan><tspan x="215.0" dy="20" font-size="14" font-weight="500" fill="#565170">adrese, telefoni, 2017.</tspan></text>
+<rect x="40" y="380.0" width="350" height="90" rx="14" fill="#FFF6D9" stroke="#C9A227" stroke-width="2"/>
+<text x="215.0" y="419.5" text-anchor="middle"><tspan x="215.0" dy="0" font-size="17" font-weight="700" fill="#16132E">Geoportal Zagreba (7, 8)</tspan><tspan x="215.0" dy="20" font-size="14" font-weight="500" fill="#565170">koordinate, kontakti</tspan></text>
+<rect x="40" y="505.0" width="350" height="90" rx="14" fill="#FFE9F7" stroke="#D44FAE" stroke-width="2"/>
+<text x="215.0" y="544.5" text-anchor="middle"><tspan x="215.0" dy="0" font-size="17" font-weight="700" fill="#16132E">OpenStreetMap · Nominatim</tspan><tspan x="215.0" dy="20" font-size="14" font-weight="500" fill="#565170">koordinate, radno vrijeme</tspan></text>
+<rect x="40" y="640.0" width="350" height="90" rx="14" fill="#FFF6D9" stroke="#C9A227" stroke-width="2"/>
+<text x="215.0" y="679.5" text-anchor="middle"><tspan x="215.0" dy="0" font-size="17" font-weight="700" fill="#16132E">Timovi PZZ-a HZZO (3–6)</tspan><tspan x="215.0" dy="20" font-size="14" font-weight="500" fill="#565170">obiteljski · stomatolog · gin · ped</tspan></text>
+<rect x="40" y="770.0" width="350" height="90" rx="14" fill="#573DFE" stroke="#3F25E0" stroke-width="2"/>
+<text x="215.0" y="809.5" text-anchor="middle"><tspan x="215.0" dy="0" font-size="17" font-weight="700" fill="#FFFFFF">Sintetičke osobe</tspan><tspan x="215.0" dy="20" font-size="14" font-weight="500" fill="#FFFFFF">Ana · Luka · Maja</tspan></text>
+<rect x="520" y="130.0" width="380" height="90" rx="14" fill="#FFFFFF" stroke="#573DFE" stroke-width="2"/>
+<text x="710.0" y="169.5" text-anchor="middle"><tspan x="710.0" dy="0" font-size="17" font-weight="700" fill="#16132E">Šifre djelatnosti</tspan><tspan x="710.0" dy="20" font-size="14" font-weight="500" fill="#565170">nazivi HZZO-a → stabilne šifre</tspan></text>
+<rect x="520" y="255.0" width="380" height="90" rx="14" fill="#FFFFFF" stroke="#573DFE" stroke-width="2"/>
+<text x="710.0" y="294.5" text-anchor="middle"><tspan x="710.0" dy="0" font-size="17" font-weight="700" fill="#16132E">Uparivanje po nazivu</tspan><tspan x="710.0" dy="20" font-size="14" font-weight="500" fill="#565170">rapidfuzz ≥ 82 · 54 od 65 bolnica</tspan></text>
+<rect x="520" y="380.0" width="380" height="90" rx="14" fill="#FFFFFF" stroke="#573DFE" stroke-width="2"/>
+<text x="710.0" y="419.5" text-anchor="middle"><tspan x="710.0" dy="0" font-size="17" font-weight="700" fill="#16132E">Lociranje svakog mjesta</tspan><tspan x="710.0" dy="20" font-size="14" font-weight="500" fill="#565170">oznaka preciznosti · provjera grada</tspan></text>
+<rect x="520" y="640.0" width="380" height="90" rx="14" fill="#FFFFFF" stroke="#573DFE" stroke-width="2"/>
+<text x="710.0" y="679.5" text-anchor="middle"><tspan x="710.0" dy="0" font-size="17" font-weight="700" fill="#16132E">Jedna ordinacija po timu</tspan><tspan x="710.0" dy="20" font-size="14" font-weight="500" fill="#565170">liječnik + lokacija</tspan></text>
+<rect x="1060" y="130.0" width="330" height="90" rx="14" fill="#E4F4EC" stroke="#2E8B57" stroke-width="2"/>
+<text x="1225.0" y="169.5" text-anchor="middle"><tspan x="1225.0" dy="0" font-size="17" font-weight="700" fill="#16132E">institution_services</tspan><tspan x="1225.0" dy="20" font-size="14" font-weight="500" fill="#565170">174 djelatnosti HZZO-a</tspan></text>
+<path d="M1060,264 a165.0,14 0 0,0 330,0 a165.0,14 0 0,0 -330,0 v197 a165.0,14 0 0,0 330,0 v-197" fill="#E4F4EC" stroke="#2E8B57" stroke-width="2"/>
+<text x="1225.0" y="354.0" text-anchor="middle"><tspan x="1225.0" dy="0" font-size="17" font-weight="700" fill="#16132E">institutions</tspan><tspan x="1225.0" dy="20" font-size="14" font-weight="500" fill="#565170">5.128 mjesta · PostGIS</tspan><tspan x="1225.0" dy="20" font-size="14" font-weight="500" fill="#565170">source_dataset na svakom retku</tspan></text>
+<rect x="1060" y="505.0" width="330" height="90" rx="14" fill="#E4F4EC" stroke="#2E8B57" stroke-width="2"/>
+<text x="1225.0" y="544.5" text-anchor="middle"><tspan x="1225.0" dy="0" font-size="17" font-weight="700" fill="#16132E">institution_hours</tspan><tspan x="1225.0" dy="20" font-size="14" font-weight="500" fill="#565170">OSM · OHBP 0–24 · demo</tspan></text>
+<rect x="1060" y="640.0" width="330" height="90" rx="14" fill="#E4F4EC" stroke="#2E8B57" stroke-width="2"/>
+<text x="1225.0" y="679.5" text-anchor="middle"><tspan x="1225.0" dy="0" font-size="17" font-weight="700" fill="#16132E">practitioners</tspan><tspan x="1225.0" dy="20" font-size="14" font-weight="500" fill="#565170">4.901 izabrani liječnik</tspan></text>
+<rect x="1060" y="770.0" width="330" height="90" rx="14" fill="#E4F4EC" stroke="#2E8B57" stroke-width="2"/>
+<text x="1225.0" y="809.5" text-anchor="middle"><tspan x="1225.0" dy="0" font-size="17" font-weight="700" fill="#16132E">patient_practitioners</tspan><tspan x="1225.0" dy="20" font-size="14" font-weight="500" fill="#565170">sintetički, samo demo</tspan></text>
+<path d="M390,165 L520,165" fill="none" stroke="#7A7493" stroke-width="2.2" marker-end="url(#arrow)"/>
+<path d="M900,175 L1060,175" fill="none" stroke="#7A7493" stroke-width="2.2" marker-end="url(#arrow)"/>
+<path d="M390,200 L450,200 L450,280 L520,280" fill="none" stroke="#7A7493" stroke-width="2.2" marker-end="url(#arrow)"/>
+<path d="M390,315 L520,315" fill="none" stroke="#7A7493" stroke-width="2.2" marker-end="url(#arrow)"/>
+<path d="M900,300 L1060,300" fill="none" stroke="#7A7493" stroke-width="2.2" marker-end="url(#arrow)"/>
+<rect x="948.4" y="271.0" width="63.199999999999996" height="22" rx="11" fill="#FFFFFF" stroke="#E2DDEA"/>
+<text x="980.0" y="287.0" text-anchor="middle" font-size="13.5" font-weight="600" fill="#16132E">adresa</text>
+<path d="M390,410 L520,410" fill="none" stroke="#7A7493" stroke-width="2.2" marker-end="url(#arrow)"/>
+<path d="M390,525 L460,525 L460,450 L520,450" fill="none" stroke="#7A7493" stroke-width="2.2" marker-end="url(#arrow)"/>
+<path d="M900,425 L1060,425" fill="none" stroke="#7A7493" stroke-width="2.2" marker-end="url(#arrow)"/>
+<rect x="932.0" y="396.0" width="96.0" height="22" rx="11" fill="#FFFFFF" stroke="#E2DDEA"/>
+<text x="980.0" y="412.0" text-anchor="middle" font-size="13.5" font-weight="600" fill="#16132E">koordinate</text>
+<path d="M390,565 L1060,565" fill="none" stroke="#7A7493" stroke-width="2.2" marker-end="url(#arrow)"/>
+<rect x="664.7" y="536.0" width="120.6" height="22" rx="11" fill="#FFFFFF" stroke="#E2DDEA"/>
+<text x="725.0" y="552.0" text-anchor="middle" font-size="13.5" font-weight="600" fill="#16132E">radno vrijeme</text>
+<path d="M390,685 L520,685" fill="none" stroke="#7A7493" stroke-width="2.2" marker-end="url(#arrow)"/>
+<path d="M900,685 L1060,685" fill="none" stroke="#7A7493" stroke-width="2.2" marker-end="url(#arrow)"/>
+<path d="M1390,685 L1435,685 L1435,320 L1390,320" fill="none" stroke="#7A7493" stroke-width="2.2" stroke-dasharray="7 6" marker-end="url(#arrow)"/>
+<rect x="1350.1" y="604.5" width="169.79999999999998" height="22" rx="11" fill="#FFFFFF" stroke="#E2DDEA"/>
+<text x="1435.0" y="620.5" text-anchor="middle" font-size="13.5" font-weight="600" fill="#16132E">lokacija ordinacije</text>
+<path d="M390,815 L1060,815" fill="none" stroke="#7A7493" stroke-width="2.2" marker-end="url(#arrow)"/>
+<rect x="615.5" y="786.0" width="218.99999999999997" height="22" rx="11" fill="#FFFFFF" stroke="#E2DDEA"/>
+<text x="725.0" y="802.0" text-anchor="middle" font-size="13.5" font-weight="600" fill="#16132E">biraju izabrane liječnike</text>
+<path d="M1225.0,770.0 L1225.0,730.0" fill="none" stroke="#7A7493" stroke-width="2.2" marker-end="url(#arrow)"/>
+</svg>

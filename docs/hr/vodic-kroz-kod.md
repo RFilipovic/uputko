@@ -18,7 +18,7 @@ Nazivi datoteka, funkcija i stanja ostaju na engleskom jer su takvi u kodu.
 | `CLAUDE.md`, `PLAN.md` | Pravila za suradnike i petodnevni plan |
 | `README.md`, `README.hr.md` | Pokretanje, testovi, objava |
 | `docs/` | Arhitektura, izvori podataka, ovaj vodič (hrvatski u `docs/hr/`) |
-| `docs/diagrams/` | Dijagrami kao kod (`.py`) → `.svg` + `.png` |
+| `docs/diagrams/` | Dijagrami kao kod (`.py`) → `.svg` + `.png`, engleski + hrvatski (`.hr`) |
 | `scripts/create-issues.mjs` | Jednokratno: GitHub issueji iz `PLAN.md` |
 | `data-pipeline/` | Python ETL → `supabase/seed.sql` |
 | `supabase/migrations/` | SQL shema + funkcije, numerirane, primjenjuju se po redu |
@@ -248,11 +248,14 @@ pokrenutu lokalnu bazu), ažurirajte `src/lib/db/types.ts`. Nakon spajanja u
 `main`: `pnpm dlx supabase@3.0.0 db push --remote` iz korijena repozitorija
 (projekt mora biti povezan; obratite se Renéu).
 
-**Urediti dijagram.** Dijagrami u `docs/architecture.md` nacrtani su kodom:
-`docs/diagrams/*.py` postavljaju svaki okvir i strelicu po koordinatama
-(zajedničke pomoćne funkcije u `kit.py`). Promijenite skriptu, zatim iz
+**Urediti dijagram.** Dijagrami u arhitekturi i izvorima podataka nacrtani su
+kodom: `docs/diagrams/*.py` postavljaju svaki okvir i strelicu po koordinatama
+(zajedničke pomoćne funkcije u `kit.py`). Svaka skripta drži engleski i
+hrvatski tekst jedan uz drugi (`t("English", "Hrvatski")`) i zapisuje
+`<naziv>.svg` i `<naziv>.hr.svg`. Promijenite skriptu, zatim iz
 `docs/diagrams/` pokrenite `python3 <naziv>.py && node render.cjs` da se
-ponovno generiraju SVG i PNG (treba `app/node_modules`). Commitajte sve tri datoteke.
+ponovno generiraju SVG-ovi i PNG-ovi (treba `app/node_modules`). Provjerite
+stanu li dulji hrvatski natpisi te commitajte skriptu, SVG-ove i PNG-ove.
 
 **Objava.** Spojite u `main`: Vercel objavljuje automatski. Zatim pošaljite
 nove migracije i pokrenite end-to-end testove na URL-u uživo.

@@ -47,14 +47,9 @@ nastavku.
 
 ## Kako su podaci povezani
 
-| Izvor | Povezuje se preko | Završava u |
-|---|---|---|
-| Adresar bolnica HZZO-a (1) | približno uparivanje naziva sa skupom 2 | `institutions` (adresa, telefon) |
-| Bolnički sadržaji HZZO-a (2) | bolnica × djelatnost | `institutions` + `institution_services` |
-| Zagrebački geoportal (7, 8) | ista adresa / naziv | koordinate (`geom`) i kontakti |
-| OpenStreetMap | naziv (+ grad) | koordinate, kontakti, radno vrijeme |
-| Timovi primarne zaštite HZZO-a (3–6) | jedan tim = liječnik + lokacija ordinacije | `practitioners` → po jedna ordinacija u `institutions` |
-| Sintetičke osobe | odabir izabranih liječnika | `patient_practitioners` |
+![Kako su otvoreni podaci povezani: bolnički sadržaji HZZO-a (2) postaju šifre djelatnosti u institution_services i, uz uparivanje po nazivu s adresarom bolnica HZZO-a (1), bolnice u institutions; geoportal Zagreba (7, 8), OpenStreetMap i Nominatim daju koordinate svakom mjestu; OpenStreetMap daje i radno vrijeme; timovi primarne zaštite HZZO-a (3–6) postaju practitioners, svaki s jednom lokacijom ordinacije u institutions; sintetičke osobe biraju izabrane liječnike u patient_practitioners.](../diagrams/data-linking.hr.png)
+
+*Izvor: [`diagrams/data-linking.py`](../diagrams/data-linking.py) · [SVG](../diagrams/data-linking.hr.svg)*
 
 - **Bolnice:** skup 2 navodi naziv svake bolnice i njezine specijalističke
   ambulante. Uparujemo ga sa skupom 1 po normaliziranom nazivu (`rapidfuzz`
