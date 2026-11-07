@@ -14,6 +14,7 @@ for the data, see [`data-sources.md`](data-sources.md).
 ├── CLAUDE.md, PLAN.md         rules for contributors and the 5-day plan
 ├── README.md                  run, test, deploy
 ├── docs/                      architecture, data sources, this guide
+│   └── diagrams/              diagrams as code (.py) → .svg + .png
 ├── scripts/create-issues.mjs  one-off: GitHub issues from PLAN.md
 ├── data-pipeline/             Python ETL → supabase/seed.sql
 ├── supabase/
@@ -245,6 +246,12 @@ keyed by the persona's name.
 database), update `src/lib/db/types.ts`. After merging to `main`:
 `pnpm dlx supabase@3.0.0 db push --remote` from the repo root (the project must
 be linked; ask René).
+
+**Edit a diagram.** The diagrams in `docs/architecture.md` are drawn in code:
+`docs/diagrams/*.py` place every box and arrow by coordinate (shared helpers in
+`kit.py`). Change the script, then from `docs/diagrams/` run
+`python3 <name>.py && node render.cjs` to regenerate the SVG and the PNG
+(needs `app/node_modules`). Commit all three files.
 
 **Deploy.** Merge to `main`: Vercel deploys automatically. Then push any new
 migrations and run the end-to-end tests against the live URL.

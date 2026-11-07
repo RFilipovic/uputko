@@ -20,35 +20,9 @@ e-Građani, and the legal prerequisites.
 
 ## 1. System overview
 
-```
-  Patient phone (browser)                Doctor (browser, link from email)
-  ───────────────────────                ─────────────────────────────────
-  chat · case page · maps                portal: summary → upload uputnica
-          │  HTTPS + Server-Sent Events          │  HTTPS
-          ▼                                      ▼
- ┌──────────────────────── Next.js 15 app on Vercel ────────────────────────┐
- │  Pages (server components): /  /profil  /chat  /slucaj/[id]              │
- │                             /lijecnik/slucaj/[token]  /ustanova          │
- │                             /javni-podaci                                │
- │  API routes:                                                              │
- │   /api/chat ──► red-flag rules ──► Claude agent (tools) ──► routing       │
- │   /api/doctor/[token]/…   /api/appointments/…   /api/notifications/…     │
- │   /api/institution/…  /api/cases/[id]  /api/session  /api/demo/reset     │
- └──────┬───────────────────────────┬────────────────────────┬──────────────┘
-        │ SQL (service role)        │ Broadcast (HTTP)        │ HTTPS
-        ▼                           ▼                         ▼
- ┌──────────────────────┐   ┌─────────────────────┐   ┌──────────────────────┐
- │ Supabase Postgres    │   │ Supabase Realtime   │   │ Claude API (Haiku)   │
- │ + PostGIS (EU)       │   │ "refresh" pings to  │   │ Resend (demo emails) │
- │ open data + synthetic│   │ the patient's phone │   │ OpenFreeMap tiles    │
- │ patient flow         │   └─────────────────────┘   └──────────────────────┘
- └──────────▲───────────┘
-            │ supabase/seed.sql (generated, committed)
- ┌──────────┴──────────────────────────────────────────────────────────────┐
- │ Python data pipeline: data.gov.hr CKAN API + OpenStreetMap + Nominatim   │
- │ fetch → transform (clean, join, dedupe) → geocode (cached) → load (SQL)  │
- └──────────────────────────────────────────────────────────────────────────┘
-```
+![Uputko system overview: patient, doctor and hospital desk on the left; the Next.js app in the middle (chat API, red-flag rules, AI agent, routing table, doctor portal, booking API, case page); Supabase Postgres and Realtime on the right; the open-data pipeline at the bottom; Claude, Resend and OpenFreeMap at the top.](diagrams/system-overview.png)
+
+*Source: [`diagrams/system-overview.py`](diagrams/system-overview.py) · [SVG](diagrams/system-overview.svg)*
 
 | Part | Technology | Why |
 |---|---|---|
@@ -67,24 +41,9 @@ e-Građani, and the legal prerequisites.
 
 ### 2.1 Golden path: patient → doctor → uputnica → appointment
 
-```
-Patient            /api/chat            Agent (Claude)        Database           Doctor portal
-   │ message ──────► red-flag rules      │                     │                    │
-   │                 (no hit)            │                     │                    │
-   │                 └──── history ─────►│ one question        │                    │
-   │ ◄──── streamed reply + quick replies│                     │                    │
-   │   …3–6 turns, "Pošalji liječniku"…  │                     │                    │
-   │                                     │ submit_case_summary │                    │
-   │                 routing (code) ◄────┘                     │                    │
-   │                 decides: chosen family doctor ───────────►│ case: sent_to_doctor
-   │                 email with secure link (Resend → demo inbox) ───────────────────►│
-   │                                                           │ ◄── opens link ────│ viewed_by_doctor
-   │                                                           │ ◄── uploads uputnica (Claude reads it)
-   │                                                           │ ◄── checks fields, Pošalji pacijentu
-   │                                                           │ referral + earliest free slot held 15 min
-   │ ◄──────────── Realtime ping → case page refetches ────────│                    │
-   │ "Stigla je uputnica!" → Potvrdi termin → .ics, directions │ appointment confirmed
-```
+![Golden path as swimlanes: 1 the patient describes the problem; 2 red-flag rules; 3 the AI asks a few questions while the patient answers; 4 the routing table picks the family doctor; 5 the doctor gets an email link and opens the portal; 6 uploads the uputnica, which the AI reads and the doctor sends; 7 the hospital's earliest slot is held for 15 minutes; 8 the patient's phone shows "Stigla je uputnica!" live and they confirm; 9 the appointment is booked with calendar file and directions.](diagrams/golden-path.png)
+
+*Source: [`diagrams/golden-path.py`](diagrams/golden-path.py) · [SVG](diagrams/golden-path.svg)*
 
 1. **Profile.** The patient picks a demo persona. Their chosen doctors are real
    doctors from HZZO open data (onboarding can search all of them by name or city).
@@ -262,12 +221,9 @@ state is in Postgres. Scaling steps, none of which need a redesign:
 
 ## 8. Path to production (documented, not built)
 
-```
-Patient ─► Uputko ─► chosen primary-care doctor ─► CEZIH (e-uputnica)
-                                                     │
-                                                     ▼
-Patient ◄── notifications ◄── hospital ◄── e-Naručivanje (booking)
-```
+![Path to production: the patient logs in with e-Građani / NIAS and describes the problem once to Uputko; Uputko sends the summary to the chosen primary-care doctor's certified practice software; the doctor issues the e-uputnica in CEZIH; the referral goes to e-Naručivanje, which books with the hospital; slots, earlier slots and new times flow back to Uputko, which notifies the patient by push or SMS.](diagrams/production-path.png)
+
+*Source: [`diagrams/production-path.py`](diagrams/production-path.py) · [SVG](diagrams/production-path.svg)*
 
 | Prototype part | Becomes | Notes |
 |---|---|---|
