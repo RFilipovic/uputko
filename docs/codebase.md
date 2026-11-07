@@ -1,5 +1,7 @@
 # Codebase guide
 
+*[Hrvatska verzija](hr/vodic-kroz-kod.md)*
+
 A map of the Uputko code for teammates and reviewers: where everything lives,
 how a request moves through it, and how to change things without breaking the
 demo. For *why* it is built this way, see [`architecture.md`](architecture.md);
@@ -12,8 +14,9 @@ for the data, see [`data-sources.md`](data-sources.md).
 ```
 /
 ├── CLAUDE.md, PLAN.md         rules for contributors and the 5-day plan
-├── README.md                  run, test, deploy
+├── README.md, README.hr.md    run, test, deploy (English, Croatian)
 ├── docs/                      architecture, data sources, this guide
+│   ├── hr/                    Croatian versions of these documents
 │   └── diagrams/              diagrams as code (.py) → .svg + .png
 ├── scripts/create-issues.mjs  one-off: GitHub issues from PLAN.md
 ├── data-pipeline/             Python ETL → supabase/seed.sql
@@ -252,6 +255,9 @@ be linked; ask René).
 `kit.py`). Change the script, then from `docs/diagrams/` run
 `python3 <name>.py && node render.cjs` to regenerate the SVG and the PNG
 (needs `app/node_modules`). Commit all three files.
+
+**Update the docs.** Documentation exists in English (`README.md`, `docs/*.md`)
+and Croatian (`README.hr.md`, `docs/hr/*.md`). When you change one, change the other.
 
 **Deploy.** Merge to `main`: Vercel deploys automatically. Then push any new
 migrations and run the end-to-end tests against the live URL.

@@ -1,5 +1,7 @@
 # Uputko
 
+*[Hrvatska verzija](README.hr.md)*
+
 AI health-navigation agent for Croatian citizens. **Datathon Portala otvorenih
 podataka 2026**, Challenge A (*Društvo i javne usluge*).
 
@@ -162,6 +164,7 @@ in [`docs/data-sources.md`](docs/data-sources.md#rebuild).
 | [`docs/architecture.md`](docs/architecture.md) | System diagram, flows, safety design, data model (FHIR), scaling, CEZIH / e-Naručivanje / e-Građani path, legal prerequisites |
 | [`docs/data-sources.md`](docs/data-sources.md) | Every dataset: publisher, licence, date, how it is linked, limitations |
 | [`docs/codebase.md`](docs/codebase.md) | Guide to the code: pages, API, modules, database, tests, common tasks |
+| [`README.hr.md`](README.hr.md), [`docs/hr/`](docs/hr/) | Croatian versions of this README and the three documents above |
 | [`CLAUDE.md`](CLAUDE.md), [`PLAN.md`](PLAN.md) | Contributor rules and the 5-day plan |
 
 ## Repository

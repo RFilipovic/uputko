@@ -1,5 +1,7 @@
 # Arhitektura / Architecture
 
+*[Hrvatska verzija](hr/arhitektura.md)*
+
 Uputko is the **middleman between the patient and the healthcare system**. The
 patient describes the problem once, in Croatian (or English). A deterministic
 safety layer and an AI agent work out who should handle it, the right doctor
@@ -66,7 +68,7 @@ e-Građani, and the legal prerequisites.
    the suggested specialty.
 7. **Uputnica.** The doctor uploads the uputnica they issued (PDF or image).
    Claude reads type, specialty, hospital, priority and note; the doctor checks
-   and corrects the fields and sends. *In production this step is CEZIH (§5).*
+   and corrects the fields and sends. *In production this step is CEZIH (§8).*
 8. **Booking.** `propose_appointment()` holds the earliest free slot at that
    hospital for 15 minutes in one SQL transaction. A unique index guarantees one
    live appointment per slot. If that hospital has no free slot in 3 weeks, the

@@ -1,5 +1,7 @@
 # Izvori podataka / Data sources
 
+*[Hrvatska verzija](hr/izvori-podataka.md)*
+
 Every dataset Uputko uses, where it comes from, and what we do with it.
 All CKAN datasets are resolved through the **data.gov.hr CKAN Action API**
 (`/api/3/action/package_show`) by `data-pipeline/fetch.py`; provenance for each
