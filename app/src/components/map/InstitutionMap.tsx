@@ -36,10 +36,29 @@ export function InstitutionMap({
 }) {
   const el = useRef<HTMLDivElement>(null);
   const [state, setState] = useState<"loading" | "ready" | "error">("loading");
+  // MapLibre is large: load it only once the map is (nearly) on screen.
+  const [visible, setVisible] = useState(false);
   const key = points.map((p) => `${p.lat},${p.lng},${p.kind}`).join("|");
 
   useEffect(() => {
-    if (!el.current || points.length === 0) return;
+    const node = el.current;
+    if (!node || visible) return;
+    if (!("IntersectionObserver" in window)) return setVisible(true);
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setVisible(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin: "200px" },
+    );
+    io.observe(node);
+    return () => io.disconnect();
+  }, [visible]);
+
+  useEffect(() => {
+    if (!visible || !el.current || points.length === 0) return;
     let map: import("maplibre-gl").Map | null = null;
     let cancelled = false;
     let timer: ReturnType<typeof setTimeout> | undefined;
@@ -105,7 +124,7 @@ export function InstitutionMap({
     };
     // reason: points are compared by their coordinate key
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [key]);
+  }, [key, visible]);
 
   if (points.length === 0) return null;
   return (

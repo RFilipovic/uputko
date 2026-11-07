@@ -155,7 +155,9 @@ export function CaseScreen({
         {view.referral && !view.appointment && (
           <p className={`${ui.card} text-lg`}>{hr.appointment.noSlot}</p>
         )}
-        {view.referral && <ReferralCard referral={view.referral} />}
+        {view.referral && (
+          <ReferralCard referral={view.referral} fresh={arrived} />
+        )}
 
         <CaseTimeline events={view.events} />
         {/* Room to scroll the page above an open offer notification. */}

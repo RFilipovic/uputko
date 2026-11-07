@@ -7,8 +7,11 @@ import { ui } from "@/lib/ui";
 
 export function ReferralCard({
   referral,
+  fresh = false,
 }: {
   referral: NonNullable<CaseView["referral"]>;
+  /** Arrived live just now: slide in (on page load it shows at once). */
+  fresh?: boolean;
 }) {
   const rows: Array<[string, string]> = [
     [hr.referral.number, referralNumber(referral.id)],
@@ -24,7 +27,7 @@ export function ReferralCard({
   return (
     <section
       aria-labelledby="ref-title"
-      className={`${ui.card} flex animate-in flex-col gap-3 duration-300 fade-in slide-in-from-bottom-2`}
+      className={`${ui.card} flex flex-col gap-3 ${fresh ? "animate-in duration-300 fade-in slide-in-from-bottom-2" : ""}`}
     >
       <h2 id="ref-title" className="flex items-center gap-2 text-2xl font-bold">
         <FileText

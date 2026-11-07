@@ -78,7 +78,9 @@ export function AppointmentCard({
       aria-labelledby="appt-title"
       className={cn(
         ui.card,
-        "flex animate-in flex-col gap-4 duration-300 fade-in slide-in-from-bottom-2",
+        "flex flex-col gap-4",
+        // Slide in only when it arrives live; on page load show it at once.
+        fresh && "animate-in duration-300 fade-in slide-in-from-bottom-2",
         status === "proposed" && "border-2 border-primary",
       )}
     >
