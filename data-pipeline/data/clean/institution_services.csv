@@ -785,10 +785,6 @@ h-004200420,fizijatrijska-dijagnostka-emg-emng,"Fizijatrijska dijagnostka - EMG,
 h-033203326,fizijatrijska-dijagnostka-emg-emng,"Fizijatrijska dijagnostka - EMG, EMNG",2050050,1.0,hzzo_bolnicki_sadrzaji
 h-049504959,fizijatrijska-dijagnostka-emg-emng,"Fizijatrijska dijagnostka - EMG, EMNG",2050050,0.4,hzzo_bolnicki_sadrzaji
 h-013901397,fizijatrijska-dijagnostka-emg-emng,"Fizijatrijska dijagnostka - EMG, EMNG",2050050,0.1,hzzo_bolnicki_sadrzaji
-h-029602963,reumatologija,Reumatologija,2050100,0.8,hzzo_bolnicki_sadrzaji
-h-006200621,reumatologija,Reumatologija,2050100,0.78,hzzo_bolnicki_sadrzaji
-h-026102617,reumatologija,Reumatologija,2050100,1.0,hzzo_bolnicki_sadrzaji
-h-004400445,reumatologija,Reumatologija,2050100,0.4,hzzo_bolnicki_sadrzaji
 h-309430941,reumatologija,Reumatologija,2050100,1.0,hzzo_bolnicki_sadrzaji
 h-050805088,reumatologija,Reumatologija,2050100,1.0,hzzo_bolnicki_sadrzaji
 h-049904990,reumatologija,Reumatologija,2050100,0.6,hzzo_bolnicki_sadrzaji
@@ -797,7 +793,6 @@ h-046204628,reumatologija,Reumatologija,2050100,0.63,hzzo_bolnicki_sadrzaji
 h-045104514,reumatologija,Reumatologija,2050100,0.18,hzzo_bolnicki_sadrzaji
 h-050105019,reumatologija,Reumatologija,2050100,0.38,hzzo_bolnicki_sadrzaji
 h-049704974,reumatologija,Reumatologija,2050100,1.0,hzzo_bolnicki_sadrzaji
-h-033203326,reumatologija,Reumatologija,2050100,0.5,hzzo_bolnicki_sadrzaji
 h-049504959,reumatologija,Reumatologija,2050100,1.0,hzzo_bolnicki_sadrzaji
 h-048904899,reumatologija,Reumatologija,2050100,2.0,hzzo_bolnicki_sadrzaji
 h-029602963,neurologija,Neurologija,2060000,3.38,hzzo_bolnicki_sadrzaji
@@ -1549,20 +1544,7 @@ h-050805088,kirurska-dijagnostika,Kirurška dijagnostika,2100030,0.1,hzzo_bolnic
 h-049904990,kirurska-dijagnostika,Kirurška dijagnostika,2100030,0.18,hzzo_bolnicki_sadrzaji
 h-045404542,kirurska-dijagnostika,Kirurška dijagnostika,2100030,0.1,hzzo_bolnicki_sadrzaji
 h-050105019,kirurska-dijagnostika,Kirurška dijagnostika,2100030,0.2,hzzo_bolnicki_sadrzaji
-h-029602963,endoskopija-probavnog-trakta,Endoskopija probavnog trakta,2100040,0.25,hzzo_bolnicki_sadrzaji
-h-023902396,endoskopija-probavnog-trakta,Endoskopija probavnog trakta,2100040,0.45,hzzo_bolnicki_sadrzaji
-h-047804785,endoskopija-probavnog-trakta,Endoskopija probavnog trakta,2100040,0.55,hzzo_bolnicki_sadrzaji
-h-005200520,endoskopija-probavnog-trakta,Endoskopija probavnog trakta,2100040,1.8,hzzo_bolnicki_sadrzaji
-h-352635266,endoskopija-probavnog-trakta,Endoskopija probavnog trakta,2100040,0.25,hzzo_bolnicki_sadrzaji
-h-309430941,endoskopija-probavnog-trakta,Endoskopija probavnog trakta,2100040,0.3,hzzo_bolnicki_sadrzaji
-h-046104615,endoskopija-probavnog-trakta,Endoskopija probavnog trakta,2100040,0.35,hzzo_bolnicki_sadrzaji
-h-046904697,endoskopija-probavnog-trakta,Endoskopija probavnog trakta,2100040,0.2,hzzo_bolnicki_sadrzaji
 h-266626661,endoskopija-probavnog-trakta,Endoskopija probavnog trakta,2100040,0.75,hzzo_bolnicki_sadrzaji
-h-044904495,endoskopija-probavnog-trakta,Endoskopija probavnog trakta,2100040,0.18,hzzo_bolnicki_sadrzaji
-h-049904990,endoskopija-probavnog-trakta,Endoskopija probavnog trakta,2100040,0.13,hzzo_bolnicki_sadrzaji
-h-051105110,endoskopija-probavnog-trakta,Endoskopija probavnog trakta,2100040,1.0,hzzo_bolnicki_sadrzaji
-h-050105019,endoskopija-probavnog-trakta,Endoskopija probavnog trakta,2100040,0.65,hzzo_bolnicki_sadrzaji
-h-047604760,endoskopija-probavnog-trakta,Endoskopija probavnog trakta,2100040,0.23,hzzo_bolnicki_sadrzaji
 h-029602963,traumatologija,Traumatologija,2100100,2.0,hzzo_bolnicki_sadrzaji
 h-006200621,traumatologija,Traumatologija,2100100,2.0,hzzo_bolnicki_sadrzaji
 h-023902396,traumatologija,Traumatologija,2100100,1.28,hzzo_bolnicki_sadrzaji
@@ -2060,7 +2042,6 @@ h-045804583,laringoskopija-i-faringoskopija,Laringoskopija i faringoskopija,2160
 h-004200420,laringoskopija-i-faringoskopija,Laringoskopija i faringoskopija,2160030,0.2,hzzo_bolnicki_sadrzaji
 h-049004905,laringoskopija-i-faringoskopija,Laringoskopija i faringoskopija,2160030,0.2,hzzo_bolnicki_sadrzaji
 h-029602963,plasticna-kirurgija-glave-i-vrata,Plastična kirurgija glave i vrata,2160100,0.5,hzzo_bolnicki_sadrzaji
-h-023902396,plasticna-kirurgija-glave-i-vrata,Plastična kirurgija glave i vrata,2160100,0.3,hzzo_bolnicki_sadrzaji
 h-026102617,plasticna-kirurgija-glave-i-vrata,Plastična kirurgija glave i vrata,2160100,0.2,hzzo_bolnicki_sadrzaji
 h-004400445,plasticna-kirurgija-glave-i-vrata,Plastična kirurgija glave i vrata,2160100,0.95,hzzo_bolnicki_sadrzaji
 h-047804785,plasticna-kirurgija-glave-i-vrata,Plastična kirurgija glave i vrata,2160100,0.5,hzzo_bolnicki_sadrzaji
@@ -2989,6 +2970,12 @@ h-045804583,patohistoloska-dijagnostika,Patohistološka dijagnostika,2560000,0.5
 h-049704974,patohistoloska-dijagnostika,Patohistološka dijagnostika,2560000,0.75,hzzo_bolnicki_sadrzaji
 h-004200420,patohistoloska-dijagnostika,Patohistološka dijagnostika,2560000,2.0,hzzo_bolnicki_sadrzaji
 h-048004804,patohistoloska-dijagnostika,Patohistološka dijagnostika,2560000,1.0,hzzo_bolnicki_sadrzaji
+h-047804785,hitna-medicina-ohbp,Hitna medicina (OHBP),2000001,,osm(emergency=yes)
+h-047404744,hitna-medicina-ohbp,Hitna medicina (OHBP),2000001,,osm(emergency=yes)
+h-004200420,hitna-medicina-ohbp,Hitna medicina (OHBP),2000001,,osm(emergency=yes)
+h-027602761,hitna-medicina-ohbp,Hitna medicina (OHBP),2000001,,osm(emergency=yes)
+h-013301330,hitna-medicina-ohbp,Hitna medicina (OHBP),2000001,,osm(emergency=yes)
+h-029602963,hitna-medicina-ohbp,Hitna medicina (OHBP),2000001,,manual_override(TODO(verify))
 p-28c254b7f2e77050,obiteljska-medicina,Obiteljska (opća) medicina,,1.0,hzzo_pzz_opca
 p-7aa901b65dcfd1cd,obiteljska-medicina,Obiteljska (opća) medicina,,1.0,hzzo_pzz_opca
 p-252400d0ebf6dcf7,obiteljska-medicina,Obiteljska (opća) medicina,,1.0,hzzo_pzz_opca

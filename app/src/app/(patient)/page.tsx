@@ -1,10 +1,13 @@
 import { ArrowRight, Mic } from "lucide-react";
 import Link from "next/link";
+import { MyCases } from "@/components/case/MyCases";
 import { Always112Banner } from "@/components/emergency/Always112Banner";
 import { AppHeader } from "@/components/layout/AppHeader";
 import { hr } from "@/i18n/hr";
 
 const t = hr.landing;
+
+export const dynamic = "force-dynamic";
 
 export default function Home() {
   return (
@@ -54,6 +57,8 @@ export default function Home() {
             </Link>
           </div>
         </section>
+
+        <MyCases />
 
         <section aria-labelledby="steps-title" className="flex flex-col gap-5">
           <h2 id="steps-title" className="text-2xl font-bold">

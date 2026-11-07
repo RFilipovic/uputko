@@ -1,0 +1,2 @@
+institution_name,reason,status
+Klinički bolnički centar Split,"Emergency department (OHBP) missing from the 2017 HZZO file and from OSM emergency=yes; added so Split patients are not sent to Šibenik.",TODO(verify)

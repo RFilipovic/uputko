@@ -72,6 +72,13 @@ def q(v: object) -> str:
     return "'" + s.replace("'", "''") + "'"
 
 
+def num(v: object) -> str:
+    """Numeric SQL literal (NaN/empty → null)."""
+    if v is None or (isinstance(v, float) and math.isnan(v)) or str(v).strip() in ("", "nan"):
+        return "null"
+    return str(v)
+
+
 def point(lat: object, lng: object) -> str:
     if pd.isna(lat) or pd.isna(lng):
         return "null"
@@ -187,7 +194,7 @@ def main() -> int:
             "institution_services",
             ["institution_id", "specialty_code", "units", "source_dataset"],
             [
-                [q(r.institution_id), q(r.specialty_code), r.units or "null", q(r.source_dataset)]
+                [q(r.institution_id), q(r.specialty_code), num(r.units), q(r.source_dataset)]
                 for r in svc.drop_duplicates(["institution_id", "specialty_code"]).itertuples()
             ],
         ),
@@ -228,7 +235,7 @@ def main() -> int:
                     q(r.institution_id),
                     q(r.provider_name),
                     q(r.status),
-                    r.insured_count or "null",
+                    num(r.insured_count),
                     q(r.source_dataset),
                 ]
                 for r in prac.itertuples()

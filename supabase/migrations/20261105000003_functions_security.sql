@@ -88,7 +88,9 @@ begin
   select s.institution_id, s.specialty_code,
          (d + interval '8 hours' + k * interval '30 minutes') at time zone 'Europe/Zagreb',
          (d + interval '8 hours 30 minutes' + k * interval '30 minutes') at time zone 'Europe/Zagreb',
-         case when abs(hashtext(s.institution_id || s.specialty_code || d::text || k::text)) % 10 < 3
+         -- Realistic waiting list: the first 5 days are full, later ~30% is taken.
+         case when d < p_from + 6
+                or abs(hashtext(s.institution_id || s.specialty_code || d::text || k::text)) % 10 < 3
               then 'booked' else 'free' end
   from institution_services s
   join institutions i on i.id = s.institution_id
