@@ -15,6 +15,8 @@ import { jsonError } from "@/lib/patientAuth";
 import { allow, clientKey, LIMITS } from "@/lib/rateLimit";
 import { broadcast, patientTopic } from "@/lib/realtime/broadcast";
 import { bestMatch } from "@/lib/similarity";
+import { serverEnv } from "@/lib/env";
+import { DEMO_REFERRAL, isDemo } from "@/lib/demo";
 import { hr } from "@/i18n/hr";
 
 export const runtime = "nodejs";
@@ -102,14 +104,20 @@ export async function POST(req: Request, ctx: Ctx) {
     const f = await readFile(await req.formData());
     if ("error" in f) return f.error;
     let extracted;
+    const demo = await isDemo();
     try {
-      extracted = await extractReferral({
-        mime: f.mime,
-        base64: f.bytes.toString("base64"),
-      });
+      extracted =
+        demo && serverEnv().UPUTKO_DEMO_OFFLINE === "1"
+          ? DEMO_REFERRAL
+          : await extractReferral(
+              { mime: f.mime, base64: f.bytes.toString("base64") },
+              demo,
+            );
     } catch (e) {
       console.error("extract failed", e instanceof Error ? e.message : e);
-      return jsonError(422, "unreadable", hr.doctor.upload.failed);
+      // Demo-safe mode: the recording continues with the sample uputnica.
+      if (!demo) return jsonError(422, "unreadable", hr.doctor.upload.failed);
+      extracted = DEMO_REFERRAL;
     }
     if (!extracted.is_referral)
       return jsonError(422, "not_referral", hr.doctor.upload.failed);
@@ -182,13 +190,36 @@ export async function POST(req: Request, ctx: Ctx) {
     );
 
     // Book the earliest free slot and hold it for 15 minutes.
-    const { data: appt, error: proposeError } = await db().rpc(
+    const { data: proposed, error: proposeError } = await db().rpc(
       "propose_appointment",
       { p_referral_id: ref.id },
     );
     // No free slot is a normal outcome; a database error is not — log it.
     if (proposeError)
       console.error("propose_appointment failed:", proposeError.message);
+    // No slot at the chosen hospital: try the nearest others (same specialty).
+    let appt = proposed?.id ? proposed : null;
+    let movedTo: string | null = null;
+    if (!appt) {
+      const others = (
+        await institutionOptions(
+          fields.data.specialty,
+          c.patient_lat,
+          c.patient_lng,
+        )
+      ).filter((i) => i.id !== fields.data.institution && i.distance_km <= 60);
+      for (const other of others) {
+        const { data: alt } = await db().rpc("propose_appointment_at", {
+          p_referral_id: ref.id,
+          p_institution_id: other.id,
+        });
+        if (alt?.id) {
+          appt = alt;
+          movedTo = other.name;
+          break;
+        }
+      }
+    }
     let when: string | null = null;
     if (appt?.id) {
       const { data: slot } = await db()
@@ -207,6 +238,10 @@ export async function POST(req: Request, ctx: Ctx) {
             appointment_id: appt.id,
             starts_at: slot?.starts_at ?? null,
           },
+        });
+      if (movedTo)
+        await addCaseEvent(c.id, "other_institution", {
+          institution_name: movedTo,
         });
       await addCaseEvent(
         c.id,
@@ -238,7 +273,7 @@ export async function POST(req: Request, ctx: Ctx) {
         buttonUrl: caseUrl,
       }),
     });
-    return Response.json({ ok: true, when });
+    return Response.json({ ok: true, when, movedTo });
   }
 
   if (action === "invite") {

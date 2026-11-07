@@ -197,3 +197,31 @@ describe("escalatesFromUrgency", () => {
     expect(escalatesFromUrgency(undefined)).toBe(false);
   });
 });
+
+describe("English (visitors and tourists)", () => {
+  it.each<[string, RedFlagId]>([
+    ["I have chest pain and I can't breathe", "chest_pain"],
+    ["severe chest pain for 20 minutes", "chest_pain"],
+    ["chest pain that spreads to my left arm", "chest_pain"],
+    ["I can't breathe", "breathing"],
+    ["my child is choking", "breathing"],
+    ["her face is drooping on one side", "stroke"],
+    ["he suddenly has slurred speech", "stroke"],
+    ["I can't move my left arm", "stroke"],
+    ["I'm bleeding heavily and it won't stop", "heavy_bleeding"],
+    ["I've been vomiting blood", "heavy_bleeding"],
+    ["I want to kill myself", "suicidal"],
+    ["I don't want to live anymore", "suicidal"],
+    ["my father passed out and is unresponsive", "unconscious"],
+    ["my throat is swelling after a bee sting", "anaphylaxis"],
+    ["my son had a seizure", "seizure"],
+  ])("triggers: %s → %s", (t, rule) => expectRule(t, rule));
+
+  it.each([
+    "I have no chest pain, just a sore throat",
+    "my ear hurts since two days",
+    "I have a toothache, I'm in Split",
+    "I'm a bit out of breath after running",
+    "my child has a fever of 38",
+  ])("does not trigger: %s", (t) => expectNone(t));
+});

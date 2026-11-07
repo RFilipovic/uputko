@@ -23,7 +23,7 @@ export const dynamic = "force-dynamic";
 
 /** Urgency at a glance. Red stays reserved for "hitno". */
 const URGENCY_TONE: Record<string, string> = {
-  hitno: "bg-urgent text-urgent-foreground",
+  hitno: "bg-urgent-deep text-white",
   uskoro: "bg-primary text-primary-foreground",
   rutinski: "bg-muted text-foreground",
 };

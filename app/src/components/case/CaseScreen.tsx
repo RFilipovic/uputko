@@ -11,6 +11,7 @@ import { ReferralCard } from "@/components/case/ReferralCard";
 import { StatusPill } from "@/components/case/StatusPill";
 import { EmergencyTakeover } from "@/components/emergency/EmergencyTakeover";
 import { InstitutionMap } from "@/components/map/InstitutionMap";
+import { OnCallCard } from "@/components/map/OnCallCard";
 import { PlaceCard } from "@/components/map/PlaceCard";
 import { OfferCard } from "@/components/notifications/OfferCard";
 import { useLiveCase } from "@/hooks/useLiveCase";
@@ -144,6 +145,7 @@ export function CaseScreen({
             {view.places.slice(1).map((p) => (
               <PlaceCard key={p.id} place={p} />
             ))}
+            {!view.anyOpen && view.onCall && <OnCallCard place={view.onCall} />}
           </section>
         )}
 
@@ -153,6 +155,10 @@ export function CaseScreen({
             onChanged={refresh}
             referralNo={view.referral ? referralNumber(view.referral.id) : null}
             fresh={arrived}
+            elsewhere={
+              view.referral?.institution != null &&
+              view.appointment.institution?.id !== view.referral.institution.id
+            }
           />
         )}
         {view.referral && !view.appointment && (

@@ -73,6 +73,7 @@ export type CaseView = {
   }>;
   places: Place[];
   anyOpen: boolean;
+  onCall: Place | null;
 };
 
 export async function institutionCard(
@@ -183,6 +184,7 @@ export async function loadCaseView(
   // Direct and emergency routes: recompute so "open now" is true at view time.
   let places: Place[] = [];
   let anyOpen = false;
+  let onCall: Place | null = null;
   if (
     c.patient_lat != null &&
     c.patient_lng != null &&
@@ -192,7 +194,7 @@ export async function loadCaseView(
       c.status === "emergency_escalated"
         ? "hitna-medicina-ohbp"
         : SPECIALTY_BY_ROLE[(c.target_role as Role) ?? "stomatolog"];
-    ({ places, anyOpen } = await nearestPreferOpen({
+    ({ places, anyOpen, onCall } = await nearestPreferOpen({
       specialty,
       lat: c.patient_lat,
       lng: c.patient_lng,
@@ -223,5 +225,6 @@ export async function loadCaseView(
     })),
     places,
     anyOpen,
+    onCall: c.status === "routed_direct" ? onCall : null,
   };
 }

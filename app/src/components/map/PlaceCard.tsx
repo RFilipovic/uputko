@@ -22,6 +22,8 @@ export type PlaceLike = {
   has_hours?: boolean | null;
   is_on_call?: boolean | null;
   source_dataset?: string;
+  /** Closed now: when it opens next ("sutra u 7:00"). */
+  next_open?: string | null;
 };
 
 /** One place: name, address, distance, open status, directions + call. */
@@ -57,6 +59,11 @@ export function PlaceCard({
         </p>
       </div>
       <OpenBadge info={place} emergency={emergency} />
+      {place.next_open && !emergency && (
+        <p className="text-lg font-semibold">
+          {hr.direct.opensNext(place.next_open)}
+        </p>
+      )}
       {place.geo_precision &&
         ["postcode", "city"].includes(place.geo_precision) && (
           <p className="text-sm text-muted-foreground">{hr.direct.approx}</p>

@@ -10,6 +10,8 @@ import { db, must } from "@/lib/db/server";
 import { cityPoint, saveCaseLocation } from "@/lib/location";
 import { getPatientProfile } from "@/lib/patients";
 import { allow, clientKey, LIMITS } from "@/lib/rateLimit";
+import { DEMO_FIRST_TOKEN_MS, demoTurn, isDemo } from "@/lib/demo";
+import { serverEnv } from "@/lib/env";
 import { currentPatientId } from "@/lib/session";
 import { hr } from "@/i18n/hr";
 
@@ -22,6 +24,8 @@ const Body = z.object({
   message: z.string().trim().max(LIMITS.messageMaxChars).default(""),
   /** "Pošalji liječniku" button: submit the case now with what is known. */
   finish: z.boolean().default(false),
+  /** "Pokušaj ponovno": answer the last patient message again (not saved twice). */
+  retry: z.boolean().default(false),
   location: z
     .discriminatedUnion("source", [
       z.object({
@@ -41,6 +45,57 @@ function json(status: number, body: Record<string, unknown>) {
   return Response.json(body, { status });
 }
 
+/**
+ * Demo-safe mode: run the real agent, but if nothing has streamed after a few
+ * seconds (or the call fails before any output), switch to the persona's
+ * prepared reply so a recording never stalls.
+ */
+async function demoSafeTurn(
+  turn: Parameters<typeof runAgentTurn>[0],
+  extra: { assistantTurns: number; city: string | null },
+) {
+  const offline = serverEnv().UPUTKO_DEMO_OFFLINE === "1";
+  const ctrl = new AbortController();
+  let started = false;
+  const emit: typeof turn.emit = (event, data) => {
+    if (event === "delta" || event === "outcome") started = true;
+    turn.emit(event, data);
+  };
+  const timer = setTimeout(() => {
+    if (!started) ctrl.abort();
+  }, DEMO_FIRST_TOKEN_MS);
+  try {
+    if (!offline) {
+      const result = await runAgentTurn({
+        ...turn,
+        emit,
+        signal: ctrl.signal,
+        fast: true,
+      });
+      if (started) return result;
+      console.warn("demo: empty model reply, using prepared reply");
+    }
+  } catch (err) {
+    if (started) throw err;
+    console.warn(
+      "demo: model slow or failed, using prepared reply:",
+      err instanceof Error ? err.message : err,
+    );
+  } finally {
+    clearTimeout(timer);
+  }
+  const prepared = await demoTurn({
+    caseId: turn.caseId,
+    patient: turn.patient,
+    assistantTurns: extra.assistantTurns,
+    city: extra.city,
+    finishNow: Boolean(turn.finishNow),
+    origin: turn.origin,
+    emit: turn.emit,
+  });
+  return { ...prepared, refused: false };
+}
+
 export async function POST(req: Request) {
   const patientId = await currentPatientId();
   if (!patientId)
@@ -52,9 +107,11 @@ export async function POST(req: Request) {
   const parsed = Body.safeParse(await req.json().catch(() => null));
   if (!parsed.success)
     return json(400, { error: "bad_request", message: hr.chat.errors.tooLong });
-  const { location, finish } = parsed.data;
-  const message = finish ? hr.chat.finishMessage : parsed.data.message;
-  if (!message)
+  const { location, finish, retry } = parsed.data;
+  let message = finish ? hr.chat.finishMessage : parsed.data.message;
+  if (!message && !retry)
+    return json(400, { error: "bad_request", message: hr.chat.errors.generic });
+  if (retry && !parsed.data.caseId)
     return json(400, { error: "bad_request", message: hr.chat.errors.generic });
   if (finish && !parsed.data.caseId)
     return json(409, { error: "not_ready", message: hr.chat.finish.notReady });
@@ -112,7 +169,16 @@ export async function POST(req: Request) {
     .eq("role", "user")
     .order("created_at");
   const userTexts = (earlier ?? []).map((m) => m.content);
-  if (userTexts.length >= LIMITS.chatPerCase) {
+  if (retry) {
+    const last = userTexts.at(-1);
+    if (!last)
+      return json(400, {
+        error: "bad_request",
+        message: hr.chat.errors.generic,
+      });
+    message = last;
+  }
+  if (!retry && userTexts.length >= LIMITS.chatPerCase) {
     return json(429, {
       error: "case_limit",
       message: hr.chat.errors.caseLimit,
@@ -122,9 +188,8 @@ export async function POST(req: Request) {
   if (finish && !readiness(userTexts).ready) {
     return json(409, { error: "not_ready", message: hr.chat.finish.notReady });
   }
-  const ready = finish
-    ? readiness(userTexts)
-    : readiness([...userTexts, message]);
+  const ready =
+    finish || retry ? readiness(userTexts) : readiness([...userTexts, message]);
 
   // Where is the patient right now?
   let locationCity: string | null = null;
@@ -162,11 +227,13 @@ export async function POST(req: Request) {
   if (locationSource === "gps" && !locationCity)
     locationCity = "poznata lokacija uređaja";
 
-  await db()
-    .from("messages")
-    .insert({ case_id: caseId, role: "user", content: message });
+  if (!retry)
+    await db()
+      .from("messages")
+      .insert({ case_id: caseId, role: "user", content: message });
   const origin = new URL(req.url).origin;
   const id = caseId;
+  const demo = await isDemo();
 
   const stream = new ReadableStream({
     async start(controller) {
@@ -206,7 +273,7 @@ export async function POST(req: Request) {
           content: r.content,
         }));
 
-        const result = await runAgentTurn({
+        const turn = {
           caseId: id,
           patient,
           history,
@@ -214,7 +281,14 @@ export async function POST(req: Request) {
           origin,
           emit,
           finishNow: finish,
-        });
+        };
+        const result = demo
+          ? await demoSafeTurn(turn, {
+              assistantTurns: history.filter((h) => h.role === "assistant")
+                .length,
+              city: locationCity,
+            })
+          : await runAgentTurn(turn);
 
         let text = result.text;
         if (finish && !result.outcome) {

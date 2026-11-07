@@ -2,6 +2,7 @@ import { CheckCircle2, ExternalLink, Phone } from "lucide-react";
 import Link from "next/link";
 import type { Outcome } from "@/lib/agent/outcome";
 import { InstitutionMap } from "@/components/map/InstitutionMap";
+import { OnCallCard } from "@/components/map/OnCallCard";
 import { PlaceCard } from "@/components/map/PlaceCard";
 import { hr } from "@/i18n/hr";
 import { ui } from "@/lib/ui";
@@ -59,6 +60,9 @@ export function OutcomeCard({
         {rest.map((p) => (
           <PlaceCard key={p.id} place={p} />
         ))}
+        {!outcome.anyOpen && outcome.onCall && (
+          <OnCallCard place={outcome.onCall} />
+        )}
         <Link href={`/slucaj/${outcome.caseId}`} className={ui.btnSecondary}>
           {hr.chat.openCase}
         </Link>

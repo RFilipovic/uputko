@@ -10,6 +10,8 @@ const schema = z.object({
   EMAIL_FROM: z.string().default("Uputko <onboarding@resend.dev>"),
   /** Every demo email goes ONLY here — never to real doctors. */
   DEMO_INBOX: z.email().optional(),
+  /** Demo mode (?demo=1) uses only prepared replies, never the model. Rehearsals, tests, no API credit. */
+  UPUTKO_DEMO_OFFLINE: z.enum(["0", "1"]).default("0"),
 });
 
 export type ServerEnv = z.infer<typeof schema>;

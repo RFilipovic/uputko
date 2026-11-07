@@ -30,16 +30,17 @@ const INSTRUCTIONS = `Ovo je hrvatska uputnica (dokument liječnika). Pročitaj 
 Ako dokument nije uputnica, postavi is_referral na false i ostalo na null. Ne izmišljaj podatke koji ne pišu.`;
 
 /** Read the uputnica with Claude (PDF or image). Synthetic demo documents only. */
-export async function extractReferral(file: {
-  mime: AcceptedType;
-  base64: string;
-}): Promise<ExtractedReferral> {
+export async function extractReferral(
+  file: { mime: AcceptedType; base64: string },
+  /** Demo mode: fail fast (no retries, short timeout) so the fallback can take over. */
+  fast = false,
+): Promise<ExtractedReferral> {
   const env = serverEnv();
   if (!env.ANTHROPIC_API_KEY) throw new Error("ANTHROPIC_API_KEY is not set");
   const client = new Anthropic({
     apiKey: env.ANTHROPIC_API_KEY,
-    timeout: 60_000,
-    maxRetries: 2,
+    timeout: fast ? 20_000 : 60_000,
+    maxRetries: fast ? 0 : 2,
   });
 
   const source: Anthropic.ContentBlockParam =

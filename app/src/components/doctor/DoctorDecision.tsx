@@ -170,6 +170,7 @@ export function DoctorDecision({ token }: { token: string }) {
     }).catch(() => null);
     const json = (await res?.json().catch(() => null)) as {
       when?: string | null;
+      movedTo?: string | null;
       message?: string;
     } | null;
     if (!res?.ok) {
@@ -178,7 +179,9 @@ export function DoctorDecision({ token }: { token: string }) {
     }
     setResult(
       json?.when
-        ? hr.doctor.upload.sentAppointment(json.when)
+        ? json.movedTo
+          ? hr.doctor.upload.sentElsewhere(json.when, json.movedTo)
+          : hr.doctor.upload.sentAppointment(json.when)
         : hr.doctor.upload.sentNoSlot,
     );
     setState("sent");

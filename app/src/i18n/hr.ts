@@ -102,6 +102,7 @@ export const hr = {
     you: "Vi",
     assistant: "Uputko",
     typing: "Uputko piše…",
+    retry: "Pokušaj ponovno",
     newChat: "Novi razgovor",
     openCase: "Otvori moj slučaj",
     sentTitle: "Poslano liječniku",
@@ -154,6 +155,10 @@ export const hr = {
     call: "Nazovi",
     approx: "Približna lokacija",
     hoursDemo: "Radno vrijeme: demo podatak",
+    opensNext: (when: string) => `Otvara se ${when}`,
+    onCallTitle: "Ne može čekati?",
+    onCallBody:
+      "Najbliža hitna služba radi 0–24. Ako je hitno ili je jako jaka bol, idite tamo ili nazovite 112.",
   },
   emergency: {
     banner: "Hitan slučaj?",
@@ -214,6 +219,7 @@ export const hr = {
       appointment_moved: "Termin promijenjen",
       no_slot: "Nema slobodnog termina",
       invited_to_exam: "Liječnik vas poziva na pregled",
+      other_institution: "Termin u drugoj ustanovi",
       routed_direct: "Upućeno na najbližu ordinaciju",
       emergency_escalated: "Hitno — nazovite 112",
     } as Record<string, string>,
@@ -255,6 +261,8 @@ export const hr = {
     rescheduleTitle: "Tražite drugi termin",
     rescheduleBody: "Ustanova će vam ponuditi novi termin. Javit ćemo vam.",
     holdNote: "Termin čuvamo za vas 15 minuta.",
+    elsewhere:
+      "U ustanovi s uputnice nema slobodnog termina u sljedeća 3 tjedna. Ovo je najbliža druga ustanova s istom specijalnošću.",
     confirm: "Potvrdi termin",
     notSuitable: "Ne paše mi",
     cancel: "Otkaži termin",
@@ -351,6 +359,8 @@ export const hr = {
       sent: "Uputnica je poslana pacijentu.",
       sentAppointment: (when: string) =>
         `Pacijentu je predložen termin: ${when}.`,
+      sentElsewhere: (when: string, place: string) =>
+        `U odabranoj ustanovi nema slobodnog termina u sljedeća 3 tjedna. Pacijentu je predložen najbliži drugi: ${when}, ${place}.`,
       sentNoSlot:
         "Nema slobodnog termina u toj ustanovi — pacijent je obaviješten.",
       unknownInstitution: "Ustanova nije prepoznata — odaberite s popisa.",
@@ -383,6 +393,14 @@ export const hr = {
     offered: "Ponuda je poslana pacijentu.",
     availability: "Pacijentu odgovara",
     error: "Radnja nije uspjela.",
+  },
+  demo: {
+    title: "Demo način",
+    body: "Ako je model spor, razgovor nastavlja s pripremljenim odgovorima. Prije snimanja očistite stare slučajeve demo osoba.",
+    reset: "Počni ispočetka",
+    resetting: "Čistim…",
+    done: "Gotovo — stari slučajevi su obrisani, termini oslobođeni.",
+    error: "Čišćenje nije uspjelo. Pokušajte ponovno.",
   },
   openData: {
     title: "Javni podaci",
