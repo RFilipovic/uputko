@@ -8,6 +8,12 @@ Raw snapshots are committed, so the database can be rebuilt offline in one comma
 
 Snapshot fetched: **2026-11-04**.
 
+**Where you see it in the app:** every hospital, practice and chosen doctor
+carries a source label ("Izvor: HZZO (data.gov.hr)", built from the row's
+`source_dataset`), and the **Javni podaci** page (`/javni-podaci`, linked from
+the home page) shows live counts from the database, the most-covered cities on
+a map, and links to each dataset below.
+
 ## Open data used
 
 | # | Dataset (data.gov.hr) | Publisher | Licence | Source date | Used for |
