@@ -182,9 +182,13 @@ export async function POST(req: Request, ctx: Ctx) {
     );
 
     // Book the earliest free slot and hold it for 15 minutes.
-    const { data: appt } = await db().rpc("propose_appointment", {
-      p_referral_id: ref.id,
-    });
+    const { data: appt, error: proposeError } = await db().rpc(
+      "propose_appointment",
+      { p_referral_id: ref.id },
+    );
+    // No free slot is a normal outcome; a database error is not — log it.
+    if (proposeError)
+      console.error("propose_appointment failed:", proposeError.message);
     let when: string | null = null;
     if (appt?.id) {
       const { data: slot } = await db()

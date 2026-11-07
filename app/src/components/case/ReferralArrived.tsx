@@ -9,7 +9,14 @@ import { hr } from "@/i18n/hr";
  * The moment the doctor's uputnica lands: a calm success card with one soft
  * pulse (no confetti). Scrolls itself into view and is announced once.
  */
-export function ReferralArrived({ doctorName }: { doctorName: string | null }) {
+export function ReferralArrived({
+  doctorName,
+  hasSlot,
+}: {
+  doctorName: string | null;
+  /** Was a slot proposed? Only then do we point to the appointment below. */
+  hasSlot: boolean;
+}) {
   const ref = useRef<HTMLElement>(null);
   useEffect(() => {
     const reduce = window.matchMedia(
@@ -46,9 +53,7 @@ export function ReferralArrived({ doctorName }: { doctorName: string | null }) {
           {hr.referral.arrivedTitle}
         </h2>
         <p className="text-lg">
-          {doctorName
-            ? hr.referral.arrivedBody(doctorName)
-            : hr.referral.arrivedBodyNoDoctor}
+          {hr.referral.arrivedBody(doctorName, hasSlot)}
         </p>
       </div>
     </motion.section>

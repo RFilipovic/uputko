@@ -80,7 +80,10 @@ export function CaseScreen({
         <CaseProgress status={view.status} />
 
         {arrived && (
-          <ReferralArrived doctorName={view.referral?.doctorName ?? null} />
+          <ReferralArrived
+            doctorName={view.referral?.doctorName ?? null}
+            hasSlot={view.appointment != null}
+          />
         )}
 
         {waiting && (

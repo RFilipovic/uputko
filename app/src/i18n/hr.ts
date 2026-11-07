@@ -241,10 +241,12 @@ export const hr = {
     demo: "Demo uputnica — u stvarnosti se izdaje u CEZIH-u",
     number: "Broj (demo)",
     arrivedTitle: "Stigla je uputnica!",
-    arrivedBody: (doctor: string) =>
-      `dr. ${doctor} vas upućuje dalje. Predložili smo vam termin — pogledajte ispod.`,
-    arrivedBodyNoDoctor:
-      "Liječnik vas upućuje dalje. Predložili smo vam termin — pogledajte ispod.",
+    arrivedBody: (doctor: string | null, hasSlot: boolean) =>
+      `${doctor ? `dr. ${doctor} vas` : "Liječnik vas"} upućuje dalje. ${
+        hasSlot
+          ? "Predložili smo vam termin — pogledajte ispod."
+          : "Ustanova će vam javiti termin."
+      }`,
   },
   appointment: {
     title: "Vaš termin",
