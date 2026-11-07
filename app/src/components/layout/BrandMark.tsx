@@ -2,8 +2,8 @@ import { Compass } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 /**
- * Uputko logo mark: a solid deep-blue compass. Light mode: on a white
- * tile. Dark mode: on the blue → white gradient tile.
+ * Uputko logo mark. Light mode: deep-blue compass on a white tile. Dark mode:
+ * white compass on the white → deep-blue gradient tile.
  */
 export function BrandMark({
   size = "md",
@@ -22,7 +22,10 @@ export function BrandMark({
       )}
     >
       <Compass
-        className={cn("stroke-blue", size === "md" ? "size-6" : "size-5")}
+        className={cn(
+          "stroke-blue dark:stroke-white",
+          size === "md" ? "size-6" : "size-5",
+        )}
         strokeWidth={2.25}
       />
     </span>

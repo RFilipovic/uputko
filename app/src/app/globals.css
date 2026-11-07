@@ -7,7 +7,7 @@
 
 /* Design tokens.
    Brand palette: Deep Blue #0028AB (primary) · Sky Blue #4A89FF (accent);
-   the signature gradient runs deep blue → white on a cool blue-white background. Urgent red is reserved ONLY
+   the signature gradient runs white → deep blue on a cool blue-white background. Urgent red is reserved ONLY
    for emergencies.
    Contrast notes: white on #0028AB ≈ 11:1; white on #4A89FF ≈ 3.3:1 (fails),
    so anything sitting on sky blue uses dark ink text (≈ 5.4:1). */
@@ -132,9 +132,14 @@
   --shadow-soft: var(--shadow-soft);
 }
 
-/* Deep blue → white signature gradient. */
+/* White corner fading into deep blue (blue dominates the tile). */
 @utility bg-brand-gradient {
-  background: linear-gradient(120deg, var(--blue) 0%, #ffffff 100%);
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    var(--blue) 42%,
+    var(--blue) 100%
+  );
 }
 
 @layer base {
