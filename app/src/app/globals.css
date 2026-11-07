@@ -6,8 +6,8 @@
 @custom-variant dark (&:is(.dark *));
 
 /* Design tokens.
-   Brand palette: Deep Blue #0028AB (primary) · Sky Blue #4A89FF (accent,
-   gradient end) on a cool blue-white background. Urgent red is reserved ONLY
+   Brand palette: Deep Blue #0028AB (primary) · Sky Blue #4A89FF (accent);
+   the signature gradient runs deep blue → white on a cool blue-white background. Urgent red is reserved ONLY
    for emergencies.
    Contrast notes: white on #0028AB ≈ 11:1; white on #4A89FF ≈ 3.3:1 (fails),
    so anything sitting on sky blue uses dark ink text (≈ 5.4:1). */
@@ -137,11 +137,6 @@
   background: linear-gradient(120deg, var(--blue) 0%, #ffffff 100%);
 }
 
-/* Logo mark: gradient tile + white icon in dark mode; inverted in light mode
-   (white tile + gradient icon). The gradient lives in <BrandMark>. */
-@utility logo-icon {
-  stroke: url(#uputko-logo-gradient);
-}
 @layer base {
   * {
     @apply border-border outline-ring/50;

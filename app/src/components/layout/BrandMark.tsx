@@ -2,8 +2,8 @@ import { Compass } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 /**
- * Uputko logo mark. Dark mode: blue gradient tile with a white compass.
- * Light mode inverts it: white tile with a blue gradient compass.
+ * Uputko logo mark: a solid deep-blue compass. Light mode: on a white
+ * tile. Dark mode: on the blue → white gradient tile.
  */
 export function BrandMark({
   size = "md",
@@ -21,19 +21,8 @@ export function BrandMark({
         className,
       )}
     >
-      <svg width="0" height="0" className="absolute">
-        <defs>
-          <linearGradient id="uputko-logo-gradient" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#0028AB" />
-            <stop offset="100%" stopColor="#FFFFFF" />
-          </linearGradient>
-        </defs>
-      </svg>
       <Compass
-        className={cn(
-          "logo-icon dark:stroke-white",
-          size === "md" ? "size-6" : "size-5",
-        )}
+        className={cn("stroke-blue", size === "md" ? "size-6" : "size-5")}
         strokeWidth={2.25}
       />
     </span>
