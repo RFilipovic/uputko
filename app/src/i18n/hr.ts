@@ -357,10 +357,70 @@ export const hr = {
     availability: "Pacijentu odgovara",
     error: "Radnja nije uspjela.",
   },
+  openData: {
+    title: "Javni podaci",
+    lead: "Uputko je izgrađen na otvorenim podacima s portala data.gov.hr. Povezali smo popise liječnika, bolnica i njihovih djelatnosti s lokacijama, da bismo znali kome i kamo vas uputiti.",
+    stats: {
+      practitioners: "Izabranih liječnika",
+      institutions: "Ustanova i ordinacija",
+      hospitals: "Bolnica",
+      emergency: "Hitnih prijema (OHBP)",
+      linked: "Povezano iz više izvora",
+      cities: "Gradova i mjesta",
+    },
+    roles: "Liječnici po vrsti",
+    citiesTitle: "Gdje je najviše ustanova",
+    citiesNote: "Broj ustanova i ordinacija po gradu.",
+    datasetsTitle: "Skupovi podataka",
+    datasetsNote:
+      "Preuzeto preko CKAN API-ja portala data.gov.hr, 4. 11. 2026. Podaci HZZO-a su iz 2017. i 2018.",
+    other: "Ostali otvoreni izvori",
+    synthetic:
+      "Pacijenti, uputnice i termini u ovom demu su izmišljeni. Otvoreni podaci ne sadrže podatke o pacijentima ni slobodne termine.",
+    datasets: [
+      {
+        name: "Adresar zdravstvenih ustanova/privatnih praksi",
+        publisher: "HZZO",
+        use: "Adrese i telefoni bolnica",
+        url: "https://data.gov.hr/ckan/dataset/adresar-zdravstvenih-ustanova-privatnih-praksi",
+      },
+      {
+        name: "Ugovoreni sadržaji bolničke zdravstvene zaštite",
+        publisher: "HZZO",
+        use: "Koja bolnica ima koju specijalnost i hitni prijem",
+        url: "https://data.gov.hr/ckan/dataset/ugovoreni-sadr-aji-bolni-ke-zdravstvene-za-tite",
+      },
+      {
+        name: "Ugovoreni sadržaji primarne zdravstvene zaštite",
+        publisher: "HZZO",
+        use: "Obiteljski liječnici, pedijatri, ginekolozi i stomatolozi",
+        url: "https://data.gov.hr/ckan/dataset/ugovoreni-sadr-aji-primarne-zdravstvene-za-tite",
+      },
+      {
+        name: "Geoportal Zdravstvene ustanove",
+        publisher: "Grad Zagreb",
+        use: "Točne lokacije ustanova u Zagrebu",
+        url: "https://data.gov.hr/ckan/dataset/geoportal-zdravstvene-ustanove",
+      },
+      {
+        name: "Geoportal Domovi zdravlja",
+        publisher: "Grad Zagreb",
+        use: "Lokacije domova zdravlja u Zagrebu",
+        url: "https://data.gov.hr/ckan/dataset/geoportal-domovi-zdravlja",
+      },
+    ],
+    otherSources: [
+      "OpenStreetMap — lokacije i radno vrijeme (ODbL)",
+      "Nominatim (OpenStreetMap) — lokacije adresa (ODbL)",
+    ],
+    open: "Otvori na data.gov.hr",
+    error: "Brojke se trenutno ne mogu učitati.",
+  },
   map: {
     unavailable: "Karta trenutno nije dostupna. Adresa je napisana iznad.",
   },
   sources: {
+    more: "Otkud ovi podaci? Pogledajte javne podatke",
     label: (dataset: string) => {
       const parts: string[] = [];
       if (dataset.includes("hzzo")) parts.push("HZZO");

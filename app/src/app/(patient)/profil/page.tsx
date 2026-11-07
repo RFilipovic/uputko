@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Always112Banner } from "@/components/emergency/Always112Banner";
 import { AppHeader } from "@/components/layout/AppHeader";
+import { SourceChip } from "@/components/data/SourceChip";
 import { ChooseDoctors } from "@/components/onboarding/ChooseDoctors";
 import {
   PersonaPicker,
@@ -79,9 +80,7 @@ export default async function ProfilePage({
                 <h2 id="doctors-title" className="text-2xl font-bold">
                   {hr.profile.myDoctors}
                 </h2>
-                <p className="text-sm text-muted-foreground">
-                  {hr.profile.source}
-                </p>
+                <SourceChip label={hr.profile.source} />
                 <ChooseDoctors doctors={current.doctors} />
               </section>
             </>

@@ -1,4 +1,5 @@
 import { Clock, MapPin, Navigation, Phone } from "lucide-react";
+import { SourceChip } from "@/components/data/SourceChip";
 import { formatKm } from "@/lib/geo/distance";
 import { directionsUrl, hhmm } from "@/lib/format";
 import { hr } from "@/i18n/hr";
@@ -101,11 +102,7 @@ export function PlaceCard({
           </a>
         )}
       </div>
-      {place.source_dataset && (
-        <p className="text-xs text-muted-foreground">
-          {hr.sources.label(place.source_dataset)}
-        </p>
-      )}
+      <SourceChip dataset={place.source_dataset} />
     </article>
   );
 }

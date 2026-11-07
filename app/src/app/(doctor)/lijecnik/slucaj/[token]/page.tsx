@@ -1,5 +1,6 @@
 import { Compass } from "lucide-react";
 import type { Metadata } from "next";
+import { SourceChip } from "@/components/data/SourceChip";
 import { DoctorDecision } from "@/components/doctor/DoctorDecision";
 import { InstitutionMap } from "@/components/map/InstitutionMap";
 import type { CaseSummary } from "@/lib/agent/schemas";
@@ -226,9 +227,7 @@ export default async function DoctorCasePage({
                   </li>
                 ))}
               </ol>
-              <p className="text-xs text-muted-foreground">
-                {hr.sources.label(nearby[0].source_dataset)}
-              </p>
+              <SourceChip dataset={nearby[0].source_dataset} />
             </section>
           )}
         </div>

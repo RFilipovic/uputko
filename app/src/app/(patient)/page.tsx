@@ -1,8 +1,9 @@
-import { ArrowRight, Mic } from "lucide-react";
+import { ArrowRight, Database, Mic } from "lucide-react";
 import Link from "next/link";
 import { MyCases } from "@/components/case/MyCases";
 import { Always112Banner } from "@/components/emergency/Always112Banner";
 import { AppHeader } from "@/components/layout/AppHeader";
+import { ui } from "@/lib/ui";
 import { hr } from "@/i18n/hr";
 
 const t = hr.landing;
@@ -90,6 +91,10 @@ export default function Home() {
         <footer className="mt-auto flex flex-col gap-3 border-t border-border pt-6 text-base text-muted-foreground">
           <p>{hr.disclaimer}</p>
           <p className="text-sm">{hr.app.demoBadge}</p>
+          <Link href="/javni-podaci" className={`${ui.btnLink} self-start`}>
+            <Database aria-hidden className="size-4" />
+            {hr.openData.title}
+          </Link>
         </footer>
       </main>
     </div>

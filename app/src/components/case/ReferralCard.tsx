@@ -1,4 +1,5 @@
 import { FileText } from "lucide-react";
+import { SourceChip } from "@/components/data/SourceChip";
 import type { CaseView } from "@/lib/caseData";
 import { hr } from "@/i18n/hr";
 import { ui } from "@/lib/ui";
@@ -38,6 +39,7 @@ export function ReferralCard({
           </div>
         ))}
       </dl>
+      <SourceChip dataset={referral.institution?.source_dataset} />
       {referral.doctorName && (
         <p className="text-base text-muted-foreground">
           {hr.referral.issuedBy(referral.doctorName)}
