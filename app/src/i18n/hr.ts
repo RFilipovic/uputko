@@ -384,6 +384,14 @@ export const hr = {
     availability: "Pacijentu odgovara",
     error: "Radnja nije uspjela.",
   },
+  demo: {
+    title: "Demo način",
+    body: "Ako je model spor, razgovor nastavlja s pripremljenim odgovorima. Prije snimanja očistite stare slučajeve demo osoba.",
+    reset: "Počni ispočetka",
+    resetting: "Čistim…",
+    done: "Gotovo — stari slučajevi su obrisani, termini oslobođeni.",
+    error: "Čišćenje nije uspjelo. Pokušajte ponovno.",
+  },
   openData: {
     title: "Javni podaci",
     lead: "Uputko je izgrađen na otvorenim podacima s portala data.gov.hr. Povezali smo popise liječnika, bolnica i njihovih djelatnosti s lokacijama, da bismo znali kome i kamo vas uputiti.",

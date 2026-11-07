@@ -4,6 +4,8 @@ import Link from "next/link";
 import { Always112Banner } from "@/components/emergency/Always112Banner";
 import { AppHeader } from "@/components/layout/AppHeader";
 import { SourceChip } from "@/components/data/SourceChip";
+import { DemoBar } from "@/components/layout/DemoBar";
+import { isDemo } from "@/lib/demo";
 import { ChooseDoctors } from "@/components/onboarding/ChooseDoctors";
 import {
   PersonaPicker,
@@ -39,6 +41,7 @@ export default async function ProfilePage({
     homeCity: p.home_city,
     note: p.note,
   }));
+  const demo = await isDemo();
   const currentId = await currentPatientId();
   const current = currentId ? await getPatientProfile(currentId) : null;
 
@@ -67,6 +70,7 @@ export default async function ProfilePage({
               currentId={current?.id ?? null}
             />
           </section>
+          {demo && <DemoBar />}
           {current && (
             <>
               <Link href={safeNext} className={ui.btnPrimary}>

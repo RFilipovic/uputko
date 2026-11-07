@@ -86,13 +86,17 @@ export async function runAgentTurn(opts: {
   emit: Emit;
   /** The patient pressed "Pošalji liječniku": submit now with what is known. */
   finishNow?: boolean;
+  /** Abort the model call (demo mode gives up after a few seconds of silence). */
+  signal?: AbortSignal;
+  /** Demo mode: fail fast (no retries) so the prepared reply can take over. */
+  fast?: boolean;
 }): Promise<TurnResult> {
   const env = serverEnv();
   if (!env.ANTHROPIC_API_KEY) throw new Error("ANTHROPIC_API_KEY is not set");
   const client = new Anthropic({
     apiKey: env.ANTHROPIC_API_KEY,
-    timeout: 45_000,
-    maxRetries: 2,
+    timeout: opts.fast ? 20_000 : 45_000,
+    maxRetries: opts.fast ? 0 : 2,
   });
 
   const messages: Anthropic.MessageParam[] = [...opts.history];
@@ -102,20 +106,23 @@ export async function runAgentTurn(opts: {
   let outcome: Outcome | null = null;
 
   for (let call = 0; call < MAX_MODEL_CALLS; call++) {
-    const stream = client.messages.stream({
-      model: env.ANTHROPIC_MODEL,
-      max_tokens: MAX_TOKENS,
-      // Stable instructions first (cached), then this patient's context.
-      system: [
-        { type: "text", text: SYSTEM_PROMPT },
-        { type: "text", text: patientContext(opts.patient, opts.location) },
-      ],
-      cache_control: { type: "ephemeral" },
-      // Short chat turns: low effort keeps replies fast and cheap.
-      output_config: { effort: "low" },
-      tools: TOOLS,
-      messages,
-    });
+    const stream = client.messages.stream(
+      {
+        model: env.ANTHROPIC_MODEL,
+        max_tokens: MAX_TOKENS,
+        // Stable instructions first (cached), then this patient's context.
+        system: [
+          { type: "text", text: SYSTEM_PROMPT },
+          { type: "text", text: patientContext(opts.patient, opts.location) },
+        ],
+        cache_control: { type: "ephemeral" },
+        // Short chat turns: low effort keeps replies fast and cheap.
+        output_config: { effort: "low" },
+        tools: TOOLS,
+        messages,
+      },
+      { signal: opts.signal },
+    );
     stream.on("text", (delta) => {
       text += delta;
       opts.emit("delta", { text: delta });

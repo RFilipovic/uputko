@@ -15,6 +15,8 @@ import { jsonError } from "@/lib/patientAuth";
 import { allow, clientKey, LIMITS } from "@/lib/rateLimit";
 import { broadcast, patientTopic } from "@/lib/realtime/broadcast";
 import { bestMatch } from "@/lib/similarity";
+import { serverEnv } from "@/lib/env";
+import { DEMO_REFERRAL, isDemo } from "@/lib/demo";
 import { hr } from "@/i18n/hr";
 
 export const runtime = "nodejs";
@@ -102,14 +104,20 @@ export async function POST(req: Request, ctx: Ctx) {
     const f = await readFile(await req.formData());
     if ("error" in f) return f.error;
     let extracted;
+    const demo = await isDemo();
     try {
-      extracted = await extractReferral({
-        mime: f.mime,
-        base64: f.bytes.toString("base64"),
-      });
+      extracted =
+        demo && serverEnv().UPUTKO_DEMO_OFFLINE === "1"
+          ? DEMO_REFERRAL
+          : await extractReferral(
+              { mime: f.mime, base64: f.bytes.toString("base64") },
+              demo,
+            );
     } catch (e) {
       console.error("extract failed", e instanceof Error ? e.message : e);
-      return jsonError(422, "unreadable", hr.doctor.upload.failed);
+      // Demo-safe mode: the recording continues with the sample uputnica.
+      if (!demo) return jsonError(422, "unreadable", hr.doctor.upload.failed);
+      extracted = DEMO_REFERRAL;
     }
     if (!extracted.is_referral)
       return jsonError(422, "not_referral", hr.doctor.upload.failed);

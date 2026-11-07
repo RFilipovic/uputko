@@ -10,6 +10,8 @@ import { db, must } from "@/lib/db/server";
 import { cityPoint, saveCaseLocation } from "@/lib/location";
 import { getPatientProfile } from "@/lib/patients";
 import { allow, clientKey, LIMITS } from "@/lib/rateLimit";
+import { DEMO_FIRST_TOKEN_MS, demoTurn, isDemo } from "@/lib/demo";
+import { serverEnv } from "@/lib/env";
 import { currentPatientId } from "@/lib/session";
 import { hr } from "@/i18n/hr";
 
@@ -39,6 +41,57 @@ const Body = z.object({
 
 function json(status: number, body: Record<string, unknown>) {
   return Response.json(body, { status });
+}
+
+/**
+ * Demo-safe mode: run the real agent, but if nothing has streamed after a few
+ * seconds (or the call fails before any output), switch to the persona's
+ * prepared reply so a recording never stalls.
+ */
+async function demoSafeTurn(
+  turn: Parameters<typeof runAgentTurn>[0],
+  extra: { assistantTurns: number; city: string | null },
+) {
+  const offline = serverEnv().UPUTKO_DEMO_OFFLINE === "1";
+  const ctrl = new AbortController();
+  let started = false;
+  const emit: typeof turn.emit = (event, data) => {
+    if (event === "delta" || event === "outcome") started = true;
+    turn.emit(event, data);
+  };
+  const timer = setTimeout(() => {
+    if (!started) ctrl.abort();
+  }, DEMO_FIRST_TOKEN_MS);
+  try {
+    if (!offline) {
+      const result = await runAgentTurn({
+        ...turn,
+        emit,
+        signal: ctrl.signal,
+        fast: true,
+      });
+      if (started) return result;
+      console.warn("demo: empty model reply, using prepared reply");
+    }
+  } catch (err) {
+    if (started) throw err;
+    console.warn(
+      "demo: model slow or failed, using prepared reply:",
+      err instanceof Error ? err.message : err,
+    );
+  } finally {
+    clearTimeout(timer);
+  }
+  const prepared = await demoTurn({
+    caseId: turn.caseId,
+    patient: turn.patient,
+    assistantTurns: extra.assistantTurns,
+    city: extra.city,
+    finishNow: Boolean(turn.finishNow),
+    origin: turn.origin,
+    emit: turn.emit,
+  });
+  return { ...prepared, refused: false };
 }
 
 export async function POST(req: Request) {
@@ -167,6 +220,7 @@ export async function POST(req: Request) {
     .insert({ case_id: caseId, role: "user", content: message });
   const origin = new URL(req.url).origin;
   const id = caseId;
+  const demo = await isDemo();
 
   const stream = new ReadableStream({
     async start(controller) {
@@ -206,7 +260,7 @@ export async function POST(req: Request) {
           content: r.content,
         }));
 
-        const result = await runAgentTurn({
+        const turn = {
           caseId: id,
           patient,
           history,
@@ -214,7 +268,14 @@ export async function POST(req: Request) {
           origin,
           emit,
           finishNow: finish,
-        });
+        };
+        const result = demo
+          ? await demoSafeTurn(turn, {
+              assistantTurns: history.filter((h) => h.role === "assistant")
+                .length,
+              city: locationCity,
+            })
+          : await runAgentTurn(turn);
 
         let text = result.text;
         if (finish && !result.outcome) {

@@ -833,6 +833,7 @@ export type Database = {
           open_now: boolean;
         }[];
       };
+      demo_reset: { Args: never; Returns: Json };
       open_data_stats: { Args: never; Returns: Json };
       patient_profile: { Args: { p_patient_id: string }; Returns: Json };
       propose_appointment: {
