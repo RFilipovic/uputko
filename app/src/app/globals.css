@@ -132,9 +132,9 @@
   --shadow-soft: var(--shadow-soft);
 }
 
-/* Deep blue → sky blue signature gradient. */
+/* Deep blue → white signature gradient. */
 @utility bg-brand-gradient {
-  background: linear-gradient(120deg, var(--blue) 0%, var(--blue-sky) 100%);
+  background: linear-gradient(120deg, var(--blue) 0%, #ffffff 100%);
 }
 
 /* Logo mark: gradient tile + white icon in dark mode; inverted in light mode

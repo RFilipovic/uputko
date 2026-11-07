@@ -25,7 +25,7 @@ export function BrandMark({
         <defs>
           <linearGradient id="uputko-logo-gradient" x1="0" y1="0" x2="1" y2="1">
             <stop offset="0%" stopColor="#0028AB" />
-            <stop offset="100%" stopColor="#4A89FF" />
+            <stop offset="100%" stopColor="#FFFFFF" />
           </linearGradient>
         </defs>
       </svg>
