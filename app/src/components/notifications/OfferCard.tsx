@@ -1,6 +1,7 @@
 "use client";
 
 import { BellRing } from "lucide-react";
+import { motion } from "motion/react";
 import { useState } from "react";
 import { formatWhen } from "@/lib/format";
 import { hr } from "@/i18n/hr";
@@ -8,7 +9,10 @@ import { ui } from "@/lib/ui";
 
 type Offer = { id: string; kind: string; payload: Record<string, unknown> };
 
-/** Actionable offer: an earlier slot freed up, or the institution proposes a new one. */
+/**
+ * Actionable offer that slides up like a phone notification: an earlier slot
+ * freed up, or the institution proposes a new one. Prihvati / Odbij.
+ */
 export function OfferCard({
   offer,
   onChanged,
@@ -42,10 +46,15 @@ export function OfferCard({
   }
 
   return (
-    <section
+    <motion.section
+      layout
       role="status"
       aria-labelledby={`offer-${offer.id}`}
-      className="flex animate-in flex-col gap-3 rounded-3xl border-2 border-primary bg-primary/5 p-5 duration-300 fade-in slide-in-from-top-2"
+      className="pointer-events-auto flex w-full max-w-lg flex-col gap-3 rounded-3xl border-2 border-primary bg-card p-5 shadow-2xl"
+      initial={{ opacity: 0, y: 80 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 80, transition: { duration: 0.2 } }}
+      transition={{ type: "spring", stiffness: 300, damping: 26 }}
     >
       <h2
         id={`offer-${offer.id}`}
@@ -87,6 +96,6 @@ export function OfferCard({
           {error}
         </p>
       )}
-    </section>
+    </motion.section>
   );
 }

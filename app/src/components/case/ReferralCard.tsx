@@ -1,6 +1,7 @@
 import { FileText } from "lucide-react";
 import { SourceChip } from "@/components/data/SourceChip";
 import type { CaseView } from "@/lib/caseData";
+import { referralNumber } from "@/lib/format";
 import { hr } from "@/i18n/hr";
 import { ui } from "@/lib/ui";
 
@@ -10,6 +11,7 @@ export function ReferralCard({
   referral: NonNullable<CaseView["referral"]>;
 }) {
   const rows: Array<[string, string]> = [
+    [hr.referral.number, referralNumber(referral.id)],
     [hr.referral.type, referral.type],
     [hr.referral.specialty, referral.specialtyName],
     [

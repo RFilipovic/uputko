@@ -1,7 +1,8 @@
-import { Clock, MapPin, Navigation, Phone } from "lucide-react";
+import { MapPin, Navigation, Phone } from "lucide-react";
+import { OpenBadge } from "@/components/map/OpenBadge";
 import { SourceChip } from "@/components/data/SourceChip";
 import { formatKm } from "@/lib/geo/distance";
-import { directionsUrl, hhmm } from "@/lib/format";
+import { directionsUrl } from "@/lib/format";
 import { hr } from "@/i18n/hr";
 import { ui } from "@/lib/ui";
 import { cn } from "@/lib/utils";
@@ -33,16 +34,6 @@ export function PlaceCard({
   emergency?: boolean;
   highlight?: boolean;
 }) {
-  const open = place.open_now === true;
-  const status = emergency
-    ? hr.emergency.open24
-    : place.has_hours === false || place.open_now == null
-      ? hr.direct.hoursUnknown
-      : open
-        ? place.closes_at && place.closes_at < "24"
-          ? hr.direct.openUntil(hhmm(place.closes_at))
-          : hr.direct.openNow
-        : hr.direct.closedNow;
   return (
     <article
       className={cn(
@@ -65,19 +56,7 @@ export function PlaceCard({
           </span>
         </p>
       </div>
-      <p
-        className={cn(
-          "inline-flex w-fit items-center gap-2 rounded-full px-3 py-1 text-base font-semibold",
-          emergency
-            ? "bg-urgent/10 text-urgent"
-            : open
-              ? "bg-success/15 text-success"
-              : "bg-muted text-muted-foreground",
-        )}
-      >
-        <Clock aria-hidden className="size-4" />
-        {status}
-      </p>
+      <OpenBadge info={place} emergency={emergency} />
       {place.geo_precision &&
         ["postcode", "city"].includes(place.geo_precision) && (
           <p className="text-sm text-muted-foreground">{hr.direct.approx}</p>

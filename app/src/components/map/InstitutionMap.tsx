@@ -13,6 +13,7 @@ export type MapPoint = {
 };
 
 const STYLE = "https://tiles.openfreemap.org/styles/liberty";
+const CROATIA: [number, number] = [16.4, 44.6];
 const COLORS = {
   place: "#573DFE",
   you: "#16132E",
@@ -26,9 +27,12 @@ const COLORS = {
 export function InstitutionMap({
   points,
   className,
+  flyFromCountry = false,
 }: {
   points: MapPoint[];
   className?: string;
+  /** Start zoomed out over Croatia and fly to the place (the "it arrived" moment). */
+  flyFromCountry?: boolean;
 }) {
   const el = useRef<HTMLDivElement>(null);
   const [state, setState] = useState<"loading" | "ready" | "error">("loading");
@@ -48,11 +52,12 @@ export function InstitutionMap({
           "(prefers-reduced-motion: reduce)",
         ).matches;
         const first = points[0];
+        const fromCountry = flyFromCountry && !reduce;
         const m = new maplibre.Map({
           container: el.current,
           style: STYLE,
-          center: [first.lng, first.lat],
-          zoom: points.length > 1 ? 11 : 13,
+          center: fromCountry ? CROATIA : [first.lng, first.lat],
+          zoom: fromCountry ? 5.6 : points.length > 1 ? 11 : 13,
           attributionControl: { compact: true },
           cooperativeGestures: true,
         });
@@ -84,7 +89,8 @@ export function InstitutionMap({
             m.flyTo({
               center: [first.lng, first.lat],
               zoom: 14,
-              duration: reduce ? 0 : 900,
+              duration: reduce ? 0 : fromCountry ? 2600 : 900,
+              essential: false,
             });
           }
         });

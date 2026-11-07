@@ -78,7 +78,9 @@ test("golden path: chat → doctor uploads uputnica → patient sees appointment
   await expect(
     phone.getByRole("heading", { name: "Predloženi termin" }),
   ).toBeVisible({ timeout: 10_000 });
-  await expect(phone.getByRole("heading", { name: "Uputnica" })).toBeVisible();
+  await expect(
+    phone.getByRole("heading", { name: "Uputnica", exact: true }),
+  ).toBeVisible();
   await phone.screenshot({
     path: `${SHOTS}/06-phone-referral-arrived.png`,
     fullPage: true,

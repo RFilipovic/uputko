@@ -239,6 +239,12 @@ export const hr = {
       hitna: "Hitna",
     } as Record<string, string>,
     demo: "Demo uputnica — u stvarnosti se izdaje u CEZIH-u",
+    number: "Broj (demo)",
+    arrivedTitle: "Stigla je uputnica!",
+    arrivedBody: (doctor: string) =>
+      `dr. ${doctor} vas upućuje dalje. Predložili smo vam termin — pogledajte ispod.`,
+    arrivedBodyNoDoctor:
+      "Liječnik vas upućuje dalje. Predložili smo vam termin — pogledajte ispod.",
   },
   appointment: {
     title: "Vaš termin",
@@ -257,6 +263,8 @@ export const hr = {
     addToCalendar: "Dodaj u kalendar",
     directions: "Upute do ustanove",
     whatToBring: "Ponesite",
+    at: "u",
+    bringReferral: (no: string) => `Uputnicu br. ${no}`,
     bring: [
       "Uputnicu (broj je na kartici iznad)",
       "Osobnu iskaznicu",
