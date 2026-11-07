@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Always112Banner } from "@/components/emergency/Always112Banner";
 import { AppHeader } from "@/components/layout/AppHeader";
-import { PhoneFrame } from "@/components/layout/PhoneFrame";
 import { ChooseDoctors } from "@/components/onboarding/ChooseDoctors";
 import {
   PersonaPicker,
@@ -43,41 +42,52 @@ export default async function ProfilePage({
   const current = currentId ? await getPatientProfile(currentId) : null;
 
   return (
-    <PhoneFrame>
+    // Phone: normal page scroll. Laptop: full screen like the chat and case
+    // pages — no phone frame; only the content under the header scrolls.
+    <div className="relative flex min-h-dvh flex-col bg-background lg:h-dvh lg:min-h-0 lg:overflow-hidden lg:overscroll-none">
       <Always112Banner />
-      <AppHeader backHref="/" title={hr.landing.profile} />
-      <main className="flex flex-1 flex-col gap-6 overflow-y-auto px-5 pt-2 pb-8">
-        <section
-          className="flex flex-col gap-3"
-          aria-labelledby="persona-title"
-        >
-          <h1 id="persona-title" className="text-3xl leading-tight font-bold">
-            {hr.profile.title}
-          </h1>
-          <p className="text-lg text-muted-foreground">{hr.profile.lead}</p>
-          <PersonaPicker personas={personas} currentId={current?.id ?? null} />
-        </section>
-        {current && (
-          <>
-            <Link href={safeNext} className={ui.btnPrimary}>
-              {hr.profile.continue}
-              <ArrowRight aria-hidden className="size-5" />
-            </Link>
-            <section
-              className="flex flex-col gap-3"
-              aria-labelledby="doctors-title"
-            >
-              <h2 id="doctors-title" className="text-2xl font-bold">
-                {hr.profile.myDoctors}
-              </h2>
-              <p className="text-sm text-muted-foreground">
-                {hr.profile.source}
-              </p>
-              <ChooseDoctors doctors={current.doctors} />
-            </section>
-          </>
-        )}
+      <AppHeader
+        backHref="/"
+        title={hr.landing.profile}
+        className="mx-auto max-w-5xl"
+      />
+      <main className="flex-1 lg:min-h-0 lg:overflow-y-auto lg:overscroll-contain">
+        <div className="mx-auto flex w-full max-w-3xl flex-col gap-6 px-5 pt-2 pb-8">
+          <section
+            className="flex flex-col gap-3"
+            aria-labelledby="persona-title"
+          >
+            <h1 id="persona-title" className="text-3xl leading-tight font-bold">
+              {hr.profile.title}
+            </h1>
+            <p className="text-lg text-muted-foreground">{hr.profile.lead}</p>
+            <PersonaPicker
+              personas={personas}
+              currentId={current?.id ?? null}
+            />
+          </section>
+          {current && (
+            <>
+              <Link href={safeNext} className={ui.btnPrimary}>
+                {hr.profile.continue}
+                <ArrowRight aria-hidden className="size-5" />
+              </Link>
+              <section
+                className="flex flex-col gap-3"
+                aria-labelledby="doctors-title"
+              >
+                <h2 id="doctors-title" className="text-2xl font-bold">
+                  {hr.profile.myDoctors}
+                </h2>
+                <p className="text-sm text-muted-foreground">
+                  {hr.profile.source}
+                </p>
+                <ChooseDoctors doctors={current.doctors} />
+              </section>
+            </>
+          )}
+        </div>
       </main>
-    </PhoneFrame>
+    </div>
   );
 }
