@@ -2,6 +2,7 @@
 
 import { ExternalLink, Hourglass, Radio } from "lucide-react";
 import { AppointmentCard } from "@/components/appointment/AppointmentCard";
+import { CaseProgress } from "@/components/case/CaseProgress";
 import { CaseTimeline } from "@/components/case/CaseTimeline";
 import { ReferralCard } from "@/components/case/ReferralCard";
 import { StatusPill } from "@/components/case/StatusPill";
@@ -64,6 +65,8 @@ export function CaseScreen({
             </p>
           )}
         </div>
+
+        <CaseProgress status={view.status} />
 
         {view.offers
           .filter(

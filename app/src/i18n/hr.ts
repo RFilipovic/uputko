@@ -173,6 +173,17 @@ export const hr = {
     loading: "Učitavanje slučaja…",
     error: "Slučaj se nije mogao učitati. Osvježite stranicu.",
     timeline: "Tijek",
+    progressTitle: "Koliko je slučaj odmaknuo",
+    progress: [
+      "Poslano liječniku",
+      "Liječnik pregledao",
+      "Uputnica izdana",
+      "Termin potvrđen",
+    ],
+    showAll: (n: number) => `Prikaži cijeli tijek (${n})`,
+    stepDone: "gotovo",
+    stepCurrent: "sada",
+    stepNext: "slijedi",
     summary: "Vaš opis",
     statuses: {
       intake: "Razgovor u tijeku",
