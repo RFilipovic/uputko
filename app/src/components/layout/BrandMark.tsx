@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 
 /**
  * Uputko logo mark on the brand gradient tile. Light mode: blue → white tile
- * with a blue compass. Dark mode: flipped tile (white → blue), white compass.
+ * with a white compass. Dark mode: flipped tile (white → blue), white compass.
  */
 export function BrandMark({
   size = "md",
@@ -22,10 +22,7 @@ export function BrandMark({
       )}
     >
       <Compass
-        className={cn(
-          "stroke-blue dark:stroke-white",
-          size === "md" ? "size-6" : "size-5",
-        )}
+        className={cn("stroke-white", size === "md" ? "size-6" : "size-5")}
         strokeWidth={2.25}
       />
     </span>
