@@ -2,7 +2,7 @@ import { hr } from "@/i18n/hr";
 import { cn } from "@/lib/utils";
 
 const tone: Record<string, string> = {
-  emergency_escalated: "bg-urgent text-urgent-foreground",
+  emergency_escalated: "bg-urgent-deep text-white",
   appointment_confirmed: "bg-success text-success-foreground",
   routed_direct: "bg-success text-success-foreground",
   appointment_proposed: "bg-primary text-primary-foreground",

@@ -1,6 +1,6 @@
 "use client";
 
-import { RotateCcw } from "lucide-react";
+import { RefreshCw, RotateCcw } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Composer } from "@/components/chat/Composer";
 import { LocationBar, type ChatLocation } from "@/components/chat/LocationBar";
@@ -82,22 +82,35 @@ export function ChatScreen({
     setMessages((ms) => ms.map((m) => (m.id === id ? { ...m, ...patch } : m)));
   }
 
-  async function send(text: string, finish = false, fromChip = false) {
+  async function send(
+    text: string,
+    finish = false,
+    fromChip = false,
+    again = false,
+  ) {
     const message = finish ? hr.chat.finishMessage : text.trim();
     if (!message || busy || outcome) return;
     const replyId = nextId();
-    setMessages((ms) => [
-      ...ms,
-      {
-        id: nextId(),
-        role: "user",
-        text: message,
-        layoutId: fromChip
-          ? replyLayoutId(messages.length, message)
-          : undefined,
-      },
-      { id: replyId, role: "assistant", text: "" },
-    ]);
+    if (again) {
+      // Same question again: replace the failed reply, keep the patient's bubble.
+      setMessages((ms) => [
+        ...ms.slice(0, -1),
+        { id: replyId, role: "assistant", text: "" },
+      ]);
+    } else {
+      setMessages((ms) => [
+        ...ms,
+        {
+          id: nextId(),
+          role: "user",
+          text: message,
+          layoutId: fromChip
+            ? replyLayoutId(messages.length, message)
+            : undefined,
+        },
+        { id: replyId, role: "assistant", text: "" },
+      ]);
+    }
     setDraft("");
     setOptions([]);
     setBusy(true);
@@ -110,8 +123,9 @@ export function ChatScreen({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           caseId: caseId ?? undefined,
-          message: finish ? undefined : message,
+          message: finish || again ? undefined : message,
           finish,
+          retry: again,
           location: location && !locationSent ? location : undefined,
         }),
       });
@@ -158,6 +172,8 @@ export function ChatScreen({
             patchAssistant(replyId, {
               text: String(ev.data.message ?? hr.chat.errors.generic),
               error: true,
+              // The message is saved: ask the server to answer it again.
+              retry: finish ? undefined : { mode: "again", text: message },
             });
           }
         }
@@ -167,7 +183,15 @@ export function ChatScreen({
         patchAssistant(replyId, { text: hr.emergency.chatText, error: true });
       }
     } catch {
-      patchAssistant(replyId, { text: hr.chat.errors.offline, error: true });
+      patchAssistant(replyId, {
+        text: hr.chat.errors.offline,
+        error: true,
+        // A first try may never have arrived: send the text again. A retry
+        // of a saved message asks the server again instead.
+        retry: finish
+          ? undefined
+          : { mode: again ? "again" : "resend", text: message },
+      });
     } finally {
       setBusy(false);
     }
@@ -185,6 +209,15 @@ export function ChatScreen({
 
   const started = messages.length > 0;
   const lastId = messages.at(-1)?.id;
+  const lastRetry = messages.at(-1)?.retry;
+
+  function retryLast(r: NonNullable<ChatMessage["retry"]>) {
+    if (r.mode === "again" && caseId)
+      return void send(r.text, false, false, true);
+    // Never reached the server: drop the failed pair and send the text again.
+    setMessages((ms) => ms.slice(0, -2));
+    void send(r.text);
+  }
 
   return (
     <>
@@ -242,6 +275,16 @@ export function ChatScreen({
                   />
                 ))}
               </ol>
+              {!busy && !outcome && lastRetry && (
+                <button
+                  type="button"
+                  onClick={() => retryLast(lastRetry)}
+                  className={`${ui.btnSecondary} self-start`}
+                >
+                  <RefreshCw aria-hidden className="size-5" />
+                  {hr.chat.retry}
+                </button>
+              )}
               {options.length > 0 && !busy && !outcome && (
                 <QuickReplies
                   options={options}

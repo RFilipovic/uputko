@@ -24,6 +24,7 @@ export function AppointmentCard({
   onChanged,
   referralNo,
   fresh = false,
+  elsewhere = false,
 }: {
   appointment: Appt;
   onChanged: () => void;
@@ -31,6 +32,8 @@ export function AppointmentCard({
   referralNo?: string | null;
   /** Arrived live just now: the map flies in from all of Croatia. */
   fresh?: boolean;
+  /** Booked at another hospital than the one on the uputnica (no slot there). */
+  elsewhere?: boolean;
 }) {
   const [mode, setMode] = useState<"idle" | "picking" | "cancelling">("idle");
   const [busy, setBusy] = useState(false);
@@ -121,6 +124,11 @@ export function AppointmentCard({
           </p>
           <OpenBadge info={inst.open} />
         </div>
+      )}
+      {elsewhere && (
+        <p className="rounded-2xl bg-muted p-3 text-base">
+          {hr.appointment.elsewhere}
+        </p>
       )}
       {status === "reschedule_requested" && (
         <p className="text-lg">{hr.appointment.rescheduleBody}</p>

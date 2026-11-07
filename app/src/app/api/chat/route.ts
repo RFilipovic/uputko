@@ -24,6 +24,8 @@ const Body = z.object({
   message: z.string().trim().max(LIMITS.messageMaxChars).default(""),
   /** "Pošalji liječniku" button: submit the case now with what is known. */
   finish: z.boolean().default(false),
+  /** "Pokušaj ponovno": answer the last patient message again (not saved twice). */
+  retry: z.boolean().default(false),
   location: z
     .discriminatedUnion("source", [
       z.object({
@@ -105,9 +107,11 @@ export async function POST(req: Request) {
   const parsed = Body.safeParse(await req.json().catch(() => null));
   if (!parsed.success)
     return json(400, { error: "bad_request", message: hr.chat.errors.tooLong });
-  const { location, finish } = parsed.data;
-  const message = finish ? hr.chat.finishMessage : parsed.data.message;
-  if (!message)
+  const { location, finish, retry } = parsed.data;
+  let message = finish ? hr.chat.finishMessage : parsed.data.message;
+  if (!message && !retry)
+    return json(400, { error: "bad_request", message: hr.chat.errors.generic });
+  if (retry && !parsed.data.caseId)
     return json(400, { error: "bad_request", message: hr.chat.errors.generic });
   if (finish && !parsed.data.caseId)
     return json(409, { error: "not_ready", message: hr.chat.finish.notReady });
@@ -165,7 +169,16 @@ export async function POST(req: Request) {
     .eq("role", "user")
     .order("created_at");
   const userTexts = (earlier ?? []).map((m) => m.content);
-  if (userTexts.length >= LIMITS.chatPerCase) {
+  if (retry) {
+    const last = userTexts.at(-1);
+    if (!last)
+      return json(400, {
+        error: "bad_request",
+        message: hr.chat.errors.generic,
+      });
+    message = last;
+  }
+  if (!retry && userTexts.length >= LIMITS.chatPerCase) {
     return json(429, {
       error: "case_limit",
       message: hr.chat.errors.caseLimit,
@@ -175,9 +188,8 @@ export async function POST(req: Request) {
   if (finish && !readiness(userTexts).ready) {
     return json(409, { error: "not_ready", message: hr.chat.finish.notReady });
   }
-  const ready = finish
-    ? readiness(userTexts)
-    : readiness([...userTexts, message]);
+  const ready =
+    finish || retry ? readiness(userTexts) : readiness([...userTexts, message]);
 
   // Where is the patient right now?
   let locationCity: string | null = null;
@@ -215,9 +227,10 @@ export async function POST(req: Request) {
   if (locationSource === "gps" && !locationCity)
     locationCity = "poznata lokacija uređaja";
 
-  await db()
-    .from("messages")
-    .insert({ case_id: caseId, role: "user", content: message });
+  if (!retry)
+    await db()
+      .from("messages")
+      .insert({ case_id: caseId, role: "user", content: message });
   const origin = new URL(req.url).origin;
   const id = caseId;
   const demo = await isDemo();

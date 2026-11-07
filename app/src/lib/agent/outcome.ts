@@ -25,6 +25,8 @@ export type Outcome =
       caseId: string;
       places: Place[];
       anyOpen: boolean;
+      /** Nothing open: nearest emergency department (0–24) for "can't wait". */
+      onCall: Place | null;
       city: string | null;
       farNote: string | null;
     }
@@ -162,7 +164,7 @@ export async function submitCase(opts: {
   );
 
   if (decision.route === "direct" && current) {
-    const { places, anyOpen } = await nearestPreferOpen({
+    const { places, anyOpen, onCall } = await nearestPreferOpen({
       specialty: decision.specialty,
       lat: current.lat,
       lng: current.lng,
@@ -188,6 +190,7 @@ export async function submitCase(opts: {
       caseId,
       places,
       anyOpen,
+      onCall,
       city: current.city,
       farNote,
     };

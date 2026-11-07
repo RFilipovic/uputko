@@ -855,6 +855,25 @@ export type Database = {
           isSetofReturn: false;
         };
       };
+      propose_appointment_at: {
+        Args: { p_referral_id: string; p_institution_id: string };
+        Returns: {
+          created_at: string;
+          id: string;
+          patient_availability_json: Json | null;
+          patient_id: string;
+          referral_id: string;
+          slot_id: string;
+          status: string;
+          updated_at: string;
+        };
+        SetofOptions: {
+          from: "*";
+          to: "appointments";
+          isOneToOne: true;
+          isSetofReturn: false;
+        };
+      };
       release_expired_holds: {
         Args: Record<PropertyKey, never>;
         Returns: number;

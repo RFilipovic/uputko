@@ -8,6 +8,11 @@ export type ChatMessage = {
   role: "user" | "assistant";
   text: string;
   error?: boolean;
+  /**
+   * On a failed reply: "again" re-asks the server about the saved message,
+   * "resend" sends the patient's text again (it never reached the server).
+   */
+  retry?: { mode: "again" | "resend"; text: string };
   /** Set when the message came from a tapped quick reply: the chip morphs into this bubble. */
   layoutId?: string;
 };
