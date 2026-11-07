@@ -106,6 +106,66 @@ const R = {
   anyBleeding: /\b(krvar\w*|krv\w*)/,
 };
 
+/**
+ * English rules for visitors and tourists (the chat answers in their language).
+ * Fewer and simpler than the Croatian ones: the clearest emergencies only.
+ */
+const EN_NEGATION =
+  /\b(no|not|dont|don t|never|without|isn t|isnt|haven t|havent)\s+(?:\S+\s+){0,1}$/;
+
+function affirmedEn(text: string, re: RegExp): boolean {
+  const g = new RegExp(re.source, "g");
+  for (const m of text.matchAll(g)) {
+    const before = text.slice(Math.max(0, (m.index ?? 0) - 30), m.index);
+    if (!EN_NEGATION.test(before)) return true;
+  }
+  return false;
+}
+
+const EN = {
+  chestPain:
+    /\b(chest (pain|hurts|tightness|pressure)|pain in (my |the )?chest|crushing (pain|chest))/,
+  severeChest: /\b(severe|terrible|crushing|unbearable) (\S+ ){0,2}chest pain/,
+  breathing:
+    /\b(can t breathe|cannot breathe|cant breathe|can t catch my breath|struggling to breathe|choking|gasping for air|not getting (any )?air)/,
+  radiating: /\b(spreads?|radiat\w*|goes) (\S+ ){0,3}(arm|jaw|neck|back)/,
+  sweat: /\b(sweating|cold sweat|faint\w*|dizzy|nause\w*)/,
+  stroke:
+    /\b(face (is )?(drooping|droops|droopy)|drooping face|one side of (my |his |her )?(face|body)|slurred speech|slurring|can t speak|cannot speak|cannot move (my |his |her )?(left |right )?(arm|leg|side)|can t move (my |his |her )?(left |right )?(arm|leg|side)|numb(ness)? (in|on) (one|my left|my right|the left|the right) side)/,
+  heavyBleeding:
+    /\b(bleeding (heavily|a lot|badly|won t stop|that won t stop|non stop)|heavy bleeding|can t stop (the )?bleeding|vomiting blood|coughing (up )?blood|throwing up blood)/,
+  suicidal:
+    /\b(kill myself|suicid\w*|end my life|want to die|don t want to live|dont want to live|hurt myself|harm myself)/,
+  unconscious:
+    /\b(unconscious|passed out|not breathing|stopped breathing|won t wake up|unresponsive|blue lips|turning blue)/,
+  anaphylaxis:
+    /\b((throat|tongue|lips|face) (is |are )?(swelling|swollen|closing)|swelling (of|in) (my |the )?(throat|tongue))/,
+  seizure: /\b(seizure|convulsion\w*|fitting and not responding)/,
+};
+
+function checkEnglish(t: string, rules: RedFlagId[]) {
+  const add = (id: RedFlagId) => {
+    if (!rules.includes(id)) rules.push(id);
+  };
+  const chest = affirmedEn(t, EN.chestPain);
+  if (
+    affirmedEn(t, EN.severeChest) ||
+    (chest &&
+      (affirmedEn(t, EN.breathing) ||
+        affirmedEn(t, EN.radiating) ||
+        affirmedEn(t, EN.sweat)))
+  )
+    add("chest_pain");
+  if (affirmedEn(t, EN.breathing) && !rules.includes("chest_pain"))
+    add("breathing");
+  if (affirmedEn(t, EN.stroke)) add("stroke");
+  if (affirmedEn(t, EN.heavyBleeding)) add("heavy_bleeding");
+  if (EN.suicidal.test(t)) add("suicidal");
+  if (affirmedEn(t, EN.unconscious)) add("unconscious");
+  if (affirmedEn(t, EN.anaphylaxis)) add("anaphylaxis");
+  if (affirmedEn(t, EN.seizure)) add("seizure");
+}
+
 /** Evaluate one patient message. Pure and fast; safe to run on every turn. */
 export function checkRedFlags(message: string): RedFlagResult {
   const t = normalize(message);
@@ -150,6 +210,7 @@ export function checkRedFlags(message: string): RedFlagResult {
   if (affirmed(t, R.poisoning)) rules.push("poisoning");
   if (affirmed(t, R.pregnant) && affirmed(t, R.anyBleeding))
     rules.push("pregnancy_bleeding");
+  checkEnglish(t, rules);
 
   return { triggered: rules.length > 0, rules };
 }

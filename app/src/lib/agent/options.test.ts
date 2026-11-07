@@ -41,3 +41,25 @@ describe("visibleText", () => {
     );
   });
 });
+
+describe("English chats (translated marker)", () => {
+  it("accepts OPTIONS: as well as OPCIJE:", () => {
+    expect(splitOptions("Do you have a fever?\nOPTIONS: Yes | No")).toEqual({
+      text: "Do you have a fever?",
+      options: ["Yes", "No"],
+    });
+  });
+  it("hides a half-streamed OPTIONS line", () => {
+    expect(visibleText("Do you have a fever?\nOPTI")).toBe(
+      "Do you have a fever?",
+    );
+    expect(visibleText("Do you have a fever?\nOPTIONS: Ye")).toBe(
+      "Do you have a fever?",
+    );
+  });
+  it("does not hide an ordinary line starting with O", () => {
+    expect(visibleText("Thanks.\nOne more question")).toBe(
+      "Thanks.\nOne more question",
+    );
+  });
+});

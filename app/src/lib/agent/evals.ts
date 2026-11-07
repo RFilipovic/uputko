@@ -197,4 +197,22 @@ export const SCENARIOS: EvalScenario[] = [
     answers: ["Sve gore, ne mogu se uspraviti.", ...NOTHING],
     expect: { kind: "emergency", layer: "model" },
   },
+  // English (tourists): the chat answers in English, the summary stays Croatian.
+  {
+    id: "en-zub-split",
+    persona: "luka",
+    city: "Split",
+    first:
+      "Hi, I'm a tourist in Split. My tooth has hurt since yesterday, about 7 out of 10. No fever.",
+    answers: ["Lower left.", "No, nothing else.", "That's all."],
+    expect: { kind: "direct" },
+  },
+  {
+    id: "en-prsa",
+    persona: "ana",
+    city: "Zagreb",
+    first: "I have chest pain and I can't breathe",
+    answers: [],
+    expect: { kind: "emergency", layer: "rules" },
+  },
 ];
