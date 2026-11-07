@@ -86,7 +86,7 @@ export function MessageBubble({
     <li className="flex animate-in gap-3 duration-200 fade-in slide-in-from-bottom-1">
       <span
         aria-hidden
-        className="mt-0.5 grid size-9 shrink-0 place-items-center rounded-full text-white bg-brand-gradient"
+        className="mt-0.5 grid size-9 shrink-0 place-items-center rounded-full text-blue bg-brand-gradient dark:text-white"
       >
         <Sparkles className="size-4" />
       </span>
