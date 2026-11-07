@@ -1,4 +1,4 @@
-import { Compass } from "lucide-react";
+import { Compass, MapPin } from "lucide-react";
 import type { Metadata } from "next";
 import { SourceChip } from "@/components/data/SourceChip";
 import { DoctorDecision } from "@/components/doctor/DoctorDecision";
@@ -12,6 +12,7 @@ import { nearestPlaces } from "@/lib/geo/places";
 import { getPatientProfile } from "@/lib/patients";
 import { bestMatch } from "@/lib/similarity";
 import { ui } from "@/lib/ui";
+import { cn } from "@/lib/utils";
 import { hr } from "@/i18n/hr";
 
 export const metadata: Metadata = {
@@ -19,6 +20,13 @@ export const metadata: Metadata = {
   robots: { index: false },
 };
 export const dynamic = "force-dynamic";
+
+/** Urgency at a glance. Red stays reserved for "hitno". */
+const URGENCY_TONE: Record<string, string> = {
+  hitno: "bg-urgent text-urgent-foreground",
+  uskoro: "bg-primary text-primary-foreground",
+  rutinski: "bg-muted text-foreground",
+};
 
 function Shell({ children }: { children: React.ReactNode }) {
   return (
@@ -76,7 +84,8 @@ export default async function DoctorCasePage({
     .select("code, name")
     .in("code", [...BOOKABLE_SPECIALTIES]);
   const suggested = s?.suggested_specialty
-    ? bestMatch(s.suggested_specialty, specialties ?? [], (x) => x.name)
+    ? // Strict (0.8): "stomatologija" must not become "Reumatologija".
+      bestMatch(s.suggested_specialty, specialties ?? [], (x) => x.name, 0.8)
     : null;
   const nearby =
     suggested && c.patient_lat != null && c.patient_lng != null
@@ -118,24 +127,34 @@ export default async function DoctorCasePage({
     <Shell>
       <div className="grid gap-6 lg:grid-cols-[1.1fr_1fr]">
         <div className="flex flex-col gap-6">
-          <section className={`${ui.card} flex flex-col gap-2`}>
-            <p className={ui.label}>{hr.doctor.patient}</p>
-            <h1 className="text-3xl font-bold">
-              {patient?.name ?? "—"}
-              {age ? `, ${age} g.` : ""}
-            </h1>
-            <p className="text-lg">
+          <section className={`${ui.card} flex flex-col gap-3`}>
+            <div className="flex flex-wrap items-start justify-between gap-3">
+              <div>
+                <p className={ui.label}>{hr.doctor.patient}</p>
+                <h1 className="text-3xl font-bold">
+                  {patient?.name ?? "—"}
+                  {age ? `, ${age} g.` : ""}
+                </h1>
+              </div>
+              {c.urgency && (
+                <p
+                  className={cn(
+                    "rounded-full px-4 py-1.5 text-base font-semibold",
+                    URGENCY_TONE[c.urgency] ?? "bg-muted text-foreground",
+                  )}
+                >
+                  <span className="sr-only">{hr.doctor.urgency}: </span>
+                  {hr.doctor.urgencies[c.urgency] ?? c.urgency}
+                </p>
+              )}
+            </div>
+            <p className="flex items-center gap-2 text-lg">
+              <MapPin aria-hidden className="size-5 text-muted-foreground" />
               {hr.doctor.currentlyIn}:{" "}
               <strong>
                 {c.patient_city ?? s?.current_location ?? patient?.home_city}
               </strong>
             </p>
-            {c.urgency && (
-              <p className="text-lg">
-                {hr.doctor.urgency}:{" "}
-                <strong>{hr.doctor.urgencies[c.urgency] ?? c.urgency}</strong>
-              </p>
-            )}
           </section>
           {s && (
             <section
@@ -148,11 +167,11 @@ export default async function DoctorCasePage({
               <p className="text-base text-muted-foreground">
                 {hr.doctor.summaryNote}
               </p>
-              <dl className="grid gap-3 sm:grid-cols-2">
+              <dl className="grid gap-x-6 gap-y-3 sm:grid-cols-2 xl:grid-cols-3">
                 {rows.map(([k, v]) => (
-                  <div key={k}>
+                  <div key={k} className="border-l-2 border-border pl-3">
                     <dt className={ui.label}>{k}</dt>
-                    <dd className="text-lg font-semibold">{v}</dd>
+                    <dd className="text-base font-semibold">{v}</dd>
                   </div>
                 ))}
               </dl>
@@ -179,7 +198,7 @@ export default async function DoctorCasePage({
           </details>
         </div>
 
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-6 lg:sticky lg:top-6 lg:self-start">
           {DECIDED.has(c.status) ? (
             <p className={`${ui.card} text-xl`}>{hr.doctor.alreadyDone}</p>
           ) : (
