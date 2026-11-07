@@ -71,7 +71,8 @@ export function PlaceCard({
           <Navigation aria-hidden className="size-5" />
           {hr.direct.directions}
         </a>
-        {place.phone && (
+        {/* In an emergency the only number to call is 112. */}
+        {place.phone && !emergency && (
           <a
             className={cn(ui.btnSecondary, "flex-1")}
             href={`tel:${place.phone.replace(/[^\d+]/g, "")}`}
