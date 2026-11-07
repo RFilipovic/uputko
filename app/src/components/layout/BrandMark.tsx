@@ -16,7 +16,7 @@ export function BrandMark({
     <span
       aria-hidden
       className={cn(
-        "grid shrink-0 place-items-center bg-card shadow-soft ring-1 ring-border dark:bg-brand-gradient dark:shadow-none dark:ring-0",
+        "grid shrink-0 place-items-center bg-card shadow-soft ring-1 ring-border dark:shadow-none dark:ring-0 dark:bg-brand-gradient",
         size === "md" ? "size-11 rounded-2xl" : "size-10 rounded-xl",
         className,
       )}
