@@ -101,16 +101,18 @@ export default async function OpenDataPage() {
               <h2 id="roles-title" className="text-xl font-bold">
                 {t.roles}
               </h2>
-              <dl className="grid gap-3">
+              <ul className="grid gap-3">
                 {roles.map((r) => {
                   const n = s.practitioners[r] ?? 0;
                   const pct = practitioners ? (n / practitioners) * 100 : 0;
                   return (
-                    <div key={r} className="grid gap-1">
-                      <div className="flex justify-between gap-3 text-lg">
-                        <dt>{hr.roles[r]}</dt>
-                        <dd className="font-semibold tabular-nums">{num(n)}</dd>
-                      </div>
+                    <li key={r} className="grid gap-1">
+                      <p className="flex justify-between gap-3 text-lg">
+                        <span>{hr.roles[r]}</span>
+                        <span className="font-semibold tabular-nums">
+                          {num(n)}
+                        </span>
+                      </p>
                       <div
                         aria-hidden
                         className="h-2.5 overflow-hidden rounded-full bg-muted"
@@ -120,10 +122,10 @@ export default async function OpenDataPage() {
                           style={{ width: `${Math.max(pct, 2)}%` }}
                         />
                       </div>
-                    </div>
+                    </li>
                   );
                 })}
-              </dl>
+              </ul>
             </section>
 
             <section

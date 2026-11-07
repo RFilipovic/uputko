@@ -38,7 +38,7 @@ export function OpenBadge({
         emergency
           ? "bg-urgent/10 text-urgent dark:text-foreground"
           : open
-            ? "bg-success/15 text-success"
+            ? "bg-success/15 text-success-text"
             : "bg-muted text-muted-foreground",
         className,
       )}

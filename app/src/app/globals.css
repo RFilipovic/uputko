@@ -40,6 +40,10 @@
   --urgent-foreground: oklch(0.99 0 0);
   --success: oklch(0.52 0.12 155);
   --success-foreground: oklch(0.99 0 0);
+  /* Text-safe variants (≥ 4.5:1 on their usual backgrounds). */
+  --urgent-deep: oklch(0.47 0.19 27); /* 112 pill + red text on light tints */
+  --success-text: oklch(0.42 0.11 155); /* green text on light green tints */
+  --link: var(--violet);
 
   --border: #dcd7e4;
   --input: #d3cde0;
@@ -71,6 +75,9 @@
   --urgent-foreground: oklch(0.99 0 0);
   --success: oklch(0.72 0.14 155);
   --success-foreground: var(--ink);
+  --urgent-deep: oklch(0.47 0.19 27);
+  --success-text: oklch(0.8 0.13 155);
+  --link: #ab9fff; /* violet that reads on the dark background */
 
   --border: #2c2550;
   --input: #352d5e;
@@ -101,6 +108,9 @@
   --color-urgent-foreground: var(--urgent-foreground);
   --color-success: var(--success);
   --color-success-foreground: var(--success-foreground);
+  --color-urgent-deep: var(--urgent-deep);
+  --color-success-text: var(--success-text);
+  --color-link: var(--link);
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
