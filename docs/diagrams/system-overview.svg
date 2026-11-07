@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif">
+<title>Uputko system overview</title>
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0,0 L10,5 L0,10 z" fill="#7A7493"/>
+  </marker>
+  <marker id="arrow-start" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0,0 L10,5 L0,10 z" fill="#7A7493"/>
+  </marker>
+</defs>
+<rect width="1600" height="1000" fill="#FFFFFF"/>
+<rect x="320" y="150" width="960" height="600" rx="22" fill="#F7F5F9" stroke="#C9C2DA" stroke-width="1.5" stroke-dasharray="6 5"/>
+<text x="340" y="180" text-anchor="start" font-size="15" font-weight="700" fill="#565170">UPUTKO APP · NEXT.JS 15 ON VERCEL</text>
+<rect x="1320" y="150" width="250" height="600" rx="22" fill="#F7F5F9" stroke="#C9C2DA" stroke-width="1.5" stroke-dasharray="6 5"/>
+<text x="1340" y="180" text-anchor="start" font-size="15" font-weight="700" fill="#565170">SUPABASE · EU</text>
+<rect x="320" y="790" width="1250" height="180" rx="22" fill="#F7F5F9" stroke="#C9C2DA" stroke-width="1.5" stroke-dasharray="6 5"/>
+<text x="340" y="820" text-anchor="start" font-size="15" font-weight="700" fill="#565170">OPEN-DATA PIPELINE · PYTHON</text>
+<rect x="320" y="20" width="1250" height="100" rx="22" fill="#FFFFFF" stroke="#C9C2DA" stroke-width="1.5" stroke-dasharray="6 5"/>
+<text x="340" y="50" text-anchor="start" font-size="15" font-weight="700" fill="#565170">EXTERNAL SERVICES</text>
+<rect x="40" y="190" width="230" height="90" rx="14" fill="#573DFE" stroke="#3F25E0" stroke-width="2"/>
+<text x="155.0" y="229.5" text-anchor="middle"><tspan x="155.0" dy="0" font-size="17" font-weight="700" fill="#FFFFFF">Patient</tspan><tspan x="155.0" dy="20" font-size="14" font-weight="500" fill="#FFFFFF">phone browser</tspan></text>
+<rect x="40" y="440" width="230" height="90" rx="14" fill="#573DFE" stroke="#3F25E0" stroke-width="2"/>
+<text x="155.0" y="479.5" text-anchor="middle"><tspan x="155.0" dy="0" font-size="17" font-weight="700" fill="#FFFFFF">Doctor</tspan><tspan x="155.0" dy="20" font-size="14" font-weight="500" fill="#FFFFFF">link from email</tspan></text>
+<rect x="40" y="610" width="230" height="90" rx="14" fill="#573DFE" stroke="#3F25E0" stroke-width="2"/>
+<text x="155.0" y="649.5" text-anchor="middle"><tspan x="155.0" dy="0" font-size="17" font-weight="700" fill="#FFFFFF">Hospital desk</tspan><tspan x="155.0" dy="20" font-size="14" font-weight="500" fill="#FFFFFF">demo panel</tspan></text>
+<rect x="810" y="45" width="210" height="60" rx="14" fill="#FFE9F7" stroke="#D44FAE" stroke-width="2"/>
+<text x="915.0" y="69.5" text-anchor="middle"><tspan x="915.0" dy="0" font-size="17" font-weight="700" fill="#16132E">Claude API</tspan><tspan x="915.0" dy="20" font-size="14" font-weight="500" fill="#565170">chat · reads uputnica</tspan></text>
+<rect x="1050" y="45" width="210" height="60" rx="14" fill="#FFE9F7" stroke="#D44FAE" stroke-width="2"/>
+<text x="1155.0" y="69.5" text-anchor="middle"><tspan x="1155.0" dy="0" font-size="17" font-weight="700" fill="#16132E">Resend</tspan><tspan x="1155.0" dy="20" font-size="14" font-weight="500" fill="#565170">emails → demo inbox</tspan></text>
+<rect x="1340" y="45" width="210" height="60" rx="14" fill="#FFE9F7" stroke="#D44FAE" stroke-width="2"/>
+<text x="1445.0" y="69.5" text-anchor="middle"><tspan x="1445.0" dy="0" font-size="17" font-weight="700" fill="#16132E">OpenFreeMap</tspan><tspan x="1445.0" dy="20" font-size="14" font-weight="500" fill="#565170">map tiles on patient pages</tspan></text>
+<rect x="340" y="195" width="190" height="80" rx="14" fill="#FFFFFF" stroke="#573DFE" stroke-width="2"/>
+<text x="435.0" y="229.5" text-anchor="middle"><tspan x="435.0" dy="0" font-size="17" font-weight="700" fill="#16132E">/api/chat</tspan><tspan x="435.0" dy="20" font-size="14" font-weight="500" fill="#565170">streamed replies</tspan></text>
+<rect x="570" y="195" width="200" height="80" rx="14" fill="#FDECEC" stroke="#C81E1E" stroke-width="2"/>
+<text x="670.0" y="229.5" text-anchor="middle"><tspan x="670.0" dy="0" font-size="17" font-weight="700" fill="#16132E">Red-flag rules</tspan><tspan x="670.0" dy="20" font-size="14" font-weight="500" fill="#565170">before the AI sees it</tspan></text>
+<rect x="810" y="195" width="210" height="80" rx="14" fill="#FFFFFF" stroke="#573DFE" stroke-width="2"/>
+<text x="915.0" y="229.5" text-anchor="middle"><tspan x="915.0" dy="0" font-size="17" font-weight="700" fill="#16132E">AI agent</tspan><tspan x="915.0" dy="20" font-size="14" font-weight="500" fill="#565170">one question at a time</tspan></text>
+<rect x="1060" y="195" width="200" height="80" rx="14" fill="#FDECEC" stroke="#C81E1E" stroke-width="2"/>
+<text x="1160.0" y="229.5" text-anchor="middle"><tspan x="1160.0" dy="0" font-size="17" font-weight="700" fill="#16132E">Routing table</tspan><tspan x="1160.0" dy="20" font-size="14" font-weight="500" fill="#565170">code decides who</tspan></text>
+<rect x="570" y="330" width="200" height="70" rx="14" fill="#C81E1E" stroke="#A01818" stroke-width="2"/>
+<text x="670.0" y="359.5" text-anchor="middle"><tspan x="670.0" dy="0" font-size="17" font-weight="700" fill="#FFFFFF">112 takeover</tspan><tspan x="670.0" dy="20" font-size="14" font-weight="500" fill="#FFFFFF">+ nearest OHBP</tspan></text>
+<rect x="1060" y="330" width="200" height="70" rx="14" fill="#E4F4EC" stroke="#2E8B57" stroke-width="2"/>
+<text x="1160.0" y="359.5" text-anchor="middle"><tspan x="1160.0" dy="0" font-size="17" font-weight="700" fill="#16132E">Direct route</tspan><tspan x="1160.0" dy="20" font-size="14" font-weight="500" fill="#565170">nearest open practice</tspan></text>
+<rect x="340" y="445" width="230" height="80" rx="14" fill="#FFFFFF" stroke="#573DFE" stroke-width="2"/>
+<text x="455.0" y="479.5" text-anchor="middle"><tspan x="455.0" dy="0" font-size="17" font-weight="700" fill="#16132E">Doctor portal</tspan><tspan x="455.0" dy="20" font-size="14" font-weight="500" fill="#565170">check &amp; send uputnica</tspan></text>
+<rect x="640" y="445" width="300" height="80" rx="14" fill="#FFFFFF" stroke="#573DFE" stroke-width="2"/>
+<text x="790.0" y="479.5" text-anchor="middle"><tspan x="790.0" dy="0" font-size="17" font-weight="700" fill="#16132E">Booking &amp; offers API</tspan><tspan x="790.0" dy="20" font-size="14" font-weight="500" fill="#565170">appointments · notifications</tspan></text>
+<rect x="340" y="615" width="230" height="80" rx="14" fill="#FFFFFF" stroke="#573DFE" stroke-width="2"/>
+<text x="455.0" y="649.5" text-anchor="middle"><tspan x="455.0" dy="0" font-size="17" font-weight="700" fill="#16132E">Hospital panel</tspan><tspan x="455.0" dy="20" font-size="14" font-weight="500" fill="#565170">/ustanova (demo)</tspan></text>
+<rect x="1040" y="615" width="220" height="80" rx="14" fill="#FFFFFF" stroke="#573DFE" stroke-width="2"/>
+<text x="1150.0" y="649.5" text-anchor="middle"><tspan x="1150.0" dy="0" font-size="17" font-weight="700" fill="#16132E">Case page</tspan><tspan x="1150.0" dy="20" font-size="14" font-weight="500" fill="#565170">live on the patient's phone</tspan></text>
+<path d="M1345,314 a100.0,14 0 0,0 200,0 a100.0,14 0 0,0 -200,0 v122 a100.0,14 0 0,0 200,0 v-122" fill="#E4F4EC" stroke="#2E8B57" stroke-width="2"/>
+<text x="1445.0" y="366.5" text-anchor="middle"><tspan x="1445.0" dy="0" font-size="17" font-weight="700" fill="#16132E">Postgres + PostGIS</tspan><tspan x="1445.0" dy="20" font-size="14" font-weight="500" fill="#565170">open data + synthetic</tspan><tspan x="1445.0" dy="20" font-size="14" font-weight="500" fill="#565170">patient flow</tspan></text>
+<rect x="1345" y="615" width="165" height="80" rx="14" fill="#E4F4EC" stroke="#2E8B57" stroke-width="2"/>
+<text x="1427.5" y="649.5" text-anchor="middle"><tspan x="1427.5" dy="0" font-size="17" font-weight="700" fill="#16132E">Realtime</tspan><tspan x="1427.5" dy="20" font-size="14" font-weight="500" fill="#565170">change pings</tspan></text>
+<rect x="350" y="845" width="330" height="90" rx="14" fill="#FFF6D9" stroke="#C9A227" stroke-width="2"/>
+<text x="515.0" y="884.5" text-anchor="middle"><tspan x="515.0" dy="0" font-size="17" font-weight="700" fill="#16132E">data.gov.hr CKAN API</tspan><tspan x="515.0" dy="20" font-size="14" font-weight="500" fill="#565170">HZZO · Grad Zagreb · OSM</tspan></text>
+<rect x="740" y="845" width="360" height="90" rx="14" fill="#FFF6D9" stroke="#C9A227" stroke-width="2"/>
+<text x="920.0" y="884.5" text-anchor="middle"><tspan x="920.0" dy="0" font-size="17" font-weight="700" fill="#16132E">fetch → transform</tspan><tspan x="920.0" dy="20" font-size="14" font-weight="500" fill="#565170">geocode → load</tspan></text>
+<rect x="1160" y="845" width="130" height="90" rx="14" fill="#FFF6D9" stroke="#C9A227" stroke-width="2"/>
+<text x="1225.0" y="884.5" text-anchor="middle"><tspan x="1225.0" dy="0" font-size="17" font-weight="700" fill="#16132E">seed.sql</tspan><tspan x="1225.0" dy="20" font-size="14" font-weight="500" fill="#565170">committed</tspan></text>
+<path d="M270,235 L340,235" fill="none" stroke="#7A7493" stroke-width="2.2" marker-end="url(#arrow)"/>
+<rect x="261.1" y="206.0" width="87.8" height="22" rx="11" fill="#FFFFFF" stroke="#E2DDEA"/>
+<text x="305.0" y="222.0" text-anchor="middle" font-size="13.5" font-weight="600" fill="#16132E">describes</text>
+<path d="M530,235 L570,235" fill="none" stroke="#7A7493" stroke-width="2.2" marker-end="url(#arrow)"/>
+<path d="M770,235 L810,235" fill="none" stroke="#7A7493" stroke-width="2.2" marker-end="url(#arrow)"/>
+<rect x="754.3" y="206.0" width="71.39999999999999" height="22" rx="11" fill="#FFFFFF" stroke="#E2DDEA"/>
+<text x="790.0" y="222.0" text-anchor="middle" font-size="13.5" font-weight="600" fill="#16132E">no flag</text>
+<path d="M670,275 L670,330" fill="none" stroke="#7A7493" stroke-width="2.2" marker-end="url(#arrow)"/>
+<rect x="674.2" y="291.5" width="79.6" height="22" rx="11" fill="#FFFFFF" stroke="#E2DDEA"/>
+<text x="714.0" y="307.5" text-anchor="middle" font-size="13.5" font-weight="600" fill="#16132E">red flag</text>
+<path d="M915,195 L915,105" fill="none" stroke="#7A7493" stroke-width="2.2" marker-end="url(#arrow)" marker-start="url(#arrow-start)"/>
+<path d="M1020,235 L1060,235" fill="none" stroke="#7A7493" stroke-width="2.2" marker-end="url(#arrow)"/>
+<path d="M1160,275 L1160,330" fill="none" stroke="#7A7493" stroke-width="2.2" marker-end="url(#arrow)"/>
+<rect x="1161.8" y="291.5" width="112.39999999999999" height="22" rx="11" fill="#FFFFFF" stroke="#E2DDEA"/>
+<text x="1218.0" y="307.5" text-anchor="middle" font-size="13.5" font-weight="600" fill="#16132E">away + tooth</text>
+<path d="M1160,195 L1160,105" fill="none" stroke="#7A7493" stroke-width="2.2" marker-end="url(#arrow)"/>
+<rect x="1098.5" y="139.0" width="55.0" height="22" rx="11" fill="#FFFFFF" stroke="#E2DDEA"/>
+<text x="1126.0" y="155.0" text-anchor="middle" font-size="13.5" font-weight="600" fill="#16132E">email</text>
+<path d="M1100,275 L1100,300 L1040,300 L1040,420 L455,420 L455,445" fill="none" stroke="#7A7493" stroke-width="2.2" stroke-dasharray="7 6" marker-end="url(#arrow)"/>
+<rect x="544.4" y="403.0" width="186.2" height="22" rx="11" fill="#FFFFFF" stroke="#E2DDEA"/>
+<text x="637.5" y="419.0" text-anchor="middle" font-size="13.5" font-weight="600" fill="#16132E">secure link to doctor</text>
+<path d="M270,485 L340,485" fill="none" stroke="#7A7493" stroke-width="2.2" marker-end="url(#arrow)"/>
+<path d="M570,485 L640,485" fill="none" stroke="#7A7493" stroke-width="2.2" marker-end="url(#arrow)"/>
+<rect x="565.2" y="456.0" width="79.6" height="22" rx="11" fill="#FFFFFF" stroke="#E2DDEA"/>
+<text x="605.0" y="472.0" text-anchor="middle" font-size="13.5" font-weight="600" fill="#16132E">uputnica</text>
+<path d="M270,655 L340,655" fill="none" stroke="#7A7493" stroke-width="2.2" marker-end="url(#arrow)"/>
+<path d="M570,655 L790,655 L790,525" fill="none" stroke="#7A7493" stroke-width="2.2" marker-end="url(#arrow)"/>
+<rect x="603.3" y="632.0" width="153.39999999999998" height="22" rx="11" fill="#FFFFFF" stroke="#E2DDEA"/>
+<text x="680.0" y="648.0" text-anchor="middle" font-size="13.5" font-weight="600" fill="#16132E">free slot · offer</text>
+<path d="M940,485 L1345,485 L1345,440" fill="none" stroke="#7A7493" stroke-width="2.2" marker-end="url(#arrow)"/>
+<rect x="1069.9" y="462.0" width="145.2" height="22" rx="11" fill="#FFFFFF" stroke="#E2DDEA"/>
+<text x="1142.5" y="478.0" text-anchor="middle" font-size="13.5" font-weight="600" fill="#16132E">SQL transactions</text>
+<path d="M1260,235 L1295,235 L1295,345 L1345,345" fill="none" stroke="#7A7493" stroke-width="2.2" marker-end="url(#arrow)"/>
+<path d="M1427,450 L1427,615" fill="none" stroke="#7A7493" stroke-width="2.2" marker-end="url(#arrow)"/>
+<path d="M1345,655 L1260,655" fill="none" stroke="#7A7493" stroke-width="2.2" marker-end="url(#arrow)"/>
+<rect x="1279.1" y="626.0" width="46.8" height="22" rx="11" fill="#FFFFFF" stroke="#E2DDEA"/>
+<text x="1302.5" y="642.0" text-anchor="middle" font-size="13.5" font-weight="600" fill="#16132E">live</text>
+<path d="M1225,845 L1225,770 L1530,770 L1530,440" fill="none" stroke="#7A7493" stroke-width="2.2" marker-end="url(#arrow)"/>
+<rect x="1354.1" y="747.0" width="46.8" height="22" rx="11" fill="#FFFFFF" stroke="#E2DDEA"/>
+<text x="1377.5" y="763.0" text-anchor="middle" font-size="13.5" font-weight="600" fill="#16132E">seed</text>
+<path d="M680,890 L740,890" fill="none" stroke="#7A7493" stroke-width="2.2" marker-end="url(#arrow)"/>
+<path d="M1100,890 L1160,890" fill="none" stroke="#7A7493" stroke-width="2.2" marker-end="url(#arrow)"/>
+<text x="40" y="790" text-anchor="start" font-size="14" font-weight="700" fill="#565170">LEGEND</text>
+<rect x="40" y="808" width="22" height="18" rx="5" fill="#573DFE" stroke="#3F25E0" stroke-width="2"/>
+<text x="72" y="822" text-anchor="start" font-size="14" font-weight="400" fill="#16132E">people</text>
+<rect x="40" y="836" width="22" height="18" rx="5" fill="#FFFFFF" stroke="#573DFE" stroke-width="2"/>
+<text x="72" y="850" text-anchor="start" font-size="14" font-weight="400" fill="#16132E">our app</text>
+<rect x="40" y="864" width="22" height="18" rx="5" fill="#FDECEC" stroke="#C81E1E" stroke-width="2"/>
+<text x="72" y="878" text-anchor="start" font-size="14" font-weight="400" fill="#16132E">deterministic safety</text>
+<rect x="40" y="892" width="22" height="18" rx="5" fill="#E4F4EC" stroke="#2E8B57" stroke-width="2"/>
+<text x="72" y="906" text-anchor="start" font-size="14" font-weight="400" fill="#16132E">database</text>
+<rect x="40" y="920" width="22" height="18" rx="5" fill="#FFE9F7" stroke="#D44FAE" stroke-width="2"/>
+<text x="72" y="934" text-anchor="start" font-size="14" font-weight="400" fill="#16132E">external service</text>
+<rect x="40" y="948" width="22" height="18" rx="5" fill="#FFF6D9" stroke="#C9A227" stroke-width="2"/>
+<text x="72" y="962" text-anchor="start" font-size="14" font-weight="400" fill="#16132E">data pipeline</text>
+</svg>
