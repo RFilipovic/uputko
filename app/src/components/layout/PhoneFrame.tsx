@@ -26,7 +26,7 @@ export function PhoneFrame({
     >
       <div
         className={cn(
-          "relative flex w-full flex-col bg-background lg:w-[390px] lg:overflow-hidden lg:rounded-[2.75rem] lg:border-[10px] lg:border-ink lg:shadow-2xl dark:lg:border-[#2a2450]",
+          "relative flex w-full flex-col bg-background lg:w-[390px] lg:overflow-hidden lg:rounded-[2.75rem] lg:border-[10px] lg:border-ink lg:shadow-2xl dark:lg:border-[#1a2a55]",
           // Pinned: fill the screen on phones; on laptops shrink to fit short screens (max 844px).
           pinned
             ? "h-full lg:h-[min(844px,100%)]"

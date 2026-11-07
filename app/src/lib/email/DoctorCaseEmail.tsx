@@ -5,7 +5,7 @@ import { Layout, styles } from "./Layout";
 const URGENCY = {
   hitno: { label: "Hitno", bg: "#FDE2E2", fg: "#9B1C1C" },
   uskoro: { label: "Uskoro (1–2 dana)", bg: "#FFF1D6", fg: "#7A4A00" },
-  rutinski: { label: "Rutinski", bg: "#E6E2EE", fg: "#16132E" },
+  rutinski: { label: "Rutinski", bg: "#E1E8F6", fg: "#0A1633" },
 } as const;
 
 export function DoctorCaseEmail(props: {

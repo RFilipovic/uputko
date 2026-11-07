@@ -1,5 +1,6 @@
-import { ArrowLeft, Compass } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
+import { BrandMark } from "@/components/layout/BrandMark";
 import { TextSizeToggle } from "@/components/settings/TextSizeToggle";
 import { ThemeToggle } from "@/components/settings/ThemeToggle";
 import { hr } from "@/i18n/hr";
@@ -37,9 +38,7 @@ export function AppHeader({
           aria-label={hr.app.homeLabel}
           className="flex min-h-12 items-center gap-3 rounded-2xl focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
         >
-          <span className="grid size-11 place-items-center rounded-2xl text-white bg-brand-gradient">
-            <Compass aria-hidden className="size-6" strokeWidth={2.25} />
-          </span>
+          <BrandMark />
           <span className="text-2xl font-bold tracking-tight">
             {hr.app.name}
           </span>

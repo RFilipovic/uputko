@@ -54,7 +54,7 @@ function Caret() {
   );
 }
 
-/** Patient: violet bubble on the right. Uputko: plain large text with an icon, like chat apps. */
+/** Patient: blue bubble on the right. Uputko: plain large text with an icon, like chat apps. */
 export function MessageBubble({
   message,
   typing = false,

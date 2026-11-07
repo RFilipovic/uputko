@@ -88,8 +88,8 @@ export function VoiceButton({
       aria-label={hr.chat.voice}
       title={hr.chat.voice}
       className={cn(
-        "grid size-14 shrink-0 place-items-center rounded-full text-ink transition-colors duration-200 focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none",
-        listening ? "animate-pulse bg-pink" : "bg-pink/90 hover:bg-pink",
+        "grid size-14 shrink-0 place-items-center rounded-full text-accent-foreground transition-colors duration-200 focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none",
+        listening ? "animate-pulse bg-accent" : "bg-accent/90 hover:bg-accent",
       )}
     >
       {listening ? (

@@ -39,7 +39,7 @@ export function FinishBar({
           "inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-2xl px-6 text-lg font-semibold transition-colors duration-200 focus-visible:ring-4 focus-visible:ring-ring/50 focus-visible:outline-none",
           disabled
             ? "cursor-not-allowed border-2 border-border bg-muted text-muted-foreground"
-            : "bg-primary text-primary-foreground hover:bg-violet-deep",
+            : "bg-primary text-primary-foreground hover:bg-primary-hover",
         )}
       >
         <Send aria-hidden className="size-5" />

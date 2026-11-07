@@ -6,33 +6,34 @@
 @custom-variant dark (&:is(.dark *));
 
 /* Design tokens.
-   Brand palette: Marshmallow White #F0EDF0 · Galactic Violet #573DFE ·
-   Bubblegum Pink #FF6BD3. Urgent red is reserved ONLY for emergencies.
-   Contrast notes: white on violet ≈ 6:1 (ok); white on pink ≈ 2.5:1 (fails),
-   so anything sitting on pink uses dark ink text. */
+   Brand palette: Deep Blue #0028AB (primary) · Sky Blue #4A89FF (accent,
+   gradient end) on a cool blue-white background. Urgent red is reserved ONLY
+   for emergencies.
+   Contrast notes: white on #0028AB ≈ 11:1; white on #4A89FF ≈ 3.3:1 (fails),
+   so anything sitting on sky blue uses dark ink text (≈ 5.4:1). */
 :root {
   --radius: 1rem;
 
-  --marshmallow: #f0edf0;
-  --violet: #573dfe;
-  --violet-deep: #3f25e0;
-  --pink: #ff6bd3;
-  --ink: #16132e;
+  --blue-white: #eef3fc;
+  --blue: #0028ab;
+  --blue-sky: #4a89ff;
+  --ink: #0a1633;
 
-  --background: var(--marshmallow);
+  --background: var(--blue-white);
   --foreground: var(--ink);
   --card: #ffffff;
   --card-foreground: var(--ink);
   --popover: #ffffff;
   --popover-foreground: var(--ink);
 
-  --primary: var(--violet);
+  --primary: var(--blue);
+  --primary-hover: #001e82;
   --primary-foreground: #ffffff;
-  --secondary: #e6e2ee;
+  --secondary: #e1e8f6;
   --secondary-foreground: var(--ink);
-  --muted: #e8e4ec;
-  --muted-foreground: #565170;
-  --accent: var(--pink);
+  --muted: #e3eaf7;
+  --muted-foreground: #4a5878;
+  --accent: var(--blue-sky);
   --accent-foreground: var(--ink);
 
   --destructive: oklch(0.53 0.2 27);
@@ -43,31 +44,32 @@
   /* Text-safe variants (≥ 4.5:1 on their usual backgrounds). */
   --urgent-deep: oklch(0.47 0.19 27); /* 112 pill + red text on light tints */
   --success-text: oklch(0.42 0.11 155); /* green text on light green tints */
-  --link: var(--violet);
+  --link: var(--blue);
 
-  --border: #dcd7e4;
-  --input: #d3cde0;
-  --ring: var(--violet);
+  --border: #d3dcee;
+  --input: #c9d3e8;
+  --ring: var(--blue-sky);
 
   --shadow-soft:
-    0 1px 2px rgb(22 19 46 / 0.06), 0 4px 16px rgb(22 19 46 / 0.06);
+    0 1px 2px rgb(10 22 51 / 0.06), 0 4px 16px rgb(10 22 51 / 0.06);
 }
 
 .dark {
-  --background: #0e0b1f;
-  --foreground: #f0edf0;
-  --card: #1a1534;
-  --card-foreground: #f0edf0;
-  --popover: #1a1534;
-  --popover-foreground: #f0edf0;
+  --background: #060d24;
+  --foreground: #eef3fc;
+  --card: #0f1a3a;
+  --card-foreground: #eef3fc;
+  --popover: #0f1a3a;
+  --popover-foreground: #eef3fc;
 
-  --primary: #6a52ff; /* white text ≈ 4.9:1 */
+  --primary: #2a66f0; /* white text ≈ 4.9:1 */
+  --primary-hover: #1f56d6;
   --primary-foreground: #ffffff;
-  --secondary: #241e45;
-  --secondary-foreground: #f0edf0;
-  --muted: #221c40;
-  --muted-foreground: #b9b2d6;
-  --accent: var(--pink);
+  --secondary: #16244a;
+  --secondary-foreground: #eef3fc;
+  --muted: #142046;
+  --muted-foreground: #a9b8da;
+  --accent: var(--blue-sky);
   --accent-foreground: var(--ink);
 
   --destructive: oklch(0.68 0.19 25);
@@ -77,11 +79,11 @@
   --success-foreground: var(--ink);
   --urgent-deep: oklch(0.47 0.19 27);
   --success-text: oklch(0.8 0.13 155);
-  --link: #ab9fff; /* violet that reads on the dark background */
+  --link: #8db4ff; /* sky blue that reads on the dark background */
 
-  --border: #2c2550;
-  --input: #352d5e;
-  --ring: #9a8aff;
+  --border: #22325e;
+  --input: #2a3b6c;
+  --ring: #6fa0ff;
 
   --shadow-soft: 0 1px 2px rgb(0 0 0 / 0.3), 0 4px 16px rgb(0 0 0 / 0.25);
 }
@@ -115,11 +117,10 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  --color-violet: var(--violet);
-  --color-violet-deep: var(--violet-deep);
-  --color-pink: var(--pink);
+  --color-primary-hover: var(--primary-hover);
+  --color-blue: var(--blue);
+  --color-blue-sky: var(--blue-sky);
   --color-ink: var(--ink);
-  --color-marshmallow: var(--marshmallow);
 
   --radius-sm: calc(var(--radius) - 6px);
   --radius-md: calc(var(--radius) - 4px);
@@ -131,14 +132,15 @@
   --shadow-soft: var(--shadow-soft);
 }
 
-/* Violet → pink signature gradient. */
+/* Deep blue → sky blue signature gradient. */
 @utility bg-brand-gradient {
-  background: linear-gradient(
-    120deg,
-    var(--violet) 0%,
-    #a24ff0 55%,
-    var(--pink) 100%
-  );
+  background: linear-gradient(120deg, var(--blue) 0%, var(--blue-sky) 100%);
+}
+
+/* Logo mark: gradient tile + white icon in dark mode; inverted in light mode
+   (white tile + gradient icon). The gradient lives in <BrandMark>. */
+@utility logo-icon {
+  stroke: url(#uputko-logo-gradient);
 }
 @layer base {
   * {
