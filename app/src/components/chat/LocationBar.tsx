@@ -4,6 +4,11 @@ import { LocateFixed, MapPin } from "lucide-react";
 import { useState } from "react";
 import { hr } from "@/i18n/hr";
 import { ui } from "@/lib/ui";
+import { cn } from "@/lib/utils";
+
+// Smaller on phones so the chat stays visible; full size on large screens.
+const compact =
+  "min-h-11 rounded-xl px-4 text-base lg:min-h-14 lg:rounded-2xl lg:px-6 lg:text-lg";
 
 export type ChatLocation =
   | { source: "gps"; lat: number; lng: number }
@@ -78,17 +83,19 @@ export function LocationBar({
 
   return (
     <section
-      className={`${ui.card} flex flex-col gap-3`}
+      className={cn(ui.card, "flex flex-col gap-2 p-4 lg:gap-3 lg:p-5")}
       aria-labelledby="loc-title"
     >
-      <h2 id="loc-title" className="text-xl font-bold">
+      <h2 id="loc-title" className="text-lg font-bold lg:text-xl">
         {hr.chat.location.title}
       </h2>
-      <p className="text-base text-muted-foreground">{hr.chat.location.body}</p>
+      <p className="text-sm text-muted-foreground lg:text-base">
+        {hr.chat.location.body}
+      </p>
       {mode === "ask" && (
         <button
           type="button"
-          className={ui.btnSecondary}
+          className={cn(ui.btnSecondary, compact)}
           onClick={useGps}
           disabled={busy}
           aria-busy={busy}
@@ -111,7 +118,7 @@ export function LocationBar({
         </label>
         <input
           id="loc-city"
-          className={`${ui.input} min-w-0 flex-1`}
+          className={cn(ui.input, compact, "min-w-0 flex-1 px-3 lg:px-4")}
           placeholder={
             mode === "ask"
               ? `${hr.chat.location.orType}: ${hr.chat.location.cityPlaceholder}`
@@ -123,7 +130,7 @@ export function LocationBar({
         />
         <button
           type="submit"
-          className={ui.btnPrimary}
+          className={cn(ui.btnPrimary, compact)}
           disabled={city.trim().length < 2}
         >
           {hr.chat.location.confirm}
@@ -136,7 +143,7 @@ export function LocationBar({
       )}
       <button
         type="button"
-        className={`${ui.btnLink} self-start`}
+        className={cn(ui.btnLink, "min-h-10 self-start lg:min-h-12")}
         onClick={() => {
           setMode("hidden");
           onSkip?.();

@@ -29,25 +29,25 @@ export function FinishBar({
         )
       : hr.chat.finish.notReady;
   return (
-    <div className="flex flex-col gap-1.5">
+    <div className="flex flex-col gap-1 lg:gap-1.5">
       <button
         type="button"
         onClick={onFinish}
         disabled={disabled}
         aria-describedby="finish-hint"
         className={cn(
-          "inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-2xl px-6 text-lg font-semibold transition-colors duration-200 focus-visible:ring-4 focus-visible:ring-ring/50 focus-visible:outline-none",
+          "inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl px-5 text-base font-semibold transition-colors duration-200 focus-visible:ring-4 focus-visible:ring-ring/50 focus-visible:outline-none lg:min-h-14 lg:rounded-2xl lg:px-6 lg:text-lg",
           disabled
             ? "cursor-not-allowed border-2 border-border bg-muted text-muted-foreground"
             : "bg-primary text-primary-foreground hover:bg-primary-hover",
         )}
       >
-        <Send aria-hidden className="size-5" />
+        <Send aria-hidden className="size-4 lg:size-5" />
         {hr.chat.finish.button}
       </button>
       <p
         id="finish-hint"
-        className="px-1 text-base text-muted-foreground"
+        className="px-1 text-sm text-muted-foreground lg:text-base"
         aria-live="polite"
       >
         {hint}

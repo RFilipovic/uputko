@@ -40,8 +40,8 @@ export function TextSizeToggle({
       aria-label={compact ? hr.settings.largeText : undefined}
       title={hr.settings.largeText}
       className={cn(
-        "inline-flex min-h-12 items-center justify-center gap-2 rounded-full border-2 text-base font-semibold whitespace-nowrap transition-colors duration-200 focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none",
-        compact ? "min-w-12 px-2" : "px-4",
+        "inline-flex min-h-11 items-center justify-center gap-2 rounded-full border-2 text-base font-semibold whitespace-nowrap transition-colors duration-200 focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none lg:min-h-12",
+        compact ? "min-w-11 px-2 lg:min-w-12" : "px-4",
         large
           ? "border-primary bg-primary text-primary-foreground"
           : "border-border bg-card text-foreground hover:border-primary",

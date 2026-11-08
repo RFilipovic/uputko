@@ -31,7 +31,7 @@ export default async function ChatPage({
       <AppHeader
         backHref="/"
         title={hr.chat.title}
-        className="mx-auto max-w-5xl"
+        className="mx-auto max-w-5xl py-2 lg:py-4"
       />
       <ChatScreen autoVoice={glas === "1"} patientName={patient.name} />
     </div>

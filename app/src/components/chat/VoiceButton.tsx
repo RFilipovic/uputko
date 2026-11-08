@@ -88,14 +88,14 @@ export function VoiceButton({
       aria-label={hr.chat.voice}
       title={hr.chat.voice}
       className={cn(
-        "grid size-14 shrink-0 place-items-center rounded-full text-accent-foreground transition-colors duration-200 focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none",
+        "grid size-11 shrink-0 place-items-center rounded-full text-accent-foreground transition-colors duration-200 focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none lg:size-14",
         listening ? "animate-pulse bg-accent" : "bg-accent/90 hover:bg-accent",
       )}
     >
       {listening ? (
-        <MicOff aria-hidden className="size-6" />
+        <MicOff aria-hidden className="size-5 lg:size-6" />
       ) : (
-        <Mic aria-hidden className="size-6" />
+        <Mic aria-hidden className="size-5 lg:size-6" />
       )}
     </button>
   );

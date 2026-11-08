@@ -74,7 +74,7 @@ export function MessageBubble({
         <motion.div
           layoutId={message.layoutId}
           transition={{ type: "spring", stiffness: 380, damping: 32 }}
-          className="max-w-[85%] rounded-3xl rounded-br-lg bg-primary px-5 py-3.5 text-lg leading-relaxed whitespace-pre-wrap text-primary-foreground"
+          className="max-w-[85%] rounded-3xl rounded-br-lg bg-primary px-4 py-2.5 text-base leading-relaxed whitespace-pre-wrap text-primary-foreground lg:px-5 lg:py-3.5 lg:text-lg"
         >
           <span className="sr-only">{hr.chat.you}: </span>
           {message.text}
@@ -83,16 +83,16 @@ export function MessageBubble({
     );
   }
   return (
-    <li className="flex animate-in gap-3 duration-200 fade-in slide-in-from-bottom-1">
+    <li className="flex animate-in gap-2.5 duration-200 fade-in slide-in-from-bottom-1 lg:gap-3">
       <span
         aria-hidden
-        className="mt-0.5 grid size-9 shrink-0 place-items-center rounded-full text-white bg-brand-gradient"
+        className="mt-0.5 grid size-8 shrink-0 place-items-center rounded-full text-white bg-brand-gradient lg:size-9"
       >
         <Sparkles className="size-4" />
       </span>
       <div
         className={cn(
-          "min-w-0 flex-1 pt-1 text-lg leading-relaxed whitespace-pre-wrap",
+          "min-w-0 flex-1 pt-0.5 text-base leading-relaxed whitespace-pre-wrap lg:pt-1 lg:text-lg",
           message.error && "font-medium text-urgent",
         )}
       >

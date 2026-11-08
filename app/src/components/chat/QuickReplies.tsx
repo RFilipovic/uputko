@@ -38,7 +38,7 @@ export function QuickReplies({
             disabled={disabled}
             onClick={() => onPick(o)}
             className={cn(
-              "flex min-h-14 items-center rounded-2xl border-2 bg-card px-5 text-left text-lg font-semibold transition-colors duration-200 hover:border-primary focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none disabled:opacity-50",
+              "flex min-h-11 items-center rounded-xl border-2 bg-card px-4 py-1.5 text-left text-base font-semibold transition-colors duration-200 hover:border-primary focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none disabled:opacity-50 lg:min-h-14 lg:rounded-2xl lg:px-5 lg:py-0 lg:text-lg",
               variant === "list"
                 ? "w-full border-border"
                 : "border-primary/40 text-primary",
