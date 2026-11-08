@@ -205,8 +205,8 @@ Funkcije u bazi (PL/pgSQL, samo za poslužitelj): `nearest_institutions`,
 
 Testirano s: 138 jediničnih testova (Vitest), Playwright end-to-end testovi u
 Chromiumu i Firefoxu (glavni put, hitni slučaj, izravni put, promjena termina,
-demo način, rubni slučajevi, axe pristupačnost u svijetlom/tamnom/većim
-slovima) i evaluacije agenta.
+demo način, rubni slučajevi, axe pristupačnost uz normalna i veća
+slova) i evaluacije agenta.
 
 ---
 

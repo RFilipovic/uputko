@@ -131,8 +131,8 @@ cd ../data-pipeline
 
 End-to-end testovi pokrivaju glavni put, promjenu termina i ponude ranijeg
 termina, hitni put, izravni put (zubobolja), demo način, rubne slučajeve te
-automatske provjere pristupačnosti (axe, WCAG 2.2 AA) u svijetlom, tamnom i
-načinu s većim slovima.
+automatske provjere pristupačnosti (axe, WCAG 2.2 AA) uz normalna i veća
+slova.
 
 Zaštita od zloupotrebe: razgovor je ograničen na 40 poruka na sat po
 posjetitelju, 20 po razgovoru i 800 dnevno ukupno; čitanje uputnice na 10 na

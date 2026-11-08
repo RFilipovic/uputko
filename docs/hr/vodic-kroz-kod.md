@@ -156,7 +156,7 @@ vlasnik slučaja, termina ili obavijesti (`lib/patientAuth.ts`).
 | `onboarding/` | `PersonaPicker`, `ChooseDoctors` |
 | `data/` | `SourceChip` („Izvor: HZZO (data.gov.hr)” → `/javni-podaci`) |
 | `layout/` | `AppHeader`, `DemoBar`, `MotionProvider`, `PhoneFrame` (trenutno se ne koristi) |
-| `settings/` | `TextSizeToggle` („Veća slova”), `ThemeToggle` |
+| `settings/` | `TextSizeToggle` („Veća slova”) |
 | `institution/` | `BookingActions` (demo panel bolnice) |
 | `ui/` | shadcn osnovne komponente: mijenjati oprezno |
 
@@ -214,7 +214,7 @@ Sirovi i očišćeni snimci spremljeni su u repozitorij, pa `./build.sh` ne treb
 | Naredba (u `app/`) | Što | Trošak |
 |---|---|---|
 | `pnpm typecheck && pnpm lint && pnpm test` | TypeScript, ESLint, 138 Vitest jediničnih testova (hitni znakovi, usmjeravanje, spremnost, opcije, sljedeće otvaranje, sličnost, kalendar) | besplatno, bez interneta |
-| `pnpm exec playwright test` | End-to-end u Chromiumu + Firefoxu: glavni put, promjena termina, hitni slučaj, izravni put, demo način, rubni slučajevi, axe pristupačnost (svijetlo/tamno/veća slova) + tipkovnica | stvarni pozivi modela, centi |
+| `pnpm exec playwright test` | End-to-end u Chromiumu + Firefoxu: glavni put, promjena termina, hitni slučaj, izravni put, demo način, rubni slučajevi, axe pristupačnost (normalna/veća slova) + tipkovnica | stvarni pozivi modela, centi |
 | `E2E_BASE_URL=https://uputko.vercel.app pnpm exec playwright test --project=chromium` | Isto, na stranici uživo | centi |
 | `pnpm eval [scenario-id]` | 17 skriptiranih pacijenata protiv pokrenute aplikacije; provjerava hitnost **i** usmjeravanje | centi |
 | `cd data-pipeline && .venv/bin/python -m pytest -q` | Transformacije cjevovoda | besplatno |
@@ -230,7 +230,7 @@ nikad ne stavljajte tekst izravno u komponente.
 
 **Dodati stranicu ili komponentu.** Stavite je u odgovarajuću mapu (§2, §6).
 Svaki asinkroni dio treba stanja učitavanja (skeleton), praznog prikaza,
-greške i uspjeha, tamni način, pristup tipkovnicom i poštivanje smanjenog
+greške i uspjeha, pristup tipkovnicom i poštivanje smanjenog
 kretanja. Osnovni tekst je 18 px, a raspored mora izdržati „Veća slova”
 (21 px). Pokrenite `e2e/a11y.spec.ts`.
 

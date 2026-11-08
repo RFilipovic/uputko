@@ -131,8 +131,8 @@ cd ../data-pipeline
 
 The end-to-end suite covers the golden path, rescheduling and earlier-slot
 offers, the emergency path, the direct (toothache) route, demo mode, edge
-cases, and automated accessibility checks (axe, WCAG 2.2 AA) in light, dark and
-large-text modes.
+cases, and automated accessibility checks (axe, WCAG 2.2 AA) at normal and large
+text sizes.
 
 Abuse protection: chat is limited to 40 messages/hour per visitor, 20 per
 conversation and 800/day overall; uputnica reading to 10/hour per visitor.
