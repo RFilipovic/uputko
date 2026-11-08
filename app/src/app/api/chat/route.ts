@@ -106,8 +106,16 @@ export async function POST(req: Request) {
     });
 
   const parsed = Body.safeParse(await req.json().catch(() => null));
-  if (!parsed.success)
-    return json(400, { error: "bad_request", message: hr.chat.errors.tooLong });
+  if (!parsed.success) {
+    // Only an over-long message gets the "too long" text; anything else is generic.
+    const tooLong = parsed.error.issues.some(
+      (i) => i.path[0] === "message" && i.code === "too_big",
+    );
+    return json(400, {
+      error: "bad_request",
+      message: tooLong ? hr.chat.errors.tooLong : hr.chat.errors.generic,
+    });
+  }
   const { location, finish, retry } = parsed.data;
   let message = finish ? hr.chat.finishMessage : parsed.data.message;
   if (!message && !retry)
