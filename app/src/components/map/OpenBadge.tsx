@@ -36,7 +36,7 @@ export function OpenBadge({
       className={cn(
         "inline-flex w-fit items-center gap-2 rounded-full px-3 py-1 text-base font-semibold",
         emergency
-          ? "bg-urgent/10 text-urgent dark:text-foreground"
+          ? "bg-urgent/10 text-urgent"
           : open
             ? "bg-success/15 text-success-text"
             : "bg-muted text-muted-foreground",

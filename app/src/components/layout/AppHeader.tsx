@@ -2,7 +2,6 @@ import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { BrandMark } from "@/components/layout/BrandMark";
 import { TextSizeToggle } from "@/components/settings/TextSizeToggle";
-import { ThemeToggle } from "@/components/settings/ThemeToggle";
 import { hr } from "@/i18n/hr";
 import { cn } from "@/lib/utils";
 
@@ -46,7 +45,6 @@ export function AppHeader({
       )}
       <div className="flex items-center gap-2">
         <TextSizeToggle compact={Boolean(backHref)} />
-        <ThemeToggle />
       </div>
     </header>
   );

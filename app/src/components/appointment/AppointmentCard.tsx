@@ -109,7 +109,7 @@ export function AppointmentCard({
               {when.weekday}
             </span>
             <span className="text-4xl font-bold">{when.date}</span>
-            <span className="text-4xl font-bold text-primary dark:text-foreground">
+            <span className="text-4xl font-bold text-primary">
               {hr.appointment.at} {when.time}
             </span>
           </motion.p>

@@ -60,10 +60,7 @@ export function OfferCard({
         id={`offer-${offer.id}`}
         className="flex items-center gap-2 text-xl font-bold"
       >
-        <BellRing
-          aria-hidden
-          className="size-6 text-primary dark:text-foreground"
-        />
+        <BellRing aria-hidden className="size-6 text-primary" />
         {earlier
           ? hr.notifications.earlierTitle
           : hr.notifications.rescheduleTitle}

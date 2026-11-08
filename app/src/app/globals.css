@@ -1,13 +1,9 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-/* Dark mode follows the .dark class on <html>; set before paint from the
-   user's saved choice or prefers-color-scheme (see layout.tsx). */
-@custom-variant dark (&:is(.dark *));
-
 /* Design tokens.
    Brand palette: Deep Blue #0028AB (primary) · Sky Blue #4A89FF (accent);
-   the signature gradient runs deep blue → white (flipped in dark mode) on a cool blue-white background. Urgent red is reserved ONLY
+   the signature gradient runs deep blue → white on a cool blue-white background. Urgent red is reserved ONLY
    for emergencies.
    Contrast notes: white on #0028AB ≈ 11:1; white on #4A89FF ≈ 3.3:1 (fails),
    so anything sitting on sky blue uses dark ink text (≈ 5.4:1). */
@@ -54,40 +50,6 @@
     0 1px 2px rgb(10 22 51 / 0.06), 0 4px 16px rgb(10 22 51 / 0.06);
 }
 
-.dark {
-  --background: #060d24;
-  --foreground: #eef3fc;
-  --card: #0f1a3a;
-  --card-foreground: #eef3fc;
-  --popover: #0f1a3a;
-  --popover-foreground: #eef3fc;
-
-  --primary: #2a66f0; /* white text ≈ 4.9:1 */
-  --primary-hover: #1f56d6;
-  --primary-foreground: #ffffff;
-  --secondary: #16244a;
-  --secondary-foreground: #eef3fc;
-  --muted: #142046;
-  --muted-foreground: #a9b8da;
-  --accent: var(--blue-sky);
-  --accent-foreground: var(--ink);
-
-  --destructive: oklch(0.68 0.19 25);
-  --urgent: oklch(0.62 0.21 27);
-  --urgent-foreground: oklch(0.99 0 0);
-  --success: oklch(0.72 0.14 155);
-  --success-foreground: var(--ink);
-  --urgent-deep: oklch(0.47 0.19 27);
-  --success-text: oklch(0.8 0.13 155);
-  --link: #8db4ff; /* sky blue that reads on the dark background */
-
-  --border: #22325e;
-  --input: #2a3b6c;
-  --ring: #6fa0ff;
-
-  --shadow-soft: 0 1px 2px rgb(0 0 0 / 0.3), 0 4px 16px rgb(0 0 0 / 0.25);
-}
-
 @theme inline {
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 
@@ -132,13 +94,9 @@
   --shadow-soft: var(--shadow-soft);
 }
 
-/* Signature gradient: deep blue → white, half and half. It flips in dark
-   mode (white → deep blue) so the logo tile inverts with the theme. */
+/* Signature gradient: deep blue → white, half and half (logo tile). */
 @utility bg-brand-gradient {
   background: linear-gradient(135deg, var(--blue) 0%, #ffffff 100%);
-  :where(.dark) & {
-    background: linear-gradient(135deg, #ffffff 0%, var(--blue) 100%);
-  }
 }
 
 @layer base {
@@ -146,6 +104,7 @@
     @apply border-border outline-ring/50;
   }
   html {
+    color-scheme: light;
     font-size: 112.5%; /* 18px base: readable for older users by default */
     -webkit-text-size-adjust: 100%;
   }

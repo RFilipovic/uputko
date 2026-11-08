@@ -16,7 +16,7 @@ export default function Home() {
       {/* Soft brand glow — decorative only, never behind text that needs contrast. */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[34rem] opacity-60 dark:opacity-40"
+        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[34rem] opacity-60"
         style={{
           background:
             "radial-gradient(60% 70% at 15% 0%, rgb(74 137 255 / 0.3), transparent 70%), radial-gradient(60% 70% at 90% 10%, rgb(0 40 171 / 0.22), transparent 70%)",
