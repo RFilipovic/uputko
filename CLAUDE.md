@@ -47,7 +47,7 @@ Open data from data.gov.hr (doctors, primary-care network, health institutions, 
 - **Safety first, visibly.** Red-flag escalation is deterministic code, not LLM judgment. The agent never diagnoses, never recommends medication, and always shows a disclaimer.
 - **Synthetic patients only.** No real health data anywhere — repo, DB, logs, video. Doctor names from open data may be displayed; demo emails go only to team-controlled inboxes.
 - **Croatian first.** All UI copy in Croatian; English fallback is optional.
-- **Accessible.** WCAG 2.2 AA contrast, ≥ 18px base text option, full keyboard nav, large tap targets (≥ 48px), voice input. "Can my grandmother use it?" is a real test.
+- **Accessible.** WCAG 2.2 AA contrast, ≥ 18px base text option, full keyboard nav, large tap targets (≥ 48px; the phone chat screen uses ≥ 44px so the conversation stays visible), voice input. "Can my grandmother use it?" is a real test.
 - **Perceived latency ≈ 0.** Stream every LLM response token by token, optimistic UI everywhere, skeletons instead of spinners, no layout shift.
 - **Honesty about the real system.** In reality the e-uputnica is issued in **CEZIH**. Our doctor portal is a stand-in; docs must say so and describe the real integration path.
 

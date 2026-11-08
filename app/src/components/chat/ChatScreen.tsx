@@ -224,16 +224,16 @@ export function ChatScreen({
       <main className="min-h-0 flex-1 overflow-y-auto overscroll-contain">
         <div
           className={cn(
-            "mx-auto flex w-full max-w-3xl flex-col gap-5 px-5 pt-4 pb-6",
+            "mx-auto flex w-full max-w-3xl flex-col gap-4 px-4 pt-3 pb-4 lg:gap-5 lg:px-5 lg:pt-4 lg:pb-6",
             !started && "min-h-full justify-center",
           )}
         >
           {!started ? (
             <div className="flex animate-in flex-col gap-4 duration-300 ease-out fade-in slide-in-from-bottom-2">
-              <h1 className="text-3xl leading-tight font-bold sm:text-4xl">
+              <h1 className="text-2xl leading-tight font-bold sm:text-3xl lg:text-4xl">
                 {hr.chat.greeting}
               </h1>
-              <p className="text-lg text-muted-foreground">
+              <p className="text-base text-muted-foreground lg:text-lg">
                 {patientName} · {hr.chat.hint}
               </p>
               {!locationSkipped && (
@@ -314,7 +314,7 @@ export function ChatScreen({
           <div ref={endRef} />
         </div>
       </main>
-      <div className="mx-auto flex w-full max-w-3xl flex-col gap-2 px-3 pt-2 pb-3">
+      <div className="mx-auto flex w-full max-w-3xl flex-col gap-1.5 px-3 pt-1.5 pb-2 lg:gap-2 lg:pt-2 lg:pb-3">
         {started && !outcome && caseId && (
           <FinishBar
             ready={ready.ready}
@@ -332,7 +332,7 @@ export function ChatScreen({
             disabled={busy}
           />
         )}
-        <p className="px-2 text-center text-sm text-muted-foreground">
+        <p className="px-2 text-center text-xs text-muted-foreground lg:text-sm">
           {hr.disclaimer}
         </p>
       </div>
