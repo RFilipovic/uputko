@@ -63,7 +63,7 @@ vlasnik slučaja, termina ili obavijesti (`lib/patientAuth.ts`).
 
 | Metoda · putanja | Datoteka | Svrha |
 |---|---|---|
-| `POST /api/chat` | `api/chat/route.ts` | Jedan korak razgovora, streaman kao Server-Sent Events (`case`, `ready`, `delta`, `options`, `outcome`, `error`, `done`). Zastavice: `finish` (Pošalji liječniku), `retry` (ponovno odgovori na zadnju poruku) |
+| `POST /api/chat` | `api/chat/route.ts` | Jedan korak razgovora, streaman kao Server-Sent Events (`case`, `ready`, `delta`, `options`, `confirm`, `outcome`, `error`, `done`). Zastavice: `finish` (Pošalji liječniku), `retry` (ponovno odgovori na zadnju poruku) |
 | `GET/POST/DELETE /api/session` | `api/session/route.ts` | Koja sam osoba / odaberi jednu / zaboravi je |
 | `GET /api/cases/[id]` | `api/cases/[id]/route.ts` | Svježi podaci slučaja; stranica slučaja ih ponovno dohvaća na svaki signal uživo |
 | `GET /api/practitioners?role=&q=` | `api/practitioners/route.ts` | Pretraga liječnika pri postavljanju (otvoreni podaci) |
@@ -98,7 +98,11 @@ vlasnik slučaja, termina ili obavijesti (`lib/patientAuth.ts`).
    tri alata: `get_my_doctors`, `find_places`, `submit_case_summary`. Tekst
    stiže u preglednik kao događaji `delta`; završni redak `OPCIJE: a | b`
    postaje gumbi za brzi odgovor (`lib/agent/options.ts`).
-5. **Slanje**: kad agent pozove `submit_case_summary`, sažetak se provjerava
+5. **Slanje**: ako agent pozove `submit_case_summary` prije nego što je
+   pacijent potvrdio, ništa se ne šalje: ruta šalje događaj `confirm`, a
+   razgovor prikazuje *Da, pošalji* / *Ne, želim nešto dodati*
+   (`lib/agent/confirm.ts`; hitni slučajevi to preskaču). Nakon potvrde (gumb
+   ili upisano „da”) sažetak se provjerava
    (`lib/agent/schemas.ts`), a `submitCase()` (`lib/agent/outcome.ts`) pokreće
    **fiksno usmjeravanje** (`lib/agent/routing.ts`): izravno (najbliža
    otvorena ordinacija) ili preko izabranog liječnika (e-pošta + link za liječnika).
@@ -116,6 +120,7 @@ vlasnik slučaja, termina ili obavijesti (`lib/patientAuth.ts`).
 | `agent/redFlags.ts` | Fiksna pravila za hitne slučajeve (hrvatski + engleski), prepoznaju negaciju |
 | `agent/routing.ts` | Kategorija → prvi kontakt; „izvan mjesta” = > 25 km → izravno za stomatologiju |
 | `agent/readiness.ts` | Kad se otključava „Pošalji liječniku” |
+| `agent/confirm.ts` | Pacijent potvrđuje prije slanja slučaja (nikad za hitne slučajeve) |
 | `agent/schemas.ts` | Sažetak slučaja (Zod + JSON Schema predana alatu) |
 | `agent/outcome.ts` | `submitCase`, `escalateEmergency`: što se događa nakon sažetka |
 | `agent/options.ts` | Čitanje retka za brze odgovore (`OPCIJE:` / `OPTIONS:`) |

@@ -11,6 +11,7 @@ import {
   submitCase,
   type Outcome,
 } from "./outcome";
+import { needsConfirmation } from "./confirm";
 import { patientContext, SYSTEM_PROMPT } from "./prompt";
 import { ROLES, SPECIALTY_BY_ROLE } from "./routing";
 import { CASE_SUMMARY_JSON_SCHEMA, CaseSummary } from "./schemas";
@@ -75,6 +76,8 @@ export type TurnResult = {
   text: string;
   outcome: Outcome | null;
   refused: boolean;
+  /** The agent wanted to send the case: ask the patient first (nothing sent). */
+  confirm: boolean;
 };
 
 export async function runAgentTurn(opts: {
@@ -104,6 +107,7 @@ export async function runAgentTurn(opts: {
   if (opts.finishNow) messages.push({ role: "system", content: FINISH_NOW });
   let text = "";
   let outcome: Outcome | null = null;
+  let confirm = false;
 
   for (let call = 0; call < MAX_MODEL_CALLS; call++) {
     const stream = client.messages.stream(
@@ -130,7 +134,7 @@ export async function runAgentTurn(opts: {
     const message = await stream.finalMessage();
 
     if (message.stop_reason === "refusal") {
-      return { text, outcome, refused: true };
+      return { text, outcome, refused: true, confirm: false };
     }
     const toolUses = message.content.filter(
       (b): b is Anthropic.ToolUseBlock => b.type === "tool_use",
@@ -143,15 +147,25 @@ export async function runAgentTurn(opts: {
     messages.push({ role: "assistant", content: message.content });
     const results: Anthropic.ToolResultBlockParam[] = [];
     for (const use of toolUses) {
-      results.push(await runTool(use, opts, outcome, (o) => (outcome = o)));
+      results.push(
+        await runTool(
+          use,
+          opts,
+          outcome,
+          (o) => (outcome = o),
+          () => (confirm = true),
+        ),
+      );
     }
+    // Waiting for the patient's yes/no: no further model call this turn.
+    if (confirm) break;
     messages.push({ role: "user", content: results });
     if (text && !text.endsWith("\n")) {
       text += "\n\n";
       opts.emit("delta", { text: "\n\n" });
     }
   }
-  return { text, outcome, refused: false };
+  return { text, outcome, refused: false, confirm };
 }
 
 async function runTool(
@@ -159,6 +173,7 @@ async function runTool(
   opts: Parameters<typeof runAgentTurn>[0],
   current: Outcome | null,
   setOutcome: (o: Outcome) => void,
+  askConfirm: () => void,
 ): Promise<Anthropic.ToolResultBlockParam> {
   const err = (content: string): Anthropic.ToolResultBlockParam => ({
     type: "tool_result",
@@ -222,6 +237,17 @@ async function runTool(
       if (!parsed.success) {
         return err(
           `Sažetak nije ispravan: ${parsed.error.issues.map((i) => i.path.join(".")).join(", ")}`,
+        );
+      }
+      if (
+        needsConfirmation({
+          patientConfirmed: Boolean(opts.finishNow),
+          urgency: parsed.data.urgency,
+        })
+      ) {
+        askConfirm();
+        return ok(
+          "Ništa još nije poslano: sustav sada pita pacijenta želi li poslati opis. Ne piši ništa.",
         );
       }
       const outcome = await submitCase({

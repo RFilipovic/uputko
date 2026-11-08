@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { choosePersona, PERSONA, PHONE, say } from "./helpers";
+import { choosePersona, PERSONA, PHONE, say, sendNow } from "./helpers";
 
 const SHOTS = process.env.E2E_SHOTS ?? "test-results/shots";
 
@@ -41,9 +41,16 @@ test("direct path: toothache away from home → nearest open dentist, no referra
         .isVisible()
     )
       break;
+    // The agent asks before sending: the patient says yes.
+    if (await page.getByRole("button", { name: "Da, pošalji" }).isVisible()) {
+      await sendNow(page);
+      break;
+    }
     if (!(await page.getByLabel("Vaša poruka").isVisible())) break;
     await say(page, a);
   }
+  if (await page.getByRole("button", { name: "Da, pošalji" }).isVisible())
+    await sendNow(page);
   await expect(
     page.getByRole("heading", { name: /Idite ovdje|Najbliže ordinacije/ }),
   ).toBeVisible();

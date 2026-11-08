@@ -48,9 +48,15 @@ export async function finishIntake(page: Page, answers: string[]) {
   }
 }
 
-/** Press "Pošalji liječniku" (must be unlocked) and wait for the result. */
+/** Either way of sending: the agent's "Da, pošalji" or the "Pošalji liječniku" button. */
+export const SEND_BUTTON = /^(Pošalji liječniku|Da, pošalji)$/;
+
+/**
+ * Send the case and wait for the result: "Da, pošalji" if the agent asked,
+ * otherwise "Pošalji liječniku" (must be unlocked).
+ */
 export async function sendNow(page: Page) {
-  const button = page.getByRole("button", { name: "Pošalji liječniku" });
+  const button = page.getByRole("button", { name: SEND_BUTTON }).first();
   await expect(button).toBeEnabled();
   const reply = page.waitForResponse(
     (r) => r.url().endsWith("/api/chat") && r.request().method() === "POST",

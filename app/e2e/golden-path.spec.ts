@@ -1,5 +1,12 @@
 import { expect, test } from "@playwright/test";
-import { choosePersona, PERSONA, PHONE, say, sendNow } from "./helpers";
+import {
+  choosePersona,
+  PERSONA,
+  PHONE,
+  say,
+  SEND_BUTTON,
+  sendNow,
+} from "./helpers";
 
 const SHOTS = process.env.E2E_SHOTS ?? "test-results/shots";
 
@@ -31,8 +38,9 @@ test("golden path: chat → doctor uploads uputnica → patient sees appointment
     phone,
     "Već dva dana, probada, oko 5 od 10. Nemam temperaturu. U Zagrebu sam.",
   );
+  // Unlocked, or the agent already asks "Da, pošalji / Ne, želim nešto dodati".
   await expect(
-    phone.getByRole("button", { name: "Pošalji liječniku" }),
+    phone.getByRole("button", { name: SEND_BUTTON }).first(),
   ).toBeEnabled();
   await phone.screenshot({ path: `${SHOTS}/02b-chat-unlocked.png` });
   await sendNow(phone);

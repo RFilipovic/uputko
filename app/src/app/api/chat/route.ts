@@ -2,6 +2,7 @@ import type Anthropic from "@anthropic-ai/sdk";
 import { z } from "zod";
 import { splitOptions } from "@/lib/agent/options";
 import { readiness } from "@/lib/agent/readiness";
+import { isConfirmQuestion, isYes } from "@/lib/agent/confirm";
 import { escalateEmergency, type Outcome } from "@/lib/agent/outcome";
 import { checkRedFlags } from "@/lib/agent/redFlags";
 import { runAgentTurn } from "@/lib/agent/run";
@@ -72,7 +73,7 @@ async function demoSafeTurn(
         signal: ctrl.signal,
         fast: true,
       });
-      if (started) return result;
+      if (started || result.confirm) return result;
       console.warn("demo: empty model reply, using prepared reply");
     }
   } catch (err) {
@@ -184,8 +185,23 @@ export async function POST(req: Request) {
       message: hr.chat.errors.caseLimit,
     });
   }
-  // The button is unlocked by what the patient wrote, never by the button press itself.
-  if (finish && !readiness(userTexts).ready) {
+  // The button is unlocked by what the patient wrote, never by the button
+  // press itself. "Da, pošalji" after the agent's own confirmation question
+  // also counts: the agent already judged it had enough.
+  let confirmAsked = false;
+  {
+    const { data: lastReply } = await db()
+      .from("messages")
+      .select("content")
+      .eq("case_id", caseId)
+      .eq("role", "assistant")
+      .order("created_at", { ascending: false })
+      .order("id", { ascending: false })
+      .limit(1)
+      .maybeSingle();
+    confirmAsked = isConfirmQuestion(lastReply?.content);
+  }
+  if (finish && !confirmAsked && !readiness(userTexts).ready) {
     return json(409, { error: "not_ready", message: hr.chat.finish.notReady });
   }
   const ready =
@@ -280,7 +296,8 @@ export async function POST(req: Request) {
           location: { city: locationCity, source: locationSource },
           origin,
           emit,
-          finishNow: finish,
+          // Typing "da" to the confirmation question counts as "Da, pošalji".
+          finishNow: finish || (confirmAsked && !retry && isYes(message)),
         };
         const result = demo
           ? await demoSafeTurn(turn, {
@@ -291,7 +308,12 @@ export async function POST(req: Request) {
           : await runAgentTurn(turn);
 
         let text = result.text;
-        if (finish && !result.outcome) {
+        if (result.confirm && !result.outcome) {
+          // Deterministic question; the case is sent only after "Da, pošalji".
+          const ask = `${text.trim() ? "\n\n" : ""}${hr.chat.confirm.question}`;
+          emit("delta", { text: ask });
+          text = `${text.trimEnd()}${ask}`;
+        } else if (finish && !result.outcome) {
           emit("error", { message: hr.chat.finish.failed });
         } else if (result.refused || !text.trim()) {
           text = result.outcome ? "" : hr.chat.errors.refused;
@@ -305,7 +327,8 @@ export async function POST(req: Request) {
         }
         // Emergency from the model's own urgency: the outcome already says so.
         const outcome: Outcome | null = result.outcome;
-        if (options.length && !outcome) emit("options", { options });
+        if (result.confirm && !outcome) emit("confirm", {});
+        else if (options.length && !outcome) emit("options", { options });
         emit("done", {});
       } catch (err) {
         console.error("chat failed", err instanceof Error ? err.message : err);

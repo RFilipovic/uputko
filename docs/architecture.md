@@ -57,7 +57,11 @@ e-Građani, and the legal prerequisites.
    enough (3 of 5 basics, or 3 messages): `lib/agent/readiness.ts`, deterministic.
 4. **Summary.** The agent calls the `submit_case_summary` tool with a
    Zod-validated, doctor-ready summary (`lib/agent/schemas.ts`). The suggested
-   specialty is labelled *prijedlog, ne dijagnoza*.
+   specialty is labelled *prijedlog, ne dijagnoza*. **The patient decides when
+   it is sent:** if the patient has not pressed "Pošalji liječniku", nothing is
+   sent; the app asks "Jeste li rekli sve što ste htjeli?" with *Da, pošalji* /
+   *Ne, želim nešto dodati* (`lib/agent/confirm.ts`). Urgent cases are never
+   held back by this question.
 5. **Routing is code, not the model.** `lib/agent/routing.ts` maps the
    complaint category to the first point of contact (tooth → dentist,
    gynaecological → gynaecologist, child → paediatrician, everything else →

@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { PERSONA, PHONE } from "./helpers";
+import { PERSONA, PHONE, SEND_BUTTON } from "./helpers";
 
 /**
  * Demo-safe mode (?demo=1): reset, Ana's intake, the doctor reads the sample
@@ -46,7 +46,7 @@ test("demo mode: reset, Ana's intake, doctor sends the uputnica", async ({
   await page.getByRole("button", { name: "Pošalji", exact: true }).click();
   await (await r).finished();
 
-  const send = page.getByRole("button", { name: "Pošalji liječniku" });
+  const send = page.getByRole("button", { name: SEND_BUTTON }).first();
   await expect(send).toBeEnabled({ timeout: 15_000 });
   r = reply();
   await send.click();
