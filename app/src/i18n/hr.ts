@@ -30,6 +30,10 @@ export const hr = {
     ],
     myCases: "Moji slučajevi",
     profile: "Moj profil",
+    noCases:
+      "Još nemate slučajeva. Kad opišete problem, ovdje ćete ga pratiti.",
+    noProfile: "Odaberite svoj profil da biste ovdje vidjeli svoje slučajeve.",
+    chooseProfile: "Odaberi profil",
   },
   settings: {
     largeText: "Veća slova",

@@ -12,7 +12,7 @@ export const dynamic = "force-dynamic";
 
 export default function Home() {
   return (
-    <div className="relative isolate flex min-h-dvh flex-col overflow-x-hidden">
+    <div className="relative isolate flex min-h-dvh flex-col overflow-x-hidden lg:h-dvh lg:overflow-hidden">
       {/* Soft brand glow — decorative only, never behind text that needs contrast. */}
       <div
         aria-hidden
@@ -24,12 +24,15 @@ export default function Home() {
       />
 
       <Always112Banner />
-      <AppHeader className="mx-auto max-w-2xl" />
+      <AppHeader className="mx-auto max-w-2xl lg:max-w-6xl" />
 
-      <main className="mx-auto flex w-full max-w-2xl flex-1 flex-col gap-12 px-5 pt-6 pb-12 sm:pt-12">
+      {/* Phones: one scrolling column. Large screens: one screen, no page
+          scroll; hero + steps on the left, "Moji slučajevi" box on the right
+          (only its list scrolls). */}
+      <main className="mx-auto flex w-full max-w-2xl flex-1 flex-col gap-12 px-5 pt-6 pb-12 sm:pt-12 lg:grid lg:min-h-0 lg:max-w-6xl lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] lg:grid-rows-[auto_auto_auto] lg:[align-content:safe_center] lg:gap-x-12 lg:gap-y-8 lg:overflow-y-auto lg:pt-4 lg:pb-6">
         <section
           aria-labelledby="hero-title"
-          className="flex animate-in flex-col gap-5 duration-300 ease-out fade-in slide-in-from-bottom-2"
+          className="flex animate-in flex-col gap-5 duration-300 ease-out fade-in slide-in-from-bottom-2 lg:col-start-1 lg:row-start-1"
         >
           <h1
             id="hero-title"
@@ -59,27 +62,30 @@ export default function Home() {
           </div>
         </section>
 
-        <MyCases />
+        <MyCases className="lg:col-start-2 lg:row-span-2 lg:row-start-1" />
 
-        <section aria-labelledby="steps-title" className="flex flex-col gap-5">
+        <section
+          aria-labelledby="steps-title"
+          className="flex flex-col gap-5 lg:col-start-1 lg:row-start-2"
+        >
           <h2 id="steps-title" className="text-2xl font-bold">
             {t.stepsTitle}
           </h2>
-          <ol className="flex flex-col gap-3">
+          <ol className="flex flex-col gap-3 lg:grid lg:grid-cols-3">
             {t.steps.map((step, i) => (
               <li
                 key={step.title}
-                className="flex items-start gap-4 rounded-2xl border border-border bg-card p-5"
+                className="flex items-start gap-4 rounded-2xl border border-border bg-card p-5 lg:flex-col lg:gap-3 lg:p-4"
               >
                 <span
                   aria-hidden
-                  className="grid size-11 shrink-0 place-items-center rounded-full bg-primary text-xl font-bold text-primary-foreground"
+                  className="grid size-11 shrink-0 place-items-center rounded-full bg-primary text-xl font-bold text-primary-foreground lg:size-9 lg:text-lg"
                 >
                   {i + 1}
                 </span>
                 <div>
                   <p className="text-xl font-semibold">{step.title}</p>
-                  <p className="mt-1 text-lg text-muted-foreground">
+                  <p className="mt-1 text-lg text-muted-foreground lg:text-base">
                     {step.body}
                   </p>
                 </div>
@@ -88,10 +94,13 @@ export default function Home() {
           </ol>
         </section>
 
-        <footer className="mt-auto flex flex-col gap-3 border-t border-border pt-6 text-base text-muted-foreground">
+        <footer className="mt-auto flex flex-col gap-3 border-t border-border pt-6 text-base text-muted-foreground lg:col-span-2 lg:row-start-3 lg:mt-0 lg:flex-row lg:flex-wrap lg:items-center lg:gap-x-6 lg:gap-y-1 lg:pt-4">
           <p>{hr.disclaimer}</p>
           <p className="text-sm">{hr.app.demoBadge}</p>
-          <Link href="/javni-podaci" className={`${ui.btnLink} self-start`}>
+          <Link
+            href="/javni-podaci"
+            className={`${ui.btnLink} self-start lg:ml-auto lg:self-center`}
+          >
             <Database aria-hidden className="size-4" />
             {hr.openData.title}
           </Link>
