@@ -59,7 +59,11 @@ e-Građani i pravni preduvjeti.
    fiksna pravila.
 4. **Sažetak.** Agent poziva alat `submit_case_summary` sa sažetkom spremnim
    za liječnika, provjerenim kroz Zod (`lib/agent/schemas.ts`). Predložena
-   djelatnost označena je kao *prijedlog, ne dijagnoza*.
+   djelatnost označena je kao *prijedlog, ne dijagnoza*. **Pacijent odlučuje
+   kada se šalje:** ako nije pritisnuo „Pošalji liječniku”, ništa se ne šalje;
+   aplikacija pita „Jeste li rekli sve što ste htjeli?” uz *Da, pošalji* /
+   *Ne, želim nešto dodati* (`lib/agent/confirm.ts`). Hitni slučajevi nikad ne
+   čekaju na to pitanje.
 5. **Usmjeravanje radi kod, ne model.** `lib/agent/routing.ts` povezuje
    kategoriju tegobe s prvim kontaktom (zub → stomatolog, ginekološki problem →
    ginekolog, dijete → pedijatar, sve ostalo → obiteljski liječnik).

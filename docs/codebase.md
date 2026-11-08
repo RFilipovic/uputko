@@ -65,7 +65,7 @@ notification (`lib/patientAuth.ts`).
 
 | Method · path | File | Purpose |
 |---|---|---|
-| `POST /api/chat` | `api/chat/route.ts` | One chat turn, streamed as Server-Sent Events (`case`, `ready`, `delta`, `options`, `outcome`, `error`, `done`). Flags: `finish` (Pošalji liječniku), `retry` (answer the last message again) |
+| `POST /api/chat` | `api/chat/route.ts` | One chat turn, streamed as Server-Sent Events (`case`, `ready`, `delta`, `options`, `confirm`, `outcome`, `error`, `done`). Flags: `finish` (Pošalji liječniku), `retry` (answer the last message again) |
 | `GET/POST/DELETE /api/session` | `api/session/route.ts` | Which persona am I / pick one / forget it |
 | `GET /api/cases/[id]` | `api/cases/[id]/route.ts` | Fresh case data; the case page refetches it on every live ping |
 | `GET /api/practitioners?role=&q=` | `api/practitioners/route.ts` | Doctor search for onboarding (open data) |
@@ -100,7 +100,10 @@ What happens when the patient sends "Boli me uho već dva dana":
    three tools: `get_my_doctors`, `find_places`, `submit_case_summary`. Text
    streams to the browser as `delta` events; a trailing `OPCIJE: a | b` line
    becomes quick-reply buttons (`lib/agent/options.ts`).
-5. **Submit**: when the agent calls `submit_case_summary`, the summary is
+5. **Submit**: when the agent calls `submit_case_summary` before the patient
+   said yes, nothing is sent: the route emits `confirm` and the chat shows
+   *Da, pošalji* / *Ne, želim nešto dodati* (`lib/agent/confirm.ts`; urgent
+   cases skip this). After yes (the button, or a typed "da"), the summary is
    validated (`lib/agent/schemas.ts`) and `submitCase()` (`lib/agent/outcome.ts`)
    runs **deterministic routing** (`lib/agent/routing.ts`): direct (nearest open
    practice) or via the chosen doctor (email + doctor link).
@@ -118,6 +121,7 @@ What happens when the patient sends "Boli me uho već dva dana":
 | `agent/redFlags.ts` | Deterministic emergency rules (Croatian + English), negation-aware |
 | `agent/routing.ts` | Category → first contact; "away from home" = > 25 km → direct for dental |
 | `agent/readiness.ts` | When "Pošalji liječniku" unlocks |
+| `agent/confirm.ts` | The patient confirms before a case is sent (never for urgent cases) |
 | `agent/schemas.ts` | Case summary (Zod + the JSON Schema given to the tool) |
 | `agent/outcome.ts` | `submitCase`, `escalateEmergency`: what happens after the summary |
 | `agent/options.ts` | Quick-reply line parsing (`OPCIJE:` / `OPTIONS:`) |

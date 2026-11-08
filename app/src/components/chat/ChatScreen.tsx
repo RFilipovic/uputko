@@ -3,6 +3,7 @@
 import { RefreshCw, RotateCcw } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Composer } from "@/components/chat/Composer";
+import { ConfirmSend } from "@/components/chat/ConfirmSend";
 import { LocationBar, type ChatLocation } from "@/components/chat/LocationBar";
 import {
   MessageBubble,
@@ -54,6 +55,8 @@ export function ChatScreen({
   const [draft, setDraft] = useState("");
   const [busy, setBusy] = useState(false);
   const [options, setOptions] = useState<string[]>([]);
+  /** The agent wants to send: waiting for the patient's yes / no. */
+  const [confirming, setConfirming] = useState(false);
   const [caseId, setCaseId] = useState<string | null>(null);
   const [outcome, setOutcome] = useState<Outcome | null>(null);
   const [showEmergency, setShowEmergency] = useState(false);
@@ -113,6 +116,7 @@ export function ChatScreen({
     }
     setDraft("");
     setOptions([]);
+    setConfirming(false);
     setBusy(true);
 
     let raw = "";
@@ -164,6 +168,7 @@ export function ChatScreen({
             patchAssistant(replyId, { text: visibleText(raw) });
           } else if (ev.event === "options")
             setOptions((ev.data.options as string[]) ?? []);
+          else if (ev.event === "confirm") setConfirming(true);
           else if (ev.event === "outcome") {
             gotOutcome = ev.data.outcome as Outcome;
             setOutcome(gotOutcome);
@@ -200,6 +205,7 @@ export function ChatScreen({
   function reset() {
     setMessages([]);
     setOptions([]);
+    setConfirming(false);
     setCaseId(null);
     setOutcome(null);
     setShowEmergency(false);
@@ -210,6 +216,15 @@ export function ChatScreen({
   const started = messages.length > 0;
   const lastId = messages.at(-1)?.id;
   const lastRetry = messages.at(-1)?.retry;
+
+  function addMore() {
+    setConfirming(false);
+    setMessages((ms) => [
+      ...ms,
+      { id: nextId(), role: "assistant", text: hr.chat.confirm.addMore },
+    ]);
+    document.getElementById("composer")?.focus();
+  }
 
   function retryLast(r: NonNullable<ChatMessage["retry"]>) {
     if (r.mode === "again" && caseId)
@@ -285,6 +300,9 @@ export function ChatScreen({
                   {hr.chat.retry}
                 </button>
               )}
+              {confirming && !busy && !outcome && (
+                <ConfirmSend onYes={() => void send("", true)} onNo={addMore} />
+              )}
               {options.length > 0 && !busy && !outcome && (
                 <QuickReplies
                   options={options}
@@ -315,7 +333,7 @@ export function ChatScreen({
         </div>
       </main>
       <div className="mx-auto flex w-full max-w-3xl flex-col gap-1.5 px-3 pt-1.5 pb-2 lg:gap-2 lg:pt-2 lg:pb-3">
-        {started && !outcome && caseId && (
+        {started && !outcome && caseId && !confirming && (
           <FinishBar
             ready={ready.ready}
             missing={ready.missing}

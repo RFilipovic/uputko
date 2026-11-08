@@ -158,13 +158,15 @@ export async function demoTurn(opts: {
   finishNow: boolean;
   origin: string;
   emit: Emit;
-}): Promise<{ text: string; outcome: Outcome | null }> {
+}): Promise<{ text: string; outcome: Outcome | null; confirm: boolean }> {
   const script = SCRIPTS[opts.patient.name] ?? GENERIC;
   const next = script.questions[opts.assistantTurns];
   if (next && !opts.finishNow) {
     await streamText(next, opts.emit);
-    return { text: next, outcome: null };
+    return { text: next, outcome: null, confirm: false };
   }
+  // Questions used up: ask the patient before sending, like the real agent.
+  if (!opts.finishNow) return { text: "", outcome: null, confirm: true };
   const summary = script.summary(opts.city ?? opts.patient.home_city);
   const outcome = await submitCase({
     caseId: opts.caseId,
@@ -173,5 +175,5 @@ export async function demoTurn(opts: {
     origin: opts.origin,
   });
   opts.emit("outcome", { outcome });
-  return { text: "", outcome };
+  return { text: "", outcome, confirm: false };
 }

@@ -87,6 +87,13 @@ export const hr = {
     send: "Pošalji",
     voice: "Govorite",
     finishMessage: "Molim pošaljite moj opis liječniku.",
+    confirm: {
+      question:
+        "Imam dovoljno podataka. Jeste li rekli sve što ste htjeli? Ako jeste, šaljem vaš opis liječniku.",
+      yes: "Da, pošalji",
+      no: "Ne, želim nešto dodati",
+      addMore: "U redu. Napišite što još želite reći.",
+    },
     finish: {
       button: "Pošalji liječniku",
       ready: "Možete poslati sada, ili odgovorite na još koje pitanje.",
