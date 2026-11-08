@@ -66,7 +66,7 @@ export function Composer({
         disabled={!value.trim() || disabled}
         aria-label={hr.chat.send}
         title={hr.chat.send}
-        className="grid size-14 shrink-0 place-items-center rounded-full bg-primary text-primary-foreground transition-colors duration-200 hover:bg-violet-deep focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none disabled:bg-muted disabled:text-muted-foreground"
+        className="grid size-14 shrink-0 place-items-center rounded-full bg-primary text-primary-foreground transition-colors duration-200 hover:bg-primary-hover focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none disabled:bg-muted disabled:text-muted-foreground"
       >
         <SendHorizontal aria-hidden className="size-6" />
       </button>

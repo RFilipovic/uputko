@@ -30,10 +30,7 @@ export function ReferralCard({
       className={`${ui.card} flex flex-col gap-3 ${fresh ? "animate-in duration-300 fade-in slide-in-from-bottom-2" : ""}`}
     >
       <h2 id="ref-title" className="flex items-center gap-2 text-2xl font-bold">
-        <FileText
-          aria-hidden
-          className="size-7 text-primary dark:text-foreground"
-        />
+        <FileText aria-hidden className="size-7 text-primary" />
         {hr.referral.title}
       </h2>
       <dl className="grid gap-2">

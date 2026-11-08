@@ -72,7 +72,7 @@ export function CaseProgress({ status }: { status: string }) {
                     isDone
                       ? "border-primary bg-primary text-primary-foreground"
                       : isCurrent
-                        ? "border-primary bg-card text-primary dark:text-foreground"
+                        ? "border-primary bg-card text-primary"
                         : "border-muted bg-card text-muted-foreground",
                   )}
                   initial={false}

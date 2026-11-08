@@ -3,15 +3,14 @@ import { expect, test, type Page } from "@playwright/test";
 import { choosePersona, PERSONA, PHONE } from "./helpers";
 
 /**
- * Automated WCAG 2.2 AA check (axe) on the patient pages, in light and dark
- * mode and with "Veća slova". Maps are excluded: map tiles are third-party
+ * Automated WCAG 2.2 AA check (axe) on the patient pages, at normal size
+ * and with "Veća slova". Maps are excluded: map tiles are third-party
  * images and every place is also listed in text.
  */
 const PAGES = ["/", "/profil", "/chat", "/javni-podaci"];
 const MODES = [
-  { name: "light", dark: false, large: false },
-  { name: "dark", dark: true, large: false },
-  { name: "large text", dark: false, large: true },
+  { name: "normal text", large: false },
+  { name: "large text", large: true },
 ] as const;
 
 async function scan(page: Page) {
@@ -35,7 +34,6 @@ for (const mode of MODES) {
   test(`axe: patient pages, ${mode.name}`, async ({ browser }) => {
     const ctx = await browser.newContext({
       viewport: PHONE,
-      colorScheme: mode.dark ? "dark" : "light",
     });
     const page = await ctx.newPage();
     await page.addInitScript((large) => {

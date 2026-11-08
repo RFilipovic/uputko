@@ -158,7 +158,7 @@ What happens when the patient sends "Boli me uho već dva dana":
 | `onboarding/` | `PersonaPicker`, `ChooseDoctors` |
 | `data/` | `SourceChip` ("Izvor: HZZO (data.gov.hr)" → `/javni-podaci`) |
 | `layout/` | `AppHeader`, `DemoBar`, `MotionProvider`, `PhoneFrame` (unused now) |
-| `settings/` | `TextSizeToggle` ("Veća slova"), `ThemeToggle` |
+| `settings/` | `TextSizeToggle` ("Veća slova") |
 | `institution/` | `BookingActions` (demo hospital panel) |
 | `ui/` | shadcn primitives: change with care |
 
@@ -217,7 +217,7 @@ Raw and clean snapshots are committed, so `./build.sh` needs no internet.
 | Command (in `app/`) | What | Cost |
 |---|---|---|
 | `pnpm typecheck && pnpm lint && pnpm test` | TypeScript, ESLint, 138 Vitest unit tests (red flags, routing, readiness, options, next opening, similarity, calendar) | free, offline |
-| `pnpm exec playwright test` | End-to-end in Chromium + Firefox: golden path, rescheduling, emergency, direct route, demo mode, edge cases, axe accessibility (light/dark/large text) + keyboard | real model calls, cents |
+| `pnpm exec playwright test` | End-to-end in Chromium + Firefox: golden path, rescheduling, emergency, direct route, demo mode, edge cases, axe accessibility (normal/large text) + keyboard | real model calls, cents |
 | `E2E_BASE_URL=https://uputko.vercel.app pnpm exec playwright test --project=chromium` | Same against the live site | cents |
 | `pnpm eval [scenario-id]` | 17 scripted patients against the running app; checks urgency **and** route | cents |
 | `cd data-pipeline && .venv/bin/python -m pytest -q` | Pipeline transforms | free |
@@ -232,7 +232,7 @@ Before recording or merging to `main`, the golden-path and emergency tests must 
 components.
 
 **Add a page or component.** Put it in the matching folder (§2, §6). Every async
-part needs loading (skeleton), empty, error and success states, dark mode,
+part needs loading (skeleton), empty, error and success states,
 keyboard access and reduced-motion handling. Base text is 18 px, and the layout
 must survive "Veća slova" (21 px). Run `e2e/a11y.spec.ts`.
 

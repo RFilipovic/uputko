@@ -10,8 +10,8 @@ import {
 } from "@react-email/components";
 import type { ReactNode } from "react";
 
-const ink = "#16132E";
-const muted = "#565170";
+const ink = "#0A1633";
+const muted = "#4A5878";
 
 export const styles = {
   h1: {
@@ -30,7 +30,7 @@ export const styles = {
   },
   value: { color: ink, fontSize: "17px", fontWeight: 600, margin: "0 0 12px" },
   button: {
-    backgroundColor: "#573DFE",
+    backgroundColor: "#0028AB",
     borderRadius: "14px",
     color: "#ffffff",
     display: "inline-block",
@@ -64,7 +64,7 @@ export function Layout({
       <Preview>{preview}</Preview>
       <Body
         style={{
-          backgroundColor: "#F0EDF0",
+          backgroundColor: "#EEF3FC",
           fontFamily: "Inter, Arial, sans-serif",
           margin: 0,
           padding: "24px 12px",
@@ -80,7 +80,7 @@ export function Layout({
         >
           <Text
             style={{
-              color: "#573DFE",
+              color: "#0028AB",
               fontSize: "18px",
               fontWeight: 700,
               margin: "0 0 20px",
@@ -89,7 +89,7 @@ export function Layout({
             Uputko
           </Text>
           {children}
-          <Hr style={{ borderColor: "#dcd7e4", margin: "24px 0 16px" }} />
+          <Hr style={{ borderColor: "#d3dcee", margin: "24px 0 16px" }} />
           <Section>
             <Text
               style={{
