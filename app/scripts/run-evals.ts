@@ -33,6 +33,7 @@ async function turn(cookie: string, body: Record<string, unknown>) {
   let caseId = "";
   let outcome: Outcome | null = null;
   let reply = "";
+  let confirm = false;
   for (const block of text.split("\n\n")) {
     const ev = block.match(/^event: (\w+)\ndata: ([\s\S]*)$/);
     if (!ev) continue;
@@ -40,8 +41,9 @@ async function turn(cookie: string, body: Record<string, unknown>) {
     if (ev[1] === "case") caseId = data.caseId;
     if (ev[1] === "delta") reply += data.text;
     if (ev[1] === "outcome") outcome = data.outcome;
+    if (ev[1] === "confirm") confirm = true;
   }
-  return { caseId, outcome, reply };
+  return { caseId, outcome, reply, confirm };
 }
 
 async function run(s: EvalScenario) {
@@ -53,11 +55,16 @@ async function run(s: EvalScenario) {
   const caseId = r.caseId;
   const questions: string[] = [r.reply.trim()];
   const pool = [...s.answers];
+  let confirms = 0;
   for (let i = 0; i < MAX_TURNS && !r.outcome; i++) {
-    r = await turn(cookie, {
-      caseId,
-      message: pool.shift() ?? "Ne znam, to je sve.",
-    });
+    // The agent asks before sending: answer "Da, pošalji" like the patient would.
+    if (r.confirm) confirms++;
+    r = r.confirm
+      ? await turn(cookie, { caseId, finish: true })
+      : await turn(cookie, {
+          caseId,
+          message: pool.shift() ?? "Ne znam, to je sve.",
+        });
     questions.push(r.reply.trim());
   }
   const view = await (
@@ -80,6 +87,7 @@ async function run(s: EvalScenario) {
     role: view.targetRole,
     urgency: view.urgency,
     turns: questions.length,
+    confirms,
     questions,
   };
 }
@@ -92,7 +100,7 @@ for (const s of list) {
     const r = await run(s);
     if (r.pass) passed++;
     console.log(
-      `${r.pass ? "PASS" : "FAIL"}  ${s.id.padEnd(22)} got=${r.got}${r.role ? `/${r.role}` : ""}${r.urgency ? `/${r.urgency}` : ""} turns=${r.turns}  expected=${JSON.stringify(s.expect)}`,
+      `${r.pass ? "PASS" : "FAIL"}  ${s.id.padEnd(22)} got=${r.got}${r.role ? `/${r.role}` : ""}${r.urgency ? `/${r.urgency}` : ""} turns=${r.turns} confirms=${r.confirms}  expected=${JSON.stringify(s.expect)}`,
     );
     if (!r.pass || process.env.EVAL_VERBOSE)
       r.questions.forEach((q, i) =>
