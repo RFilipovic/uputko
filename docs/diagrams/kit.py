@@ -1,7 +1,8 @@
 """Tiny SVG kit for Uputko's diagrams (hand-placed layouts, brand colours).
 
-Each diagram script builds a `Diagram`, places boxes and arrows by
-coordinate, and calls `save()`. Render to PNG with `node render.cjs`.
+Each diagram script builds a `Diagram` per language (English `name.svg`,
+Croatian `name.hr.svg`), places boxes and arrows by coordinate, and calls
+`save()`. Render to PNG with `node render.cjs`.
 """
 
 from pathlib import Path
@@ -104,8 +105,8 @@ class Diagram:
                 f'<text x="{mx}" y="{my + 1}" text-anchor="middle" font-size="13.5" font-weight="600" fill="{INK}">{escape(label)}</text>'
             )
 
-    def legend(self, x, y, items):
-        self.label(x, y, "LEGEND", size=14)
+    def legend(self, x, y, items, title="LEGEND"):
+        self.label(x, y, title, size=14)
         for i, (kind, text) in enumerate(items):
             fill, stroke, _ = STYLE[kind]
             yy = y + 18 + i * 28

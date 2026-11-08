@@ -67,8 +67,8 @@
 <rect x="754.3" y="206.0" width="71.39999999999999" height="22" rx="11" fill="#FFFFFF" stroke="#E2DDEA"/>
 <text x="790.0" y="222.0" text-anchor="middle" font-size="13.5" font-weight="600" fill="#16132E">no flag</text>
 <path d="M670,275 L670,330" fill="none" stroke="#7A7493" stroke-width="2.2" marker-end="url(#arrow)"/>
-<rect x="674.2" y="291.5" width="79.6" height="22" rx="11" fill="#FFFFFF" stroke="#E2DDEA"/>
-<text x="714.0" y="307.5" text-anchor="middle" font-size="13.5" font-weight="600" fill="#16132E">red flag</text>
+<rect x="678.2" y="291.5" width="79.6" height="22" rx="11" fill="#FFFFFF" stroke="#E2DDEA"/>
+<text x="718.0" y="307.5" text-anchor="middle" font-size="13.5" font-weight="600" fill="#16132E">red flag</text>
 <path d="M915,195 L915,105" fill="none" stroke="#7A7493" stroke-width="2.2" marker-end="url(#arrow)" marker-start="url(#arrow-start)"/>
 <path d="M1020,235 L1060,235" fill="none" stroke="#7A7493" stroke-width="2.2" marker-end="url(#arrow)"/>
 <path d="M1160,275 L1160,330" fill="none" stroke="#7A7493" stroke-width="2.2" marker-end="url(#arrow)"/>

@@ -1,5 +1,7 @@
 # Uputko
 
+*[Hrvatska verzija](README.hr.md)*
+
 AI health-navigation agent for Croatian citizens. **Datathon Portala otvorenih
 podataka 2026**, Challenge A (*Društvo i javne usluge*).
 
@@ -129,8 +131,8 @@ cd ../data-pipeline
 
 The end-to-end suite covers the golden path, rescheduling and earlier-slot
 offers, the emergency path, the direct (toothache) route, demo mode, edge
-cases, and automated accessibility checks (axe, WCAG 2.2 AA) in light, dark and
-large-text modes.
+cases, and automated accessibility checks (axe, WCAG 2.2 AA) at normal and large
+text sizes.
 
 Abuse protection: chat is limited to 40 messages/hour per visitor, 20 per
 conversation and 800/day overall; uputnica reading to 10/hour per visitor.
@@ -162,6 +164,7 @@ in [`docs/data-sources.md`](docs/data-sources.md#rebuild).
 | [`docs/architecture.md`](docs/architecture.md) | System diagram, flows, safety design, data model (FHIR), scaling, CEZIH / e-Naručivanje / e-Građani path, legal prerequisites |
 | [`docs/data-sources.md`](docs/data-sources.md) | Every dataset: publisher, licence, date, how it is linked, limitations |
 | [`docs/codebase.md`](docs/codebase.md) | Guide to the code: pages, API, modules, database, tests, common tasks |
+| [`README.hr.md`](README.hr.md), [`docs/hr/`](docs/hr/) | Croatian versions of this README and the three documents above |
 | [`CLAUDE.md`](CLAUDE.md), [`PLAN.md`](PLAN.md) | Contributor rules and the 5-day plan |
 
 ## Repository
