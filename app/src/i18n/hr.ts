@@ -33,8 +33,6 @@ export const hr = {
   },
   settings: {
     largeText: "Veća slova",
-    darkTheme: "Uključi tamnu temu",
-    lightTheme: "Uključi svijetlu temu",
   },
   nav: {
     back: "Natrag",

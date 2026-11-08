@@ -16,14 +16,12 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f9fafb" },
-    { media: "(prefers-color-scheme: dark)", color: "#131a2b" },
-  ],
+  themeColor: "#eef3fc",
+  colorScheme: "light",
 };
 
-// Applies the saved theme / text size before first paint (no flash).
-const themeScript = `try{var t=localStorage.getItem("theme");var d=t?t==="dark":matchMedia("(prefers-color-scheme: dark)").matches;document.documentElement.classList.toggle("dark",d);var s=localStorage.getItem("text");if(s)document.documentElement.dataset.text=s}catch(e){}`;
+// Applies the saved text size before first paint (no flash).
+const textSizeScript = `try{var s=localStorage.getItem("text");if(s)document.documentElement.dataset.text=s}catch(e){}`;
 
 export default function RootLayout({
   children,
@@ -31,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="hr" className={inter.variable} suppressHydrationWarning>
       <head>
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <script dangerouslySetInnerHTML={{ __html: textSizeScript }} />
       </head>
       <body>
         <MotionProvider>{children}</MotionProvider>

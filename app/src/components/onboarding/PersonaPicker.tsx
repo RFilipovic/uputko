@@ -54,7 +54,7 @@ export function PersonaPicker({
             )}
           >
             <div className="flex items-start gap-3">
-              <span className="grid size-12 shrink-0 place-items-center rounded-full bg-primary/10 text-primary dark:text-foreground">
+              <span className="grid size-12 shrink-0 place-items-center rounded-full bg-primary/10 text-primary">
                 <UserRound aria-hidden className="size-6" />
               </span>
               <div>

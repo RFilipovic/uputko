@@ -36,10 +36,7 @@ export default async function InstitutionPage() {
     <div className="min-h-dvh">
       <header className="border-b border-border bg-card">
         <div className="mx-auto flex max-w-4xl items-center gap-3 px-6 py-4">
-          <Building2
-            aria-hidden
-            className="size-7 text-primary dark:text-foreground"
-          />
+          <Building2 aria-hidden className="size-7 text-primary" />
           <h1 className="text-2xl font-bold">{hr.institution.title}</h1>
         </div>
       </header>

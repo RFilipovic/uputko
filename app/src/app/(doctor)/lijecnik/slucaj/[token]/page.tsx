@@ -1,7 +1,8 @@
-import { Compass, MapPin } from "lucide-react";
+import { MapPin } from "lucide-react";
 import type { Metadata } from "next";
 import { SourceChip } from "@/components/data/SourceChip";
 import { DoctorDecision } from "@/components/doctor/DoctorDecision";
+import { BrandMark } from "@/components/layout/BrandMark";
 import { InstitutionMap } from "@/components/map/InstitutionMap";
 import type { CaseSummary } from "@/lib/agent/schemas";
 import { addCaseEvent } from "@/lib/cases";
@@ -34,9 +35,7 @@ function Shell({ children }: { children: React.ReactNode }) {
       <header className="border-b border-border bg-card">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-6 py-4">
           <p className="flex items-center gap-3 text-xl font-bold">
-            <span className="grid size-10 place-items-center rounded-xl text-white bg-brand-gradient">
-              <Compass aria-hidden className="size-5" />
-            </span>
+            <BrandMark size="sm" />
             {hr.app.name} · {hr.doctor.portal}
           </p>
           <p className="rounded-full bg-muted px-3 py-1 text-sm font-medium text-muted-foreground">

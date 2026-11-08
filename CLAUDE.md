@@ -128,8 +128,8 @@ We deliberately do **not** use: microservices, Kubernetes, a separate API gatewa
 - Python: `ruff` + type hints; each pipeline step is idempotent and re-runnable.
 
 ### 2.3 Design system
-- **Tokens** in `globals.css` as CSS variables (`--background`, `--primary`, `--urgent`, `--success`, radii, shadows); light + dark themes; `prefers-color-scheme` respected with manual toggle.
-- **Palette:** Marshmallow White `#F0EDF0` (background), ink `#16132E` (text), **Galactic Violet `#573DFE`** (primary actions), **Bubblegum Pink `#FF6BD3`** (small accents only, e.g. the mic button — always dark ink text on pink, never white). A reserved **urgent red** is used *only* for emergencies so it never loses meaning. The violet→pink gradient is a soft decorative glow only, never behind text.
+- **Tokens** in `globals.css` as CSS variables (`--background`, `--primary`, `--urgent`, `--success`, radii, shadows); light theme only (dark mode was removed on purpose; do not add it back).
+- **Palette:** cool blue-white `#EEF3FC` (background), ink `#0A1633` (text), **Deep Blue `#0028AB`** (primary actions), **Sky Blue `#4A89FF`** (accents, e.g. the mic button — always dark ink text on sky blue, never white). A reserved **urgent red** is used *only* for emergencies so it never loses meaning. The deep blue → white gradient (even split) is for the logo tile and small decorative marks, never behind body text. Logo (`BrandMark`): white compass on the gradient tile.
 - **Style: minimalist and inclusive.** Must work for a 75-year-old: one column, one main action per screen, plain short Croatian sentences, bold sentence-case headings (no thin or all-caps display type), big solid buttons (≥ 56–64px tall), solid colours behind text, no decorative clutter or mock-ups. The landing page (`app/src/app/page.tsx`) is the reference.
 - **Type:** Inter with `font-feature-settings: "ss01"`; Croatian diacritics checked (č ć đ š ž). Base text is 18px; the "Veća slova" toggle (`TextSizeToggle`) scales the root to 21px — layouts must not break at that size.
 - **Motion:** 150–250 ms, ease-out; respect `prefers-reduced-motion`. Motion explains state change — it never decorates for its own sake.
@@ -190,7 +190,7 @@ Indexes: GIST on `institutions.geom`; btree on `institution_services.specialty_c
 2. **Deadline mode.** Prefer the simplest thing that works and looks good. Do not introduce new dependencies, services or abstractions without stating why the existing stack can't do it.
 3. **Small, verifiable steps.** Make one change, run `pnpm typecheck && pnpm lint && pnpm test` (or the relevant pytest), and report the result. Never claim something works without running it.
 4. **Respect the structure** in §2.1. New components go in the matching folder; new strings go in `hr.ts`.
-5. **Every UI component ships with its loading, empty and error states**, dark mode, keyboard support and reduced-motion handling. If you skip one, say which.
+5. **Every UI component ships with its loading, empty and error states**, keyboard support and reduced-motion handling. If you skip one, say which.
 6. **Never weaken the safety layer.** Changes to `redFlags.ts` or the system prompt require updating tests and stating the behavioural change.
 7. **Never fabricate data sources.** If a dataset URL, column or licence is unknown, mark it `TODO(verify)` — `docs/data-sources.md` must be accurate because judges score it.
 8. **No real health data, no real patient emails.** Use the seeded synthetic personas.

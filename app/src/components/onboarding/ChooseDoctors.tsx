@@ -159,7 +159,7 @@ export function ChooseDoctors({ doctors }: { doctors: Doctor[] }) {
             <div className="flex items-start gap-3">
               <Stethoscope
                 aria-hidden
-                className="mt-1 size-6 shrink-0 text-primary dark:text-foreground"
+                className="mt-1 size-6 shrink-0 text-primary"
               />
               <div className="min-w-0 flex-1">
                 <p className={ui.label}>{hr.roles[role]}</p>

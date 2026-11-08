@@ -16,10 +16,10 @@ export default function Home() {
       {/* Soft brand glow — decorative only, never behind text that needs contrast. */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[34rem] opacity-60 dark:opacity-40"
+        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[34rem] opacity-60"
         style={{
           background:
-            "radial-gradient(60% 70% at 15% 0%, rgb(255 107 211 / 0.35), transparent 70%), radial-gradient(60% 70% at 90% 10%, rgb(87 61 254 / 0.3), transparent 70%)",
+            "radial-gradient(60% 70% at 15% 0%, rgb(74 137 255 / 0.3), transparent 70%), radial-gradient(60% 70% at 90% 10%, rgb(0 40 171 / 0.22), transparent 70%)",
         }}
       />
 
@@ -42,7 +42,7 @@ export default function Home() {
           <div className="mt-2 flex flex-col gap-3 sm:flex-row">
             <Link
               href="/chat"
-              className="inline-flex min-h-16 flex-1 items-center justify-center gap-3 rounded-2xl bg-primary px-6 text-xl font-semibold text-primary-foreground shadow-[0_10px_30px_-10px_rgb(87_61_254/0.7)] transition-colors duration-200 hover:bg-violet-deep focus-visible:ring-4 focus-visible:ring-ring/50 focus-visible:outline-none"
+              className="inline-flex min-h-16 flex-1 items-center justify-center gap-3 rounded-2xl bg-primary px-6 text-xl font-semibold text-primary-foreground shadow-[0_10px_30px_-10px_rgb(0_40_171/0.55)] transition-colors duration-200 hover:bg-primary-hover focus-visible:ring-4 focus-visible:ring-ring/50 focus-visible:outline-none"
             >
               {t.cta}
               <ArrowRight aria-hidden className="size-6" />
@@ -51,7 +51,7 @@ export default function Home() {
               href="/chat?glas=1"
               className="inline-flex min-h-16 items-center justify-center gap-3 rounded-2xl border-2 border-border bg-card px-6 text-xl font-semibold transition-colors duration-200 hover:border-primary focus-visible:ring-4 focus-visible:ring-ring/50 focus-visible:outline-none"
             >
-              <span className="grid size-9 place-items-center rounded-full bg-pink text-ink">
+              <span className="grid size-9 place-items-center rounded-full bg-accent text-accent-foreground">
                 <Mic aria-hidden className="size-5" />
               </span>
               {t.voice}

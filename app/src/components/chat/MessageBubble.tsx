@@ -28,7 +28,7 @@ function Typing() {
       {[0, 1, 2].map((i) => (
         <motion.span
           key={i}
-          className="size-2.5 rounded-full bg-primary/70 dark:bg-foreground/70"
+          className="size-2.5 rounded-full bg-primary/70"
           animate={{ y: [0, -5, 0], opacity: [0.45, 1, 0.45] }}
           transition={{
             duration: 1.1,
@@ -47,14 +47,14 @@ function Caret() {
   return (
     <motion.span
       aria-hidden
-      className="ml-0.5 inline-block h-[1.1em] w-[3px] translate-y-[3px] rounded-full bg-primary dark:bg-foreground"
+      className="ml-0.5 inline-block h-[1.1em] w-[3px] translate-y-[3px] rounded-full bg-primary"
       animate={{ opacity: [1, 0, 1] }}
       transition={{ duration: 0.9, repeat: Infinity, ease: "linear" }}
     />
   );
 }
 
-/** Patient: violet bubble on the right. Uputko: plain large text with an icon, like chat apps. */
+/** Patient: blue bubble on the right. Uputko: plain large text with an icon, like chat apps. */
 export function MessageBubble({
   message,
   typing = false,

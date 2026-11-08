@@ -1,38 +1,35 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-/* Dark mode follows the .dark class on <html>; set before paint from the
-   user's saved choice or prefers-color-scheme (see layout.tsx). */
-@custom-variant dark (&:is(.dark *));
-
 /* Design tokens.
-   Brand palette: Marshmallow White #F0EDF0 · Galactic Violet #573DFE ·
-   Bubblegum Pink #FF6BD3. Urgent red is reserved ONLY for emergencies.
-   Contrast notes: white on violet ≈ 6:1 (ok); white on pink ≈ 2.5:1 (fails),
-   so anything sitting on pink uses dark ink text. */
+   Brand palette: Deep Blue #0028AB (primary) · Sky Blue #4A89FF (accent);
+   the signature gradient runs deep blue → white on a cool blue-white background. Urgent red is reserved ONLY
+   for emergencies.
+   Contrast notes: white on #0028AB ≈ 11:1; white on #4A89FF ≈ 3.3:1 (fails),
+   so anything sitting on sky blue uses dark ink text (≈ 5.4:1). */
 :root {
   --radius: 1rem;
 
-  --marshmallow: #f0edf0;
-  --violet: #573dfe;
-  --violet-deep: #3f25e0;
-  --pink: #ff6bd3;
-  --ink: #16132e;
+  --blue-white: #eef3fc;
+  --blue: #0028ab;
+  --blue-sky: #4a89ff;
+  --ink: #0a1633;
 
-  --background: var(--marshmallow);
+  --background: var(--blue-white);
   --foreground: var(--ink);
   --card: #ffffff;
   --card-foreground: var(--ink);
   --popover: #ffffff;
   --popover-foreground: var(--ink);
 
-  --primary: var(--violet);
+  --primary: var(--blue);
+  --primary-hover: #001e82;
   --primary-foreground: #ffffff;
-  --secondary: #e6e2ee;
+  --secondary: #e1e8f6;
   --secondary-foreground: var(--ink);
-  --muted: #e8e4ec;
-  --muted-foreground: #565170;
-  --accent: var(--pink);
+  --muted: #e3eaf7;
+  --muted-foreground: #4a5878;
+  --accent: var(--blue-sky);
   --accent-foreground: var(--ink);
 
   --destructive: oklch(0.53 0.2 27);
@@ -43,47 +40,14 @@
   /* Text-safe variants (≥ 4.5:1 on their usual backgrounds). */
   --urgent-deep: oklch(0.47 0.19 27); /* 112 pill + red text on light tints */
   --success-text: oklch(0.42 0.11 155); /* green text on light green tints */
-  --link: var(--violet);
+  --link: var(--blue);
 
-  --border: #dcd7e4;
-  --input: #d3cde0;
-  --ring: var(--violet);
+  --border: #d3dcee;
+  --input: #c9d3e8;
+  --ring: var(--blue-sky);
 
   --shadow-soft:
-    0 1px 2px rgb(22 19 46 / 0.06), 0 4px 16px rgb(22 19 46 / 0.06);
-}
-
-.dark {
-  --background: #0e0b1f;
-  --foreground: #f0edf0;
-  --card: #1a1534;
-  --card-foreground: #f0edf0;
-  --popover: #1a1534;
-  --popover-foreground: #f0edf0;
-
-  --primary: #6a52ff; /* white text ≈ 4.9:1 */
-  --primary-foreground: #ffffff;
-  --secondary: #241e45;
-  --secondary-foreground: #f0edf0;
-  --muted: #221c40;
-  --muted-foreground: #b9b2d6;
-  --accent: var(--pink);
-  --accent-foreground: var(--ink);
-
-  --destructive: oklch(0.68 0.19 25);
-  --urgent: oklch(0.62 0.21 27);
-  --urgent-foreground: oklch(0.99 0 0);
-  --success: oklch(0.72 0.14 155);
-  --success-foreground: var(--ink);
-  --urgent-deep: oklch(0.47 0.19 27);
-  --success-text: oklch(0.8 0.13 155);
-  --link: #ab9fff; /* violet that reads on the dark background */
-
-  --border: #2c2550;
-  --input: #352d5e;
-  --ring: #9a8aff;
-
-  --shadow-soft: 0 1px 2px rgb(0 0 0 / 0.3), 0 4px 16px rgb(0 0 0 / 0.25);
+    0 1px 2px rgb(10 22 51 / 0.06), 0 4px 16px rgb(10 22 51 / 0.06);
 }
 
 @theme inline {
@@ -115,11 +79,10 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  --color-violet: var(--violet);
-  --color-violet-deep: var(--violet-deep);
-  --color-pink: var(--pink);
+  --color-primary-hover: var(--primary-hover);
+  --color-blue: var(--blue);
+  --color-blue-sky: var(--blue-sky);
   --color-ink: var(--ink);
-  --color-marshmallow: var(--marshmallow);
 
   --radius-sm: calc(var(--radius) - 6px);
   --radius-md: calc(var(--radius) - 4px);
@@ -131,20 +94,17 @@
   --shadow-soft: var(--shadow-soft);
 }
 
-/* Violet → pink signature gradient. */
+/* Signature gradient: deep blue → white, half and half (logo tile). */
 @utility bg-brand-gradient {
-  background: linear-gradient(
-    120deg,
-    var(--violet) 0%,
-    #a24ff0 55%,
-    var(--pink) 100%
-  );
+  background: linear-gradient(135deg, var(--blue) 0%, #ffffff 100%);
 }
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
   html {
+    color-scheme: light;
     font-size: 112.5%; /* 18px base: readable for older users by default */
     -webkit-text-size-adjust: 100%;
   }

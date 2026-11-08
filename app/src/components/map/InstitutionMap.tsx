@@ -15,8 +15,8 @@ export type MapPoint = {
 const STYLE = "https://tiles.openfreemap.org/styles/liberty";
 const CROATIA: [number, number] = [16.4, 44.6];
 const COLORS = {
-  place: "#573DFE",
-  you: "#16132E",
+  place: "#0028AB",
+  you: "#0A1633",
   emergency: "#C81E1E",
 } as const;
 

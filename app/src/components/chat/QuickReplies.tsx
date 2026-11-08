@@ -41,7 +41,7 @@ export function QuickReplies({
               "flex min-h-14 items-center rounded-2xl border-2 bg-card px-5 text-left text-lg font-semibold transition-colors duration-200 hover:border-primary focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none disabled:opacity-50",
               variant === "list"
                 ? "w-full border-border"
-                : "border-primary/40 text-primary dark:text-foreground",
+                : "border-primary/40 text-primary",
             )}
           >
             {o}

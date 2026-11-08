@@ -196,7 +196,7 @@ Database functions (PL/pgSQL, server-only): `nearest_institutions`,
 
 Tested by: 138 unit tests (Vitest), Playwright end-to-end tests in Chromium and
 Firefox (golden path, emergency, direct route, rescheduling, demo mode, edge
-cases, axe accessibility in light/dark/large text), and the agent evals.
+cases, axe accessibility at normal and large text), and the agent evals.
 
 ---
 
