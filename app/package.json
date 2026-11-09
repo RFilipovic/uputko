@@ -13,6 +13,7 @@
     "format:check": "prettier --check .",
     "test:e2e": "playwright test",
     "eval": "node scripts/run-evals.ts",
+    "screenshots": "SCREENSHOTS=1 E2E_BASE_URL=https://uputko.vercel.app playwright test e2e/screenshots.spec.ts --project=chromium",
     "test:e2e:watch": "E2E_SLOWMO=400 playwright test --project=firefox --headed"
   },
   "dependencies": {
