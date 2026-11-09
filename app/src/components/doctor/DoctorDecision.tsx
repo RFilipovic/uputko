@@ -222,7 +222,7 @@ export function DoctorDecision({ token }: { token: string }) {
             <div className={`${ui.skeleton} h-24`} aria-hidden />
           )}
           <a
-            href="/demo/uputnica-ana-orl.png"
+            href="/demo/uputnica-luka-fizijatrija.png"
             download
             className={`${ui.btnLink} self-start`}
           >
