@@ -14,7 +14,7 @@ for the data, see [`data-sources.md`](data-sources.md).
 ```
 /
 ├── CLAUDE.md, PLAN.md         rules for contributors and the 5-day plan
-├── README.md, README.hr.md    run, test, deploy (English, Croatian)
+├── README.md, README.hr.md    overview, demo walkthrough, run locally (English, Croatian)
 ├── docs/                      architecture, data sources, this guide
 │   ├── hr/                    Croatian versions of these documents
 │   └── diagrams/              diagrams as code (.py) → .svg + .png, English + Croatian (.hr)

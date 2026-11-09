@@ -6,6 +6,7 @@ AI health-navigation agent for Croatian citizens. **Datathon Portala otvorenih
 podataka 2026**, Challenge A (*Društvo i javne usluge*).
 
 > Opišite problem jednom. Ostalo rješavamo mi.
+> *(Describe the problem once. We handle the rest.)*
 
 **Live demo:** https://uputko.vercel.app
 
@@ -74,30 +75,31 @@ doctors are real doctors from HZZO open data.
 7. Emergency: as Maja, write "jako me boli u prsima i ne mogu disati".
 
 Other pages: `/javni-podaci` (open data used), `/profil` (change persona or doctors).
-
-### Demo-safe mode (for recording)
-
-Open any page with **`?demo=1`** (e.g. `https://uputko.vercel.app/profil?demo=1`)
-in **both** the patient's and the doctor's browser:
-
-- If the AI is slow (nothing within 8 s) or fails, the chat continues with a
-  prepared conversation for that persona, and reading the sample uputnica falls
-  back to its known contents. The recording never stalls.
-- `/profil` shows **Počni ispočetka**: clears the personas' old cases and frees
-  their slots, for a clean take.
-- `?demo=0` turns it off.
+Screenshots of every screen are in [`docs/screenshots/`](docs/screenshots/).
 
 ---
 
-## Run locally
+## Quality and safety
 
-Requirements: **Node ≥ 20** (we use 22), pnpm 9, Docker, Python ≥ 3.12 (only to
-rebuild the data).
+- Emergency detection is plain code with unit tests for every rule, not AI
+  judgement. A second check looks at the urgency the AI reports.
+- 138 unit tests, end-to-end browser tests (Chromium and Firefox) for every
+  main flow, and 17 scripted patients that check urgency and routing.
+- Automated accessibility checks (WCAG 2.2 AA) at normal and large text sizes;
+  full keyboard use; a **Veća slova** (larger text) switch; voice input.
+- Usage limits protect the service from abuse.
+
+Details: [`docs/architecture.md`](docs/architecture.md).
+
+---
+
+## Run it yourself
+
+Requirements: **Node ≥ 20**, pnpm 9, Docker, and an Anthropic API key.
 
 ```bash
-# 1. Database (local Supabase in Docker; the first start downloads images)
-pnpm dlx supabase@3.0.0 start          # also applies migrations + seed
-pnpm dlx supabase@3.0.0 db reset       # optional: rebuild from scratch
+# 1. Database (local Supabase in Docker; applies the schema and open-data seed)
+pnpm dlx supabase@3.0.0 start
 
 # 2. App
 cd app
@@ -106,56 +108,11 @@ pnpm install
 pnpm dev                               # http://localhost:3000
 ```
 
-Supabase Studio (database UI): http://127.0.0.1:54323
+All environment variables are explained in [`app/.env.example`](app/.env.example).
 
-Environment variables are listed and explained in
-[`app/.env.example`](app/.env.example): Supabase keys, `ANTHROPIC_API_KEY`,
-`RESEND_API_KEY`, `DEMO_INBOX` (every demo email goes **only** there),
-`UPUTKO_DEMO_OFFLINE` (demo mode without any AI calls).
-
-> On Node 18 the app fails with `ERR_REQUIRE_ESM`. Without upgrading:
-> `npx -y -p node@22 -p pnpm@9 -c 'pnpm dev'`.
-
-## Tests
-
-```bash
-cd app
-pnpm typecheck && pnpm lint && pnpm test   # 138 unit tests, offline
-pnpm test:e2e                              # Playwright, Chromium + Firefox (real AI calls, cents)
-pnpm eval                                  # 17 scripted patients against the running app (cents)
-E2E_BASE_URL=https://uputko.vercel.app pnpm exec playwright test --project=chromium   # live site
-
-cd ../data-pipeline
-.venv/bin/python -m pytest -q && .venv/bin/ruff check .
-```
-
-The end-to-end suite covers the golden path, rescheduling and earlier-slot
-offers, the emergency path, the direct (toothache) route, demo mode, edge
-cases, and automated accessibility checks (axe, WCAG 2.2 AA) at normal and large
-text sizes.
-
-Abuse protection: chat is limited to 40 messages/hour per visitor, 20 per
-conversation and 800/day overall; uputnica reading to 10/hour per visitor.
-
-## Rebuild the data
-
-```bash
-cd data-pipeline
-./build.sh     # offline: committed raw snapshot → data/clean → ../supabase/seed.sql
-```
-
-Refreshing from the internet (CKAN API, OpenStreetMap, Nominatim) is described
-in [`docs/data-sources.md`](docs/data-sources.md#rebuild).
-
-## Deploy
-
-- **App:** Vercel project `uputko` (Root Directory `app`). Every push to `main`
-  deploys to production; other branches get a preview URL. Env vars from
-  `app/.env.example` are set in Vercel → Settings → Environment Variables.
-- **Database:** hosted Supabase project in the EU (`eu-west-1`). New migrations
-  after a merge: `pnpm dlx supabase@3.0.0 db push --remote` from the repo root
-  (the project must be linked: `pnpm dlx supabase@3.0.0 link --project-ref <ref>`).
-  The CLI targets the local database unless you pass `--remote`. Ask René for access.
+The open data can be rebuilt from the committed snapshot with
+`cd data-pipeline && ./build.sh` (Python ≥ 3.12). Refreshing it from data.gov.hr
+is described in [`docs/data-sources.md`](docs/data-sources.md#rebuild).
 
 ## Documentation
 
@@ -163,9 +120,8 @@ in [`docs/data-sources.md`](docs/data-sources.md#rebuild).
 |---|---|
 | [`docs/architecture.md`](docs/architecture.md) | System diagram, flows, safety design, data model (FHIR), scaling, CEZIH / e-Naručivanje / e-Građani path, legal prerequisites |
 | [`docs/data-sources.md`](docs/data-sources.md) | Every dataset: publisher, licence, date, how it is linked, limitations |
-| [`docs/codebase.md`](docs/codebase.md) | Guide to the code: pages, API, modules, database, tests, common tasks |
+| [`docs/codebase.md`](docs/codebase.md) | Guide to the code for developers: pages, API, modules, database, tests, deployment |
 | [`README.hr.md`](README.hr.md), [`docs/hr/`](docs/hr/) | Croatian versions of this README and the three documents above |
-| [`CLAUDE.md`](CLAUDE.md), [`PLAN.md`](PLAN.md) | Contributor rules and the 5-day plan |
 
 ## Repository
 
@@ -174,4 +130,4 @@ in [`docs/data-sources.md`](docs/data-sources.md#rebuild).
 | `app/` | Next.js 15 app: patient (mobile-first), doctor portal, demo hospital panel |
 | `data-pipeline/` | Python ETL: data.gov.hr CKAN API → clean → geocode → `supabase/seed.sql` |
 | `supabase/` | Postgres + PostGIS schema (migrations) and the generated seed |
-| `docs/` | Architecture, data sources, codebase guide |
+| `docs/` | Architecture, data sources, codebase guide, screenshots |

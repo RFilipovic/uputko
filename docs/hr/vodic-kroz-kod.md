@@ -16,7 +16,7 @@ Nazivi datoteka, funkcija i stanja ostaju na engleskom jer su takvi u kodu.
 | Putanja | Sadržaj |
 |---|---|
 | `CLAUDE.md`, `PLAN.md` | Pravila za suradnike i petodnevni plan |
-| `README.md`, `README.hr.md` | Pokretanje, testovi, objava |
+| `README.md`, `README.hr.md` | Pregled, isprobavanje demoa, lokalno pokretanje |
 | `docs/` | Arhitektura, izvori podataka, ovaj vodič (hrvatski u `docs/hr/`) |
 | `docs/diagrams/` | Dijagrami kao kod (`.py`) → `.svg` + `.png`, engleski + hrvatski (`.hr`) |
 | `scripts/create-issues.mjs` | Jednokratno: GitHub issueji iz `PLAN.md` |
