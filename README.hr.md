@@ -74,30 +74,32 @@ liječnici su stvarni liječnici iz otvorenih podataka HZZO-a.
 7. Hitni slučaj: kao Maja napišite „jako me boli u prsima i ne mogu disati”.
 
 Ostale stranice: `/javni-podaci` (korišteni otvoreni podaci), `/profil` (promjena osobe ili liječnika).
-
-### Sigurni demo način (za snimanje)
-
-Otvorite bilo koju stranicu s **`?demo=1`** (npr. `https://uputko.vercel.app/profil?demo=1`)
-i u pacijentovom **i** u liječnikovom pregledniku:
-
-- Ako je AI spor (ništa unutar 8 s) ili ne radi, razgovor se nastavlja
-  pripremljenim razgovorom za tu osobu, a čitanje primjera uputnice koristi
-  njezin poznati sadržaj. Snimka nikad ne zastaje.
-- `/profil` prikazuje **Počni ispočetka**: briše stare slučajeve osoba i
-  oslobađa njihove termine, za čistu snimku.
-- `?demo=0` ga isključuje.
+Snimke svih zaslona nalaze se u [`docs/screenshots/`](docs/screenshots/).
 
 ---
 
-## Pokretanje lokalno
+## Kvaliteta i sigurnost
 
-Potrebno: **Node ≥ 20** (koristimo 22), pnpm 9, Docker, Python ≥ 3.12 (samo za
-ponovnu izgradnju podataka).
+- Prepoznavanje hitnih slučajeva je običan kod s testom za svako pravilo, a ne
+  procjena AI-ja. Druga provjera gleda hitnost koju prijavi AI.
+- 138 jediničnih testova, end-to-end testovi u preglednicima (Chromium i
+  Firefox) za svaki glavni tok i 17 skriptiranih pacijenata koji provjeravaju
+  hitnost i usmjeravanje.
+- Automatske provjere pristupačnosti (WCAG 2.2 AA) uz normalna i veća slova;
+  potpuno korištenje tipkovnicom; prekidač **Veća slova**; glasovni unos.
+- Ograničenja korištenja štite uslugu od zloupotrebe.
+
+Detalji: [`docs/hr/arhitektura.md`](docs/hr/arhitektura.md).
+
+---
+
+## Pokrenite sami
+
+Potrebno: **Node ≥ 20**, pnpm 9, Docker i Anthropic API ključ.
 
 ```bash
-# 1. Baza (lokalni Supabase u Dockeru; prvo pokretanje preuzima slike)
-pnpm dlx supabase@3.0.0 start          # primjenjuje i migracije + seed
-pnpm dlx supabase@3.0.0 db reset       # neobavezno: izgradnja od nule
+# 1. Baza (lokalni Supabase u Dockeru; primjenjuje shemu i otvorene podatke)
+pnpm dlx supabase@3.0.0 start
 
 # 2. Aplikacija
 cd app
@@ -106,57 +108,11 @@ pnpm install
 pnpm dev                               # http://localhost:3000
 ```
 
-Supabase Studio (sučelje za bazu): http://127.0.0.1:54323
+Sve varijable okruženja objašnjene su u [`app/.env.example`](app/.env.example).
 
-Varijable okruženja navedene su i objašnjene u
-[`app/.env.example`](app/.env.example): Supabase ključevi, `ANTHROPIC_API_KEY`,
-`RESEND_API_KEY`, `DEMO_INBOX` (svaka demo poruka e-pošte ide **samo** tamo),
-`UPUTKO_DEMO_OFFLINE` (demo način bez ikakvih poziva AI-ju).
-
-> Na Nodeu 18 aplikacija pada s `ERR_REQUIRE_ESM`. Bez nadogradnje:
-> `npx -y -p node@22 -p pnpm@9 -c 'pnpm dev'`.
-
-## Testovi
-
-```bash
-cd app
-pnpm typecheck && pnpm lint && pnpm test   # 138 jediničnih testova, bez interneta
-pnpm test:e2e                              # Playwright, Chromium + Firefox (stvarni pozivi AI-ju, centi)
-pnpm eval                                  # 17 skriptiranih pacijenata protiv pokrenute aplikacije (centi)
-E2E_BASE_URL=https://uputko.vercel.app pnpm exec playwright test --project=chromium   # stranica uživo
-
-cd ../data-pipeline
-.venv/bin/python -m pytest -q && .venv/bin/ruff check .
-```
-
-End-to-end testovi pokrivaju glavni put, promjenu termina i ponude ranijeg
-termina, hitni put, izravni put (zubobolja), demo način, rubne slučajeve te
-automatske provjere pristupačnosti (axe, WCAG 2.2 AA) uz normalna i veća
-slova.
-
-Zaštita od zloupotrebe: razgovor je ograničen na 40 poruka na sat po
-posjetitelju, 20 po razgovoru i 800 dnevno ukupno; čitanje uputnice na 10 na
-sat po posjetitelju.
-
-## Ponovna izgradnja podataka
-
-```bash
-cd data-pipeline
-./build.sh     # bez interneta: spremljeni sirovi snimak → data/clean → ../supabase/seed.sql
-```
-
-Osvježavanje s interneta (CKAN API, OpenStreetMap, Nominatim) opisano je u
-[`docs/hr/izvori-podataka.md`](docs/hr/izvori-podataka.md#ponovna-izgradnja).
-
-## Objava (deploy)
-
-- **Aplikacija:** Vercel projekt `uputko` (Root Directory `app`). Svaki push na
-  `main` objavljuje se u produkciju; ostale grane dobiju preview URL. Varijable
-  iz `app/.env.example` postavljene su u Vercel → Settings → Environment Variables.
-- **Baza:** hostani Supabase projekt u EU (`eu-west-1`). Nove migracije nakon
-  spajanja: `pnpm dlx supabase@3.0.0 db push --remote` iz korijena repozitorija
-  (projekt mora biti povezan: `pnpm dlx supabase@3.0.0 link --project-ref <ref>`).
-  CLI cilja lokalnu bazu ako ne dodate `--remote`. Za pristup se obratite Renéu.
+Otvoreni podaci mogu se ponovno izgraditi iz spremljenog snimka naredbom
+`cd data-pipeline && ./build.sh` (Python ≥ 3.12). Osvježavanje s data.gov.hr
+opisano je u [`docs/hr/izvori-podataka.md`](docs/hr/izvori-podataka.md#ponovna-izgradnja).
 
 ## Dokumentacija
 
@@ -164,8 +120,7 @@ Osvježavanje s interneta (CKAN API, OpenStreetMap, Nominatim) opisano je u
 |---|---|
 | [`docs/hr/arhitektura.md`](docs/hr/arhitektura.md) | Dijagram sustava, tokovi, sigurnosni dizajn, podatkovni model (FHIR), skaliranje, put prema CEZIH-u / e-Naručivanju / e-Građanima, pravni preduvjeti |
 | [`docs/hr/izvori-podataka.md`](docs/hr/izvori-podataka.md) | Svaki skup podataka: izdavač, licenca, datum, način povezivanja, ograničenja |
-| [`docs/hr/vodic-kroz-kod.md`](docs/hr/vodic-kroz-kod.md) | Vodič kroz kod: stranice, API, moduli, baza, testovi, česti zadaci |
-| [`CLAUDE.md`](CLAUDE.md), [`PLAN.md`](PLAN.md) | Pravila za suradnike i petodnevni plan (na engleskom) |
+| [`docs/hr/vodic-kroz-kod.md`](docs/hr/vodic-kroz-kod.md) | Vodič kroz kod za programere: stranice, API, moduli, baza, testovi, objava |
 
 ## Repozitorij
 
@@ -174,4 +129,4 @@ Osvježavanje s interneta (CKAN API, OpenStreetMap, Nominatim) opisano je u
 | `app/` | Next.js 15 aplikacija: za pacijente (prvo mobitel), portal za liječnike, demo panel bolnice |
 | `data-pipeline/` | Python ETL: data.gov.hr CKAN API → čišćenje → geokodiranje → `supabase/seed.sql` |
 | `supabase/` | Postgres + PostGIS shema (migracije) i generirani seed |
-| `docs/` | Arhitektura, izvori podataka, vodič kroz kod (engleski; hrvatski u `docs/hr/`) |
+| `docs/` | Arhitektura, izvori podataka, vodič kroz kod (engleski; hrvatski u `docs/hr/`), snimke zaslona |
